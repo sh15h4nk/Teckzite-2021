@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% block title %}Teckzite 2021 | Abouts US{% endblock %}
+{% block html_head %}
+{{super()}}
+    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/about.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+    <script>
+        onload = function resetHeight() {
+            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+        }
+        console.log(window.innerHeight);
+    </script>
+    <style>
+        @media (min-width:600px){
+            p{
+                font-size: 1.2em;
+            }
+            .container{
+                padding: 50px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+{{super()}}
+    <div id="loader">
+        <div class="content_box">
+            <div class="circle">
+                <div class="ox"></div>
+            </div>
+            <div class="background_box b1">
+                <div class="background c1"></div>
+            </div>
+            <div class="background_box b2">
+                <div class="background c2"></div>
+            </div>
+            <div class="background_box b3">
+                <div class="background c3"></div>
+            </div>
+            <div class="background_box b4">
+                <div class="background c4"></div>
+            </div>
+        </div>
+        <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+ </svg>
+            <div class="zoomoutheader G">
+                <h1>
+                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
+                </h1>
+            </div>
+            <div class="loader-circle"></div>
+            <div class="loader-line-mask"></div>
+            <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
+ </svg></div>
+    </div>
+    </div>
+    <!-- header -->
+    <header class="cd-header">
+        <div class="header-wrapper">
+            <div class="logo-wrap">
+                <a href="index.html">
+                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+                </a>
+            </div>
+            <div class="nav-but-wrap">
+                <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- main -->
+    <section class="about">
+        <h1 class="pos center">about us</h1>
+        <div class="about-row">
+            <div class="col">
+                <p>Teckzite, an annual National Level Techno-management fest celebrated and lionized by the student community of Rajiv Gandhi University of Knowledge Technologies, Nuzvid. Teckzite excites the students by all means and makes them wait throughout
+                    the year. </p><br>
+                <p>It provides the platform for myriad students to unveil their technical skills and let them wander in the creative world. The main objective of the Teckzite is to stay fresh, exciting year after year and tweaking the challenges that the
+                    participants have to do. Every year around 7000+students from 65+colleges and universities take part in competitions and events of Teckzite. Teckzite offers 10+workshops, 80+events with association of 30+companies. Along with the ISO
+                    certification 45+internships and placement offers are also provided to the winners. <br><br>Academic improvement, prize money, paid courses, exposure of novel ideas are the other benefits for the participating students. Students witness
+                    the biggest technical extravaganza every year in the college. Teckzite, the annual fest has been redefining festivity since its inception and all the editions of Teckzite were grand successes with active participation of all students
+                    from all over the nation. </p>
+            </div>
+            <div class="col">
+                <h5 style="text-align: center;">fronties</h5><br>
+                <div class=".slider">
+                    <div class="slide fade"><img src="{{url_for('static', filename='./img/memories/IMG_0897.JPG')}}" style="width:100% ; border-radius: 10px;">
+                        <div class="text"><b>1</b></div>
+                    </div>
+                    <div class="slide fade"><img src="{{url_for('static', filename='./img/memories/IMG_8557.JPG')}}" style="width:100% ; border-radius: 10px;">
+                        <div class="text"><b>2</b></div>
+                    </div>
+                    <div class="slide fade"><img src="{{url_for('static', filename='./img/memories/IMG_0444.JPG')}}" style="width:100% ; border-radius: 10px;">
+                        <div class="text"><b>3</b></div>
+                    </div>
+                    <div class="slide fade"><img src="{{url_for('static', filename='./img/memories/IMG_8557.JPG')}}" style="width:100% ; border-radius: 10px;">
+                        <div class="text"><b>4</b></div>
+                    </div>
+                    <div class="slide fade"><img src="{{url_for('static', filename='./img/memories/IMG_0012.JPG')}}" style="width:100% ; border-radius: 10px;">
+                        <div class="text"><b>5</b></div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <p style="color: rgb(189 78 45); font-weight: 500;">Why virtually??*</p><br>
+        <p>This pandemic bought many changes in student life. Thus considering the unprecedented situation of COVID-19 we have taken a novel approach to the <span style="color: palegreen;">#newnormal</span>this year. We planned better and glorious than ever
+            before events virtually to make it South India’s biggest techno-management fest ever, bringing a platform where curiosity gets the opportunity. </p><br></section>
+    <section class="container">
+            <h1 style="text-align: center; padding: 0;">memories</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quia tenetur eaque, modi deserunt laudantium hic debitis harum aliquam dignissimos nobis vel impedit eum neque expedita maiores dolores officia assumenda.</p>
+        <div class="memos">
+            <a href="#" class="memo-1"></a>
+            <a href="#" class="memo-2"></a>
+            <a href="#" class="memo-3"></a>
+            <a href="#" class="memo-4"></a>
+            <a href="#" class="memo-5"></a>
+            <a href="#" class="memo-6"></a>
+            <a href="#" class="memo-7"></a>
+            <a href="#" class="memo-8"></a>
+            <a href="#" class="memo-9"></a>
+            <a href="#" class="memo-10"></a>
+            <a href="#" class="memo-11"></a>
+            <a href="#" class="memo-12"></a>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+{{super()}}
+    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
+    <script>
+        //about
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none ";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            slides[slideIndex - 1].style.display = "block ";
+            setTimeout(showSlides, 4000); // Change image every 2 seconds
+        }
+
+        ;
+    </script>
+{% endblock %}

@@ -1,0 +1,333 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <!-- <link rel="stylesheet" href="./css/homeAnim.css"> -->
+    <script>
+      onload = function resetHeight() {
+          document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+      }
+      console.log(window.innerHeight);
+  </script>
+    <style>
+        p {
+            color: #e6e6e6bf;
+            font-size: 1.2em;
+            font-weight: 200;
+            padding: 0 10px;
+            /* word-break: break-all; */
+            letter-spacing: .5px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+        
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: teal;
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+        
+        @keyframes my-animation {
+            from {
+                opacity: 0;
+                left: -500px;
+            }
+            to {
+                opacity: 1;
+                left: 200px;
+            }
+        }
+        
+        .run-animation {
+            position: relative;
+            height: vh;
+            top: 50%;
+            animation-iteration-count: 1;
+            animation: my-animation 2s ease-in-out;
+        }
+        
+        .coming {
+            position: absolute;
+            height: 50%;
+            width: 30%;
+            top: 10%;
+            left: 30%;
+            background: url("./img/updated.jpg") no-repeat;
+            background-size: 100% 100%;
+            padding: 0;
+        }
+        
+        #logo {
+            position: absolute;
+            right: 35%;
+            top: 50%;
+            font-size: 40px;
+            color: orange;
+            font-family: Showcard Gothic, Book Antiqua, Palatino, serif;
+        }
+    </style>
+
+  </head>
+
+        <body>
+
+
+
+          <div id="loader">
+            <div class="content_box">
+                <div class="circle">
+                    <div class="ox"></div>
+                </div>
+                <div class="background_box b1">
+                    <div class="background c1"></div>
+                </div>
+                <div class="background_box b2">
+                    <div class="background c2"></div>
+                </div>
+                <div class="background_box b3">
+                    <div class="background c3"></div>
+                </div>
+                <div class="background_box b4">
+                    <div class="background c4"></div>
+                </div>
+            </div>
+            <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+     M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+     </svg>
+                <div class="zoomoutheader G">
+                    <h1>
+                        <font color="white" face="helvetica">DISTANCE PLEASE</font>
+                    </h1>
+                </div>
+                <div class="loader-circle"></div>
+                <div class="loader-line-mask"></div>
+                <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+     M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
+     </svg></div>
+        </div>
+        </div>
+
+            <!-- <div class="home"> -->
+            <header class="cd-header">
+                <div class="header-wrapper">
+                    <div class="logo-wrap">
+                        <a href="index.html">
+                            <div class="logo"><img src="./img/logo.png"></div>
+                        </a>
+                    </div>
+                    <div class="nav-but-wrap">
+                        <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="nav">
+                <div class="nav__content">
+                    <ul class="nav__list">
+                        <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
+                        <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
+                        <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
+                        <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
+                        <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
+                        <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
+                        <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
+                        <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
+                        <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
+                        <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+            <section class="text-gray-400 bg-black-900 body-font">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="flex flex-col text-center w-full mb-20">
+                        <h1 class="text-2xl font-medium title-font mb-4 text-white tracking-widest">OUR WEB TEAM</h1>
+                        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">This is the web Team Which built the web-site</p>
+                    </div>
+                    <div class="flex flex-wrap -m-4">
+                        <div class="p-4 lg:w-1/2">
+                            <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="./img/team/shiva.png">
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-white">Shiva Shankar</h2>
+                                    <h3 class="text-gray-500 mb-3"></h3>
+                                    <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                                    <span class="inline-flex">
+                                <a class="text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                                  </svg>
+                                </a>
+                              </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:w-1/2">
+                            <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="./img/team/abhijeeth.png">
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-white">Abhijeeth</h2>
+                                    <h3 class="text-gray-500 mb-3"></h3>
+                                    <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                                    <span class="inline-flex">
+                                <a class="text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                                  </svg>
+                                </a>
+                              </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:w-1/2">
+                            <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="./img/team/jaga.jpg">
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-white">jagadeesh</h2>
+                                    <h3 class="text-gray-500 mb-3"></h3>
+                                    <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                                    <span class="inline-flex">
+                                <a class="text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                                  </svg>
+                                </a>
+                              </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 lg:w-1/2">
+                            <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/206x206">
+                                <div class="flex-grow sm:pl-8">
+                                    <h2 class="title-font font-medium text-lg text-white">Henry Letham</h2>
+                                    <h3 class="text-gray-500 mb-3"></h3>
+                                    <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                                    <span class="inline-flex">
+                                <a class="text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                                  </svg>
+                                </a>
+                                <a class="ml-2 text-gray-500" href="#">
+                                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+                                  </svg>
+                                </a>
+                              </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <center>
+                <section class="footer">
+
+                    <div class="container">
+                        <div class="logo">
+                            <img src="./img/9.png" alt="">
+                        </div>
+                        <hr>
+
+                        <div class="footer-row" id="footer">
+                            <div class="footer-col">
+                                <h3>know us</h3>
+                                <ul>
+                                    <li><a href="./about.html" class="link">About us</a></li>
+                                    <li><a href="#" class="link">sdcac</a></li>
+                                    <li><a href="#" class="link">rgukt-nuzvid</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="footer-col">
+                                <h3>contact us</h3>
+                                <ul>
+                                    <li><a href="web_team.html" class="link">Web team</a></li>
+                                    <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="footer-col">
+                                <h3>connect with us</h3>
+                                <ul>
+                                    <li><a href="#" class="link">facebook</a></li>
+                                    <li><a href="#" class="link">instagram</a></li>
+                                    <li><a href="#" class="link">linkedin</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="copyright">
+                            <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
+                        </div>
+                    </div>
+
+                </section>
+            </center>
+            <!--Start of Tawk.to Script-->
+            <script type="text/javascript">
+                var Tawk_API = Tawk_API || {},
+                    Tawk_LoadStart = new Date();
+                (function() {
+                    var s1 = document.createElement("script"),
+                        s0 = document.getElementsByTagName("script")[0];
+                    s1.async = true;
+                    s1.src = 'https://embed.tawk.to/60a9f47ba4114e480ad061f4/1f6bu612v';
+                    s1.charset = 'UTF-8';
+                    s1.setAttribute('crossorigin', '*');
+                    s0.parentNode.insertBefore(s1, s0);
+                })();
+            </script>
+            <!--End of Tawk.to Script-->
+            <script src="./js/script.js"></script>
+            <script src="./js/main.js"></script>
+
+        </body>
+
+</html>

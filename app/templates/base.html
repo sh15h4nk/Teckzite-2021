@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{% block title %}Teckzite 2021{% endblock %}</title>
+		{% block html_head %}
+		{% endblock %}
+	</head>
+
+	<body>
+		<div class="nav">
+	        <div class="nav__content">
+	            <ul class="nav__list">
+	                <li class="nav__list-item active-nav"><a href="{{url_for('index')}}" class="hover-target">home</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('workshopsView')}}" class="hover-target">workshops</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('competitionsView')}}" class="hover-target">competitions</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('talksView')}}" class="hover-target">talks</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">projects</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('sponsorsView')}}" class="hover-target">sponsors</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('aboutView')}}" class="hover-target">about us</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('devteamView')}}" class="hover-target">Developer Team</a></li>
+	                <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">signup / login</a></li>
+	                <!-- <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li> -->
+	            </ul>
+	        </div>
+	    </div>
+
+		<div id="content">
+	    	{% block content %}{% endblock %}
+	 	</div>
+
+	 	{% block javascript %}{% endblock %}
+	 	
+		<div id="footer">
+			{% block footer %}
+
+				<section class="footer main">
+
+					<div class="container">
+						<div class="logo">
+							<img src="{{url_for('static', filename='./img/9.png')}}" alt="">
+						</div>
+						<hr>
+
+						<div class="footer-row" id="footer">
+							<div class="footer-col">
+								<h3>know us</h3>
+								<ul>
+									<li><a href="./about.html" class="link">About us</a></li>
+									<li><a href="#" class="link">sdcac</a></li>
+									<li><a href="#" class="link">rgukt-nuzvid</a></li>
+								</ul>
+							</div>
+
+							<div class="footer-col">
+								<h3>contact us</h3>
+								<ul>
+									<li><a href="web_team.html" class="link">Web team</a></li>
+									<li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
+								</ul>
+							</div>
+
+							<div class="footer-col">
+								<h3>connect with us</h3>
+								<ul>
+									<li><a href="#" class="link">facebook</a></li>
+									<li><a href="#" class="link">instagram</a></li>
+									<li><a href="#" class="link">linkedin</a></li>
+								</ul>
+							</div>
+
+						</div>
+
+						<hr>
+
+						<div class="copyright">
+							<p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
+						</div>
+					</div>
+
+				</section>
+
+			{% endblock %}
+		</div>
+
+	</body>
+
+</html>
