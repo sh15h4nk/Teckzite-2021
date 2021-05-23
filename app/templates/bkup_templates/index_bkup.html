@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teckzite 2021</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='img/favicon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/homeAnim.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"> -->
+    <style>
+        /* .home-sticky{
+        background-color: #0d0d3c;
+        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        transition: 0.5s ease-in-out;
+      }  */
+        
+        .main {
+            overflow-y: hidden;
+            height: 100%;
+        }
+        
+        .menu-icon {
+            height: 30px;
+            width: 30px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            display: block;
+            opacity: 0;
+        }
+        
+        .menu-icon.active {
+            height: 30px;
+            width: 30px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            display: block;
+            opacity: 1;
+        }
+        
+        .cd-header {
+            box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+            background: transparent;
+        }
+        
+        .sticky {
+            /* background-color: #0d0d3c; */
+            background-color: #07071f;
+            transition: 0.2s ease-in-out;
+            box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        }
+        
+        @font-face {
+            font-family: decade;
+            font-size: 12px;
+            src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/decade.ttf");
+        }
+        
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -ms-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .half {
+            position: absolute;
+            overflow: hidden;
+            z-index: 50;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            -webkit-transition: 3s;
+            -moz-transition: 3s;
+            -ms-transition: 3s;
+            -o-transition: 3s;
+            transition: 3s;
+            will-change: transform;
+        }
+        
+        .half img {
+            position: absolute;
+            top: -10%;
+            left: 0;
+        }
+        
+        @media screen and (min-width: 900px) {
+            .half img {
+                position: absolute;
+                top: -10%;
+                left: 0;
+                width: 100%;
+            }
+        }
+        
+        .half.top {
+            top: 0;
+        }
+        
+        .half.bottom {
+            top: 50%;
+        }
+        
+        .half.bottom img {
+            top: -110%;
+        }
+        
+        .half.active.top {
+            -webkit-transform: translateX(0) translateY(-100%);
+            -moz-transform: translateX(0) translateY(-100%);
+            -ms-transform: translateX(0) translateY(-100%);
+            -o-transform: translateX(0) translateY(-100%);
+            transform: translateX(0) translateY(-100%);
+            opacity: 0;
+        }
+        
+        .half.active.bottom {
+            -webkit-transform: translateX(0) translateY(100%);
+            -moz-transform: translateX(0) translateY(100%);
+            -ms-transform: translateX(0) translateY(100%);
+            -o-transform: translateX(0) translateY(100%);
+            transform: translateX(0) translateY(100%);
+            opacity: 0;
+        }
+        
+        .super-button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 200;
+            width: 300px;
+            height: 80px;
+            opacity: 0.8;
+            font-family: decade;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            background-color: transparent;
+            border: 4px solid black;
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+            will-change: color, opacity, border-color;
+        }
+        
+        .super-button:hover {
+            color: #fff;
+            opacity: 1;
+            border-color: #fff;
+        }
+        
+        .super-button:hover~.overlay {
+            background-color: rgba(155, 0, 0, 0.5);
+        }
+        
+        .super-button:hover~.overlay.active {
+            background-color: transparent;
+        }
+        
+        .super-button:hover~.button-line .inner {
+            max-width: 100%;
+        }
+        
+        .super-button.active {
+            -webkit-transition: 4.5s;
+            -moz-transition: 4.5s;
+            -ms-transition: 4.5s;
+            -o-transition: 4.5s;
+            transition: 4.5s;
+            -webkit-transform: translateX(-50%) translateY(-1000px);
+            -moz-transform: translateX(-50%) translateY(-1000px);
+            -ms-transform: translateX(-50%) translateY(-1000px);
+            -o-transform: translateX(-50%) translateY(-1000px);
+            transform: translateX(-50%) translateY(-1000px);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: rgba(155, 0, 0, 0);
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+            will-change: background-color;
+        }
+        
+        .overlay.active {
+            background-color: transparent;
+        }
+        
+        .button-line {
+            position: absolute;
+            top: -webkit-calc(50% - 2px);
+            top: -moz-calc(50% - 2px);
+            top: calc(50% - 2px);
+            left: 0;
+            z-index: 200;
+            width: -webkit-calc(50% - 100px);
+            width: -moz-calc(50% - 100px);
+            width: calc(50% - 100px);
+            height: 4px;
+            background-color: black;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -ms-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            will-change: width, max-width;
+        }
+        
+        .button-line.left {
+            -webkit-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .button-line.right {
+            left: -webkit-calc(50% + 100px);
+            left: -moz-calc(50% + 100px);
+            left: calc(50% + 100px);
+        }
+        
+        .button-line .inner {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            max-width: 0;
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+        }
+        
+        .button-line.active {
+            opacity: 0;
+        }
+
+        /* h3{
+            font-size: 2rem;
+        } */
+    </style>
+
+    <script>
+        onload = function resetHeight() {
+            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+        }
+        console.log(window.innerHeight);
+    </script>
+</head>
+
+
+<body>
+
+    <div id="loader">
+        <div class="content_box">
+            <div class="circle">
+                <div class="ox"></div>
+            </div>
+            <div class="background_box b1">
+                <div class="background c1"></div>
+            </div>
+            <div class="background_box b2">
+                <div class="background c2"></div>
+            </div>
+            <div class="background_box b3">
+                <div class="background c3"></div>
+            </div>
+            <div class="background_box b4">
+                <div class="background c4"></div>
+            </div>
+        </div>
+
+
+        <div class="tran" id="logosvg">
+            <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+                    <defs>
+                        <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%"   stop-color="#25b3ba"/>
+                            <stop offset="100%" stop-color="#25b3ba"/>
+                        </linearGradient>
+                    </defs>
+                    
+                      <path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+                      M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+                      
+                      
+                    </svg>
+
+            <div class="zoomoutheader G">
+                <h1>
+                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
+                </h1>
+            </div>
+            <div class="loader-circle"></div>
+            <div class="loader-line-mask"></div>
+            <div class="loader-line"></div>
+            <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+                    <defs>
+                        <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#25b3ba" />
+                            <stop offset="100%" stop-color="#25b3ba" />
+                        </linearGradient>
+                    </defs>
+                    <path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+                          M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z
+                          " />
+    
+            </svg>
+
+
+        </div>
+
+    </div>
+    </div>
+    <div class="main">
+        <div class="top half">
+            <img src="https://www.hdnicewallpapers.com/Walls/Big/Hollywood%20Movies/4K_Pic_of_Superhero_Iron_Man.jpg" />
+        </div>
+        <div class="bottom half">
+            <img src="https://www.hdnicewallpapers.com/Walls/Big/Hollywood%20Movies/4K_Pic_of_Superhero_Iron_Man.jpg" />
+        </div>
+        <button class="super-button">Tap to Enter The Virtual World</button>
+        <div class="overlay"></div>
+        <div class="button-line left">
+            <div class="inner"></div>
+        </div>
+        <div class="button-line right">
+            <div class="inner"></div>
+        </div>
+    </div>
+
+
+    <!-- header -->
+    <header class="cd-header">
+        <div class="header-wrapper">
+            <div class="logo-wrap">
+                <a href="index.html">
+                    <div class="logo"><img src="./img/logo.png"></div>
+                </a>
+            </div>
+            <div class="nav-but-wrap">
+                <div class="menu-icon hover-target">
+                    <span class="menu-icon__line menu-icon__line-left"></span>
+                    <span class="menu-icon__line"></span>
+                    <span class="menu-icon__line menu-icon__line-right"></span>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav">
+        <div class="nav__content">
+            <ul class="nav__list">
+                <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
+                <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
+                <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
+                <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
+                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
+                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
+                <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
+                <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
+                <li class="nav__list-item"><a href="web_team.html" class="hover-target">Developer Team</a></li>
+                <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
+                <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- <div class="menu-icon"></div> -->
+    <!-- <div class="items-container">
+        <div class="menu-items-container">
+            <div class="inner-item">
+                <a href="#events-high">EVENTS</a>
+            </div>
+            <div class="inner-item">
+                <a href="#workshops-high">WORKSHOPS</a>
+            </div>
+            <div class="inner-item">
+                <a href="#talks-high">TALKS</a>
+            </div>
+            <div class="inner-item">
+                <a href="#footer">CONTACT</a>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- home -->
+    <section class="home">
+        <div class="night">
+            <div class="shooting_star"></div>
+            <div class="shooting_star"></div>
+            <div class="shooting_star"></div>
+            <div class="shooting_star"></div>
+            <div class="shooting_star"></div>
+            <div class="shooting_star"></div>
+            <!-- <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div> -->
+        </div>
+        <div class="text">
+            <h1 class="theme theme-desk glitch" data-text="TECKZITE">TECKZITE</h1>
+            <h1 class="theme theme-mobile  glitch" data-text="TECKZITE">TECKZITE</h1>
+            <h3 class="sub">EXPERIENCE THE NEW VIRTUAL REALITY</h3>
+        </div>
+    </section>
+
+        <!-- about us -->
+        <section class="main">
+            <div class="container">
+                <h1 class="title">about us</h1>
+                <div class="about-row">
+                    <div class="col">
+                        <h4>teckzite</h4>
+                        <h5>Unlock your skills</h5>
+                        <p>Teckzite, an annual National Level Techno-management fest celebrated and lionized by the student community of Rajiv Gandhi University of Knowledge Technologies, Nuzvid.Teckzite excites the students by all means and makes them wait
+                            throughout the year. <br></p>
+                        </p>
+                        <br>
+                        <p>Along with the ISO certification 45+ internships and placement offers are also provided to the winners.The main objective of the Teckzite is to stay fresh, exciting year after year and tweaking the challenges that the participants
+                            have to do. Every year around 7000+ students from 65+ colleges and universities take part in competitions and events of Teckzite</p>
+                    </div>
+                    <div class="col">
+                        <div class="img">
+                            <!-- <iframe src="https://youtu.be/QOR4cIBehTQ" frameborder="0" allowfullscreen></iframe> -->
+                            <iframe width="896" height="504" src="https://www.youtube.com/embed/QOR4cIBehTQ" title="Techno video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <p class="explore" style="padding-top:5px"><a href="about.html">Read more</a></p>
+            </div>
+    
+            <!-- comp highlights -->
+                <div class="container">
+                    <h1>competitions</h1>
+                    <p>TECKZITE presents you most vibrant competitions ranging from technical, management and Non-technical events which explores potential of future technocrats, entrepreneurs etc. The events are structured to polish student skills which will
+                        make your adrenaline rush and bring out the leaders in you.</p>
+                    <div class="eves">
+                        <div class="eve">
+                            <a href="#"><img src="./img/ws/3d printing.jpg" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="./img/ws/civil.jpg" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="./img/ws/hacking.jpg" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="./img/ws/road.jpg" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="explore"><a href="competitions.html">Explore all</a></p>
+                </div>
+    
+            <!-- workshops highlights -->
+                <div class="container">
+                    <h1>workshops</h1>
+                    <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
+                    <div class="eves">
+                        <div class="eve">
+                            <a href="#"><img src="{{url_for('static', filename='./img/ws/robotics.jpg')}}" alt="">
+                                <p class="align">Hello Hello HelloHello Hello Hello Hello Hello Hello Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="{{url_for('static', filename='./img/ws/app.jpg')}}" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="{{url_for('static', filename='./img/ws/3d printing.jpg')}}" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                        <div class="eve">
+                            <a href="#"><img src="{{url_for('static', filename='./img/ws/self bal.jpg')}}" alt="">
+                                <p class="align">Hello</p>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="explore"><a href="workshops.html">Explore all</a></p>
+                </div>
+    
+            </div>
+        </section>
+
+
+        <section class="footer main">
+
+            <div class="container">
+                <div class="logo">
+                    <img src="{{url_for('static', filename='./img/9.png')}}" alt="">
+                </div>
+                <hr>
+
+                <div class="footer-row" id="footer">
+                    <div class="footer-col">
+                        <h3>know us</h3>
+                        <ul>
+                            <li><a href="./about.html" class="link">About us</a></li>
+                            <li><a href="#" class="link">sdcac</a></li>
+                            <li><a href="#" class="link">rgukt-nuzvid</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>contact us</h3>
+                        <ul>
+                            <li>
+                                <a href="web_team.html" class="link">Web team</a>
+                            </li>
+                            <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h3>connect with us</h3>
+                        <ul>
+                            <li><a href="#" class="link">facebook</a></li>
+                            <li><a href="#" class="link">instagram</a></li>
+                            <li><a href="#" class="link">linkedin</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="copyright">
+                    <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/60a9f47ba4114e480ad061f4/1f6bu612v';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(document).on("click", ".super-button", function() {
+                $(".main, .half, .overlay, .button-line, .super-button, .content,.menu-items-container,.menu-icon").addClass("active");
+                setTimeout(function() {
+                    $(".main *").css("z-index", "1");
+                }, 3000);
+            });
+
+        });
+    </script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            //slidesPerView: 1,
+            spaceBetween: 40,
+            centeredSlides: true,
+            //grabCursor: true,
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                // 640: {
+                //     //slidesPerView: 'auto',
+                //     slidesPerView: 3,
+                //     spaceBetween: 10,
+                // },
+                768: {
+                    //slidesPerView: 'auto',
+                    slidesPerView: 3,
+                    spaceBetween: 70,
+                },
+                1024: {
+                    //slidesPerView: 'auto',
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

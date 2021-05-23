@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- <link rel="stylesheet" href="./css/homeAnim.css"> -->
+    <style>
+        p {
+            color: #e6e6e6bf;
+            font-size: 1.2em;
+            font-weight: 200;
+            padding: 0 10px;
+            /* word-break: break-all; */
+            letter-spacing: .5px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+        
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: teal;
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+        
+        .back {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: white;
+        }
+        
+        @keyframes my-animation {
+            from {
+                opacity: 0;
+                left: -500px;
+            }
+            to {
+                opacity: 1;
+                left: 200px;
+            }
+        }
+        
+        .run-animation {
+            position: relative;
+            height: vh;
+            top: 50%;
+            animation-iteration-count: 1;
+            animation: my-animation 2s ease-in-out;
+        }
+        
+        .coming {
+            position: absolute;
+            height: 50%;
+            width: 30%;
+            top: 10%;
+            left: 30%;
+            background: url("./img/updated.jpg") no-repeat;
+            background-size: 100% 100%;
+            padding: 0;
+        }
+        
+        #logo {
+            position: absolute;
+            right: 35%;
+            top: 50%;
+            font-size: 40px;
+            color: orange;
+            font-family: Showcard Gothic, Book Antiqua, Palatino, serif;
+        }
+    </style>
+
+    <head>
+
+        <body>
+            <!-- <div class="home"> -->
+            <div class="back">
+                <header class="cd-header">
+                    <div class="header-wrapper">
+                        <div class="logo-wrap">
+                            <a href="index.html">
+                                <div class="logo"><img src="./img/logo.png"></div>
+                            </a>
+                        </div>
+                        <div class="nav-but-wrap">
+                            <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="nav">
+                    <div class="nav__content">
+                        <ul class="nav__list">
+                            <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
+                            <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
+                            <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
+                            <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
+                            <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
+                            <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
+                            <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
+                            <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
+                            <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
+                            <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="coming">
+                </div>
+                <h1 id="logo" class="run-animation">
+                    Will be updated soon
+                </h1>
+            </div>
+            <script src="./js/script.js"></script>
+            <script src="./js/main.js"></script>
+
+        </body>
+
+</html>
