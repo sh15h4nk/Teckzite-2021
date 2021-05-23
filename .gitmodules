@@ -1,0 +1,3 @@
+[submodule "panel"]
+	path = panel
+	url = git@github.com:sh15h4nk/Teckzite-2021-AdminPanel.git
