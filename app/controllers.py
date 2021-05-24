@@ -1,6 +1,12 @@
-from flask import url_for, redirect, request, render_template, session, flash, Response
+from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup
 from app import app, db
 from app.functions import *
+
+def dict_escape(d):
+	for k,v in d.items():
+		d[k] = Markup(d[k]).unescape()
+
+		return d
 
 
 @app.route('/')
@@ -21,12 +27,17 @@ def competitionsView():
 @app.route('/event-details/<eventId>')
 def eventDetailsView(eventId):
 
-	print(eventId, "ddddddddddddd")
+	
 	event = getEvents(eventId)
-	print(event)
-	print(event.description)
 
-	return render_template('event-details.html', event=event)
+	markup = {}
+	markup['description'] = Markup(event.description).unescape()
+	markup['structure'] = Markup(event.structure).unescape()
+	markup['timeline'] = Markup(event.timeline).unescape()
+	markup['rules'] = Markup(event.rules).unescape()
+
+
+	return render_template('event-details.html', event=event, markup=markup)
 
 @app.route('/talks')
 def talksView():

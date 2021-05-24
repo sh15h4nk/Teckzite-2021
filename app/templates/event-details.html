@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>teckzite 2021 | view</title>
+
+{% block title %}Teckzite 2021 | EVENT VEIW{% endblock %}
+{% block html_head %}
+{{super()}}
     <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
     <script>
         
     </script>
-</head>
+{% endblock %}
 
-<body>
+{% block content %}
+{{super()}}
 
 
     <div id="loader">
@@ -98,24 +98,6 @@
         </div>
     </header>
 
-    <div class="nav">
-        <div class="nav__content">
-            <ul class="nav__list">
-                <li class="nav__list-item active-nav"><a href="{{url_for('index')}}" class="hover-target">home</a></li>
-                <li class="nav__list-item"><a href="{{url_for('workshopsView')}}" class="hover-target">workshops</a></li>
-                <li class="nav__list-item"><a href="{{url_for('competitionsView')}}" class="hover-target">competitions</a></li>
-                <li class="nav__list-item"><a href="{{url_for('talksView')}}" class="hover-target">talks</a></li>
-                <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">projects</a></li>
-                <li class="nav__list-item"><a href="{{url_for('sponsorsView')}}" class="hover-target">sponsors</a></li>
-                <li class="nav__list-item"><a href="{{url_for('aboutView')}}" class="hover-target">about us</a></li>
-                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
-                <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">signup / login</a></li>
-                <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
-            </ul>
-        </div>
-    </div>
-
-
 
 
     <section class="view">
@@ -126,7 +108,7 @@
                 <p style="font-size: 1rem; margin-bottom: 1rem; text-align: left;" class="blink">INR-{{event.prize}}/-</p>
                 <div class="description">
                     <h4>Description</h4>
-                    {{event.description}}
+                    <p>{{markup['description'] | safe}}</p>
                 </div>
             </div>
             <div class="col-right">
@@ -163,22 +145,25 @@
 
             <div class="wrapper-right">
                 <div class="content structure">
-                    hello
+                    <p>{{markup['structure'] | safe}}</p>
                 </div>
 
                 <div class="content time" style="display:none;">
-                    12:00
+                    <p>{{markup['timeline'] | safe}}</p>
                 </div>
 
                 <div class="content rules" style="display:none;">
-                    {{event.rules}}
+                    <p>{{markup['rules'] | safe}}</p>
                 </div>
 
                 <div class="content contact" style="display:none;">
                     {% for contact in event.contacts %}
+                        
                         <p>{{contact.name}}</p>
                         <p>{{contact.email}}</p>
                         <p>{{contact.phone}}</p>
+
+                        <br>
 
                     {% endfor %}
 
@@ -217,55 +202,10 @@
 
     </section>
 
+{% endblock %}
 
-    <!-- footer -->
-
-    <section class="footer">
-
-        <div class="container">
-            <div class="logo">
-                <img src="{{url_for('static', filename='./img/9.png')}}" alt="">
-            </div>
-            <hr>
-
-            <div class="footer-row">
-                <div class="footer-col">
-                    <h3>know us</h3>
-                    <ul>
-                        <li><a href="{{url_for('aboutView')}}" class="link">About us</a></li>
-                        <li><a href="#" class="link">sdcac</a></li>
-                        <li><a href="#" class="link">rgukt-nuzvid</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>contact us</h3>
-                    <ul>
-                        <li><a href="{{url_for('teamView')}}" class="link">Team</a></li>
-                        <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>connect with us</h3>
-                    <ul>
-                        <li><a href="#" class="link">facebook</a></li>
-                        <li><a href="#" class="link">instagram</a></li>
-                        <li><a href="#" class="link">linkedin</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <hr>
-
-            <div class="copyright">
-                <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
-            </div>
-        </div>
-
-    </section>
-
+{% block javascript %}
+{{super()}}
 
     <script src="{{url_for('static', filename='./js/script.js')}}"></script>
     <script src="{{url_for('static', filename='./js/main.js')}}"></script>
@@ -305,6 +245,4 @@
             })
         }
     </script>
-</body>
-
-</html>
+{% endblock %}
