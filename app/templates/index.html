@@ -19,258 +19,14 @@
         box-shadow: 0 0 10px rgb(0 0 0 / 50%);
         transition: 0.5s ease-in-out;
       }  */
-        
-        .main {
-            overflow-y: hidden;
-            height: 100%;
-        }
-        
-        .menu-icon {
-            height: 30px;
-            width: 30px;
-            position: relative;
-            z-index: 2;
-            cursor: pointer;
-            display: block;
-            opacity: 0;
-        }
-        
-        .menu-icon.active {
-            height: 30px;
-            width: 30px;
-            position: relative;
-            z-index: 2;
-            cursor: pointer;
-            display: block;
-            opacity: 1;
-        }
-        
-        .cd-header {
+        .cd-header{
+            background-color: transparent;
             box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-            background: transparent;
-        }
-        
+            transition: 0.5s ease-in-out; 
+        } 
+
         .sticky {
-            /* background-color: #0d0d3c; */
-            background-color: #07071f;
-            transition: 0.2s ease-in-out;
-            box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-        }
-        
-        @font-face {
-            font-family: decade;
-            font-size: 12px;
-            src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/decade.ttf");
-        }
-        
-        *,
-        *:before,
-        *:after {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-            -webkit-transition: 0.3s;
-            -moz-transition: 0.3s;
-            -ms-transition: 0.3s;
-            -o-transition: 0.3s;
-            transition: 0.3s;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        
-        .half {
-            position: absolute;
-            overflow: hidden;
-            z-index: 50;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            -webkit-transition: 3s;
-            -moz-transition: 3s;
-            -ms-transition: 3s;
-            -o-transition: 3s;
-            transition: 3s;
-            will-change: transform;
-        }
-        
-        .half img {
-            position: absolute;
-            top: -10%;
-            left: 0;
-        }
-        
-        @media screen and (min-width: 900px) {
-            .half img {
-                position: absolute;
-                top: -10%;
-                left: 0;
-                width: 100%;
-            }
-        }
-        
-        .half.top {
-            top: 0;
-        }
-        
-        .half.bottom {
-            top: 50%;
-        }
-        
-        .half.bottom img {
-            top: -110%;
-        }
-        
-        .half.active.top {
-            -webkit-transform: translateX(0) translateY(-100%);
-            -moz-transform: translateX(0) translateY(-100%);
-            -ms-transform: translateX(0) translateY(-100%);
-            -o-transform: translateX(0) translateY(-100%);
-            transform: translateX(0) translateY(-100%);
-            opacity: 0;
-        }
-        
-        .half.active.bottom {
-            -webkit-transform: translateX(0) translateY(100%);
-            -moz-transform: translateX(0) translateY(100%);
-            -ms-transform: translateX(0) translateY(100%);
-            -o-transform: translateX(0) translateY(100%);
-            transform: translateX(0) translateY(100%);
-            opacity: 0;
-        }
-        
-        .super-button {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            z-index: 200;
-            width: 300px;
-            height: 80px;
-            opacity: 0.8;
-            font-family: decade;
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -ms-transform: translateX(-50%) translateY(-50%);
-            -o-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-            text-transform: uppercase;
-            font-size: 20px;
-            font-weight: bold;
-            color: black;
-            background-color: transparent;
-            border: 4px solid black;
-            -webkit-transition: 1.5s;
-            -moz-transition: 1.5s;
-            -ms-transition: 1.5s;
-            -o-transition: 1.5s;
-            transition: 1.5s;
-            will-change: color, opacity, border-color;
-        }
-        
-        .super-button:hover {
-            color: #fff;
-            opacity: 1;
-            border-color: #fff;
-        }
-        
-        .super-button:hover~.overlay {
-            background-color: rgba(155, 0, 0, 0.5);
-        }
-        
-        .super-button:hover~.overlay.active {
-            background-color: transparent;
-        }
-        
-        .super-button:hover~.button-line .inner {
-            max-width: 100%;
-        }
-        
-        .super-button.active {
-            -webkit-transition: 4.5s;
-            -moz-transition: 4.5s;
-            -ms-transition: 4.5s;
-            -o-transition: 4.5s;
-            transition: 4.5s;
-            -webkit-transform: translateX(-50%) translateY(-1000px);
-            -moz-transform: translateX(-50%) translateY(-1000px);
-            -ms-transform: translateX(-50%) translateY(-1000px);
-            -o-transform: translateX(-50%) translateY(-1000px);
-            transform: translateX(-50%) translateY(-1000px);
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 100;
-            background-color: rgba(155, 0, 0, 0);
-            -webkit-transition: 1.5s;
-            -moz-transition: 1.5s;
-            -ms-transition: 1.5s;
-            -o-transition: 1.5s;
-            transition: 1.5s;
-            will-change: background-color;
-        }
-        
-        .overlay.active {
-            background-color: transparent;
-        }
-        
-        .button-line {
-            position: absolute;
-            top: -webkit-calc(50% - 2px);
-            top: -moz-calc(50% - 2px);
-            top: calc(50% - 2px);
-            left: 0;
-            z-index: 200;
-            width: -webkit-calc(50% - 100px);
-            width: -moz-calc(50% - 100px);
-            width: calc(50% - 100px);
-            height: 4px;
-            background-color: black;
-            -webkit-transition: 0.5s;
-            -moz-transition: 0.5s;
-            -ms-transition: 0.5s;
-            -o-transition: 0.5s;
-            transition: 0.5s;
-            will-change: width, max-width;
-        }
-        
-        .button-line.left {
-            -webkit-transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            transform: rotate(180deg);
-        }
-        
-        .button-line.right {
-            left: -webkit-calc(50% + 100px);
-            left: -moz-calc(50% + 100px);
-            left: calc(50% + 100px);
-        }
-        
-        .button-line .inner {
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            max-width: 0;
-            -webkit-transition: 1.5s;
-            -moz-transition: 1.5s;
-            -ms-transition: 1.5s;
-            -o-transition: 1.5s;
-            transition: 1.5s;
-        }
-        
-        .button-line.active {
-            opacity: 0;
+            background-color: rgb(34, 29, 29);
         }
 
         /* h3{
@@ -353,7 +109,7 @@
     </div>
     </div>
     <div class="main">
-        <div class="top half">
+        <!-- <div class="top half">
             <img src="https://www.hdnicewallpapers.com/Walls/Big/Hollywood%20Movies/4K_Pic_of_Superhero_Iron_Man.jpg" />
         </div>
         <div class="bottom half">
@@ -366,7 +122,7 @@
         </div>
         <div class="button-line right">
             <div class="inner"></div>
-        </div>
+        </div> -->
     </div>
 
 
@@ -389,7 +145,7 @@
         </div>
     </header>
 
-    <!-- <div class="menu-icon"></div> -->
+        <!-- <div class="menu-icon"></div> -->
     <!-- <div class="items-container">
         <div class="menu-items-container">
             <div class="inner-item">
@@ -424,7 +180,8 @@
         <div class="text">
             <h1 class="theme theme-desk glitch" data-text="TECKZITE">TECKZITE</h1>
             <h1 class="theme theme-mobile  glitch" data-text="TECKZITE">TECKZITE</h1>
-            <h3 class="sub">EXPERIENCE THE NEW VIRTUAL REALITY</h3>
+            <!-- <h3 class="sub">EXPERIENCE THE NEW VIRTUAL REALITY</h3> -->
+            <h3 class="sub">Virtual saga of technovation</h3>
         </div>
     </section>
 
@@ -463,22 +220,22 @@
                     <div class="eves">
                         <div class="eve">
                             <a href="#"><img src="{{url_for('static', filename='./img/ws/3d printing.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                                <p class="align" style="font-size: 1em;">Hello</p>
                             </a>
                         </div>
                         <div class="eve">
                             <a href="#"><img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                                <p class="align" style="font-size: 1em;">Hello</p>
                             </a>
                         </div>
                         <div class="eve">
                             <a href="#"><img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                                <p class="align" style="font-size: 1em;">Hello</p>
                             </a>
                         </div>
                         <div class="eve">
                             <a href="#"><img src="{{url_for('static', filename='./img/ws/road.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                                <p class="align" style="font-size: 1em;">Hello</p>
                             </a>
                         </div>
                     </div>
@@ -491,23 +248,23 @@
                     <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
                     <div class="eves">
                         <div class="eve">
-                            <a href="#"><img src="{{url_for('static', filename='./img/ws/robotics.jpg')}}" alt="">
-                                <p class="align">Hello Hello HelloHello Hello Hello Hello Hello Hello Hello</p>
+                            <a href="#"><img src="{{url_for('static', filename='./img/workshops/web.jpeg')}}" alt="">
+                                <p class="align" style="font-size: 1em;">Web development</p>
                             </a>
                         </div>
                         <div class="eve">
-                            <a href="#"><img src="{{url_for('static', filename='./img/ws/app.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                            <a href="#"><img src="{{url_for('static', filename='./img/workshops/iot.jpeg')}}" alt="">
+                                <p class="align" style="font-size: 1em;">internet of things</p>
                             </a>
                         </div>
                         <div class="eve">
-                            <a href="#"><img src="{{url_for('static', filename='./img/ws/3d printing.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                            <a href="#"><img src="{{url_for('static', filename='./img/workshops/share.jpeg')}}" alt="">
+                                <p class="align" style="font-size: 1em;">Share marketing and investment</p>
                             </a>
                         </div>
                         <div class="eve">
-                            <a href="#"><img src="{{url_for('static', filename='./img/ws/self bal.jpg')}}" alt="">
-                                <p class="align">Hello</p>
+                            <a href="#"><img src="{{url_for('static', filename='./img/workshops/autoDriving.jpeg')}}" alt="">
+                                <p class="align" style="font-size: 1em;">Autonomous driving</p>
                             </a>
                         </div>
                     </div>
