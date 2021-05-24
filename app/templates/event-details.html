@@ -5,14 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teckzite 2021 | view</title>
-    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
     <script>
-        onload = function resetHeight() {
-            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-        }
-        console.log(window.innerHeight);
+        
     </script>
 </head>
 
@@ -87,8 +84,8 @@
     <header class="cd-header">
         <div class="header-wrapper">
             <div class="logo-wrap">
-                <a href="index.html">
-                    <div class="logo"><img src="./img/logo.png"></div>
+                <a href="{{url_for('index')}}">
+                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
                 </a>
             </div>
             <div class="nav-but-wrap">
@@ -104,16 +101,16 @@
     <div class="nav">
         <div class="nav__content">
             <ul class="nav__list">
-                <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
-                <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
-                <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
-                <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
-                <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
-                <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
-                <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
-                <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li>
+                <li class="nav__list-item active-nav"><a href="{{url_for('index')}}" class="hover-target">home</a></li>
+                <li class="nav__list-item"><a href="{{url_for('workshopsView')}}" class="hover-target">workshops</a></li>
+                <li class="nav__list-item"><a href="{{url_for('competitionsView')}}" class="hover-target">competitions</a></li>
+                <li class="nav__list-item"><a href="{{url_for('talksView')}}" class="hover-target">talks</a></li>
+                <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">projects</a></li>
+                <li class="nav__list-item"><a href="{{url_for('sponsorsView')}}" class="hover-target">sponsors</a></li>
+                <li class="nav__list-item"><a href="{{url_for('aboutView')}}" class="hover-target">about us</a></li>
+                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
+                <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">signup / login</a></li>
+                <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
             </ul>
         </div>
     </div>
@@ -122,33 +119,29 @@
 
 
     <section class="view">
-        <h1 class="pos center">eve name</h1>
+        <h1 class="pos center">{{event.title}}</h1>
         <div class="row-view">
             <div class="col-view">
                 <h5 style="margin:0;">Prize-money</h5>
-                <p style="font-size: 1rem; margin-bottom: 1rem; text-align: left;" class="blink">INR-10,000/-</p>
+                <p style="font-size: 1rem; margin-bottom: 1rem; text-align: left;" class="blink">INR-{{event.prize}}/-</p>
                 <div class="description">
-                    <h4>description</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, nulla provident veniam eum ipsa ipsum sunt molestiae corrupti expedita fuga at sapiente doloribus sit optio incidunt quaerat? Praesentium,<br>Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Odio dignissimos, atque quos cum, impedit perspiciatis consequatur praesentium ad debitis officia voluptatem quia pariatur architecto quas aut consectetur iure, illo dolore.<br>Lorem ipsum dolor sit
-                        amet consectetur adipisicing elit. Odio dignissimos, atque quos cum, impedit perspiciatis consequatur.
-                        <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio dignissimos, atque quos cum, impedit perspiciatis consequatur praesentium ad debitis officia voluptatem quia
-                    </p>
+                    <h4>Description</h4>
+                    {{event.description}}
                 </div>
             </div>
             <div class="col-right">
 
                 <div class="img-view">
-                    <img src="./img/ws/hacking.jpg" alt="">
+                    <img src="{{event.image_url}}" alt="">
                 </div>
 
                 <h6 style="padding: 1rem 0; text-align: center;">Sponsored by</h6>
 
                 <div class="sponsors">
                     <!-- <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a> -->
-                    <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a>
-                    <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a>
-                    <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a>
+                    {% for sponsor in event.sponsors %}
+                    <a href="#"><img src="{{sponsor.image_url}}" alt=""></a>
+                    {% endfor %}
                 </div>
 
             </div>
@@ -162,35 +155,38 @@
         <div class="wrapper">
             <ul class="list-sec">
                 <li data-target="structure" class="active">structure</li>
-                <li data-target="time">time-line</li>
+                <li data-target="time">timeline</li>
                 <li data-target="rules">rules</li>
-                <li data-target="contact">contact</li>
+                <li data-target="contact">contact</li>    
                 <li data-target="register">register</li>
             </ul>
 
             <div class="wrapper-right">
                 <div class="content structure">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et molestias ducimus sunt. Aspernatur molestias ducimus necessitatibus reprehenderit voluptatibus voluptates rem, minus asperiorhic Dignissimos minima tempore non quasi,
-                        culpa quam mollitia harum laborum reiciendis dicta porro recusandae numquam veritatis officiis excepturi soluta? Nobis, magni. Corporis!</p>
+                    hello
                 </div>
 
                 <div class="content time" style="display:none;">
-                    <p>minima commodi similique nostrum reprehenderit itaque tempora cumque quam, hic fuga dignissimos cupiditate incidunt illo vel? Eum?</p>
+                    12:00
                 </div>
 
                 <div class="content rules" style="display:none;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et molestias ducimus sunt. Aspernatur molestias ducimus necessitatibus reprehenderit voluptatibus voluptates rem, minus asperiores beatae? Molestiae sequi veritatis quasi
-                        nobis eaque.<br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti ad, voluptatibus nemo sit minima commodi similique nostrum reprehenderit itaque tempora cumque quam, hic fuga dignissimos cupiditate incidunt illo
-                        vel? Eum?<br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos minima tempore non quasi, culpa quam mollitia harum laborum reiciendis dicta porro recusandae numquam veritatis officiis excepturi soluta? Nobis,
-                        magni. Corporis!</p>
+                    {{event.rules}}
                 </div>
 
                 <div class="content contact" style="display:none;">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic et molestias ducimus sunt. Aspernatur</p>
+                    {% for contact in event.contacts %}
+                        <p>{{contact.name}}</p>
+                        <p>{{contact.email}}</p>
+                        <p>{{contact.phone}}</p>
+
+                    {% endfor %}
+
+                    
                 </div>
 
                 <div class="content register" style="display:none;">
-                    <p>minima commodi similique nostrum reprehenderit itaque tempora cumque quam, hic fuga dignissimos cupiditate incidunt illo vel? Eum?</p>
+                    <p>Registration will be opened soon!</p>
                 </div>
 
             </div>
@@ -203,56 +199,20 @@
 
             <br>
 
+            {% for faq in event.faqs %}
+
             <!-- what is  -->
             <div class="accordion">
                 <div class="ico">></div>
-                <h5>What is Lorem Ipsum?</h5>
+                <h5>{{faq.question}}</h5>
             </div>
 
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
+                <p>{{faq.answer}}</p>
             </div>
 
-            <!-- why we -->
-            <div class="accordion">
-                <div class="ico">></div>
-                <h5>Why we use Lorem Ipsum?</h5>
-            </div>
-
-            <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-            </div>
-
-            <!-- where -->
-            <div class="accordion">
-                <div class="ico">></div>
-                <h5>Where we use Lorem Ipsum?</h5>
-            </div>
-
-            <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-            </div>
-
-            <!-- how we -->
-            <div class="accordion">
-                <div class="ico">></div>
-                <h5>How we use Lorem Ipsum?</h5>
-            </div>
-
-            <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-            </div>
-
-            <!-- when -->
-            <div class="accordion">
-                <div class="ico">></div>
-                <h5>When we use Lorem Ipsum?</h5>
-            </div>
-
-            <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-            </div>
-
+                
+            {% endfor %}
         </div>
 
     </section>
@@ -264,7 +224,7 @@
 
         <div class="container">
             <div class="logo">
-                <img src="./img/9.png" alt="">
+                <img src="{{url_for('static', filename='./img/9.png')}}" alt="">
             </div>
             <hr>
 
@@ -272,7 +232,7 @@
                 <div class="footer-col">
                     <h3>know us</h3>
                     <ul>
-                        <li><a href="./about.html" class="link">About us</a></li>
+                        <li><a href="{{url_for('aboutView')}}" class="link">About us</a></li>
                         <li><a href="#" class="link">sdcac</a></li>
                         <li><a href="#" class="link">rgukt-nuzvid</a></li>
                     </ul>
@@ -281,7 +241,7 @@
                 <div class="footer-col">
                     <h3>contact us</h3>
                     <ul>
-                        <li><a href="web_team.html" class="link">Web Team</a></li>
+                        <li><a href="{{url_for('teamView')}}" class="link">Team</a></li>
                         <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
                     </ul>
                 </div>
@@ -307,8 +267,8 @@
     </section>
 
 
-    <script src="./js/script.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 
     <script>
         //wrapper

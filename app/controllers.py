@@ -1,5 +1,6 @@
 from flask import url_for, redirect, request, render_template, session, flash, Response
 from app import app, db
+from app.functions import *
 
 
 @app.route('/')
@@ -12,7 +13,20 @@ def workshopsView():
 
 @app.route('/competitions')
 def competitionsView():
-	return render_template('competitions.html')
+
+	events = getEvents()
+	print(events)
+	return render_template('competitions.html', events = events)
+
+@app.route('/event-details/<eventId>')
+def eventDetailsView(eventId):
+
+	print(eventId, "ddddddddddddd")
+	event = getEvents(eventId)
+	print(event)
+	print(event.description)
+
+	return render_template('event-details.html', event=event)
 
 @app.route('/talks')
 def talksView():
