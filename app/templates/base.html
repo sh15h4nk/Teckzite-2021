@@ -22,7 +22,7 @@
 	                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
 	                <li class="nav__list-item"><a href="{{url_for('devteamView')}}" class="hover-target">Developer Team</a></li>
 	                <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">signup / login</a></li>
-	                <!-- <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li> -->
+	                <!-- <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li> -->
 	            </ul>
 	        </div>
 	    </div>
@@ -48,7 +48,7 @@
 							<div class="footer-col">
 								<h3>know us</h3>
 								<ul>
-									<li><a href="./about.html" class="link">About us</a></li>
+									<li><a href="{{url_for('aboutView')}}" class="link">About us</a></li>
 									<li><a href="#" class="link">sdcac</a></li>
 									<li><a href="#" class="link">rgukt-nuzvid</a></li>
 								</ul>
@@ -57,7 +57,7 @@
 							<div class="footer-col">
 								<h3>contact us</h3>
 								<ul>
-									<li><a href="web_team.html" class="link">Web team</a></li>
+									<li><a href="{{url_for('teamView')}}" class="link">Web team</a></li>
 									<li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
 								</ul>
 							</div>
