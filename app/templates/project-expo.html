@@ -1,16 +1,16 @@
-{% extends 'base.html' %} {% block title %} teckzite 2021 | CA-PORTAL{% endblock %} {% block html_head %} {{super()}}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | Project-expo{% endblock %} {% block html_head %} {{super()}}
 
 <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css)}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
     onload = function resetHeight() {
         document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
     }
     console.log(window.innerHeight);
 </script>
-
 {% endblock %} {% block content %} {{super()}}
+
 
 
 <div id="loader">
@@ -84,7 +84,7 @@
     <div class="header-wrapper">
         <div class="logo-wrap">
             <a href="{{url_for('index')}}">
-                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+                <div class="logo"><img src="./img/logo.png"></div>
             </a>
         </div>
         <div class="nav-but-wrap">
@@ -99,152 +99,102 @@
 
 
 
+
+
+
 <section class="view">
-    <h1 class="pos center">TECKZITE CAMPUS AMBASSADOR</h1>
-    <p>TzCA is an initiative of Teckzite, RGUKTN that allows selected represents from various colleges to become part of the organization and support with internal publicity. It provides a great opportunity to get involved with a national level student collaboration
-        that extends all over the country. You will be the face and voice of Teckzite at your campus. This program consists of series of challenges and you will be rewarded with points for each challenge.</p>
+    <h1 class="pos center">Project Expo</h1>
+    <h5>Eligibility: </h5>
+    <p>Undergraduate Engineering students only</p>
+    <br>
+    <p class="blink">Prize money: INR 10,000</p>
+    <br>
+
+    <h5>Object:</h5>
+    <p>To bring out student’s innovation. To encourage multidisciplinary ideas.</p>
 
     <div class="wrapper">
-        <center>
-            <ul class="list-sec">
-                <li data-target="details" class="active">details</li>
-                <li data-target="responsibilities">responsibilities</li>
-                <li data-target="rewards">rewards</li>
-                <li data-target="incentives">incentives</li>
-            </ul>
-        </center>
+        <ul class="list-sec">
+            <li data-target="description" class="active">description</li>
+            <li data-target="outcome">expected outcome</li>
+            <li data-target="judgement">judgement criteria</li>
+            <li data-target="guidelines">guidelines</li>
+            <li data-target="contact">contact</li>
+        </ul>
         <div class="wrapper-right">
-            <div class="content details">
-                <p>• You can enhance your skills in the fields of leadership, communication and marketing.</p>
-                <br>
-                <p>• You may gain chances for networking and maintaining public relations at the national level</p>
-                <br>
-                <p>• Make the most of a first-class opportunity to be a part of the network of thousands of students across the country, and to collaborate with them</p>
+
+            <div class="content description">
+                <p>Participants should apply principles of science and mathematics to develop economical solutions to technical problems. They are expected to provide solutions for commercial and scientific applications that could meet the consumer and societal
+                    needs
+                </p>
             </div>
 
-            <div class="content responsibilities" style="display:none;">
-                <p>• Identifying potential participants for Teckzite on your campus.</p>
+            <div class="content outcome">
+                <p>We provide an opportunity for students to unleash their potential. Through this event, we think students could develop their problem-solving abilities and it helps to focus on their skill set which is integral for their career. Key takeaways
+                    include critical thinking and time management.</p>
+            </div>
+
+            <div class="content judgement" style="display:none;">
+                <p>Innovation, Novelty, Real worldapplications</p>
                 <br>
-                <p>• Spreading the word in your campus about events and workshops conducted by Teckzite.</p>
+                <p>(For instance, considering the current situation, we can develop solutions to share secure/accurate information of availability of hospital supplies, constructing cheap and temporary places as an alternative for the bed crunch at hospitals,
+                    cheapest ways to produce and supply oxygen).
+                </p>
+            </div>
+
+            <div class="content guidelines" style="display:none;">
+                <h5>Teams: Individual or a group not exceeding four participants.</h5>
                 <br>
-                <p>• Acting as our in-house representative for the outreach events conducted by Teckzite.</p>
+                <h5>First Round: Screening Round </h5>
                 <br>
-                <p>• Displaying posters sent by Pragyan on your college noticeboard</p>
+                <p>1.Prepare an abstract and send it to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
+                <p>2.Abstract must be written in English and shouldn’t exceed 300 words</p>
+                <p>3.Plagiarized abstracts/ideas will be disqualified </p>
+                <p>4.Abstract should specify the overall purpose of the projectandthe problem that you’ve investigated along with the proposed solution.</p>
+                <p>5.You should mention your team members names and TZ ID’s along with their details. </p>
+
+                <br>
+
+                <h5>Deadline for abstract submission: 2nd June, 2021.</h5>
+
+                <br>
+
+                <h5>Second Round: Screening for finalists</h5>
+                <br>
+                <p>1.You should record a short video that describes your project</p>
+                <p>2.Duration of the video shouldn’t exceed five minutes</p>
+                <p>3.Upload the it as unlisted video to YouTube (For your reference <a href="http://youtu.be/JOr7JluzEOM" style="font-size: 16px;">click here</a>)</p>
+                <p>4.Send the YouTube link to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
+                <p>5.You can also attach your journal/paper along with the video link but it isn’t mandatory.</p>
+                <br>
+                <h5>Deadline for video submission: 6th June, 2021.</h5>
+
+                <br>
+
+                <h5>Final Round: Virtual Expo</h5>
+                <br>
+
+                <p>1.Platform -Google meet</p>
+                <p>2.You should present your project with prototype before a panel </p>
+                <p>3.You’re free to choose the way you present </p>
+                <p>4.Time allotted for each project is 15 minutes</p>
+                <p>5.Your project will be validated based on the judgement criteria </p>
+                <p>6.Punctuality, time management and demonstration skills will also be considered for judgement.</p>
+                <br>
+                <p class="center">Note: Project with working prototypes will have more chances of winning. </p>
+                <br>
+                <h5 class="center">The discretion of coordinators is final and binding.</h5>
 
             </div>
 
-            <div class="content rewards" style="display:none;">
-                <p>• Registering a student for Teckzite - 10pts</p>
+            <div class="content contact" style="display:none;">
+                <h5>Bhargavi Maddineni </h5>
+                <p>7036802177</p>
+                <p>n160872@rguktn.ac.in</p>
                 <br>
-                <p>• Registering a student for a Workshop - 5pts</p>
-                <br>
-                <p>• Promoting Teckzite on various social media platforms - 5pts</p>
-
-            </div>
-
-            <div class="content incentives" style="display:none;">
-                <center>
-                    <table border="1">
-                        <tr>
-                            <th>
-                                <p>S.No</p>
-                            </th>
-                            <th>
-                                <p>1000pts</p>
-                            </th>
-                            <th>
-                                <p>800pts</p>
-                            </th>
-                            <th>
-                                <p>600pts</p>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>1</p>
-                            </td>
-                            <td>
-                                <p>Certificate</p>
-                            </td>
-                            <td>
-                                <p>Certificate</p>
-                            </td>
-                            <td>
-                                <p>Certificate</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>2</p>
-                            </td>
-                            <td>
-                                <p>Free registration</p>
-                            </td>
-                            <td>
-                                <p>Free registration</p>
-                            </td>
-                            <td>
-                                <p>Free registration</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>3</p>
-                            </td>
-                            <td>
-                                <p>Post on Teckzite page</p>
-                            </td>
-                            <td>
-                                <p>Post on Teckzite page</p>
-                            </td>
-                            <td>
-                                <p>Post on Teckzite page</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>4</p>
-                            </td>
-                            <td>
-                                <p>Opportunity of your questions being asked to guests during guest lectrues</p>
-                            </td>
-                            <td>
-                                <p>Opportunity of your questions being asked to guests during guest lectrues</p>
-                            </td>
-                            <td>
-                                <p>Opportunity of your questions being asked to guests during guest lectrues</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>5</p>
-                            </td>
-                            <td>
-                                <p>Workshop</p>
-                            </td>
-                            <td>
-                                <p>Workshop or Intern opportunity</p>
-                            </td>
-                            <td>
-                                <p>-</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>6</p>
-                            </td>
-                            <td>
-                                <p>Internship opportunity</p>
-                            </td>
-                            <td>
-                                <p>-</p>
-                            </td>
-                            <td>
-                                <p>-</p>
-                            </td>
-                        </tr>
-                    </table>
-                </center>
+                <h5>Raja Bhushan K</h5>
+                <p>7075070268</p>
+                <p>n160086@rguktn.ac.in</p>
             </div>
 
         </div>
@@ -311,9 +261,9 @@
 </section>
 
 
-<!-- footer -->
 
 {% endblock %} {% block javascript %} {{super()}}
+
 
 <script src="./js/script.js"></script>
 <script src="./js/main.js"></script>
@@ -336,13 +286,15 @@
                 item.style.display = "none";
             })
 
-            if (eleValue == "details") {
+            if (eleValue == "description") {
                 document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "responsibilities") {
+            } else if (eleValue == "outcome") {
                 document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "rewards") {
+            } else if (eleValue == "judgement") {
                 document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "incentives") {
+            } else if (eleValue == "guidelines") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "contact") {
                 document.querySelector("." + eleValue).style.display = "block";
             }
             /*else if(eleValue == "register"){

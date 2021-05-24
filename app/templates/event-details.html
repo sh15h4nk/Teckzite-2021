@@ -1,43 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | EVENT VEIW{% endblock %} {% block html_head %} {{super()}}
+<link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+</script>
+{% endblock %} {% block content %} {{super()}}
 
 
-{% block title %}Teckzite 2021 | EVENT VEIW{% endblock %}
-{% block html_head %}
-{{super()}}
-    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-    <script>
-        
-    </script>
-{% endblock %}
-
-{% block content %}
-{{super()}}
-
-
-    <div id="loader">
-        <div class="content_box">
-            <div class="circle">
-                <div class="ox"></div>
-            </div>
-            <div class="background_box b1">
-                <div class="background c1"></div>
-            </div>
-            <div class="background_box b2">
-                <div class="background c2"></div>
-            </div>
-            <div class="background_box b3">
-                <div class="background c3"></div>
-            </div>
-            <div class="background_box b4">
-                <div class="background c4"></div>
-            </div>
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
         </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
 
 
-        <div class="tran" id="logosvg">
-            <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+    <div class="tran" id="logosvg">
+        <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%"   stop-color="#25b3ba"/>
@@ -51,15 +42,15 @@
                   
                 </svg>
 
-            <div class="zoomoutheader G">
-                <h1>
-                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
-                </h1>
-            </div>
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask"></div>
-            <div class="loader-line"></div>
-            <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div>
+        <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#25b3ba" />
@@ -73,176 +64,169 @@
         </svg>
 
 
+    </div>
+
+</div>
+</div>
+
+
+<!-- header -->
+
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<section class="view">
+    <h1 class="pos center">{{event.title}}</h1>
+    <div class="row-view">
+        <div class="col-view">
+            <!--                 <h5 style="margin:0;">Prize-money</h5> -->
+            <!--                 <p style="font-size: 1rem; margin-bottom: 1rem; text-align: left;" class="blink">INR-{{event.prize}}/-</p> -->
+            <div class="description">
+                <h4>Description</h4>
+                <p>{{markup['description'] | safe}}</p>
+            </div>
+        </div>
+        <div class="col-right">
+
+            <div class="img-view">
+                <img src="{{event.image_url}}" alt="">
+            </div>
+
+            <h6 style="padding: 1rem 0; text-align: center;">Sponsored by</h6>
+
+            <div class="sponsors">
+                <!-- <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a> -->
+                {% for sponsor in event.sponsors %}
+                <a href="#"><img src="{{sponsor.image_url}}" alt=""></a>
+                {% endfor %}
+            </div>
+
         </div>
 
     </div>
+
+    <p class="center" style="font-size: 1.2rem; margin: 1rem 0; color:rgba(28, 255, 187, 0.78); text-transform: uppercase; font-weight: 500; font-family: 'Jura';">
+        <marquee>Registration will be opening soon!</marquee>
+    </p>
+
+    <div class="wrapper">
+        <ul class="list-sec">
+            <li data-target="structure" class="active">structure</li>
+            <li data-target="time">timeline</li>
+            <li data-target="rules">rules</li>
+            <li data-target="contact">contact</li>
+            <li data-target="register">register</li>
+        </ul>
+
+        <div class="wrapper-right">
+            <div class="content structure">
+                <p>{{markup['structure'] | safe}}</p>
+            </div>
+
+            <div class="content time" style="display:none;">
+                <p>{{markup['timeline'] | safe}}</p>
+            </div>
+
+            <div class="content rules" style="display:none;">
+                <p>{{markup['rules'] | safe}}</p>
+            </div>
+
+            <div class="content contact" style="display:none;">
+                {% for contact in event.contacts %}
+
+                <p>{{contact.name}}</p>
+                <p>{{contact.email}}</p>
+                <p>{{contact.phone}}</p>
+
+                <br> {% endfor %}
+
+
+            </div>
+
+            <div class="content register" style="display:none;">
+                <p>Registration will be opened soon!</p>
+            </div>
+
+        </div>
     </div>
 
+    <div class="accordion-container">
 
-    <!-- header -->
+        <h4 style="margin-top:2rem ; color: #eee; font-family: 'Jura'; text-transform: capitalize;">FAQs</h4>
+        <p>(Frequently Asked Questions)</p>
 
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="{{url_for('index')}}">
-                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
-                </a>
-            </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
-            </div>
-        </div>
-    </header>
+        <br> {% for faq in event.faqs %}
 
-
-
-    <section class="view">
-        <h1 class="pos center">{{event.title}}</h1>
-        <div class="row-view">
-            <div class="col-view">
-<!--                 <h5 style="margin:0;">Prize-money</h5> -->
-<!--                 <p style="font-size: 1rem; margin-bottom: 1rem; text-align: left;" class="blink">INR-{{event.prize}}/-</p> -->
-                <div class="description">
-                    <h4>Description</h4>
-                    <p>{{markup['description'] | safe}}</p>
-                </div>
-            </div>
-            <div class="col-right">
-
-                <div class="img-view">
-                    <img src="{{event.image_url}}" alt="">
-                </div>
-
-                <h6 style="padding: 1rem 0; text-align: center;">Sponsored by</h6>
-
-                <div class="sponsors">
-                    <!-- <a href="#"><img src="./img/ws/hacking.jpg" alt=""></a> -->
-                    {% for sponsor in event.sponsors %}
-                    <a href="#"><img src="{{sponsor.image_url}}" alt=""></a>
-                    {% endfor %}
-                </div>
-
-            </div>
-
+        <!-- what is  -->
+        <div class="accordion">
+            <div class="ico">></div>
+            <h5>{{faq.question}}</h5>
         </div>
 
-        <p class="center" style="font-size: 1.2rem; margin: 1rem 0; color:rgba(28, 255, 187, 0.78); text-transform: uppercase; font-weight: 500; font-family: 'Jura';">
-            <marquee>Registration will be opening soon!</marquee>
-        </p>
-
-        <div class="wrapper">
-            <ul class="list-sec">
-                <li data-target="structure" class="active">structure</li>
-                <li data-target="time">timeline</li>
-                <li data-target="rules">rules</li>
-                <li data-target="contact">contact</li>    
-                <li data-target="register">register</li>
-            </ul>
-
-            <div class="wrapper-right">
-                <div class="content structure">
-                    <p>{{markup['structure'] | safe}}</p>
-                </div>
-
-                <div class="content time" style="display:none;">
-                    <p>{{markup['timeline'] | safe}}</p>
-                </div>
-
-                <div class="content rules" style="display:none;">
-                    <p>{{markup['rules'] | safe}}</p>
-                </div>
-
-                <div class="content contact" style="display:none;">
-                    {% for contact in event.contacts %}
-                        
-                        <p>{{contact.name}}</p>
-                        <p>{{contact.email}}</p>
-                        <p>{{contact.phone}}</p>
-
-                        <br>
-
-                    {% endfor %}
-
-                    
-                </div>
-
-                <div class="content register" style="display:none;">
-                    <p>Registration will be opened soon!</p>
-                </div>
-
-            </div>
+        <div class="panel">
+            <p>{{faq.answer}}</p>
         </div>
 
-        <div class="accordion-container">
 
-            <h4 style="margin-top:2rem ; color: #eee; font-family: 'Jura'; text-transform: capitalize;">FAQs</h4>
-            <p>(Frequently Asked Questions)</p>
+        {% endfor %}
+    </div>
 
-            <br>
+</section>
 
-            {% for faq in event.faqs %}
+{% endblock %} {% block javascript %} {{super()}}
 
-            <!-- what is  -->
-            <div class="accordion">
-                <div class="ico">></div>
-                <h5>{{faq.question}}</h5>
-            </div>
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
 
-            <div class="panel">
-                <p>{{faq.answer}}</p>
-            </div>
+<script>
+    //wrapper
+    const btn = document.querySelectorAll('.list-sec li');
+    const ele = document.querySelectorAll('.wrapper-right .content');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", function() {
 
-                
-            {% endfor %}
-        </div>
-
-    </section>
-
-{% endblock %}
-
-{% block javascript %}
-{{super()}}
-
-    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
-    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
-
-    <script>
-        //wrapper
-        const btn = document.querySelectorAll('.list-sec li');
-        const ele = document.querySelectorAll('.wrapper-right .content');
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].addEventListener("click", function() {
-
-                btn.forEach(function(li) {
-                    li.classList.remove('active');
-                })
-
-                this.classList.add('active');
-
-                var eleValue = this.getAttribute("data-target");
-
-                ele.forEach(function(item) {
-                    item.style.display = "none";
-                })
-
-                if (eleValue == "structure") {
-                    document.querySelector("." + eleValue).style.display = "block";
-                } else if (eleValue == "time") {
-                    document.querySelector("." + eleValue).style.display = "block";
-                } else if (eleValue == "rules") {
-                    document.querySelector("." + eleValue).style.display = "block";
-                } else if (eleValue == "contact") {
-                    document.querySelector("." + eleValue).style.display = "block";
-                } else if (eleValue == "register") {
-                    document.querySelector("." + eleValue).style.display = "block";
-                } else {
-                    console.log("failed");
-                }
+            btn.forEach(function(li) {
+                li.classList.remove('active');
             })
-        }
-    </script>
+
+            this.classList.add('active');
+
+            var eleValue = this.getAttribute("data-target");
+
+            ele.forEach(function(item) {
+                item.style.display = "none";
+            })
+
+            if (eleValue == "structure") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "time") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "rules") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "contact") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "register") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else {
+                console.log("failed");
+            }
+        })
+    }
+</script>
 {% endblock %}
