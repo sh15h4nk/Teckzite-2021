@@ -1,6 +1,6 @@
 from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup, session
 from app import app, db
-from app.models import OUser
+from app.models import TechUser
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
@@ -25,18 +25,12 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return OUser.query.get(user_id)
+    return TechUser.query.get(user_id)
 
 @login_manager.unauthorized_handler
 def unauthorized():
     flash("You must login ")
     return redirect(url_for('index'))
-
-
-
-
-
-
 
 
 
@@ -49,14 +43,12 @@ def temp():
 
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    # Find out what URL to hit for Google login
+ 
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
-    # Use library to construct the request for Google login and provide
-    # scopes that let you retrieve user's profile from Google
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
         redirect_uri=request.base_url + "/callback",
@@ -67,7 +59,7 @@ def login():
 
 @app.route("/login/callback")
 def callback():
-    # Get authorization code Google sent back to you
+
 	code = request.args.get("code")
 
 	google_provider_cfg = get_google_provider_cfg()
@@ -86,7 +78,6 @@ def callback():
 		auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
 	)
 
-	# Parse the tokens!
 	client.parse_request_body_response(json.dumps(token_response.json()))
 
 	userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
@@ -102,13 +93,17 @@ def callback():
 	    return "User email not available or not verified by Google.", 400
 
 
-	user = OUser(name=users_name, email=users_email)
+	user = TechUser.query.filter_by(userId=unique_id).first()
 
-	if not OUser.query.filter_by(id=1).count():
-		db.session.add(user)
+	if not user:
+		new_user = TechUser(userId=unique_id, name=users_name, email=users_email)
+		db.session.add(new_user)
 		db.session.commit()
 	    
 	session['id'] = 1
+
+	# if not user.registration_status:
+	# 	return redirect(url_for('register'))
 
 	return redirect(url_for("temp"))
 
@@ -116,7 +111,6 @@ def callback():
 	
 
 @app.route('/home')
-@login_required
 def index():
 	return render_template('index.html')
 
