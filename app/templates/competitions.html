@@ -1,80 +1,99 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | COMPETITIONS{% endblock %} {% block html_head %} {{super()}}
+<link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+    console.log(window.innerHeight);
+</script>
+<style>
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: teal;
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+</style>
 
-{% block title %}Teckzite 2021 | COMPETITIONS{% endblock %}
-
-{% block html_head %}
-{{super()}}
-
-    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-    <script>
-        onload = function resetHeight() {
-            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-        }
-        console.log(window.innerHeight);
-    </script>
-    <style>
-        a {
-            text-decoration: none;
-            text-transform: uppercase;
-            color: teal;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-    </style>
-
-
-{% endblock %}
-
-
-{% block content %}
-{{super()}}
-    <div id="loader">
-        <div class="content_box">
-            <div class="circle">
-                <div class="ox"></div>
-            </div>
-            <div class="background_box b1">
-                <div class="background c1"></div>
-            </div>
-            <div class="background_box b2">
-                <div class="background c2"></div>
-            </div>
-            <div class="background_box b3">
-                <div class="background c3"></div>
-            </div>
-            <div class="background_box b4">
-                <div class="background c4"></div>
-            </div>
+{% endblock %} {% block content %} {{super()}}
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
         </div>
-        <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
+    <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
  M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
  </svg>
-            <div class="zoomoutheader G">
-                <h1>
-                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
-                </h1>
-            </div>
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask"></div>
-            <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
  M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
  </svg></div>
+</div>
+</div>
+<!-- header -->
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+        </div>
     </div>
-    </div>
-    <!-- header -->
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="{{url_for('index')}}">
-                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
-                </a>
-            </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+</header>
+
+
+
+<!-- main -->
+<section class="filter">
+    <div class="filter-container">
+        <h1 class="center">competitions</h1>
+        <p>TECKZITE presents you most vibrant competitions ranging from technical, management and Non-technical events which explores potential of future technocrats, entrepreneurs etc. The events are structured to polish student skills which will make your
+            adrenaline rush and bring out the leaders in you.</p>
+        <div class="filter-row">
+            <div class="filter-list">
+                <ul id="filter-btns">
+                    <li data-target="all" class="current">All</li>
+                    <li data-target="puc">Puc</li>
+                    <li data-target="cse">cse</li>
+                    <li data-target="ece">ece</li>
+                    <li data-target="mech">mechanical</li>
+                    <li data-target="civil">civil</li>
+                    <li data-target="mme">mme</li>
+                    <li data-target="chem">chemical</li>
+                    <li data-target="open">Open to all</li>
+                </ul>
             </div>
         </div>
+<<<<<<< HEAD
     </header>
 
     <!-- main -->
@@ -98,61 +117,134 @@
                         <li data-target="OPE"> OPEN TO ALL </li>
 
                     </ul>
-                </div>
-            </div>
-            <div class="filter-row">
-                <div class="filter-items">
-
-                    {% for event in events %}
-
-                    <div class="item" data-li="{{event.dept}}">
-                        <div class="inner">
-                            <div class="img"><img src="{{event.image_url}}" alt=""></div>
-                            <div class="info">
-                                <h6>{{event.title}}</h6>
-                                <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p>
-                                <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
-                            </div>
+=======
+        <div class="filter-row">
+            <div class="filter-items">
+                <div class="item" id="coordinator" data-li="puc" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>Ajay Kumar</h5>
+                            <p>72889 96365</p>
                         </div>
                     </div>
-                    
-                    {% endfor %}
-
                 </div>
+                <div class="item" id="coordinator" data-li="open" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>A.tharun kumar</h5>
+                            <p>8919769951</p>
+                            <p>n160072@rguktn.ac.in</p>
+                            <h5>Sk.jaffar</h5>
+                            <p>8309524610</p>
+                            <p>n160290@rguktn.ac.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="cse" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>Shashil Sravan</h5>
+                            <p>9182409060</p>
+                            <p>n160247@rguktn.ac.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="ece" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>S.P.N.Achyuth</h5>
+                            <p>7013973650</p>
+                            <p>n160387@rguktn.ac.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="civil" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>DEEPAK PALLAM</h5>
+                            <p>9603925899</p>
+                            <p>pallamdeepak@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="mech" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>D JASHUVA</h5>
+                            <p>8639878029</p>
+                            <p>jashuvadaki33@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="mme" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>B.V.VN.D.Bhavani</h5>
+                            <p>7013973650</p>
+                            <p>n160533@rguktn.ac.in</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" id="coordinator" data-li="chem" style="display: none;">
+                    <div class="inner">
+                        <div class="content">
+                            <h5>Prabhu Kumar Uppala </h5>
+                            <p>7702420583</p>
+                            <p>n160363@rguktn.ac.in</p>
+                            <h5>Gandi Eswari</h5>
+                            <p>9494391038</p>
+                            <p>n160859@rguktn.ac.in</p>
+                        </div>
+                    </div>
+>>>>>>> 6505e67f5f038befa319a2849400fc76889e957d
+                </div>
+
+                {% for event in events %}
+
+                <div class="item" data-li="{{event.dept}}">
+                    <div class="inner">
+                        <div class="img"><img src="{{event.image_url}}" alt=""></div>
+                        <div class="info">
+                            <h6>{{event.title}}</h6>
+                            <!-- <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p> -->
+                            <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
+{% endblock %} {% block javascript %} {{super()}}
 
-
-{% endblock %}
-
-
-
-{% block javascript %}
-{{super()}}
-
-    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
-    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
-    <script>
-        const filterButtons = document.querySelector("#filter-btns").children;
-        const items = document.querySelector(".filter-items").children;
-        for (let i = 0; i < filterButtons.length; i++) {
-            filterButtons[i].addEventListener("click", function() {
-                for (let j = 0; j < filterButtons.length; j++) {
-                    filterButtons[j].classList.remove("current")
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script>
+    const filterButtons = document.querySelector("#filter-btns").children;
+    const items = document.querySelector(".filter-items").children;
+    const ele = document.querySelectorAll(".item#coordinator");
+    for (let i = 0; i < filterButtons.length; i++) {
+        filterButtons[i].addEventListener("click", function() {
+            for (let j = 0; j < filterButtons.length; j++) {
+                filterButtons[j].classList.remove("current")
+            }
+            this.classList.add("current");
+            const target = this.getAttribute("data-target")
+            for (let k = 0; k < items.length; k++) {
+                items[k].style.display = "none";
+                if (target == items[k].getAttribute("data-li")) {
+                    items[k].style.display = "block";
                 }
-                this.classList.add("current");
-                const target = this.getAttribute("data-target")
-                for (let k = 0; k < items.length; k++) {
-                    items[k].style.display = "none";
-                    if (target == items[k].getAttribute("data-li")) {
-                        items[k].style.display = "block";
-                    }
-                    if (target == "all") {
-                        items[k].style.display = "block";
+                if (target == "all") {
+                    items[k].style.display = "block";
+                    for (let c = 0; c < ele.length; c++) {
+                        ele[c].style.display = "none";
                     }
                 }
-            })
-        }
-    </script>
+            }
+        })
+    }
+</script>
 {% endblock %}

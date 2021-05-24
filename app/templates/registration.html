@@ -1,66 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | REGISTRATION{% endblock %} {% block html_head %} {{super()}}
 
-{% block title %}Teckzite 2021 | REGISTRATION{% endblock %}
-{% block html_head %}
-{{super()}}
-
-    <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-    <script>
-        onload = function resetHeight() {
-            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-        }
-        console.log(window.innerHeight);
-    </script>
-    <style>
-        p {
-            color: #e6e6e6bf;
-            font-size: 1.2em;
-            font-weight: 200;
-            padding: 0 10px;
-            /* word-break: break-all; */
-            letter-spacing: .5px;
-            font-weight: 300;
-            line-height: 1.3;
-        }
-        
-        a {
-            text-decoration: none;
-            text-transform: uppercase;
-            color: teal;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-    </style>
-{% endblock %}
-
-{% block content %}
-{{super()}}
+<link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+    console.log(window.innerHeight);
+</script>
+<style>
+    p {
+        color: #e6e6e6bf;
+        font-size: 1.2em;
+        font-weight: 200;
+        padding: 0 10px;
+        /* word-break: break-all; */
+        letter-spacing: .5px;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+    
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: teal;
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+</style>
+{% endblock %} {% block content %} {{super()}}
 
 
-    <div id="loader">
-        <div class="content_box">
-            <div class="circle">
-                <div class="ox"></div>
-            </div>
-            <div class="background_box b1">
-                <div class="background c1"></div>
-            </div>
-            <div class="background_box b2">
-                <div class="background c2"></div>
-            </div>
-            <div class="background_box b3">
-                <div class="background c3"></div>
-            </div>
-            <div class="background_box b4">
-                <div class="background c4"></div>
-            </div>
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
         </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
 
 
-        <div class="tran" id="logosvg">
-            <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+    <div class="tran" id="logosvg">
+        <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%"   stop-color="#25b3ba"/>
@@ -74,15 +71,15 @@
                   
                 </svg>
 
-            <div class="zoomoutheader G">
-                <h1>
-                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
-                </h1>
-            </div>
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask"></div>
-            <div class="loader-line"></div>
-            <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div>
+        <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#25b3ba" />
@@ -96,210 +93,280 @@
         </svg>
 
 
-        </div>
-
-    </div>
     </div>
 
+</div>
+</div>
 
-    <!-- header -->
 
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="index.html">
-                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
-                </a>
+<!-- header -->
+
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
             </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
+        </div>
+    </div>
+</header>
+
+
+<!-- main -->
+<section class="registration-container">
+    <form class="form" id="form">
+
+        <div class="heading">
+            <!-- <img src="./img/logo.jpg" alt=""> -->
+            <h1>Registration</h1>
+
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">Name</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">phone</label>
+                <input type="number" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">email</label>
+                <input type="email" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">branch</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">college</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="option f2">
+                <label for="" class="options">which college?</label>
+                <div class="wrap" id="wrap">
+                    <label class="options">
+                        <input type="radio" name="college" class="radio" onclick="displayMenu()">
+                        <div class="radio-radio"></div>
+                        rgukt
+                    </label>
+
+                    <label class="options">
+                        <input type="radio" checked="checked" name="college" class="radio" onclick="closeMenu()">
+                        <div class="radio-radio"></div>
+                        other
+                    </label>
                 </div>
             </div>
         </div>
-    </header>
 
-
-    <!-- main -->
-    <section class="registration-container">
-        <form class="form" id="form">
-
-            <div class="heading">
-                <!-- <img src="./img/logo.jpg" alt=""> -->
-                <h1>Registration</h1>
-
-            </div>
-
-            <div class="wrap">
-                <div class="f1">
-                    <label for="">Name</label>
-                    <input type="text" required>
-                    <span class="focus-input"></span>
-                </div>
-                <div class="f2">
-                    <label for="">Contact</label>
-                    <input type="number" required>
-                    <span class="focus-input"></span>
-                </div>
-            </div>
-
-            <div class="wrap">
-                <div class="f1">
-                    <label for="">email</label>
-                    <input type="email" required>
-                    <span class="focus-input"></span>
-                </div>
-                <div class="f2">
-                    <label for="">College</label>
-                    <input type="text" required>
-                    <span class="focus-input"></span>
-                </div>
-            </div>
-
-            <div class="wrap">
-                <div class="f1">
-                    <label for="">year</label>
-                    <input type="text">
-                    <span class="focus-input"></span>
-                </div>
-
-                <div class="option f2">
-                    <label for="" class="options">Gender</label>
-                    <div class="wrap" id="wrap">
-                        <label class="options">
-                    <input type="radio" checked="checked" name="gender" class="radio">
+        <div class="wrap special" style="display: none;">
+            <label for="" class="options">which rgukt?</label>
+            <div class="wrap" id="wrap">
+                <label class="options">
+                    <input type="radio"  checked="checked" name="collegeName" class="radio rgukt">
                     <div class="radio-radio"></div>
-                    male
-                  </label>
+                    nuzvid
+                </label>
 
-                        <label class="options">
-                      <input type="radio" name="gender" class="radio">
-                      <div class="radio-radio"></div>
-                      female
-                  </label>
-                    </div>
-                </div>
+                <label class="options">
+                    <input type="radio"  name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    rk valley
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    srikakulam
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    ongole
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    basar
+                </label>
+            </div>
+        </div>
+
+
+
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">year</label>
+                <input type="text">
+                <span class="focus-input"></span>
             </div>
 
-            <div class="wrap">
-                <div class="f1">
-                    <label for="">City</label>
-                    <input type="text" required>
-                    <span class="focus-input"></span>
-                </div>
-                <div class="f2">
-                    <label for="">District</label>
-                    <input type="text" required>
-                    <span class="focus-input"></span>
-                </div>
-            </div>
+            <div class="option f2">
+                <label for="" class="options">Gender</label>
+                <div class="wrap" id="wrap">
+                    <label class="options">
+                        <input type="radio" checked="checked" name="gender" class="radio">
+                        <div class="radio-radio"></div>
+                        male
+                    </label>
 
-            <br>
-            <div class="wrap">
-                <div class="f1 state">
-                    <label for="stt">State</label>
-                    <select class="" id="stt" name="state">
-                    <option value="" disabled="disabled">------------Select State------------</option>
-                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                    <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
-                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                    <option value="Assam">Assam</option>
-                    <option value="Bihar">Bihar</option>
-                    <option value="Chandigarh">Chandigarh</option>
-                    <option value="Chhattisgarh">Chhattisgarh</option>
-                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                    <option value="Daman and Diu">Daman and Diu</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Haryana">Haryana</option>
-                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                    <option value="Jharkhand">Jharkhand</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
-                    <option value="Lakshadweep">Lakshadweep</option>
-                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Manipur">Manipur</option>
-                    <option value="Meghalaya">Meghalaya</option>
-                    <option value="Mizoram">Mizoram</option>
-                    <option value="Nagaland">Nagaland</option>
-                    <option value="Orissa">Orissa</option>
-                    <option value="Pondicherry">Pondicherry</option>
-                    <option value="Punjab">Punjab</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                    <option value="Sikkim">Sikkim</option>
-                    <option value="Tamil Nadu">Tamil Nadu</option>
-                    <option value="Tripura">Tripura</option>
-                    <option value="Uttaranchal">Uttaranchal</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="West Bengal">West Bengal</option>
-                    <option value="Telangana">Telangana</option>
-                  </select>
-                    <span class="focus-input"></span>
-                </div>
-                <div class="f2">
-                    <label for="">referal code</label>
-                    <input type="text">
-                    <span class="focus-input"></span>
-                </div>
-
-            </div>
-            <br>
-
-
-
-            <div class="wrap">
-                <div class="f1">
-                    <label for="">College ID</label>
-                    <input type="text" required>
-                    <span class="focus-input"></span>
-                </div>
-                <div class="f2 file">
-                    <label for="" class="slabel">upload college ID<span style="color: #eee;">*<span></label>
-                    <input type="file" name="" id="real-button" required/>
-                    <button type="button" id="custom-button">CHOOSE A FILE</button>
-                    <span id="custom-text">No file chosen, yet.</span>
+                    <label class="options">
+                        <input type="radio" name="gender" class="radio">
+                        <div class="radio-radio"></div>
+                        female
+                    </label>
                 </div>
             </div>
+        </div>
 
-            <button class="btn" type="submit">submit</button>
+        <div class="wrap">
+            <div class="f1">
+                <label for="">City</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">District</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
 
-        </form>
-        <center>
-            <p style="color:green">Caution:This fest is only for intermidiate/PUC and University Students</p>
+        <br>
+        <div class="wrap">
+            <div class="f1 state">
+                <label for="stt">State</label>
+                <select class="" id="stt" name="state">
+                <option value="" disabled="disabled">------------Select State------------</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                <option value="Daman and Diu">Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Orissa">Orissa</option>
+                <option value="Pondicherry">Pondicherry</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttaranchal">Uttaranchal</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+              </select>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">referal code</label>
+                <input type="text">
+                <span class="focus-input"></span>
+            </div>
 
-        </center>
+        </div>
+        <br>
 
-        <!-- <div class=" poster ">
-            <img src="./img/5.jpg " alt=" ">
-        </div> -->
-    </section>
-{% endblock %}
 
-{% block javascript %}
-{{super()}}
 
-    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
-    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
+        <div class="wrap">
+            <div class="f1">
+                <label for="">College ID</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2 file">
+                <label for="" class="slabel">upload college ID<span style="color: #eee;">*<span></label>
+                <input type="file" name="" id="real-button" required/>
+                <button type="button" id="custom-button">CHOOSE A FILE</button>
+                <span id="custom-text">No file chosen, yet.</span>
+            </div>
+        </div>
 
-    <script>
-        const realFileBtn = document.getElementById("real-button ");
-        const customBtn = document.getElementById("custom-button ");
-        const customTxt = document.getElementById("custom-text ");
+        <button class="btn" type="submit">submit</button>
 
-        customBtn.addEventListener("click ", function() {
-            realFileBtn.click();
-        });
-        realFileBtn.addEventListener("change ", function() {
-            if (realFileBtn.value) {
-                customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-            } else {
-                customTxt.innerHTML = "No file chosen, yet. ";
-            }
-        });
-    </script>
+    </form>
+    <center>
+        <p style="color:green; font-size: 14px;">The students of intermidiate/PUC and Engineering Students can participate in this fest</p>
+
+    </center>
+
+    <!-- <div class=" poster ">
+        <img src="./img/5.jpg " alt=" ">
+    </div> -->
+</section>
+
+
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+
+<script>
+    const realFileBtn = document.getElementById("real-button ");
+    const customBtn = document.getElementById("custom-button ");
+    const customTxt = document.getElementById("custom-text ");
+
+    customBtn.addEventListener("click ", function() {
+        realFileBtn.click();
+    });
+    realFileBtn.addEventListener("change ", function() {
+        if (realFileBtn.value) {
+            customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        } else {
+            customTxt.innerHTML = "No file chosen, yet. ";
+        }
+    });
+
+    function displayMenu() {
+        document.querySelector('.special').style.display = "block";
+    }
+
+    function closeMenu() {
+        document.querySelector('.special').style.display = "none";
+    }
+</script>
 {% endblock %}
