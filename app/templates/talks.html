@@ -8,7 +8,8 @@
         document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
     }
     console.log(window.innerHeight);
-</script> {% endblock %} {% block content %} {{super()}}
+</script>
+{% endblock %} {% block content %} {{super()}}
 <div id="loader">
     <div class="content_box">
         <div class="circle">
@@ -72,7 +73,7 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="index.html">
+            <a href="{{url_for('index')}}.">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
@@ -289,7 +290,6 @@
         </div>
 
 </section>
-
-{% endblock %} {% block javascript %}
+{% endblock %} {% block javascript %} {{super()}}
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
 {% endblock %}

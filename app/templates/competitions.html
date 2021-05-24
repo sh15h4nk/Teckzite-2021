@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | COMPETITIONS{% endblock %} {% block html_head %} {{super()}}
-<link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
@@ -16,9 +16,10 @@
         font-size: 1.2rem;
         font-weight: 300;
     }
-     h1 {
-            font-size: 1.5rem;
-        }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
 </style>
 
 {% endblock %} {% block content %} {{super()}}
@@ -59,8 +60,8 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="index.html">
-                <div class="logo"><img src="./img/logo.png"></div>
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
         <div class="nav-but-wrap">
@@ -171,81 +172,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="item" data-li="puc">
+
+                {% for event in events %}
+
+                <div class="item" data-li="{{event.dept}}">
                     <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/iot.jpg')}}" alt=""></div>
+                        <div class="img"><img src="{{event.image_url}}" alt=""></div>
                         <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="prize-money blink">Prize money <br>1000/-</p>
-                            <p class="know-more"><a href="event-details.html">view</a></p>
+                            <h6>{{event.title}}</h6>
+                            <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p>
+                            <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="item" data-li="open">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/road.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="cse">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/process design.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-<!--                             <p class="prize-money blink">Prize money <br>1000/-</p> -->
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="mme">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/process design.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="ece">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/road.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="chem">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/road.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="civil">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/3d printing.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-<!--                             <p class="prize-money blink">Prize money <br>1000/-</p> -->
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="item" data-li="mech">
-                    <div class="inner">
-                        <div class="img"><img src="{{url_for('static', filename='./img/ws/3d printing.jpg')}}" alt=""></div>
-                        <div class="info">
-                            <h6>namename name namename</h6>
-                            <p class="know-more"><a href="#">view</a></p>
-                        </div>
-                    </div>
-                </div>
+
+                {% endfor %}
             </div>
         </div>
     </div>

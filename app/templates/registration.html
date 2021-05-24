@@ -28,9 +28,10 @@
         font-size: 1.2rem;
         font-weight: 300;
     }
-     h1 {
-            font-size: 1.5rem;
-        }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
 </style>
 {% endblock %} {% block content %} {{super()}}
 
@@ -103,7 +104,7 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="index.html">
+            <a href="{{url_for('index')}}">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
