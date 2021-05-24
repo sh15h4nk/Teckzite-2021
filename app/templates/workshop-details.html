@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teckzite 2021 | view</title>
     <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
     <script>
         onload = function resetHeight() {
             document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    
+
     <div id="loader">
         <div class="content_box">
             <div class="circle">
@@ -108,9 +108,9 @@
                 <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
                 <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
                 <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
-                <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
+                <li class="nav__list-item"><a href="talks.html" class="hover-target">talks</a></li>
+                <li class="nav__list-item"><a href="updating.html" class="hover-target">projects</a></li>
+                <li class="nav__list-item"><a href="updating.html" class="hover-target">sponsors</a></li>
                 <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
                 <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
                 <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
@@ -276,7 +276,7 @@
                 <div class="footer-col">
                     <h3>contact us</h3>
                     <ul>
-                        <li><a href="web_team.html" class="link">Web team</a></li>
+                        <li><a href="team.html" class="link">team</a></li>
                         <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
                     </ul>
                 </div>
