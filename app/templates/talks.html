@@ -1,202 +1,295 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | Talks{% endblock %} {% block html_head %} {{super()}}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+    console.log(window.innerHeight);
+</script> {% endblock %} {% block content %} {{super()}}
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
+        </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
 
 
-{% block title %}Teckzite 2021 | Talks{% endblock %}
+    <div class="tran" id="logosvg">
+        <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+                <defs>
+                    <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%"   stop-color="#25b3ba"/>
+                        <stop offset="100%" stop-color="#25b3ba"/>
+                    </linearGradient>
+                </defs>
+                
+                  <path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+                  M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+                  
+                  
+                </svg>
 
-{% block html_head %}
-{{super()}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div>
+        <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+                <defs>
+                    <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#25b3ba" />
+                        <stop offset="100%" stop-color="#25b3ba" />
+                    </linearGradient>
+                </defs>
+                <path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+                      M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z
+                      " />
 
-    <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-{% endblock %}
+        </svg>
 
 
-{% block content %}
-{{super()}}
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="index.html">
-                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
-                </a>
-            </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
+    </div>
+
+</div>
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="index.html">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
+<section class="talks-container">
+    <h1 class="center">talks</h1>
+    <div class="container">
 
-    <section class="talks-container">
-        <h1 class="center">talks</h1>
-        <div class="container">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore enim ratione eius sed tenetur, debitis a harum excepturi delectus itaque nobis, esse aliquid natus neque earum, pariatur impedit et distinctio!</p>
-            <div class="talks-row-container">
-                <h2 class="center">Previous talks</h2>
-                <div class="talks-member-container">
+        <div class="talks-row-container">
+            <h2 class="center">Present talks</h2>
+            <p class="center">we adding more....</p>
+            <div class="talks-member-container">
 
-                    <div class="member">
-                        <div class="inner">
-                            <div class="talk-row">
-                                <div class="member-img">
-                                    <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                </div>
-                                <!-- <div class="links">
-                    <a href="#">read</a>
-                    <a href="#">register</a>
-                  </div> -->
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/present/Professor_T._Pradeep_IIT_Madras.jpg')}}" alt="">
                             </div>
-                            <div class="member-info">
-                                <h5>jds lkdfj lkdfj kdjf</h5>
-                                <p>kdfd kdlfgd</p>
+
+                            <div class="links">
+                                <a href="https://www.google.com/search?kgmid=/m/03qj8z7&hl=en-IN&q=Thalappil+Pradeep&kgs=1689453e226305a9&shndl=0&source=sh/x/kp/osrp&entrypoint=sh/x/kp/osrp">read</a>
+                                <a href="#">register</a>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="member">
-                        <div class="inner">
-                            <div class="talk-row">
-                                <div class="member-img">
-                                    <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                </div>
-                                <!-- <div class="links">
-                    <a href="#">read</a>
-                    <a href="#">register</a>
-                  </div> -->
-                            </div>
-                            <div class="member-info">
-                                <h5>jds lkdfj lkdfj kdjf</h5>
-                                <p>kdfd kdlfgd</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="member">
-                        <div class="inner">
-                            <div class="talk-row">
-                                <div class="member-img">
-                                    <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                </div>
-                                <!-- <div class="links">
-                    <a href="#">read</a>
-                    <a href="#">register</a>
-                  </div> -->
-                            </div>
-                            <div class="member-info">
-                                <h5>jds lkdfj lkdfj kdjf</h5>
-                                <p>kdfd kdlfgd</p>
-                            </div>
+                        <div class="member-info">
+                            <h5>Thalappil Pradeep</h5>
+                            <p>Professor - IIT Madras, Padma Shri, Nikkei Asia Prize (2020), The World Academy of Sciences (TWAS) prize</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="talks-row-container">
-                    <h2 class="center">Present talks</h2>
-                    <div class="talks-member-container">
-
-                        <div class="member">
-                            <div class="inner">
-                                <div class="talk-row">
-                                    <div class="member-img">
-                                        <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                    </div>
-                                    <div class="links">
-                                        <a href="#">read</a>
-                                        <a href="#">register</a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                                    <h5>jds lkdfj lkdfj kdjf</h5>
-                                    <p>kdfd kdlfgd</p>
-                                </div>
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/present/anil.jpg')}}" alt="">
+                            </div>
+                            <div class="links">
+                                <a href="https://www.google.com/search?kgmid=/g/11bx5p_d7g&hl=en-IN&q=Anil+Prakash+Joshi&kgs=deff641ca6e1eb6f&shndl=0&source=sh/x/kp/osrp&entrypoint=sh/x/kp/osrp">read</a>
+                                <a href="#">register</a>
                             </div>
                         </div>
-
-                        <div class="member">
-                            <div class="inner">
-                                <div class="talk-row">
-                                    <div class="member-img">
-                                        <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                    </div>
-                                    <div class="links">
-                                        <a href="#">read</a>
-                                        <a href="#">register</a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                                    <h5>jds lkdfj lkdfj kdjf</h5>
-                                    <p>kdfd kdlfgd</p>
-                                </div>
-                            </div>
+                        <div class="member-info">
+                            <h5>Dr. Anil Prakash Joshi</h5>
+                            <p>Green Activist <br> Social Worker <br> Padma Bhushan, Padma Shri</p>
                         </div>
-
-                        <div class="member">
-                            <div class="inner">
-                                <div class="talk-row">
-                                    <div class="member-img">
-                                        <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                    </div>
-                                    <div class="links">
-                                        <a href="#">read</a>
-                                        <a href="#">register</a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                                    <h5>jds lkdfj lkdfj kdjf</h5>
-                                    <p>kdfd kdlfgd</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="member">
-                            <div class="inner">
-                                <div class="talk-row">
-                                    <div class="member-img">
-                                        <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                    </div>
-                                    <div class="links">
-                                        <a href="#">read</a>
-                                        <a href="#">register</a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                                    <h5>jds lkdfj lkdfj kdjf</h5>
-                                    <p>kdfd kdlfgd</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="member">
-                            <div class="inner">
-                                <div class="talk-row">
-                                    <div class="member-img">
-                                        <img src="{{url_for('static', filename='./img/ws/civil.jpg')}}" alt="">
-                                    </div>
-                                    <div class="links">
-                                        <a href="#">read</a>
-                                        <a href="#">register</a>
-                                    </div>
-                                </div>
-                                <div class="member-info">
-                                    <h5>jds lkdfj lkdfj kdjf</h5>
-                                    <p>kdfd kdlfgd</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
-
                 </div>
-    </section>
 
-{% endblock %}
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/present/anubha.jpg_background=000000&cropX1=114&cropX2=715&cropY1=168&cropY2=769')}}" alt="">
+                            </div>
+                            <div class="links">
+                                <a href="https://www.linkedin.com/in/anubhamane/">read</a>
+                                <a href="#">register</a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>Anubha Maneshwar</h5>
+                            <p>Founder - GirlScript<br> Forbes Asia 30 Under 30<br> TEDx speaker</p>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
 
-{% block javascript %}
-    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+        </div>
+
+        <div class="talks-row-container">
+            <h2 class="center">Previous talks</h2>
+            <div class="talks-member-container">
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/waterman.PNG')}}" alt="">
+                            </div>
+
+                        </div>
+                        <div class="member-info">
+                            <h5>Dr. Rajendra Singh</h5>
+                            <p>waterman of India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/uddhab.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>Dr. uddhab kumar bharali</h5>
+                            <p>indian inventor & padma sree awardee</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/nilay.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>nilay kulkarni</h5>
+                            <p>ted speaker</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/gaur.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>chaitanya leela das</h5>
+                            <p>motivational speaker</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/nilay.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>chintakindi mallesam</h5>
+                            <p>inventor of asu machine & padma sree awardee</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/murthy.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>murthy indrakanti</h5>
+                            <p>ceo of leva solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/women.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>kavya saxena</h5>
+                            <p>icon of women empowerment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/vikram.PNG')}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>vikram kumar</h5>
+                            <p>mathematician</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="inner">
+                        <div class="talk-row">
+                            <div class="member-img">
+                                <img src="{{url_for('static', filename='./img/talksImg/kunal.PNG'}}" alt="">
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h5>kunal newar</h5>
+                            <p>illusionist and magician</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+</section>
+
+{% endblock %} {% block javascript %}
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
 {% endblock %}

@@ -1,23 +1,24 @@
-.team{
+.team {
     /* margin-top: 4em; */
     padding: 30px 0;
-    background:transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+    background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
     animation: move-twink-back 200s linear infinite;
-    height:auto ;
+    height: auto;
     margin: 0 auto;
     max-width: 90%;
 }
 
-.team h1{
+.team h1 {
     padding-top: 15vh;
 }
 
-.team-row-container{
+.team-row-container {
     height: auto;
     width: 100%;
     margin: 0 auto;
 }
-.team-row-container .team-member-container{
+
+.team-row-container .team-member-container {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
@@ -25,31 +26,35 @@
     margin-top: 2em;
 }
 
-.team-row-container .team-member-container .member{
+.team-row-container .team-member-container .member {
     position: relative;
     width: 25%;
     height: 400px;
     padding: 1em;
     transition: 0.5s ease-out;
 }
-.team-row-container .team-member-container .member .member-img{
+
+.team-row-container .team-member-container .member .member-img {
     overflow: hidden;
     height: 70%;
     width: 100%;
     transition: 0.5s ease-out;
     border-radius: 5px;
 }
-.team-row-container .team-member-container .member .member-img img{
+
+.team-row-container .team-member-container .member .member-img img {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
     background-position: center;
     transition: 0.5s ease-out;
     border-radius: 5px;
 }
-.team-row-container .team-member-container .member .member-info{
+
+.team-row-container .team-member-container .member .member-info {
     height: 30%;
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
@@ -57,7 +62,8 @@
     text-align: center;
     text-transform: uppercase;
 }
-.team-row-container .team-member-container .member .member-info h5{
+
+.team-row-container .team-member-container .member .member-info h5 {
     all: unset;
     color: #ddd;
     font-weight: 700;
@@ -66,13 +72,15 @@
     padding: 0 .5em;
     text-align: center;
 }
-.team-row-container .team-member-container .member .member-info p{
+
+.team-row-container .team-member-container .member .member-info p {
     margin: 0;
     padding: 0;
     font-size: 14px;
     font-weight: 300;
 }
-.team-row-container .team-member-container .member .overlay-member-info{
+
+.team-row-container .team-member-container .member .overlay-member-info {
     padding: 1em;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -84,20 +92,17 @@
     transition: 1s ease-out;
     /* border-radius: 5px; */
 }
-.team-row-container .team-member-container .member:hover {
-   
-}
 
-.team-row-container .team-member-container .member:hover .member-img img{
+.team-row-container .team-member-container .member:hover {}
+
+.team-row-container .team-member-container .member:hover .member-img img {
     filter: blur(2px);
     opacity: 0.8;
     transform: scale(1.15);
     transition: 0.5s ease;
 }
 
-
-
-.team-row-container .team-member-container .member:hover .overlay-member-info{
+.team-row-container .team-member-container .member:hover .overlay-member-info {
     display: flex;
     transform: translateY(-142%);
     transition: all 1s ease 0s;
@@ -108,49 +113,52 @@
     align-content: flex-end;
 }
 
-.team-row-container .team-member-container .member:hover .overlay-member-info h5{
+.team-row-container .team-member-container .member:hover .overlay-member-info h5 {
     font-weight: 500;
     width: 100%;
 }
-.team-row-container .team-member-container .member .overlay-member-info p{
+
+.team-row-container .team-member-container .member .overlay-member-info p {
     text-align: center;
 }
-.team-row-container .team-member-container .member:hover .overlay-member-info p{
+
+.team-row-container .team-member-container .member:hover .overlay-member-info p {
     background: chocolate;
 }
 
-.fa-ul{
+.fa-ul {
     width: 100%;
     display: flex;
     /* justify-content: space-evenly; */
     margin: 0;
 }
 
-.fa-ul li a{
+.fa-ul li a {
     font-size: 1.5em;
     color: cyan;
     padding: 10px;
     transition: 0.1s ease-in-out;
 }
-.fa-ul li a:hover{
+
+.fa-ul li a:hover {
     font-size: 1.7em;
     color: #ddd;
 }
 
-@media (max-width:1024px){
-    .team-row-container .team-member-container .member{
+@media (max-width:1024px) {
+    .team-row-container .team-member-container .member {
         width: 33.33%;
     }
 }
 
-@media (max-width:768px){
-    .team-row-container .team-member-container .member{
+@media (max-width:768px) {
+    .team-row-container .team-member-container .member {
         width: 50%;
     }
 }
 
-@media (max-width:512px){
-    .team-row-container .team-member-container .member{
+@media (max-width:512px) {
+    .team-row-container .team-member-container .member {
         width: 100%;
     }
 }

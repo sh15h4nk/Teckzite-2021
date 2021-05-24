@@ -1,11 +1,4 @@
-{% extends 'base.html' %}
-
-{% block title %}
-Teckzite 2021 | WORKSHOPS
-{% endblock %}
-
-{% block html_head %}
-{{super()}}
+{% extends 'base.html' %} {% block title %} Teckzite 2021 | WORKSHOPS {% endblock %} {% block html_head %} {{super()}}
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
@@ -18,43 +11,39 @@ Teckzite 2021 | WORKSHOPS
     console.log(window.innerHeight);
 </script>
 <style>
-    @media (min-width:769px){
-        p{
+    @media (min-width:769px) {
+        p {
             font-size: 1.3em;
             margin: 1em 0;
         }
     }
 </style>
-    
-{% endblock %}
 
-
-{% block content %}
-{{super()}}
+{% endblock %} {% block content %} {{super()}}
 
 
 <div id="loader">
-        <div class="content_box">
-            <div class="circle">
-                <div class="ox"></div>
-            </div>
-            <div class="background_box b1">
-                <div class="background c1"></div>
-            </div>
-            <div class="background_box b2">
-                <div class="background c2"></div>
-            </div>
-            <div class="background_box b3">
-                <div class="background c3"></div>
-            </div>
-            <div class="background_box b4">
-                <div class="background c4"></div>
-            </div>
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
         </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
 
 
-        <div class="tran" id="logosvg">
-            <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+    <div class="tran" id="logosvg">
+        <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%"   stop-color="#25b3ba"/>
@@ -68,15 +57,15 @@ Teckzite 2021 | WORKSHOPS
                   
                 </svg>
 
-            <div class="zoomoutheader G">
-                <h1>
-                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
-                </h1>
-            </div>
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask"></div>
-            <div class="loader-line"></div>
-            <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div>
+        <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#25b3ba" />
@@ -90,179 +79,186 @@ Teckzite 2021 | WORKSHOPS
         </svg>
 
 
+    </div>
+
+</div>
+
+
+
+<!-- header -->
+
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="index.html">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- main -->
+<section class="workshops-main">
+    <div class="contain">
+        <h1 class="pos center">workshops</h1>
+        <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
+    </div>
+    <div class="workshops-container">
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/aws.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>AWS</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="#">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/blockchain.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Block chain and cryptocurrency</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/iot.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>internet of things</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/vlsi.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Embedded systems for VLSI</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/web.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Web development</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/autoDriving.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Autonomous driving</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/share.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Share marketing and investment</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/3dPrinting.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>3D Printing</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/conPlaMan.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Construction Planning Management</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workshop">
+            <div class="inner">
+                <div class="imgBx">
+                    <img src="{{url_for('static', filename='./img/workshops/metalsindustrialwaste.jpeg')}}" alt="">
+                </div>
+                <div class="contentBx">
+                    <h2>Recovery of metals from industrial waste management</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
+                    <p class="link">registrations will be opening soon</p>
+                </div>
+            </div>
         </div>
 
     </div>
+</section>
 
 
 
-    <!-- header -->
-
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="index.html">
-                    <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
-                </a>
-            </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-    <!-- main -->
-    <section class="workshops-main">
-        <div class="contain">
-            <h1 class="pos center">workshops</h1>
-            <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
-        </div>
-        <div class="workshops-container">
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/aws.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>AWS</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/blockchain.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Block chain and cryptocurrency</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/metalsindustrialwaste.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Recovery of metals from industrial waste management</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/conPlaMan.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Construction Planning Management</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/web.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Web development</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/3dPrinting.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>3D Printing</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/autoDriving.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Autonomous driving</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/share.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Share marketing and investment</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/iot.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>IOT</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="workshop">
-                <div class="inner">
-                    <div class="imgBx">
-                        <img src="{{url_for('static', filename='./img/workshops/vlsi.jpeg')}}" alt="">
-                    </div>
-                    <div class="contentBx">
-                        <h2>Embedded systems for VLSI</h2>
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                        <p class="link"><a href="updating.html">view</a></p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-
-{% endblock %}
-
-{% block javascript %}
-{{super()}}
+{% endblock %} {% block javascript %} {{super()}}
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
 <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 {% endblock %}
