@@ -1,74 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/loader.css">
-    <script>
-        onload = function resetHeight() {
-            document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-        }
-        console.log(window.innerHeight);
-    </script>
-    <style>
-        .container {
-            background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
-            animation: move-twink-back 200s linear infinite;
-            width: 95%;
-            height: auto;
-            margin: 0 auto;
-        }
-        
-        p {
-            color: #e6e6e6bf;
-            font-size: 1.2em;
-            font-weight: 200;
-            padding: 0 10px;
-            /* word-break: break-all; */
-            letter-spacing: .5px;
-            font-weight: 300;
-            line-height: 1.3;
-        }
-        
-        a {
-            text-decoration: none;
-            text-transform: uppercase;
-            color: teal;
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-    </style>
-</head>
-
-<body>
+{% extends 'base.html' %} {% block title %} Teckzite 2021 | User-profile {% endblock %} {% block html_head %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+    console.log(window.innerHeight);
+</script>
+<style>
+    .container {
+        background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+        animation: move-twink-back 200s linear infinite;
+        width: 95%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    p {
+        color: #e6e6e6bf;
+        font-size: 1.2em;
+        font-weight: 200;
+        padding: 0 10px;
+        /* word-break: break-all; */
+        letter-spacing: .5px;
+        font-weight: 300;
+        line-height: 1.3;
+    }
+    
+    a {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: teal;
+        font-size: 1.2rem;
+        font-weight: 300;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+</style>
+{% endblock %} {% block content %} {{super()}}
 
 
-    <div id="loader">
-        <div class="content_box">
-            <div class="circle">
-                <div class="ox"></div>
-            </div>
-            <div class="background_box b1">
-                <div class="background c1"></div>
-            </div>
-            <div class="background_box b2">
-                <div class="background c2"></div>
-            </div>
-            <div class="background_box b3">
-                <div class="background c3"></div>
-            </div>
-            <div class="background_box b4">
-                <div class="background c4"></div>
-            </div>
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
         </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
 
 
-        <div class="tran" id="logosvg">
-            <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+    <div class="tran" id="logosvg">
+        <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%"   stop-color="#25b3ba"/>
@@ -82,15 +77,15 @@
                   
                 </svg>
 
-            <div class="zoomoutheader G">
-                <h1>
-                    <font color="white" face="helvetica">DISTANCE PLEASE</font>
-                </h1>
-            </div>
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask"></div>
-            <div class="loader-line"></div>
-            <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div>
+        <svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" stop-color="#25b3ba" />
@@ -104,178 +99,110 @@
         </svg>
 
 
-        </div>
-
-    </div>
     </div>
 
+</div>
+</div>
 
-    <!-- header -->
-    <header class="cd-header">
-        <div class="header-wrapper">
-            <div class="logo-wrap">
-                <a href="index.html">
-                    <div class="logo"><img src="./img/logo.png"></div>
-                </a>
-            </div>
-            <div class="nav-but-wrap">
-                <div class="menu-icon hover-target">
-                    <span class="menu-icon__line menu-icon__line-left"></span>
-                    <span class="menu-icon__line"></span>
-                    <span class="menu-icon__line menu-icon__line-right"></span>
-                </div>
-            </div>
+
+<!-- header -->
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
         </div>
-    </header>
-
-    <div class="nav">
-        <div class="nav__content">
-            <ul class="nav__list">
-                <li class="nav__list-item active-nav"><a href="index.html" class="hover-target">home</a></li>
-                <li class="nav__list-item"><a href="workshops.html" class="hover-target">workshops</a></li>
-                <li class="nav__list-item"><a href="competitions.html" class="hover-target">competitions</a></li>
-                <li class="nav__list-item"><a href="talks-1.html" class="hover-target">talks</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">projects</a></li>
-                <li class="nav__list-item"><a href="will_be_updated.html" class="hover-target">sponsors</a></li>
-                <li class="nav__list-item"><a href="about.html" class="hover-target">about us</a></li>
-                <li class="nav__list-item"><a href="team.html" class="hover-target">team</a></li>
-                <li class="nav__list-item"><a href="registration.html" class="hover-target">signup / login</a></li>
-                <li class="nav__list-item"><a href="userProfile.html" class="hover-target">Profile</a></li>
-            </ul>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+            </div>
         </div>
     </div>
+</header>
 
-    <!-- main -->
 
-    <div class="container">
-        <h2 style="text-align: center; padding-top: 15vh;">profile</h2>
-        <div class="ro">
-            <div class="image">
-                <img src="./img/ws/hacking.jpg" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
-            </div>
-            <p class="tzID">TZ210001</p>
-            <br>
-            <p>user@gmail.com</p>
+<!-- main -->
+
+<div class="container">
+    <h2 style="text-align: center; padding-top: 15vh;">profile</h2>
+    <div class="ro">
+        <div class="image">
+            <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
+        <p class="tzID">TZ210001</p>
         <br>
-        <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
-        <br>
-        <hr>
-        <h5 style="margin-top: 1rem;">Competitions</h5>
-        <div class="lnk">
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading Heading Heading Heading Heading Heading Heading</h5>
-                    <h5>team</h5>
-                    <div class="ids">
-                        <p>n4355jd</p>
-                        <p>435jvjv4j</p>
-                        <p>djvj43jv</p>
-                        <p>n4355jd</p>
-                        <p>435jvjv4j</p>
-                        <p>djvj43jv</p>
-                        <!-- <p>n4355jd</p>
-                  <p>435jvjv4j</p>
-                  <p>djvj43jv</p> -->
-                    </div>
-                </div>
-            </div>
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
-                </div>
-            </div>
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
-                </div>
-            </div>
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
+        <p>user@gmail.com</p>
+    </div>
+    <br>
+    <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
+    <br>
+    <hr>
+    <h5 style="margin-top: 1rem;">Competitions</h5>
+    <div class="lnk">
+        <div class="lnkCard">
+            <div class="details">
+                <h5>Heading Heading Heading Heading Heading Heading Heading</h5>
+                <h5>team</h5>
+                <div class="ids">
+                    <p>n4355jd</p>
+                    <p>435jvjv4j</p>
+                    <p>djvj43jv</p>
+                    <p>n4355jd</p>
+                    <p>435jvjv4j</p>
+                    <p>djvj43jv</p>
+
                 </div>
             </div>
         </div>
-
-        <h5 style="margin-top: 1rem;">Workshops</h5>
-
-        <div class="lnk">
-            <div class="lnkCard">
-                <div class="details">
-                    <div class="names">
-                        <p>n4355jd jd dklj dfj dfkj dkljl kjdj ld jk </p>
-                        <p>435jvjv4jjmnjcvkk knkfn knkfgj</p>
-                        <p>djvj43jv</p>
-                        <p>n4355jddfkj k lfd</p>
-                    </div>
-                </div>
+        <div class="lnkCard">
+            <div class="details">
+                <h5>Heading</h5>
             </div>
         </div>
-
-        <p class="fee">
-            <marquee behavior="" direction="X">You haven't paid your registration fee yet</marquee>
-        </p>
-
-        <p class="fee">
-            <marquee behavior="" direction="X">You haven't registered to any event yet</marquee>
-        </p>
-
-        <br>
-        <hr>
+        <div class="lnkCard">
+            <div class="details">
+                <h5>Heading</h5>
+            </div>
+        </div>
+        <div class="lnkCard">
+            <div class="details">
+                <h5>Heading</h5>
+            </div>
+        </div>
     </div>
 
+    <h5 style="margin-top: 1rem;">Workshops</h5>
 
-    <!-- footer -->
-
-    <section class="footer">
-
-        <div class="container">
-            <div class="logo">
-                <img src="./img/9.png" alt="">
-            </div>
-            <hr>
-
-            <div class="footer-row">
-                <div class="footer-col">
-                    <h3>know us</h3>
-                    <ul>
-                        <li><a href="./about.html" class="link">About us</a></li>
-                        <li><a href="#" class="link">sdcac</a></li>
-                        <li><a href="#" class="link">rgukt-nuzvid</a></li>
-                    </ul>
+    <div class="lnk">
+        <div class="lnkCard">
+            <div class="details">
+                <div class="names">
+                    <p>n4355jd jd dklj dfj dfkj dkljl kjdj ld jk </p>
+                    <p>435jvjv4jjmnjcvkk knkfn knkfgj</p>
+                    <p>djvj43jv</p>
+                    <p>n4355jddfkj k lfd</p>
                 </div>
-
-                <div class="footer-col">
-                    <h3>contact us</h3>
-                    <ul>
-                        <li><a href="web_team.html" class="link">Web team</a></li>
-                        <li><a class="link" style="text-transform: none;">sdcac@rguktn.ac.in</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>connect with us</h3>
-                    <ul>
-                        <li><a href="#" class="link">facebook</a></li>
-                        <li><a href="#" class="link">instagram</a></li>
-                        <li><a href="#" class="link">linkedin</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <hr>
-
-            <div class="copyright">
-                <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
             </div>
         </div>
+    </div>
 
-    </section>
+    <p class="fee">
+        <marquee behavior="" direction="X">You haven't paid your registration fee yet</marquee>
+    </p>
 
-    <script src="./js/script.js"></script>
-    <script src="./js/main.js"></script>
 
-</body>
+    <br>
+    <hr>
+</div>
 
-</html>
+
+
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="./js/script.js"></script>
+<script src="./js/main.js"></script>
+
+{% endblock %}

@@ -66,22 +66,11 @@ body {
     transition: 0.5s ease-in-out; */
 }
 
-.sticky {
-    /* background-color: #0d0d3c;
-    transition: 0.2s ease-in-out; */
+
+/*.sticky {
     background-color: black;
     box-shadow: 0 0 10px rgb(0 0 0 / 50%);
-}
-
-
-/* .sticky{
-      background: rgba(9,9,12,.9); 
-  } */
-
-
-/* .sticky{
-    box-shadow: 0 0 5px rgb(255 255 255 / 50%);
-  } */
+}*/
 
 .header-wrapper {
     position: relative;
@@ -247,7 +236,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
     overflow: hidden;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     padding-left: 4px;
     padding-right: 5px;
     font-weight: 700;
@@ -467,10 +456,10 @@ p {
     font-size: var(--secondary-font-size);
     font-weight: var(--tertiary-font-weight);
     padding: 0 10px;
-    /* word-break: break-all; */
-    letter-spacing: .5px;
     font-weight: 300;
     line-height: 1.3;
+    text-align: justify;
+    text-justify: inter-character;
 }
 
 .contain {
@@ -482,13 +471,15 @@ p {
 a {
     text-decoration: none;
     text-transform: uppercase;
-    color: var(--secondary-color);
+    color: teal;
     font-size: 1.5rem;
     font-weight: var(--secondary-font-weight);
 }
-a:hover{
+
+a:hover {
     text-decoration: none;
-    color: #609ad4;
+    color: #ddd;
+    /* color: #609ad4; */
 }
 
 .blink {
@@ -514,6 +505,14 @@ hr {
     text-align: center;
     font-size: var(--secondary-font-size);
     padding-top: 10px;
+    color: cyan;
+    font-weight: 500;
+}
+
+.explore:hover {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #eee;
 }
 
 
@@ -559,24 +558,27 @@ hr {
     object-fit: cover;
 }
 
-.about-row{
+.about-row {
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: auto;
 }
-.main{
+
+.main {
     width: 90%;
     height: auto;
     background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
     animation: move-twink-back 200s linear infinite;
     margin: 0 auto;
 }
-.container{
+
+.container {
     width: 100%;
     height: auto;
 }
-.container p{
+
+.container p {
     font-size: 1.3em;
 }
 
@@ -659,7 +661,7 @@ hr {
 
 .col-right .sponsors a {
     flex: 0 0 0 50%;
-    max-width: 50%;
+    width: 50%;
     height: 75px;
     padding: 5px;
     flex-basis: auto;
@@ -705,6 +707,7 @@ hr {
     padding: 5px;
     margin: 1rem 0;
     padding: 1rem 0;
+    overflow-y: scroll;
 }
 
 .accordion-container {
@@ -797,6 +800,8 @@ hr {
     width: 100%;
     padding: 2px;
     opacity: 0.8;
+    height: 200px;
+    object-fit: cover;
 }
 
 .align {
@@ -876,12 +881,14 @@ hr {
 
 .filter .filter-items .item {
     flex: 0 0 33.33%;
-    max-width: 33.33%;
+    width: 33.33%;
     position: relative;
     padding: 1em;
 }
 
 .filter .filter-items .item .inner {
+    width: 100%;
+    height: 140px;
     position: relative;
     background-color: rgba(56, 46, 48, 0.603);
     display: flex;
@@ -895,9 +902,29 @@ hr {
 }
 
 .filter .filter-items .item .inner .img {
-    width: 140px;
+    /* width: 140px; */
+    width: 45%;
     height: 140px;
     display: block;
+}
+
+.filter .filter-items .item .inner .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.filter .filter-items .item .inner .content h5 {
+    font-size: .9em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.filter .filter-items .item .inner .content p {
+    font-size: 12px;
 }
 
 .filter .filter-items .item .inner .img img {
@@ -907,6 +934,7 @@ hr {
 }
 
 .filter .filter-items .item .inner .info {
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -917,6 +945,7 @@ hr {
     text-align: center;
     font-size: .9em;
     padding: 2px;
+    font-weight: 500;
 }
 
 .filter .filter-items .item .inner .info .prize-money {
@@ -991,6 +1020,9 @@ hr {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .talks-row-container .talks-member-container a {
@@ -999,7 +1031,7 @@ hr {
 
 .talks-row-container .talks-member-container .member .inner .talk-row {
     width: 100%;
-    height: 60%;
+    height: 50%;
     padding: 0.8em;
     /* border-radius: 5px; */
     display: flex;
@@ -1008,14 +1040,15 @@ hr {
 
 .talks-row-container .talks-member-container .member .inner .talk-row .member-img {
     width: 50%;
-    padding: 1em 0;
+    padding: 0.5;
 }
 
 .talks-row-container .talks-member-container .member .inner .talk-row .member-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* border-radius: 5px; */
+    object-fit: fill;
+    border: 2px solid #eee;
+    border-radius: 5px;
 }
 
 .talks-row-container .talks-member-container .member .inner .talk-row .links {
@@ -1042,7 +1075,7 @@ hr {
     all: unset;
     width: 100%;
     height: 40%;
-    padding: 0 .5em;
+    /* padding: 0 .5em; */
     text-align: center;
 }
 
@@ -1053,6 +1086,8 @@ hr {
 
 .talks-row-container .talks-member-container .member .inner .member-info p {
     font-size: 13px;
+    padding: 0 2px;
+    text-transform: capitalize;
 }
 
 
@@ -1069,16 +1104,14 @@ hr {
     height: auto;
 }
 
-.workshops-main h1 {
-    padding-top: 10vh;
-}
-
 .workshops-container {
     width: 98%;
     display: flex;
     flex-wrap: wrap;
     height: auto;
     margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .workshops-container .workshop {
@@ -1156,7 +1189,7 @@ hr {
     transition: 0.5s ease-in-out;
 }
 
-workshops-container .workshop .inner:hover {
+.workshops-container .workshop .inner:hover {
     background: rgba(61, 51, 53, 0.603)
 }
 
@@ -1181,10 +1214,74 @@ workshops-container .workshop .inner:hover {
 .workshops-container .workshop .inner:hover .contentBx h2 {
     color: mediumaquamarine;
     font-weight: 700;
-} 
+}
 
 
 /* workshops end */
+
+
+/* sponsors */
+
+.sponsors {
+    padding: 30px 0;
+    background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+    animation: move-twink-back 200s linear infinite;
+    height: auto;
+}
+
+.sponsors h1 {
+    padding-top: 10vh;
+}
+
+.workshops-main h1 {
+    padding-top: 10vh;
+}
+
+.sponsors-container {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsors-container .sponsor {
+    width: 25%;
+    height: 200px;
+    padding: 1.5em;
+}
+
+.sponsors-container .sponsor .img {
+    width: 100%;
+    height: 70%;
+}
+
+.sponsors-container .sponsor .content {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.sponsors-container .sponsor .content h3 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.sponsors-container .sponsor .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+
+/* sponsors end */
 
 
 /* talks section */
@@ -1255,7 +1352,7 @@ workshops-container .workshop .inner:hover {
     margin: 1rem 0;
 }
 
-.footer h3{
+.footer h3 {
     font-size: 1.3em;
 }
 
@@ -1306,7 +1403,8 @@ workshops-container .workshop .inner:hover {
     align-items: center;
     text-align: center;
 }
-.footer ul li{
+
+.footer ul li {
     list-style-type: none;
 }
 
@@ -1367,6 +1465,7 @@ workshops-container .workshop .inner:hover {
 }
 
 .lnk .lnkCard .details .ids p {
+    font-size: 12px;
     font-weight: 700;
     padding: 5px;
 }
@@ -1652,6 +1751,9 @@ input:focus+.focus-input::before {
 /* media queries  */
 
 @media (max-width:1024px) {
+    .sponsors-container .sponsor {
+        width: 33.33%;
+    }
     .talks-row-container .talks-member-container .member {
         width: 33.33%;
     }
@@ -1734,6 +1836,9 @@ input:focus+.focus-input::before {
 }
 
 @media (max-width:768px) {
+    .sponsors-container .sponsor {
+        width: 50%;
+    }
     .talks-row-container .talks-member-container .member {
         width: 50%;
     }
@@ -1741,7 +1846,7 @@ input:focus+.focus-input::before {
         width: 100%;
     }
     .align {
-        font-size: .8rem;
+        display: none;
     }
     .workshops-container .workshop {
         width: 50%;
@@ -1757,6 +1862,7 @@ input:focus+.focus-input::before {
     }
     #wrap {
         flex-direction: row;
+        flex-wrap: wrap;
     }
     .registration-container {
         width: 90%;
@@ -1794,12 +1900,12 @@ input:focus+.focus-input::before {
         flex: 0 0 50%;
         max-width: 50%;
     }
-    .align {
-        display: none;
-    }
 }
 
 @media (max-width:512px) {
+    .sponsors-container .sponsor {
+        width: 100%;
+    }
     .talks-row-container .talks-member-container .member {
         width: 100%;
     }
@@ -1862,7 +1968,7 @@ input:focus+.focus-input::before {
     .row-view .col-right .img-view {
         height: 200px;
     }
-    .container p{
+    .container p {
         font-size: 15px;
         padding: 0;
     }
@@ -1895,6 +2001,9 @@ input:focus+.focus-input::before {
         flex-basis: 50%;
         /* padding: .1em; */
     }
+    .eve img {
+        height: 100px;
+    }
     .ptext {
         font-size: 14px;
     }
@@ -1909,7 +2018,7 @@ input:focus+.focus-input::before {
     .filter h1 {
         margin-top: 2em;
     }
-    .main{
+    .main {
         width: 100%;
     }
     .about-row .col .slide {
