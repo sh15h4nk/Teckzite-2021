@@ -130,7 +130,7 @@
     <header class="cd-header">
         <div class="header-wrapper">
             <div class="logo-wrap">
-                <a href="index.html">
+                <a href="{{url_for('index')}}">
                     <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
                 </a>
             </div>
@@ -209,7 +209,7 @@
                 </div>
                 <br>
                 <br>
-                <p class="explore" style="padding-top:5px"><a href="about.html">Read more</a></p>
+                <p class="explore" style="padding-top:5px"><a href="{{url_for('aboutView')}}">Read more</a></p>
             </div>
     
             <!-- comp highlights -->
@@ -239,7 +239,7 @@
                             </a>
                         </div>
                     </div>
-                    <p class="explore"><a href="competitions.html">Explore all</a></p>
+                    <p class="explore"><a href="{{url_for('competitionsView')}}">Explore all</a></p>
                 </div>
     
             <!-- workshops highlights -->
@@ -268,7 +268,7 @@
                             </a>
                         </div>
                     </div>
-                    <p class="explore"><a href="workshops.html">Explore all</a></p>
+                    <p class="explore"><a href="url_for('workshopsView')">Explore all</a></p>
                 </div>
     
             </div>
