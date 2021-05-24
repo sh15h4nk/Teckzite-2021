@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | COMPETITIONS{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-<link rel="stylesheet" href="./css/loader.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
     onload = function resetHeight() {
         document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
