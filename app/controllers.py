@@ -8,8 +8,11 @@ def dict_escape(d):
 
 		return d
 
-
 @app.route('/')
+def temp():
+	return Response()
+
+@app.route('/home')
 def index():
 	return render_template('index.html')
 
