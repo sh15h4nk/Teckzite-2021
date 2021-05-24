@@ -1,4 +1,4 @@
-from flask import url_for, redirect, request, render_template, session, flash, Response
+from flask import url_for, redirect, request, render_template, session, flash, Response, escape
 from app import app, db
 from app.functions import *
 
@@ -25,6 +25,9 @@ def eventDetailsView(eventId):
 	event = getEvents(eventId)
 	print(event)
 	print(event.description)
+	event.description = unescape(event.description)
+	print(event.description)
+
 
 	return render_template('event-details.html', event=event)
 
