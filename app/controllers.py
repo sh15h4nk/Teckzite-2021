@@ -1,18 +1,122 @@
-from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup
+from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup, session
 from app import app, db
+from app.models import OUser
 from app.functions import *
+from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
-def dict_escape(d):
-	for k,v in d.items():
-		d[k] = Markup(d[k]).unescape()
+#oauth
+from flask_login import (
+	LoginManager,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
 
-		return d
+from oauthlib.oauth2 import WebApplicationClient
+import requests, json
+
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
+
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return OUser.query.get(user_id)
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash("You must login ")
+    return redirect(url_for('index'))
+
+
+
+
+
+
+
+
 
 @app.route('/')
 def temp():
-	return Response()
+	if 'id' in session:
+		return ("You are authenticaed")
+	else:
+		return ("You are not authenticaed")
+
+
+
+@app.route("/login")
+def login():
+    # Find out what URL to hit for Google login
+    google_provider_cfg = get_google_provider_cfg()
+    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+
+    # Use library to construct the request for Google login and provide
+    # scopes that let you retrieve user's profile from Google
+    request_uri = client.prepare_request_uri(
+        authorization_endpoint,
+        redirect_uri=request.base_url + "/callback",
+        scope=["openid", "email", "profile"],
+    )
+    return redirect(request_uri)
+
+
+@app.route("/login/callback")
+def callback():
+    # Get authorization code Google sent back to you
+	code = request.args.get("code")
+
+	google_provider_cfg = get_google_provider_cfg()
+	token_endpoint = google_provider_cfg["token_endpoint"]
+
+	token_url, headers, body = client.prepare_token_request(
+		token_endpoint,
+		authorization_response=request.url,
+		redirect_url=request.base_url,
+		code=code
+	)
+	token_response = requests.post(
+		token_url,
+		headers=headers,
+		data=body,
+		auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+	)
+
+	# Parse the tokens!
+	client.parse_request_body_response(json.dumps(token_response.json()))
+
+	userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
+	uri, headers, body = client.add_token(userinfo_endpoint)
+	userinfo_response = requests.get(uri, headers=headers, data=body)
+
+	if userinfo_response.json().get("email_verified"):
+	    unique_id = userinfo_response.json()["sub"]
+	    users_email = userinfo_response.json()["email"]
+	    picture = userinfo_response.json()["picture"]
+	    users_name = userinfo_response.json()["given_name"]
+	else:
+	    return "User email not available or not verified by Google.", 400
+
+
+	user = OUser(name=users_name, email=users_email)
+
+	if not OUser.query.filter_by(id=1).count():
+		db.session.add(user)
+		db.session.commit()
+	    
+	session['id'] = 1
+
+	return redirect(url_for("temp"))
+
+
+	
 
 @app.route('/home')
+@login_required
 def index():
 	return render_template('index.html')
 
@@ -67,8 +171,8 @@ def devteamView():
 
 @app.route('/register')
 def register():
-	return render_template('will_be_updated.html')
+	return render_template('registration.html')
 
 @app.route('/profile')
 def profile():
-	return render_template('will_be_updated.html')
+	return render_template('userProfile.html')
