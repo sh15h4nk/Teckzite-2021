@@ -15,13 +15,12 @@ def index():
 
 @app.route('/workshops')
 def workshopsView():
-	return render_template('workshops.html')
+	return render_template('will_be_updated.html')
 
 @app.route('/competitions')
 def competitionsView():
 
 	events = getEvents()
-	print(events)
 	return render_template('competitions.html', events = events)
 
 @app.route('/event-details/<eventId>')
@@ -41,7 +40,7 @@ def eventDetailsView(eventId):
 
 @app.route('/talks')
 def talksView():
-	return render_template('talks.html')
+	return render_template('will_be_updated.html')
 
 @app.route('/projects')
 def projectsView():
@@ -65,8 +64,8 @@ def devteamView():
 
 @app.route('/register')
 def register():
-	return render_template('registration.html')
+	return render_template('will_be_updated.html')
 
 @app.route('/profile')
 def profile():
-	return render_template('userProfile.html')
+	return render_template('will_be_updated.html')
