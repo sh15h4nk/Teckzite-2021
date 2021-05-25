@@ -119,7 +119,7 @@ def index():
 
 @app.route('/workshops')
 def workshopsView():
-	return render_template('updating.html')
+	return render_template('workshops.html')
 
 @app.route('/competitions')
 def competitionsView():
@@ -139,7 +139,7 @@ def eventDetailsView(eventId):
 	markup['timeline'] = Markup(event.timeline).unescape()
 	markup['rules'] = Markup(event.rules).unescape()
 
-	print(markup['structure'])
+	# print(markup['structure'])
 
 	return render_template('event-details.html', event=event, markup=markup)
 

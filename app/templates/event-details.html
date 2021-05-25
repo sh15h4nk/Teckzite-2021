@@ -95,7 +95,7 @@
 
 
 <section class="view">
-    <h1 class="pos center">{{event.title}}</h1>
+    <h1 class="pos center">{{event.title | safe}}</h1>
     <div class="row-view">
         <div class="col-view">
             <!--                 <h5 style="margin:0;">Prize-money</h5> -->
@@ -134,7 +134,7 @@
     </div>
 
     <p class="center" style="font-size: 1.2rem; margin: 1rem 0; color:rgba(28, 255, 187, 0.78); text-transform: uppercase; font-weight: 500; font-family: 'Jura';">
-        <marquee>Registration will be opening soon!</marquee>
+        <marquee>Registration opening soon!</marquee>
     </p>
 
     <div class="wrapper">

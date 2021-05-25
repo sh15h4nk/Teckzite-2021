@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" name="description" content="TECKZITE'21, the national level techno-management feast of RGUKT Nuzvid">
     <title>{% block title %}Teckzite 2021{% endblock %}</title>
     {% block html_head %} {% endblock %}
 </head>
@@ -16,7 +17,7 @@
                 <li class="nav__list-item"><a href="{{url_for('workshopsView')}}" class="hover-target">workshops</a></li>
                 <li class="nav__list-item"><a href="{{url_for('competitionsView')}}" class="hover-target">competitions</a></li>
                 <li class="nav__list-item"><a href="{{url_for('talksView')}}" class="hover-target">talks</a></li>
-                <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">projects Expo</a></li>
+                <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">project Expo</a></li>
                 <li class="nav__list-item"><a href="{{url_for('summitsView')}}" class="hover-target">Summit</a></li>
                 <li class="nav__list-item">
                     <a href="{{url_for('virtualView')}}" class="hover-target">Virtual Exibitions</a></li>
@@ -53,7 +54,7 @@
                         <h3>know us</h3>
                         <ul>
                             <li><a href="{{url_for('aboutView')}}" class="link">About us</a>|</li>
-                            <li><a href="intranet.rguktn.ac.in/sdcac" class="link">sdcac</a></li>
+                            <li><a href="//intranet.rguktn.ac.in/sdcac" class="link">sdcac</a></li>
                             <li><a href="http://rguktn.ac.in/" class="link">rgukt-nuzvid</a></li>
                         </ul>
                     </div>
@@ -61,8 +62,8 @@
                     <div class="footer-col">
                         <h3>contact us</h3>
                         <ul>
-                            <li><a href="{{url_for('teamView')}}" class="link">Our team</a>|
-                                <a href="{{url_for('devteamView')}}" class="link">Technica support</a>
+                            <li><a href="{{url_for('teamView')}}" class="link">Our team</a>
+                                <!-- | <a href="{{url_for('devteamView')}}" class="link">Technica support</a> -->
                             </li>
                             <li><a class="link" style="text-transform: none;">info@teckzite.org</a></li>
                         </ul>
