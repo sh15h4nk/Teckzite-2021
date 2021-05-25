@@ -4,10 +4,10 @@ from creds import GOOGLE_DISCOVERY_URL
 
 def getEvents(eventId='all'):
 	if eventId == 'all':
-		events = Event.query.all()
+		events = Event.query.filter_by(hidden=0).all()
 		return events
 
-	event = Event.query.filter_by(eventId=eventId).first()
+	event = Event.query.filter_by(hidden=0, eventId=eventId).first()
 	return event
 
 
