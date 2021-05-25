@@ -8,7 +8,7 @@
     <title>Teckzite 2021</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
 
     <style>
         html,
@@ -437,10 +437,10 @@
 
     <div>
         <div class="top half">
-            <img src="{{url_for('static', filename='./img/launch.png')}}" />
+            <img src="./img/launch.png" />
         </div>
         <div class="bottom half">
-            <img src="{{url_for('static', filename='./img/launch.png')}}">
+            <img src="./img/launch.png" />
         </div>
         <button class="super-button" id="replay">Launch Teckzite 2021</button>
         <div class="overlay"></div>
@@ -484,7 +484,7 @@
 
 
 
-        <script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
+        <script src="./js/jquery-3.6.0.min.js"></script>
 
         <script>
             $(document).ready(function() {
@@ -516,7 +516,7 @@
                 nums[0].classList.add('in');
                 var meta = document.createElement('meta');
                 meta.httpEquiv = "refresh";
-                meta.content = "9; url = https://teckzite.org/";
+                meta.content = "9; url = https://beta.teckzite.org/home";
 
                 document.getElementsByTagName('head')[0].appendChild(meta);
 
