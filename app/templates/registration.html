@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | REGISTRATION{% endblock %} {% block html_head %} {{super()}}
 
-<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
@@ -27,10 +27,6 @@
         color: teal;
         font-size: 1.2rem;
         font-weight: 300;
-    }
-    
-    h1 {
-        font-size: 1.5rem;
     }
 </style>
 {% endblock %} {% block content %} {{super()}}
@@ -104,7 +100,7 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="{{url_for('index')}}">
+            <a href="index.html">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
@@ -118,15 +114,225 @@
     </div>
 </header>
 
+
 <!-- main -->
 <section class="registration-container">
+    <form class="form" id="form">
+
         <div class="heading">
-            <br><br><br>
-            <br><br><br>
             <!-- <img src="./img/logo.jpg" alt=""> -->
-            <h1>Registrations Will be opened shortly </h1>
+            <h1>Registration</h1>
 
         </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">Name</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">phone</label>
+                <input type="number" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">email</label>
+                <input type="email" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">branch</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">college</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="option f2">
+                <label for="" class="options">which college?</label>
+                <div class="wrap" id="wrap">
+                    <label class="options">
+                        <input type="radio" name="college" class="radio" onclick="displayMenu()">
+                        <div class="radio-radio"></div>
+                        rgukt
+                    </label>
+
+                    <label class="options">
+                        <input type="radio" checked="checked" name="college" class="radio" onclick="closeMenu()">
+                        <div class="radio-radio"></div>
+                        other
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap special" style="display: none;">
+            <label for="" class="options">which rgukt?</label>
+            <div class="wrap" id="wrap">
+                <label class="options">
+                    <input type="radio"  checked="checked" name="collegeName" class="radio rgukt">
+                    <div class="radio-radio"></div>
+                    nuzvid
+                </label>
+
+                <label class="options">
+                    <input type="radio"  name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    rk valley
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    srikakulam
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    ongole
+                </label>
+
+                <label class="options">
+                    <input type="radio" name="collegeName" class="radio">
+                    <div class="radio-radio"></div>
+                    basar
+                </label>
+            </div>
+        </div>
+
+
+
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">year</label>
+                <input type="text">
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="option f2">
+                <label for="" class="options">Gender</label>
+                <div class="wrap" id="wrap">
+                    <label class="options">
+                        <input type="radio" checked="checked" name="gender" class="radio">
+                        <div class="radio-radio"></div>
+                        male
+                    </label>
+
+                    <label class="options">
+                        <input type="radio" name="gender" class="radio">
+                        <div class="radio-radio"></div>
+                        female
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">City</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">District</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <br>
+        <div class="wrap">
+            <div class="f1 state">
+                <label for="stt">State</label>
+                <select class="" id="stt" name="state">
+                <option value="" disabled="disabled">------------Select State------------</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                <option value="Daman and Diu">Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Orissa">Orissa</option>
+                <option value="Pondicherry">Pondicherry</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttaranchal">Uttaranchal</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+              </select>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2">
+                <label for="">referal code</label>
+                <input type="text">
+                <span class="focus-input"></span>
+            </div>
+
+        </div>
+        <br>
+
+
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">College ID</label>
+                <input type="text" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="f2 file">
+                <label for="" class="slabel">upload college ID<span style="color: #eee;">*<span></label>
+                <input type="file" name="" id="real-button" required/>
+                <button type="button" id="custom-button">CHOOSE A FILE</button>
+                <span id="custom-text">No file chosen, yet.</span>
+            </div>
+        </div>
+
+        <button class="btn" type="submit">submit</button>
+
+    </form>
+    <center>
+        <p style="color:green; font-size: 14px;">The students of intermidiate/PUC and Engineering Students can participate in this fest</p>
+
+    </center>
+
+    <!-- <div class=" poster ">
+        <img src="./img/5.jpg " alt=" ">
+    </div> -->
 </section>
 
 
