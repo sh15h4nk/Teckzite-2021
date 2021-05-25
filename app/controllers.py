@@ -139,16 +139,27 @@ def eventDetailsView(eventId):
 	markup['timeline'] = Markup(event.timeline).unescape()
 	markup['rules'] = Markup(event.rules).unescape()
 
+	print(markup['structure'])
 
 	return render_template('event-details.html', event=event, markup=markup)
 
 @app.route('/talks')
 def talksView():
+	return render_template('talks.html')
+
+@app.route('/summits')
+def summitsView():
 	return render_template('updating.html')
 
-@app.route('/projects')
-def projectsView():
+@app.route('/virtual-exibition')
+def virtualView():
 	return render_template('updating.html')
+
+
+
+@app.route('/project-expo')
+def projectsView():
+	return render_template('project-expo.html')
 
 @app.route('/sponsors')
 def sponsorsView():

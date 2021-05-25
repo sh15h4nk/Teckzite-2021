@@ -105,11 +105,16 @@
                 <p>{{markup['description'] | safe}}</p>
             </div>
         </div>
+
+        
+
         <div class="col-right">
 
             <div class="img-view">
                 <img src="{{event.image_url}}" alt="">
             </div>
+
+            {% if event.sponsors.length %}
 
             <h6 style="padding: 1rem 0; text-align: center;">Sponsored by</h6>
 
@@ -120,7 +125,11 @@
                 {% endfor %}
             </div>
 
+            {% endif %}
+
         </div>
+
+        
 
     </div>
 
@@ -139,7 +148,7 @@
 
         <div class="wrapper-right">
             <div class="content structure">
-                <p>{{markup['structure'] | safe}}</p>
+               <code> {{markup['structure'] | safe}} </code>
             </div>
 
             <div class="content time" style="display:none;">
@@ -169,6 +178,8 @@
         </div>
     </div>
 
+    {% if event.faqs.length %}
+
     <div class="accordion-container">
 
         <h4 style="margin-top:2rem ; color: #eee; font-family: 'Jura'; text-transform: capitalize;">FAQs</h4>
@@ -189,6 +200,8 @@
 
         {% endfor %}
     </div>
+
+    {% endif %}
 
 </section>
 
