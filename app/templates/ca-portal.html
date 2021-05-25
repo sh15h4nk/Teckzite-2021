@@ -83,7 +83,7 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="{{url_for('index')}}">
+            <a href="#">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
@@ -315,8 +315,8 @@
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="./js/script.js"></script>
-<script src="./js/main.js"></script>
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
 
 <script>
     const btn = document.querySelectorAll('.list-sec li');

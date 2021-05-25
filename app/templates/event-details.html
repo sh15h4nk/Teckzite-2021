@@ -1,15 +1,16 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | EVENT VEIW{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <style type="text/css">
     h1 {
         font-size: 1.5em;
     }
-    li{
-        color:#e6e6e6bf;
-      }
+    
+    li {
+        color: #e6e6e6bf;
+    }
 </style>
 {% endblock %} {% block content %} {{super()}}
 
@@ -110,7 +111,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="col-right">
 
@@ -133,7 +134,7 @@
 
         </div>
 
-        
+
 
     </div>
 
@@ -152,7 +153,7 @@
 
         <div class="wrapper-right">
             <div class="content structure">
-               <code> {{markup['structure'] | safe}} </code>
+                <code> {{markup['structure'] | safe}} </code>
             </div>
 
             <div class="content time" style="display:none;">
@@ -166,9 +167,12 @@
             <div class="content contact" style="display:none;">
                 {% for contact in event.contacts %}
 
-                <p><i class="fas fa-user-alt" style="color:white;"></i>{{contact.name}}</p>
-                <p><i class="fas fa-envelope-open-text" style="color:white;"></i>{{contact.email}}</p>
-                <p><i class="fas fa-phone" style="color:white;"></i>{{contact.phone}}</p>
+
+                <p> <i class="fa fa-address-card-o" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.name}}</p>
+
+                <p><i class="fa fa-envelope-open" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.email}}</p>
+
+                <p><i class="fa fa-phone" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.phone}}</p>
 
                 <br> {% endfor %}
 

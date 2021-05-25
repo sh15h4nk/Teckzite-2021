@@ -877,7 +877,7 @@ hr {
     display: flex;
     flex-wrap: wrap;
     transition: 0.2s ease-in-out;
-    justify-content:center;
+    justify-content: center;
 }
 
 .filter .filter-items .item {
@@ -1257,6 +1257,7 @@ hr {
 .sponsors-container .sponsor .img {
     width: 100%;
     height: 70%;
+    object-fit: cover;
 }
 
 .sponsors-container .sponsor .content {
