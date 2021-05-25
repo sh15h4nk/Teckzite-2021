@@ -1,4 +1,4 @@
-from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup, session
+from flask import url_for, redirect, request, render_template, flash, Response, escape, Markup
 from app import app, db
 from app.models import TechUser
 from app.functions import *
@@ -29,32 +29,33 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    flash("You must login ")
-    return redirect(url_for('index'))
+    return "You are not authenticated"
 
 
 
 @app.route('/test')
+@login_required
 def test():
-	if 'id' in session:
-		return ("You are authenticaed")
-	else:
-		return ("You are not authenticaed")
-
+	print(current_user, "test")
+	return "YOu found the secret"
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
- 
-    google_provider_cfg = get_google_provider_cfg()
-    authorization_endpoint = google_provider_cfg["authorization_endpoint"]
 
-    request_uri = client.prepare_request_uri(
-        authorization_endpoint,
-        redirect_uri=request.base_url + "/callback",
-        scope=["openid", "email", "profile"],
-    )
-    return redirect(request_uri)
+	print(current_user, "login")
+ 	
+	if current_user.is_authenticated:
+		if not current_user.registration_status:
+			return redirect(url_for('register'))
+		else:
+			return redirect(url_for('index'))
+
+	google_provider_cfg = get_google_provider_cfg()
+	authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+
+	request_uri = client.prepare_request_uri(authorization_endpoint,redirect_uri=request.base_url + "/callback",scope=["openid", "email", "profile"])
+	return redirect(request_uri)
 
 
 @app.route("/login/callback")
@@ -95,17 +96,25 @@ def callback():
 
 	user = TechUser.query.filter_by(userId=unique_id).first()
 
+	# if user logins first time with this email, add user to the database and then login the user
 	if not user:
 		new_user = TechUser(userId=unique_id, name=users_name, email=users_email)
 		db.session.add(new_user)
 		db.session.commit()
+
+		login_user(new_user)
+
+	# if user is already logged in with this email, just login the user
+	else:
+		login_user(user)
 	    
-	session['id'] = 1
 
-	# if not user.registration_status:
-	# 	return redirect(url_for('register'))
+	# check if user registration is complete
+	if not user.registration_status:
+		return redirect(url_for('register'))
 
-	return redirect(url_for("temp"))
+
+	return redirect(url_for("index"))
 
 
 @app.route('/')
@@ -177,8 +186,15 @@ def teamView():
 def devteamView():
 	return render_template('web_team.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
+@login_required
 def register():
+
+	if request.method == 'POST':
+		print(request.form.__dict__)
+		return "Okay"
+
+
 	return render_template('registration.html')
 
 @app.route('/profile')
