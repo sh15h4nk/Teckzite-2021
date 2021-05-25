@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | EVENT VEIW{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <style type="text/css">
     h1 {
@@ -166,9 +166,9 @@
             <div class="content contact" style="display:none;">
                 {% for contact in event.contacts %}
 
-                <p><i class="fas fa-user-alt style="color:white;"></i>{{contact.name}}</p>
-                <p><i class="fas fa-envelope-open-text style="60px;color:white;"></i>{{contact.email}}</p>
-                <p><i class="fas fa-phone style="color:white;"></i>{{contact.phone}}</p>
+                <p><i class="fas fa-user-alt" style="color:white;"></i>{{contact.name}}</p>
+                <p><i class="fas fa-envelope-open-text" style="color:white;"></i>{{contact.email}}</p>
+                <p><i class="fas fa-phone" style="color:white;"></i>{{contact.phone}}</p>
 
                 <br> {% endfor %}
 
