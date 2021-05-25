@@ -34,8 +34,8 @@ def unauthorized():
 
 
 
-@app.route('/')
-def temp():
+@app.route('/test')
+def test():
 	if 'id' in session:
 		return ("You are authenticaed")
 	else:
