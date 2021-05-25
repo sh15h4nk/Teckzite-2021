@@ -3,12 +3,12 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-<script>
-    onload = function resetHeight() {
-        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+<style type="text/css">
+    .member-info p {
+        padding: 10px 20px !important;
+        text-align : center !important;
     }
-    console.log(window.innerHeight);
-</script>
+</style>
 {% endblock %} {% block content %} {{super()}}
 <div id="loader">
     <div class="content_box">
@@ -292,4 +292,5 @@
 </section>
 {% endblock %} {% block javascript %} {{super()}}
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
 {% endblock %}

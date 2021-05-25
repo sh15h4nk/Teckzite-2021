@@ -93,14 +93,13 @@
                 </ul>
             </div>
         </div> -->
-<<<<<<< HEAD </header>
+</header>
 
     <!-- main -->
     <section class="filter">
         <div class="filter-container">
             <h1 class="center">competitions</h1>
-            <p>TECKZITE presents you most vibrant competitions ranging from technical, management and Non-technical events which explores potential of future technocrats, entrepreneurs etc. The events are structured to polish student skills which will make
-                your adrenaline rush and bring out the leaders in you.</p>
+            <p>TECKZITE presents you most vibrant competitions ranging from technical to Non-technical events including management evnts which explores potential of future technocrats and entrepreneurs. The events are structured to polish student skills which will make your adrenaline rush and bring out the leaders in you..</p>
             <div class="filter-row">
                 <div class="filter-list">
                     <ul id="filter-btns">
@@ -116,7 +115,6 @@
                         <li data-target="OPE">Open to all</li>
 
                     </ul>
-                    =======
                     <div class="filter-row">
                         <div class="filter-items">
                             <div class="item" id="coordinator" data-li="PUC" style="display: none;">
@@ -195,7 +193,6 @@
                                         <p>n160859@rguktn.ac.in</p>
                                     </div>
                                 </div>
-                                >>>>>>> 6505e67f5f038befa319a2849400fc76889e957d
                             </div>
 
                             {% for event in events %}
@@ -204,7 +201,7 @@
                                 <div class="inner">
                                     <div class="img"><img src="{{event.image_url}}" alt=""></div>
                                     <div class="info">
-                                        <h6>{{event.title}}</h6>
+                                        <h6>{{event.title | safe}}</h6>
                                         <!-- <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p> -->
                                         <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
                                     </div>
