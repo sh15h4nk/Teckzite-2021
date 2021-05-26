@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | ADD RGUKTN {% endblock %} {% block html_head %} {{super()}} {% endblock %}
+
+{% block content %} {{super()}}
+
+	<form method="POST">
+		
+		Name:
+		<input type="text" name="name"> <br>
+		Phone:
+		<input type="text" name="phone"> <br>
+		CollegeId: 
+		<input type="text" name="collegeId"> <br>
+
+	</form>
+
+{% endblock %}
