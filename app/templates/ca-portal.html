@@ -1,15 +1,17 @@
-{% extends 'base.html' %} {% block title %} teckzite 2021 | CA-PORTAL{% endblock %} {% block html_head %} {{super()}}
-
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | CA-PORTAL{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css)}}">
-<script>
-    onload = function resetHeight() {
-        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-    }
-    console.log(window.innerHeight);
-</script>
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 
+<style>
+    @media (min-width:769px) {
+        p {
+            font-size: 1.3em;
+            margin: 1em 0;
+        }
+    }
+</style>
 {% endblock %} {% block content %} {{super()}}
 
 
@@ -73,8 +75,6 @@
     </div>
 
 </div>
-</div>
-
 
 
 
@@ -83,7 +83,7 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="#">
+            <a href="{{url_for('index')}}">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
@@ -97,12 +97,10 @@
     </div>
 </header>
 
-
-
 <section class="view">
     <h1 class="pos center">TECKZITE CAMPUS AMBASSADOR</h1>
-    <p>TzCA is an initiative of Teckzite, RGUKTN that allows selected represents from various colleges to become part of the organization and support with internal publicity. It provides a great opportunity to get involved with a national level student collaboration
-        that extends all over the country. You will be the face and voice of Teckzite at your campus. This program consists of series of challenges and you will be rewarded with points for each challenge.</p>
+    <p>Teckzite Campus Ambassador is an initiative of Teckzite, RGUKTN that allows selected represents from various colleges to become part of the organization and support with internal publicity. It provides a great opportunity to get involved with a national
+        level student collaboration that extends all over the country. You will be the face and voice of Teckzite at your campus. This program consists of series of challenges and you will be rewarded with points for each challenge.</p>
 
     <div class="wrapper">
         <center>
@@ -250,108 +248,47 @@
         </div>
     </div>
 
-    <div class="accordion-container">
-
-        <h4 style="margin-top:2rem ; color: #eee; font-family: 'Jura'; text-transform: capitalize;">Frequently Asked Questions (FAQs)</h4>
-
-        <br>
-
-        <!-- what is  -->
-        <div class="accordion">
-            <div class="ico">></div>
-            <h5>What is Lorem Ipsum?</h5>
-        </div>
-
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-        </div>
-
-        <!-- why we -->
-        <div class="accordion">
-            <div class="ico">></div>
-            <h5>Why we use Lorem Ipsum?</h5>
-        </div>
-
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-        </div>
-
-        <!-- where -->
-        <div class="accordion">
-            <div class="ico">></div>
-            <h5>Where we use Lorem Ipsum?</h5>
-        </div>
-
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-        </div>
-
-        <!-- how we -->
-        <div class="accordion">
-            <div class="ico">></div>
-            <h5>How we use Lorem Ipsum?</h5>
-        </div>
-
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-        </div>
-
-        <!-- when -->
-        <div class="accordion">
-            <div class="ico">></div>
-            <h5>When we use Lorem Ipsum?</h5>
-        </div>
-
-        <div class="panel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, iure? Illo, neque fuga dicta minima sequi veritatis maiores harum sint quam fugiat quaerat aut, animi aperiam quae temporibus accusamus aspernatur!</p>
-        </div>
-
-    </div>
-
-</section>
 
 
-<!-- footer -->
+    <!-- main -->
+    {% endblock %} {% block javascript %} {{super()}}
 
-{% endblock %} {% block javascript %} {{super()}}
+    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
+    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
+    <script>
+        const btn = document.querySelectorAll('.list-sec li');
+        const ele = document.querySelectorAll('.wrapper-right .content');
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].addEventListener("click", function() {
 
-<script src="{{url_for('static', filename='./js/script.js')}}"></script>
-<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+                btn.forEach(function(li) {
+                    li.classList.remove('active');
+                })
 
-<script>
-    const btn = document.querySelectorAll('.list-sec li');
-    const ele = document.querySelectorAll('.wrapper-right .content');
-    for (var i = 0; i < btn.length; i++) {
-        btn[i].addEventListener("click", function() {
+                this.classList.add('active');
 
-            btn.forEach(function(li) {
-                li.classList.remove('active');
+                var eleValue = this.getAttribute("data-target");
+
+                ele.forEach(function(item) {
+                    item.style.display = "none";
+                })
+
+                if (eleValue == "details") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "responsibilities") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "rewards") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "incentives") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                }
+                /*else if(eleValue == "register"){
+                  document.querySelector("." + eleValue).style.display = "block";
+                }*/
+                else {
+                    console.log("failed");
+                }
             })
-
-            this.classList.add('active');
-
-            var eleValue = this.getAttribute("data-target");
-
-            ele.forEach(function(item) {
-                item.style.display = "none";
-            })
-
-            if (eleValue == "details") {
-                document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "responsibilities") {
-                document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "rewards") {
-                document.querySelector("." + eleValue).style.display = "block";
-            } else if (eleValue == "incentives") {
-                document.querySelector("." + eleValue).style.display = "block";
-            }
-            /*else if(eleValue == "register"){
-              document.querySelector("." + eleValue).style.display = "block";
-            }*/
-            else {
-                console.log("failed");
-            }
-        })
-    }
-</script>
-{% endblock %}
+        }
+    </script>
+    {% endblock %}
