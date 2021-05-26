@@ -36,18 +36,21 @@ def unauthorized():
 @app.route('/test')
 @login_required
 def test():
-	print(current_user, "test")
+
 	return "YOu found the secret"
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
 
-	print(current_user, "login")
- 	
 	if current_user.is_authenticated:
 		if not current_user.registration_status:
-			return redirect(url_for('register'))
+
+			if current_user.email.endswith("rguktn.ac.in"):
+				return redirect(url_for('registerRgukt'))
+			else:
+				return redirect(url_for('registerUser'))
+
 		else:
 			return redirect(url_for('index'))
 
@@ -110,8 +113,12 @@ def callback():
 	    
 
 	# check if user registration is complete
-	if not user.registration_status:
-		return redirect(url_for('register'))
+	if not current_user.registration_status:
+
+		if current_user.email.endswith("rguktn.ac.in"):
+			return redirect(url_for('registerRgukt'))
+		else:
+			return redirect(url_for('registerUser'))
 
 
 	return redirect(url_for("index"))
@@ -186,28 +193,44 @@ def teamView():
 def devteamView():
 	return render_template('web_team.html')
 
-@app.route('/register/rgukt', methods=['GET', 'POST'])
+@app.route('/register.rgukt', methods=['GET', 'POST'])
 @login_required
 def registerRgukt():
 
 	if request.method == 'POST':
-		print(request.form.__dict__)
-		return "Okay"
+		
+		try:
+			user = addRguktUser(current_user.userId, request.form)
+			return ("Your details have been added successfully")
+		except:
+			raise e
 
 
-	return render_template('add.html')
+	return render_template('register_rgukt.html')
 
 
-@app.route('/register/techuser', methods=['GET', 'POST'])
+@app.route('/register.user', methods=['GET', 'POST'])
 @login_required
 def registerUser():
 
 	if request.method == 'POST':
-		print(request.form.__dict__)
-		return "Okay"
+		
+		address_data = {}
+		address_data['state'] = request.form.state
+		address_data['country'] = request.form.country
+		address_data['city'] = request.form.city
 
 
-	return render_template('add.html')
+		try:
+			user = addUser(current_user.userId, request.form)
+			address = (user.userId, address_data)
+			return ("Your details have been added successfully")
+		except:
+			raise e
+
+
+
+	return render_template('register_user.html')
 
 
 @app.route('/profile')
