@@ -33,6 +33,12 @@ from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 #     return redirect(url_for('index'))
 
 
+@app.route('/robots.txt')
+def noindex():
+	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+	r.headers["Content-Type"] = "text/plain; charset=utf-8"
+	return r
+
 
 # @app.route('/')
 # def temp():
@@ -106,6 +112,7 @@ from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 # 	# 	return redirect(url_for('register'))
 
 # 	return redirect(url_for("temp"))
+
 
 
 
