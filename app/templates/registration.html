@@ -117,7 +117,7 @@
 
 <!-- main -->
 <section class="registration-container">
-    <form class="form" id="form">
+    <form class="form" method="post" id="form">
 
         <div class="heading">
             <!-- <img src="./img/logo.jpg" alt=""> -->
@@ -133,7 +133,7 @@
             </div>
             <div class="f2">
                 <label for="">phone</label>
-                <input type="number" required>
+                <input type="text" required>
                 <span class="focus-input"></span>
             </div>
         </div>
@@ -342,14 +342,14 @@
 <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 
 <script>
-    const realFileBtn = document.getElementById("real-button ");
-    const customBtn = document.getElementById("custom-button ");
-    const customTxt = document.getElementById("custom-text ");
+    const realFileBtn = document.getElementById("real-button");
+    const customBtn = document.getElementById("custom-button");
+    const customTxt = document.getElementById("custom-text");
 
-    customBtn.addEventListener("click ", function() {
+    customBtn.addEventListener("click", function() {
         realFileBtn.click();
     });
-    realFileBtn.addEventListener("change ", function() {
+    realFileBtn.addEventListener("change", function() {
         if (realFileBtn.value) {
             customTxt.innerHTML = realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
         } else {

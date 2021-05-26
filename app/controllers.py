@@ -186,16 +186,29 @@ def teamView():
 def devteamView():
 	return render_template('web_team.html')
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register/rgukt', methods=['GET', 'POST'])
 @login_required
-def register():
+def registerRgukt():
 
 	if request.method == 'POST':
 		print(request.form.__dict__)
 		return "Okay"
 
 
-	return render_template('registration.html')
+	return render_template('add.html')
+
+
+@app.route('/register/techuser', methods=['GET', 'POST'])
+@login_required
+def registerUser():
+
+	if request.method == 'POST':
+		print(request.form.__dict__)
+		return "Okay"
+
+
+	return render_template('add.html')
+
 
 @app.route('/profile')
 def profile():
