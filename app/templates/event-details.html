@@ -11,6 +11,10 @@
     li {
         color: #e6e6e6bf;
     }
+    
+    .content {
+        padding-left: 2em;
+    }
 </style>
 {% endblock %} {% block content %} {{super()}}
 
@@ -168,11 +172,9 @@
                 {% for contact in event.contacts %}
 
 
-                <p> <i class="fa fa-address-card-o" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.name}}</p>
-
-                <p><i class="fa fa-envelope-open" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.email}}</p>
-
-                <p><i class="fa fa-phone" style="font-size:18px;color:#e6e6e6bf;"></i> _{{contact.phone}}</p>
+                <p> <i class="fa fa-user" style="font-size:18px;color:#e6e6e6bf;"></i> &nbsp; &nbsp;{{contact.name}}</p>
+                <p><i class="fa fa-phone" style="font-size:18px;color:#e6e6e6bf;"></i>&nbsp; &nbsp; {{contact.phone}}</p>
+                <p><i class="fa fa-envelope" style="font-size:18px;color:#e6e6e6bf;"></i> &nbsp; &nbsp;{{contact.email}}</p>
 
                 <br> {% endfor %}
 

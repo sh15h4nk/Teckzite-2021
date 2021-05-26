@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}Teckzite 2021 | SPONSORS{% endblock %} {% block html_head %} {{super()}}
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | Virtual Exibitions{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
@@ -97,51 +97,31 @@
     </div>
 </header>
 
-<section class="sponsors">
-    <div class="contain">
-        <h1 class="pos center">sponsors</h1>
-    </div>
-    <div class="sponsors-container">
+<section class="view">
+    <h1 class="pos center" style="padding: 13vh 0 2vh 0;">virtual exhibitions</h1>
+    <div class="row-view">
+        <div class="col-view">
+            <div class="description">
+                <p>This one is the most promising event of Teckzite . It exposes students to the novel ideas and inventions in the field of Industries , Electronics, Modern science , Robotics and top technologies presented to them by curious minds would
+                    open up new interests among students to pursue and helps them to discover the things that excites them. </p>
+                <br>
+                <p>Since these events are virtually launched due to pandemic ,students can gain in wisdom at their own comfort staying safe.</p><br>
+                <p>Curiosity is the basis of Knowledge and encounter with Exhibitions and inventions will fuel curiosity of learners. </p>
+            </div>
+        </div>
+        <div class="col-right">
 
-        <a class="sponsor" href="https://www.aceenggacademy.com/">
-            <div class="img">
-                <img src="{{url_for('static', filename='./img/sponsors/ace.jpeg')}}" alt="">
+            <div class="img-view">
+                <img src="https://miro.medium.com/max/2560/1*hNsI4kai4FeU7kN5vZnjQA.jpeg" alt="">
             </div>
-            <div class="content">
-                <h3>Event sponsor</h3>
-            </div>
-        </a>
 
-        <a class="sponsor" href="https://www.codingninjas.com/">
-            <div class="img">
-                <img src="{{url_for('static', filename='./img/sponsors/codingninja.svg')}}" alt="">
-            </div>
-            <div class="content">
-                <h3>Event sponsor</h3>
-            </div>
-        </a>
-
-        <a class="sponsor" href="https://www.learnmall.in/">
-            <div class="img">
-                <img src="{{url_for('static', filename='./img/sponsors/learnmall.png')}}" alt="">
-            </div>
-            <div class="content">
-                <h3>Event sponsor</h3>
-            </div>
-        </a>
-
-        <a class="sponsor" href="https://primeskill.in/">
-            <div class="img">
-                <img src="{{url_for('static', filename='./img/sponsors/primesskill.png')}}" alt="">
-            </div>
-            <div class="content">
-                <h3>Workshop partner</h3>
-            </div>
-        </a>
+        </div>
 
     </div>
+    <br><br>
+    <p class="center" style="color: cyan;">Registration will open shortly!</p>
+
 </section>
-
 
 <!-- main -->
 {% endblock %} {% block javascript %} {{super()}}

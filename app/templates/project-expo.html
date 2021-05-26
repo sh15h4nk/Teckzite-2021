@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block title %}teckzite 2021 | Project-expo{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
     onload = function resetHeight() {
@@ -73,146 +75,147 @@
 
 
 <section class="view">
-        <h1 class="pos center">Project Expo</h1>
-        <h5>Eligibility: </h5>
-        <p>Undergraduate Engineering students only</p>
-        <br>
-        <p class="blink">Prize money: INR 10,000</p>
-        <br>
+    <h1 class="pos center">Project Expo</h1>
+    <h5>Eligibility: </h5>
+    <p>Undergraduate Engineering students only</p>
+    <br>
+    <p class="blink">Prize money: INR 10,000</p>
+    <br>
 
-        <h5>Object:</h5>
-        <p>To bring out student’s innovation. To encourage multidisciplinary ideas.</p>
+    <h5>Objective:</h5>
+    <p>To bring out student’s innovation. To encourage multidisciplinary ideas.</p>
 
-          <div class="wrapper">
-                    <ul class="list-sec">
-                      <li data-target="description" class="active">description</li>
-                      <li data-target="outcome">expected outcome</li>
-                      <li data-target="judgement">judgement criteria</li>
-                      <li data-target="guidelines">guidelines</li>
-                      <li data-target="contact">contact</li>
-                    </ul>
-              <div class="wrapper-right">
+    <div class="wrapper">
+        <ul class="list-sec">
+            <li data-target="description" class="active">description</li>
+            <li data-target="outcome">expected outcome</li>
+            <li data-target="judgement">judgement criteria</li>
+            <li data-target="guidelines">guidelines</li>
+            <li data-target="contact">contact</li>
+        </ul>
+        <div class="wrapper-right">
 
-                <div class="content description">
-                    <p>Participants should apply principles of science and mathematics to develop economical solutions to technical problems. They are expected to provide solutions for commercial and scientific applications that could meet the consumer and societal needs
-                    </p>
-                </div>
+            <div class="content description">
+                <p>Participants should apply principles of science and mathematics to develop economical solutions to technical problems. They are expected to provide solutions for commercial and scientific applications that could meet the consumer and societal
+                    needs
+                </p>
+            </div>
 
-                  <div class="content outcome">
-                      <p>We provide an opportunity for students to unleash their potential. Through this event, we think students could develop their problem-solving abilities and it helps to focus on their skill set which is integral for their career. Key takeaways include critical thinking and time management.</p>
-                  </div>
+            <div class="content outcome">
+                <p>We provide an opportunity for students to unleash their potential. Through this event, we think students could develop their problem-solving abilities and it helps to focus on their skill set which is integral for their career. Key takeaways
+                    include critical thinking and time management.</p>
+            </div>
 
-                  <div class="content judgement"  style="display:none;">
-                      <p>Innovation, Novelty, Real worldapplications</p>
-                      <br>
-                    <p>(For instance, considering the current situation, we can develop solutions to share secure/accurate information of availability of hospital supplies, constructing cheap and temporary places as an alternative for the bed crunch at hospitals, cheapest ways to produce and supply oxygen).
-                        </p>
-                  </div>
+            <div class="content judgement" style="display:none;">
+                <p>Innovation, Novelty, Real worldapplications</p>
+                <br>
+                <p>(For instance, considering the current situation, we can develop solutions to share secure/accurate information of availability of hospital supplies, constructing cheap and temporary places as an alternative for the bed crunch at hospitals,
+                    cheapest ways to produce and supply oxygen).
+                </p>
+            </div>
 
-                  <div class="content guidelines"  style="display:none;">
-                    <h5>Teams: Individual or a group not exceeding four participants.</h5> 
-                    <br>
-                    <h5>First Round: Screening Round </h5>
-                    <br>
-                    <p>1.Prepare an abstract and send it to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
-                    <p>2.Abstract must be written in English and shouldn’t exceed 300 words</p>
-                    <p>3.Plagiarized abstracts/ideas will be disqualified </p>
-                    <p>4.Abstract should specify the overall purpose of the projectandthe problem that you’ve investigated along with the proposed solution.</p>
-                    <p>5.You should mention your team members names and TZ ID’s along with their details.  </p>
+            <div class="content guidelines" style="display:none;">
+                <h5>Teams: Individual or a group not exceeding four participants.</h5>
+                <br>
+                <h5>First Round: Screening Round </h5>
+                <br>
+                <p>1.Prepare an abstract and send it to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
+                <p>2.Abstract must be written in English and shouldn’t exceed 300 words</p>
+                <p>3.Plagiarized abstracts/ideas will be disqualified </p>
+                <p>4.Abstract should specify the overall purpose of the projectandthe problem that you’ve investigated along with the proposed solution.</p>
+                <p>5.You should mention your team members names and TZ ID’s along with their details. </p>
 
-                    <br>
+                <br>
 
-                    <h5>Deadline for abstract submission: 2nd June, 2021.</h5>
+                <h5>Deadline for abstract submission: 2nd June, 2021.</h5>
 
-                    <br>
+                <br>
 
-                    <h5>Second Round: Screening for finalists</h5>
-                    <br>
-                    <p>1.You should record a short video that describes your project</p>
-                    <p>2.Duration of the video shouldn’t exceed five minutes</p>
-                    <p>3.Upload the it as unlisted video to YouTube (For your reference <a href="http://youtu.be/JOr7JluzEOM" style="font-size: 16px;">click here</a>)</p>
-                    <p>4.Send the YouTube link to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
-                    <p>5.You can also attach your journal/paper along with the video link but it isn’t mandatory.</p>
-                    <br>
-                    <h5>Deadline for video submission: 6th June, 2021.</h5>
+                <h5>Second Round: Screening for finalists</h5>
+                <br>
+                <p>1.You should record a short video that describes your project</p>
+                <p>2.Duration of the video shouldn’t exceed five minutes</p>
+                <p>3.Upload the it as unlisted video to YouTube (For your reference <a href="http://youtu.be/JOr7JluzEOM" style="font-size: 16px;">click here</a>)</p>
+                <p>4.Send the YouTube link to our mail address <span style="color: cyan;">projectexpo2021@teckzite.org</span></p>
+                <p>5.You can also attach your journal/paper along with the video link but it isn’t mandatory.</p>
+                <br>
+                <h5>Deadline for video submission: 6th June, 2021.</h5>
 
-                    <br>
+                <br>
 
-                    <h5>Final Round: Virtual Expo</h5>
-                    <br>
+                <h5>Final Round: Virtual Expo</h5>
+                <br>
 
-                    <p>1.Platform -Google meet</p>
-                    <p>2.You should present your project with prototype before a panel </p>
-                    <p>3.You’re free to choose the way you present </p>
-                    <p>4.Time allotted for each project is 15 minutes</p>
-                    <p>5.Your project will be validated based on the judgement criteria </p>
-                    <p>6.Punctuality, time management and demonstration skills will also be considered for judgement.</p>
-                    <br>
-                    <p class="center">Note: Project with working prototypes will have more chances of winning.        </p>
-                    <br>
-                    <h5 class="center">The discretion of coordinators is final and binding.</h5>
+                <p>1.Platform -Google meet</p>
+                <p>2.You should present your project with prototype before a panel </p>
+                <p>3.You’re free to choose the way you present </p>
+                <p>4.Time allotted for each project is 15 minutes</p>
+                <p>5.Your project will be validated based on the judgement criteria </p>
+                <p>6.Punctuality, time management and demonstration skills will also be considered for judgement.</p>
+                <br>
+                <p class="center">Note: Project with working prototypes will have more chances of winning. </p>
+                <br>
+                <h5 class="center">The discretion of coordinators is final and binding.</h5>
 
-                </div>
+            </div>
 
-                  <div class="content contact"  style="display:none;">
-                    <h5>Bhargavi Maddineni </h5>
-                    <p>7036802177</p>
-                    <p>n160872@rguktn.ac.in</p>
-                    <br>
-                    <h5>Raja Bhushan K</h5>
-                    <p>7075070268</p>
-                    <p>n160086@rguktn.ac.in</p>
-                  </div>
+            <div class="content contact" style="display:none;">
+                <h5> <i class="fa fa-address-card-o" style="font-size:18px;color:#e6e6e6bf;"></i> _Bhargavi Maddineni </h5>
+                <p><i class="fa fa-phone" style="font-size:18px;color:#e6e6e6bf;">
+                </i> _7036802177</p>
+                <p><i class="fa fa-envelope-open" style="font-size:18px;color:#e6e6e6bf;"></i> _n160872@rguktn.ac.in</p>
+                <br>
+                <h5> <i class="fa fa-address-card-o" style="font-size:18px;color:#e6e6e6bf;"></i> _Raja Bhushan K</h5>
+                <p><i class="fa fa-phone" style="font-size:18px;color:#e6e6e6bf;">
+                </i> _7075070268</p>
+                <p><i class="fa fa-envelope-open" style="font-size:18px;color:#e6e6e6bf;"></i> _n160086@rguktn.ac.in</p>
+            </div>
 
-              </div>
-          </div>
+        </div>
+    </div>
 
 
- </section>
+</section>
 {% endblock %} {% block javascript %} {{super()}}
 
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
 <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 <script>
-   const btn = document.querySelectorAll('.list-sec li');
-      const ele = document.querySelectorAll('.wrapper-right .content');
-      for(var i=0 ; i < btn.length ; i++ ){
-        btn[i].addEventListener("click" , function(){
+    const btn = document.querySelectorAll('.list-sec li');
+    const ele = document.querySelectorAll('.wrapper-right .content');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", function() {
 
-          btn.forEach(function(li){
-            li.classList.remove('active');
-          })
+            btn.forEach(function(li) {
+                li.classList.remove('active');
+            })
 
-          this.classList.add('active');
+            this.classList.add('active');
 
-          var eleValue = this.getAttribute("data-target");
+            var eleValue = this.getAttribute("data-target");
 
-          ele.forEach(function(item){
-            item.style.display = "none";
-          })
+            ele.forEach(function(item) {
+                item.style.display = "none";
+            })
 
-          if(eleValue == "description"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }
-          else if(eleValue == "outcome"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }
-          else if(eleValue == "judgement"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }
-          else if(eleValue == "guidelines"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }
-          else if(eleValue == "contact"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }
-          /*else if(eleValue == "register"){
-            document.querySelector("." + eleValue).style.display = "block";
-          }*/
-          else{
-            console.log("failed");
-          }
+            if (eleValue == "description") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "outcome") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "judgement") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "guidelines") {
+                document.querySelector("." + eleValue).style.display = "block";
+            } else if (eleValue == "contact") {
+                document.querySelector("." + eleValue).style.display = "block";
+            }
+            /*else if(eleValue == "register"){
+              document.querySelector("." + eleValue).style.display = "block";
+            }*/
+            else {
+                console.log("failed");
+            }
         })
-      }
+    }
 </script>
 {% endblock %}

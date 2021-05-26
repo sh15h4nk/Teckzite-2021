@@ -153,7 +153,7 @@ def summitsView():
 
 @app.route('/virtual-exibition')
 def virtualView():
-	return render_template('updating.html')
+	return render_template('virtual-exibihtion.html')
 
 
 
@@ -163,7 +163,7 @@ def projectsView():
 
 @app.route('/sponsors')
 def sponsorsView():
-	return render_template('updating.html')
+	return render_template('sponsors.html')
 
 @app.route('/about')
 def aboutView():
@@ -184,3 +184,7 @@ def register():
 @app.route('/profile')
 def profile():
 	return render_template('userProfile.html')
+
+@app.route('/ca-portal')
+def ca_portal():
+	return render_template('ca-portal.html')
