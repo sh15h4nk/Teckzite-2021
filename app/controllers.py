@@ -108,17 +108,10 @@ from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 # 	return redirect(url_for("temp"))
 
 
-@app.route('/')
-def temp():
 
-	launch = Launch.query.first()
-	if launch.launch:
-		return render_template('index.html')
-
-	return Response()
 	
 
-@app.route('/home')
+@app.route('/')
 def index():
 	return render_template('index.html')
 
@@ -194,12 +187,3 @@ def profile():
 def ca_portal():
 	return render_template('ca-portal.html')
 
-@app.route('/secret-launch')
-def launch():
-	Launch.query.filter_by(id=1).update({'launch': 1})
-	return "Done"
-
-@app.route('/secret-delaunch')
-def delaunch():
-	Launch.query.filter_by(id=1).update({'launch': 0})
-	return "Done"
