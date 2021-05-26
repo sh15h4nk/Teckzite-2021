@@ -29,13 +29,28 @@
                 <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
 
                 <li class="nav__list-item"><a href="{{url_for('login')}}" class="hover-target">Login</a></li>
+                <li class="nav__list-item"><a href="{{url_for('logout')}}" class="hover-target">Logout</a></li>
+
                 <!-- <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li> -->
             </ul>
         </div>
     </div>
 
     <div id="content">
-        {% block content %}{% endblock %}
+        {% block content %}
+
+            <div class="container" style="display:inline-block;position: absolute; z-index: 1; text-align: center; width: 50%; margin: 50px auto;">
+                <br><br>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+            </div>
+
+        {% endblock %}
     </div>
 
     {% block javascript %}{% endblock %}
