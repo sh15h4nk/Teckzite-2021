@@ -29,15 +29,9 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return "You are not authenticated"
+    flash("You are not authorised")
+    return redirect('index')
 
-
-
-@app.route('/test')
-@login_required
-def test():
-
-	return "YOu found the secret"
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -52,6 +46,7 @@ def login():
 				return redirect(url_for('registerUser'))
 
 		else:
+			flash("Already logged in")
 			return redirect(url_for('index'))
 
 	google_provider_cfg = get_google_provider_cfg()
@@ -106,10 +101,13 @@ def callback():
 		db.session.commit()
 
 		login_user(new_user)
+		flash("Logged in successfully")
+		
 
 	# if user is already logged in with this email, just login the user
 	else:
 		login_user(user)
+		flash("Logged in successfully")
 	    
 
 	# check if user registration is complete
@@ -123,13 +121,15 @@ def callback():
 
 	return redirect(url_for("index"))
 
+@app.route('/logout')
+def logout():
+	logout_user()
+	flash("You have been logged out")
+	return redirect(url_for('index'))
+
+
 
 @app.route('/')
-def temp():
-	return Response()
-	
-
-@app.route('/home')
 def index():
 	return render_template('index.html')
 
@@ -201,8 +201,10 @@ def registerRgukt():
 		
 		try:
 			user = addRguktUser(current_user.userId, request.form)
-			return ("Your details have been added successfully")
-		except:
+			flash("Your details have been added successfully")
+			return redirect(url_for('index'))
+
+		except Exception as e:
 			raise e
 
 
@@ -216,16 +218,19 @@ def registerUser():
 	if request.method == 'POST':
 		
 		address_data = {}
-		address_data['state'] = request.form.state
-		address_data['country'] = request.form.country
-		address_data['city'] = request.form.city
+		address_data['state'] = request.form['state']
+		address_data['district'] = request.form['district']
+		address_data['city'] = request.form['city']
 
+		user_data = dict(request.form)
 
 		try:
-			user = addUser(current_user.userId, request.form)
-			address = (user.userId, address_data)
-			return ("Your details have been added successfully")
-		except:
+			user = addUser(current_user.userId, user_data)
+			address = addAddress(user.userId, address_data)
+			flash("Your details have been added successfully")
+			return redirect(url_for('index'))
+
+		except Exception as e:
 			raise e
 
 
