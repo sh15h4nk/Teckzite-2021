@@ -162,7 +162,7 @@ def virtualView():
 
 
 
-@app.route('/projectExpo')
+@app.route('/projectexpo')
 def projectsView():
 	return render_template('project-expo.html')
 
