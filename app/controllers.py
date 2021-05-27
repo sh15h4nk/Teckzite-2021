@@ -4,34 +4,6 @@ from app.models import TechUser
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
-# #oauth
-# from flask_login import (
-# 	LoginManager,
-#     current_user,
-#     login_required,
-#     login_user,
-#     logout_user,
-# )
-
-# from oauthlib.oauth2 import WebApplicationClient
-# import requests, json
-
-# client = WebApplicationClient(GOOGLE_CLIENT_ID)
-
-
-
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return TechUser.query.get(user_id)
-
-# @login_manager.unauthorized_handler
-# def unauthorized():
-#     flash("You must login ")
-#     return redirect(url_for('index'))
-
 
 @app.route('/robots.txt')
 def noindex():
@@ -184,7 +156,7 @@ def devteamView():
 
 @app.route('/register')
 def register():
-	return render_template('registration.html')
+	return render_template('updating.html')
 
 @app.route('/profile')
 def profile():
@@ -193,4 +165,8 @@ def profile():
 @app.route('/ca-portal')
 def ca_portal():
 	return render_template('ca-portal.html')
+	
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
