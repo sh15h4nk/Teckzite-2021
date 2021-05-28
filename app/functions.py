@@ -4,6 +4,7 @@ from creds import GOOGLE_DISCOVERY_URL
 from flask_login import current_user
 from flask import redirect, url_for
 from functools import wraps
+from flask import flash
 
 
 
@@ -94,7 +95,8 @@ def registration_required(func):
 	@wraps(func)
 	def decorated_function(*args, **kwargs):
 		print("trig")
-		if current_user.is_authenticated and not current_user.registration_status:
+		if not current_user.registration_status:
+			flash("Please add your details")
 			return redirect(url_for('register'))
 		else:
 			return func(*args, **kwargs)
