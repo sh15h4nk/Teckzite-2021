@@ -377,18 +377,18 @@ body.nav-active .nav__list-item:nth-child(10) {
 }
 
 body.nav-active .nav__list-item:nth-child(11) {
-    -webkit-transition-delay: 1.7s;
-    transition-delay: 1.7s;
+    -webkit-transition-delay: 1.8s;
+    transition-delay: 1.8s;
 }
 
 body.nav-active .nav__list-item:nth-child(12) {
-    -webkit-transition-delay: 1.7s;
-    transition-delay: 1.7s;
+    -webkit-transition-delay: 1.9s;
+    transition-delay: 1.9s;
 }
 
 body.nav-active .nav__list-item:nth-child(13) {
-    -webkit-transition-delay: 1.7s;
-    transition-delay: 1.7s;
+    -webkit-transition-delay: 2s;
+    transition-delay: 2s;
 }
 
 
