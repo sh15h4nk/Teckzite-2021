@@ -386,6 +386,11 @@ body.nav-active .nav__list-item:nth-child(12) {
     transition-delay: 1.7s;
 }
 
+body.nav-active .nav__list-item:nth-child(13) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
 
 /* nav and overlay end */
 
