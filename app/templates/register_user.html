@@ -167,16 +167,27 @@
             </div>
 
             <div class="option f2">
+                <label for="bra" class="select">Branch</label>
+                <select class="" id="bra" name="branch">
+                    <option value="" disabled="disabled">------------Choose Branch------------</option>
+                    <option value="CSE">Computer Science</option>
+                    <option value="ECE">Electrical Engineering</option>
+
+                </select>
+            
+            </div>
+
+            <div class="option f2">
                 <label for="" class="options">which college?</label>
                 <div class="wrap" id="wrap">
                     <label class="options">
-                            <input type="radio" name="college" class="radio" onclick="displayMenu()">
+                            <input type="radio" name="" class="radio" onclick="displayMenu()">
                             <div class="radio-radio"></div>
                             rgukt
                         </label>
 
                     <label class="options">
-                            <input type="radio" checked="checked" name="college" class="radio" onclick="closeMenu()">
+                            <input type="radio" checked="checked" name="" class="radio" onclick="closeMenu()">
                             <div class="radio-radio"></div>
                             other
                         </label>
@@ -189,25 +200,25 @@
             <div class="wrap" id="wrap">
 
                 <label class="options">
-                        <input type="radio" name="collegeName" class="radio">
+                        <input type="radio" name="rgukt_location" value= "RGUKT-RKVALLEY"class="radio">
                         <div class="radio-radio"></div>
                         rk valley
                     </label>
 
                 <label class="options">
-                        <input type="radio" name="collegeName" class="radio">
+                        <input type="radio" name="rgukt_location" value="RGUKT-SRIKAKULAM" class="radio">
                         <div class="radio-radio"></div>
                         srikakulam
                     </label>
 
                 <label class="options">
-                        <input type="radio" name="collegeName" class="radio">
+                        <input type="radio" name="rgukt_location" value="RGUKT-ONGOLE" class="radio">
                         <div class="radio-radio"></div>
                         ongole
                     </label>
 
                 <label class="options">
-                        <input type="radio" name="collegeName" class="radio">
+                        <input type="radio" name="rgukt_location" value="RGUKT-BASAR" class="radio">
                         <div class="radio-radio"></div>
                         basar
                     </label>
@@ -263,6 +274,11 @@
                 <input type="text" name="district">
                 <span class="focus-input"></span>
             </div>
+            <div class="f2">
+                <label for="">ZIP code</label>
+                <input type="text" name="pin">
+                <span class="focus-input"></span>
+            </div>
 
         </div>
         <br>
@@ -295,6 +311,15 @@
                 <input type="text" name="referral">
                 <span class="focus-input"></span>
             </div>
+        </div>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">How did you find us?</label>
+                <input type="text" name="survey">
+                <span class="focus-input"></span>
+            </div>
+
         </div>
 
         <button class="btn" type="submit" style="margin: 2.5em 0;">submit</button>
