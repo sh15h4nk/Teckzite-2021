@@ -191,6 +191,11 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 @login_required
 def register():
+
+	if current_user.registration_status:
+		flash("Your have already registered!")
+		return redirect(url_for('index'))
+
 	if request.method == "POST":
 		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden"]) & set(request.form.keys())) != 0:
 			return "Invalid Data"
@@ -233,8 +238,8 @@ def register():
 		return render_template('register_user.html')
 
 @app.route('/profile')
+@login_required
+@registration_required
 def profile():
-	# registration_stat()
-	if current_user.is_authenticated and not current_user.registration_status:
-		return redirect(url_for('register'))
+	
 	return render_template('userProfile.html')
