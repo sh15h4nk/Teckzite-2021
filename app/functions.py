@@ -31,11 +31,6 @@ def addAddress(t_userId, address_data):
 
 def addUser(userId, data, idcard_url=""):
 
-	del data['state']
-	del data['district']
-	del data['city']
-	del data['pin']
-
 	user = TechUser.query.filter_by(phone=data['phone']).first()
 	if user:
 		return "Phone number already exists!"
