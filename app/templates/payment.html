@@ -120,7 +120,9 @@
 
 <!-- main -->
 
-<div class="registration-container">
+<br><br><br><br><br><br><br><br><br><br>
+
+<div class="container" style="position: relative;">
     <div>
         {{user.name}}
     </div>
@@ -133,13 +135,21 @@
 
 </div>
 
-{% if role == 'non-rguktn' %}
-    <iframe src="https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003" width="100%" height="500" frameborder="0px"></iframe>
+
+
+<div class="container">
+
+{% if role == 'non-rgukt' %}
+    <button> <a href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment</a> </button>
 
 {% else %}
-    <iframe src="https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002" width="100%" height="500" frameborder="0px"></iframe>
+    <button><a href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment </a></button>
+
 
 {% endif %}
+
+
+</div>
 
 
 
