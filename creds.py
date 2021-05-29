@@ -22,3 +22,11 @@ GOOGLE_DISCOVERY_URL = (
 # GOOGLE_DISCOVERY_URL = (
 #     "https://accounts.google.com/.well-known/openid-configuration"
 # )
+
+
+#Email server
+email_username = "no-reply@teckzite.org"
+email_passwd = "p41n1nth3a$$"
+
+mail_server = "smtp.googlemail.com"
+mail_port = 587

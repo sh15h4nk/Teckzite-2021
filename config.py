@@ -26,3 +26,10 @@ SECRET_KEY = creds.secret_key
 
 S3_BUCKET                 = "tzimageupload"
 S3_LOCATION               = 'http://{}.s3.amazonaws.com/'.format(S3_BUCKET)
+
+
+MAIL_SERVER = creds.mail_server
+MAIL_PORT = creds.mail_port
+MAIL_USE_TLS = True
+MAIL_USERNAME = creds.email_username
+MAIL_PASSWORD = creds.email_passwd
