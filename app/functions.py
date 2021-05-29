@@ -5,6 +5,7 @@ from flask_login import current_user
 from flask import redirect, url_for
 from functools import wraps
 from flask import flash
+import re
 
 
 
@@ -57,7 +58,9 @@ def get_google_provider_cfg():
     return requests.get(GOOGLE_DISCOVERY_URL).json()
 
 
-
+def is_rguktn(email):
+	pattern = r'[n|N][\d]{6}@rguktn.ac.in'
+	return re.match(pattern, email)
 
 
 def generate_techzite_id():
@@ -94,7 +97,6 @@ def generate_workshop_id():
 def registration_required(func):
 	@wraps(func)
 	def decorated_function(*args, **kwargs):
-		print("trig")
 		if not current_user.registration_status:
 			flash("Please add your details")
 			return redirect(url_for('register'))
