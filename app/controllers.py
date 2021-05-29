@@ -30,7 +30,7 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     flash("You are not authorised")
-    return redirect('index')
+    return redirect(url_for('index'))
 
 @app.route('/robots.txt')
 def noindex():
@@ -203,10 +203,18 @@ def register():
 
 		elif is_rguktn(current_user.email):
 			try:
+				user_data = {}
+				user_data['name'] = request.form['name']
+				user_data['gender'] = request.form['gender']
+				user_data['phone'] = request.form['phone']
+				user_data['collegeId'] = request.form['collegeId']
+				user_data['branch'] = request.form['branch']
+				user_data['year'] = request.form['year']
 				user = addRguktUser(current_user.userId, request.form)
 				if type(user) == str:
 					return user
 				flash("Your details have been added successfully")
+				sendMail(user, "Congratulations, Your registration is successfully completed!")
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
@@ -216,21 +224,37 @@ def register():
 				return redirect(url_for('index'))
 		
 		else:
-			if not request.form['state'] or not request.form['city'] or not request.form['district'] or not request.form['pin'] or not request.files['idcard']:
+			address_data = {}
+			user_data = {}
+			try:
+				address_data['state'] = request.form['state']
+				address_data['district'] = request.form['district']
+				address_data['city'] = request.form['city']
+				address_data['pin'] = request.form['pin']
+
+				user_data['name'] = request.form['name']
+				user_data['gender'] = request.form['gender']
+				user_data['phone'] = request.form['phone']
+				user_data['college'] = request.form['college']
+				user_data['collegeId'] = request.form['collegeId']
+				user_data['branch'] = request.form['branch']
+				user_data['year'] = request.form['year']
+
+			except:
 				flash("Missing Required Fields")
 				return render_template('register_user.html')
-			address_data = {}
-			address_data['state'] = request.form['state']
-			address_data['district'] = request.form['district']
-			address_data['city'] = request.form['city']
-			address_data['pin'] = request.form['pin']
 
-			user_data = dict(request.form)
+
+			try:
+				idcard = request.files['idcard']
+
+			except:
+				flash("Upload your college ID card")
+				return render_template('register_user.html')
+
 
 			idcard_url = ""
-			idcard = request.files['idcard']
 			if idcard:
-
 				file_ext = ""
 
 				try:
@@ -245,6 +269,7 @@ def register():
 				user = addUser(current_user.userId, user_data, idcard_url)
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
+				sendMail(user, "Congratulations, Your registration is successfully completed!")
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
