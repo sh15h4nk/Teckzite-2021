@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8" name="description" content="TECKZITE'21, the national level techno-management feast of RGUKT Nuzvid">
+    <meta charset="utf-8" name="description" content="TECKZITE'21, the national level techno-management fest of RGUKT Nuzvid">
     <meta name="keywords" content="Teckzite2021 Teckzite techfest nuzvid IIITN RGUKTN RGUKT RGUKTFEST IIIT ">
 
     <title>{% block title %}Teckzite 2021{% endblock %}</title>
@@ -61,57 +61,78 @@
 
     <div id="footer">
         {% block footer %}
+        <center>
 
-        <section class="footer main">
+            <section class="footer main">
 
-            <div class="container">
-                <div class="logo">
-                    <img src="{{url_for('static', filename='./img/9.png')}}" alt="logo">
-                </div>
-                <hr>
+                <div class="container">
+                    <div class="logo">
+                        <img src="{{url_for('static', filename='./img/9.png')}}" alt="logo">
+                    </div>
+                    <hr>
 
-                <div class="footer-row" id="footer">
-                    <div class="footer-col">
-                        <h3>know us</h3>
-                        <ul>
-                            <li><a href="{{url_for('aboutView')}}" class="link">About us</a>|</li>
-                            <li><a href="//intranet.rguktn.ac.in/sdcac" class="link">sdcac</a></li>
-                            <li><a href="http://rguktn.ac.in/" class="link">rgukt-nuzvid</a></li>
-                        </ul>
+                    <div class="footer-row" id="footer">
+                        <div class="footer-col">
+                            <h3>know us</h3>
+                            <ul>
+                                <li><a href="{{url_for('aboutView')}}" class="link">About us</a>|</li>
+                                <li><a href="//intranet.rguktn.ac.in/sdcac" class="link">sdcac</a></li>
+                                <li><a href="http://rguktn.ac.in/" class="link">rgukt-nuzvid</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h3>contact us</h3>
+                            <ul>
+                                <li>
+                                    <a href="{{url_for('teamView')}}" class="link">Our team</a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('devteamView')}}" class="link">Web Team</a>
+                                </li>
+                                <li>
+                                    <a class="link" style="text-transform: none;">info@teckzite.org</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h3>connect with us</h3>
+                            <ul>
+
+                                <li><a href="https://www.instagram.com/teckzite_rguktn/" class="link">instagram</a></li>
+                                <li><a href="https://www.linkedin.com/company/teckzite" class="link">linkedin</a></li>
+                                <li><a href="https://www.facebook.com/teckzite/" class="link">facebook</a></li>
+                                <li><a href="https://twitter.com/teckzite" class="link">twitter</a></li>
+                                <li><a href="https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g" class="link">youtube</a></li>
+                            </ul>
+                        </div>
+
                     </div>
 
-                    <div class="footer-col">
-                        <h3>contact us</h3>
-                        <ul>
-                            <li><a href="{{url_for('teamView')}}" class="link">Our team</a>
-                                <!-- | <a href="{{url_for('devteamView')}}" class="link">Technica support</a> -->
-                            </li>
-                            <li><a class="link" style="text-transform: none;">info@teckzite.org</a></li>
-                        </ul>
+                    <hr>
+
+                    <div class="copyright">
+                        <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
                     </div>
-
-                    <div class="footer-col">
-                        <h3>connect with us</h3>
-                        <ul>
-
-                            <li><a href="https://www.instagram.com/teckzite_rguktn/" class="link">instagram</a></li>
-                            <li><a href="https://www.linkedin.com/company/teckzite" class="link">linkedin</a></li>
-                            <li><a href="https://www.facebook.com/teckzite/" class="link">facebook</a></li>
-                            <li><a href="https://twitter.com/teckzite" class="link">twitter</a></li>
-                            <li><a href="https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g" class="link">youtube</a></li>
-                        </ul>
-                    </div>
-
                 </div>
 
-                <hr>
+            </section>
 
-                <div class="copyright">
-                    <p style="text-align: center; padding: 2rem;">copyright-2021@rgukt-nuzvid</p>
-                </div>
-            </div>
-
-        </section>
+        </center>
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {},
+                Tawk_LoadStart = new Date();
+            (function() {
+                var s1 = document.createElement("script"),
+                    s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/60a9f47ba4114e480ad061f4/1f6bu612v';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
 
         {% endblock %}
     </div>

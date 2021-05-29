@@ -1,0 +1,369 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | 404{% endblock %} {% block html_head %} {{super()}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+    }
+    
+    .cd-header {
+        background-color: transparent;
+        /* background-color: #0d0d3c; */
+        transition: 0.2s ease-in-out;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        height: 10vh;
+    }
+    
+    .not {
+        width: 100%;
+        height: 100vh;
+        background: url(../static/img/tz/1.jpg);
+        background-size: cover;
+    }
+    
+    p {
+        text-align: center;
+        width: auto;
+        cursor: url('do_anything_resize.jpg');
+        position: relative;
+        top: 40%;
+        font-size: 3em;
+        /* margin: 20px 0 20px 0;  */
+    }
+    
+    .tz {
+        position: absolute;
+        top: 69%;
+        width: 20%;
+        left: 5;
+        height: 30%;
+        animation: rise 4s linear 1;
+        animation-direction: alternate;
+        /* width: 20; */
+    }
+    
+    .tz img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .techzite20 {
+        position: absolute;
+        top: 59%;
+        left: 48%;
+        width: 43%;
+        height: 12%;
+    }
+    
+    .techzite20 img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .satellite {
+        position: absolute;
+        top: 15%;
+        left: 7%;
+        width: 10%;
+        height: 8%;
+        animation: moves 4s linear infinite;
+        /* animation-direction: alternate; */
+    }
+    
+    .satellite img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .rover {
+        position: absolute;
+        top: 80%;
+        left: 60%;
+        width: 13%;
+        height: 15%;
+        animation: movef 2s linear 1;
+        animation-direction: alternate;
+    }
+    
+    .rover img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .cover {
+        position: absolute;
+        top: 95%;
+        left: 0%;
+        width: 25%;
+        height: 5%;
+    }
+    
+    .cover img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    @keyframes movers {
+        0% {
+            top: 50%;
+            left: 90%;
+        }
+        40% {
+            top: 45%;
+            left: 90%;
+        }
+        70% {
+            top: 40%;
+            left: 90%;
+        }
+        100% {
+            top: 50%;
+            left: 90%;
+        }
+    }
+    
+    @keyframes squese {
+        0% {
+            /* transform: scaleX(0.5); */
+            transform: scaleY(0.8);
+        }
+        40% {
+            transform: scaleY(1);
+            /* transform: scaleX(0.7); */
+        }
+        70% {
+            transform: scaleY(0.8);
+            /* transform: scaleX(0.5); */
+        }
+        100% {
+            transform: scaleY(1);
+            /* transform: scaleX(0.7); */
+        }
+    }
+    
+    @keyframes moves {
+        0% {
+            transform: scale(0);
+            top: 10%;
+            left: 76%;
+        }
+        30% {
+            transform: scale(0.5);
+            top: 13%;
+            left: 72%;
+        }
+        70% {
+            transform: scale(0.5);
+            top: 10%;
+            left: 88%;
+        }
+        100% {
+            transform: scale(0);
+            top: 8%;
+            left: 85%;
+        }
+    }
+    
+    @keyframes movef {
+        0% {
+            top: 77%;
+            left: 57%;
+            transform: scale(0.5);
+        }
+        100% {
+            top: 80%;
+            left: 60%;
+            transform: scale(1);
+        }
+    }
+    
+    @keyframes rise {
+        0% {
+            top: 75%;
+            left: 5;
+        }
+        100% {
+            top: 69%;
+            left: 5;
+        }
+    }
+    
+    @media (min-width:768px) {
+        p {
+            text-align: center;
+            width: auto;
+            cursor: url('do_anything_resize.jpg');
+            position: relative;
+            top: 40%;
+            z-index: 2;
+            font-size: 7em;
+            /* margin: 20px 0 20px 0;  */
+        }
+    }
+    
+    @media screen and (max-width:780px) {
+        .tz {
+            position: absolute;
+            top: 69%;
+            width: 60%;
+            left: 15%;
+            height: 30%;
+            animation: rise 4s linear 1;
+            animation-direction: alternate;
+            /* width: 20; */
+        }
+        .tz img {
+            height: 100%;
+            width: 100%;
+        }
+        .cover {
+            position: absolute;
+            top: 96%;
+            left: 0%;
+            width: 50%;
+            height: 4%;
+        }
+        .cover img {
+            height: 0%;
+            width: 0%;
+        }
+        .techzite20 {
+            position: absolute;
+            top: 59%;
+            left: 48%;
+            width: 43%;
+            height: 12%;
+        }
+        .techzite20 img {
+            height: 0%;
+            width: 0%;
+        }
+        .satellite {
+            position: absolute;
+            top: 15%;
+            left: 7%;
+            width: 10%;
+            height: 8%;
+            animation: moves 4s linear infinite;
+            /* animation-direction: alternate; */
+        }
+        .satellite img {
+            height: 100%;
+            width: 100%;
+        }
+        .rover {
+            position: absolute;
+            top: 80%;
+            left: 60%;
+            width: 13%;
+            height: 15%;
+            animation: movef 2s linear 1;
+            animation-direction: alternate;
+        }
+        .rover img {
+            height: 0%;
+            width: 0%;
+        }
+        @keyframes movefg2 {
+            0% {
+                top: 20%;
+                left: 48%;
+            }
+            40% {
+                top: 35%;
+                left: 47%;
+            }
+            100% {
+                top: 20%;
+                left: 48%;
+            }
+        }
+    }
+    
+    a {
+        cursor: url('do_anything_resize.jpg');
+        text-decoration: none;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        transition: all 0.5s;
+        color: #fff;
+        font-size: 0.9em;
+        font-family: Monoton;
+    }
+    
+    @keyframes neon1 {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgb(193, 193, 255), 0 0 70px rgb(193, 193, 255), 0 0 80px rgb(193, 193, 255), 0 0 100px rgb(193, 193, 255), 0 0 150px rgb(193, 193, 255);
+        }
+        to {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgb(193, 193, 255), 0 0 35px rgb(193, 193, 255), 0 0 40px rgb(193, 193, 255), 0 0 50px rgb(193, 193, 255), 0 0 75px rgb(193, 193, 255);
+        }
+    }
+    
+    @-webkit-keyframes neon1 {
+        from {
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px rgb(193, 193, 255), 0 0 70px rgb(193, 193, 255), 0 0 80px rgb(193, 193, 255), 0 0 100px rgb(193, 193, 255), 0 0 150px rgb(193, 193, 255);
+        }
+        to {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgb(193, 193, 255), 0 0 35px rgb(193, 193, 255), 0 0 40px rgb(193, 193, 255), 0 0 50px rgb(193, 193, 255), 0 0 75px rgb(193, 193, 255);
+        }
+    }
+    
+    p:nth-child(1) a {
+        color: black;
+        font-family: Monoton;
+        -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+        -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+        animation: neon1 1.5s ease-in-out infinite alternate;
+    }
+</style>
+{% endblock %} {% block content %} {{super()}}
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target">
+                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon__line"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="not">
+
+    <p><a>500 internal server error </a></p>
+
+    <div class="tz">
+        <img src="{{url_for('static', filename='img/tz/tztz.png')}}">
+    </div>
+    <div class="satellite">
+        <img src="{{url_for('static', filename='img/tz/satellitetz.png')}}">
+    </div>
+
+
+
+    <div class="cover">
+        <img src="{{url_for('static', filename='img/tz/pathtz.png')}}">
+    </div>
+
+</section>
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+
+{% endblock %}
