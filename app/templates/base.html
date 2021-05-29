@@ -26,15 +26,20 @@
                 </li>
                 <li class="nav__list-item"><a href="{{url_for('sponsorsView')}}" class="hover-target">sponsors</a></li>
                 <li class="nav__list-item"><a href="{{url_for('aboutView')}}" class="hover-target">about us</a></li>
-                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">team</a></li>
-
-                <li class="nav__list-item"><a href="{{url_for('login')}}" class="hover-target">Login</a></li>
+                <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">Our team</a></li>
+                <li class="nav__list-item"><a href="{{url_for('devteamView')}}" class="hover-target">web team</a></li>
+                <li class="nav__list-item"><a href="{{url_for('ca_portal')}}" class="hover-target">Campus Ambassador</a></li>
                 
                 {% if current_user.is_authenticated %}
                     {% if current_user.registration_status %}
                         <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
                     {% endif %}
                     <li class="nav__list-item"><a href="{{url_for('logout')}}" class="hover-target">Logout</a></li>
+                
+                {% else %}
+
+                    <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">Login</a></li>
+
                 {% endif %}
             </ul>
         </div>
