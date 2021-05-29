@@ -204,12 +204,16 @@ def register():
 		elif is_rguktn(current_user.email):
 			try:
 				user = addRguktUser(current_user.userId, request.form)
+				if type(user) == str:
+					return user
 				flash("Your details have been added successfully")
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
 			except Exception as e:
-				raise e
+				app.logger.warning(e)
+				flash("Something went wrong")
+				return redirect(url_for('index'))
 		
 		else:
 			if not request.form['state'] or not request.form['city'] or not request.form['district'] or not request.form['pin']:
@@ -223,15 +227,31 @@ def register():
 
 			user_data = dict(request.form)
 
+			idcard_url = ""
+			idcard = request.files['idcard']
+			if idcard:
+
+				file_ext = ""
+
+				try:
+					file_ext = idcard.filename.split('.')[1]
+				except:
+					pass
+
+				filename = uuid.uuid4()
+				idcard_url = upload_file_to_s3(idcard, filename, file_ext)
+
 			try:
-				user = addUser(current_user.userId, user_data)
+				user = addUser(current_user.userId, user_data, idcard_url)
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
 			except Exception as e:
-				raise e
+				app.logger.warning(e)
+				flash("Something went wrong")
+				return redirect(url_for('index'))
 
 
 	#for get requests
@@ -249,10 +269,10 @@ def payment():
 	if not user:
 		return "Invalid request"
 
-	if is_rguktn(current_user.email):
-		return render_template('payment.html', user=user, role="rguktn")
+	if is_rgukt(current_user.email):
+		return render_template('payment.html', user=user, role="rgukt")
 	else:
-		return render_template('payment.html', user=user, role="non-rguktn")
+		return render_template('payment.html', user=user, role="non-rgukt")
 
 
 
