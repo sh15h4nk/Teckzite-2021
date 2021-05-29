@@ -1,121 +1,51 @@
-from flask import url_for, redirect, request, render_template, session, flash, Response, escape, Markup, session
+from flask import url_for, redirect, request, render_template, flash, Response, escape, Markup
 from app import app, db
 from app.models import TechUser
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
-# #oauth
-# from flask_login import (
-# 	LoginManager,
-#     current_user,
-#     login_required,
-#     login_user,
-#     logout_user,
-# )
+#oauth
+from flask_login import (
+	LoginManager,
+    current_user,
+    login_required,
+    login_user,
+    logout_user,
+)
 
-# from oauthlib.oauth2 import WebApplicationClient
-# import requests, json
+from oauthlib.oauth2 import WebApplicationClient
+import requests, json
 
-# client = WebApplicationClient(GOOGLE_CLIENT_ID)
-
-
-
-# login_manager = LoginManager()
-# login_manager.init_app(app)
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return TechUser.query.get(user_id)
-
-# @login_manager.unauthorized_handler
-# def unauthorized():
-#     flash("You must login ")
-#     return redirect(url_for('index'))
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
 
 
-# @app.route('/')
-# def temp():
-# 	if 'id' in session:
-# 		return ("You are authenticaed")
-# 	else:
-# 		return ("You are not authenticaed")
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return TechUser.query.get(user_id)
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    flash("You are not authorised")
+    return redirect('index')
 
 
+@app.route('/robots.txt')
+def noindex():
+	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+	r.headers["Content-Type"] = "text/plain; charset=utf-8"
+	return r
 
-# @app.route("/login", methods=['GET', 'POST'])
-# def login():
- 
-#     google_provider_cfg = get_google_provider_cfg()
-#     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
-
-#     request_uri = client.prepare_request_uri(
-#         authorization_endpoint,
-#         redirect_uri=request.base_url + "/callback",
-#         scope=["openid", "email", "profile"],
-#     )
-#     return redirect(request_uri)
-
-
-# @app.route("/login/callback")
-# def callback():
-
-# 	code = request.args.get("code")
-
-# 	google_provider_cfg = get_google_provider_cfg()
-# 	token_endpoint = google_provider_cfg["token_endpoint"]
-
-# 	token_url, headers, body = client.prepare_token_request(
-# 		token_endpoint,
-# 		authorization_response=request.url,
-# 		redirect_url=request.base_url,
-# 		code=code
-# 	)
-# 	token_response = requests.post(
-# 		token_url,
-# 		headers=headers,
-# 		data=body,
-# 		auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
-# 	)
-
-# 	client.parse_request_body_response(json.dumps(token_response.json()))
-
-# 	userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
-# 	uri, headers, body = client.add_token(userinfo_endpoint)
-# 	userinfo_response = requests.get(uri, headers=headers, data=body)
-
-# 	if userinfo_response.json().get("email_verified"):
-# 	    unique_id = userinfo_response.json()["sub"]
-# 	    users_email = userinfo_response.json()["email"]
-# 	    picture = userinfo_response.json()["picture"]
-# 	    users_name = userinfo_response.json()["given_name"]
-# 	else:
-# 	    return "User email not available or not verified by Google.", 400
-
-
-# 	user = TechUser.query.filter_by(userId=unique_id).first()
-
-# 	if not user:
-# 		new_user = TechUser(userId=unique_id, name=users_name, email=users_email)
-# 		db.session.add(new_user)
-# 		db.session.commit()
-	    
-# 	session['id'] = 1
-
-# 	# if not user.registration_status:
-# 	# 	return redirect(url_for('register'))
-
-# 	return redirect(url_for("temp"))
-
-
-
-	
 
 @app.route('/')
 def index():
 	return render_template('index.html')
 
 @app.route('/workshops')
+@registration_required
 def workshopsView():
 	return render_template('workshops.html')
 
@@ -175,12 +105,162 @@ def teamView():
 def devteamView():
 	return render_template('web_team.html')
 
-@app.route('/register')
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+
+	if current_user.is_authenticated:
+		if not current_user.registration_status:
+			return redirect(url_for('register'))
+
+		else:
+			flash("Already logged in")
+			return redirect(url_for('index'))
+
+	google_provider_cfg = get_google_provider_cfg()
+	authorization_endpoint = google_provider_cfg["authorization_endpoint"]
+
+	request_uri = client.prepare_request_uri(authorization_endpoint,redirect_uri=request.base_url + "/callback",scope=["openid", "email", "profile"])
+	return redirect(request_uri)
+
+
+
+@app.route("/login/callback")
+def callback():
+
+	code = request.args.get("code")
+
+	google_provider_cfg = get_google_provider_cfg()
+	token_endpoint = google_provider_cfg["token_endpoint"]
+
+	token_url, headers, body = client.prepare_token_request(
+		token_endpoint,
+		authorization_response=request.url,
+		redirect_url=request.base_url,
+		code=code
+	)
+	token_response = requests.post(
+		token_url,
+		headers=headers,
+		data=body,
+		auth=(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET),
+	)
+
+	client.parse_request_body_response(json.dumps(token_response.json()))
+
+	userinfo_endpoint = google_provider_cfg["userinfo_endpoint"]
+	uri, headers, body = client.add_token(userinfo_endpoint)
+	userinfo_response = requests.get(uri, headers=headers, data=body)
+
+	if userinfo_response.json().get("email_verified"):
+	    unique_id = userinfo_response.json()["sub"]
+	    users_email = userinfo_response.json()["email"]
+	    picture = userinfo_response.json()["picture"]
+	    users_name = userinfo_response.json()["given_name"]
+	else:
+	    return "User email not available or not verified by Google.", 400
+
+
+	user = TechUser.query.filter_by(gid=unique_id).first()
+
+	# if user logins first time with this email, add user to the database
+	if not user:
+		user = TechUser(userId=generate_techzite_id() ,gid=unique_id, name=users_name, email=users_email)
+		db.session.add(user)
+		db.session.commit()		
+
+	login_user(user)
+	flash("Logged in successfully")
+	    
+
+	# check if user registration is complete
+	if not current_user.registration_status:
+		return redirect(url_for('register'))
+
+
+	return redirect(url_for("index"))
+
+@app.route('/logout')
+@login_required
+def logout():
+	logout_user()
+	flash("You have been logged out")
+	return redirect(url_for('index'))
+
+
+
+@app.route('/register', methods=['GET', 'POST'])
+@login_required
 def register():
-	return render_template('registration.html')
+
+	if current_user.registration_status:
+		flash("Your have already registered!")
+		return redirect(url_for('index'))
+
+	if request.method == "POST":
+		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden"]) & set(request.form.keys())) != 0:
+			return "Invalid Data"
+
+		elif is_rguktn(current_user.email):
+			try:
+				user = addRguktUser(current_user.userId, request.form)
+				flash("Your details have been added successfully")
+				flash("Proceed to pay")
+				return redirect(url_for('payment'))
+
+			except Exception as e:
+				raise e
+		
+		else:
+			if not request.form['state'] or not request.form['city'] or not request.form['district'] or not request.form['pin']:
+				flash("Missing Required Fields")
+				return render_template('register_user.html')
+			address_data = {}
+			address_data['state'] = request.form['state']
+			address_data['district'] = request.form['district']
+			address_data['city'] = request.form['city']
+			address_data['pin'] = request.form['pin']
+
+			user_data = dict(request.form)
+
+			try:
+				user = addUser(current_user.userId, user_data)
+				address = addAddress(user.userId, address_data)
+				flash("Your details have been added successfully")
+				flash("Proceed to pay")
+				return redirect(url_for('payment'))
+
+			except Exception as e:
+				raise e
+
+
+	#for get requests
+	elif is_rguktn(current_user.email):
+		return render_template('register_rgukt.html')
+	else:
+		return render_template('register_user.html')
+
+@app.route('/payment')
+@login_required
+@registration_required
+def payment():
+
+	user = TechUser.query.filter_by(userId=current_user.userId).first()
+	if not user:
+		return "Invalid request"
+
+	if is_rguktn(current_user.email):
+		return render_template('payment.html', user=user, role="rguktn")
+	else:
+		return render_template('payment.html', user=user, role="non-rguktn")
+
+
 
 @app.route('/profile')
+@login_required
+@registration_required
 def profile():
+	
 	return render_template('userProfile.html')
 
 @app.route('/ca-portal')

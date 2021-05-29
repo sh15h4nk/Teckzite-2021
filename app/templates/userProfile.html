@@ -203,7 +203,7 @@
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="./js/script.js"></script>
-<script src="./js/main.js"></script>
+<script src="{{url_for('static',filename ='./js/script.js')}}"></script>
+<script src="{{url_for('static',filename ='./js/main.js')}}"></script>
 
 {% endblock %}
