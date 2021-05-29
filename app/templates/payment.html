@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block title %}Teckzite 2021 | Registrations-User
 </Registrations-RGUKT>{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <script>
@@ -11,9 +11,15 @@
     console.log(window.innerHeight);
 </script>
 <style>
+    .op {
+        position: relative;
+        left: 50%;
+        width: 30%;
+    }
+    
     p {
         color: #e6e6e6bf;
-        font-size: 1.2em;
+        font-size: 1.6em;
         font-weight: 200;
         padding: 0 10px;
         /* word-break: break-all; */
@@ -28,6 +34,48 @@
         color: teal;
         font-size: 1.2rem;
         font-weight: 300;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .column {
+        position: relative;
+        left: 10%;
+        width: 50%;
+        padding: 10px;
+        height: 300px;
+        /* Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    
+    .row {}
+    
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+    }
+    
+    .button1:hover {
+        background-color: #4CAF50;
+        color: white;
     }
 </style>
 
@@ -120,53 +168,58 @@
 
 <!-- main -->
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
-<div class="container" style="position: relative;">
-    <div>
-        {{user.name}}
-    </div>
-    <div>
-        {{user.email}}
-    </div>
-    <div>
-        {{user.userId}}
-    </div>
+<div class="container" style="position: relative;top:20%;">
 
+
+    <p style="text-align:center; font-family: Helvetica; font-size:45px;">Transaction
+    </p>
+    <div class=" row ">
+        <div class="column ">
+
+            <h2>User Details</h2>
+            <p class="tzID">Name</p>
+            <h3>{{user.name}}</h3>
+
+            <p class="tzID">Email</p>
+            <h3>{{user.email}}</h3>
+
+            <p class="tzID">Teckzite-Id</p>
+            <h3>{{user.userId}}</h3>
+        </div>
+
+        <div class="op ">
+
+            {% if role == 'non-rgukt' %}
+            <a class="button button1 " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment</a>            {% else %}
+            <a class="button button1 " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment </a>            {% endif %}
+
+
+        </div>
+    </div>
 </div>
 
 
 
-<div class="container">
 
-{% if role == 'non-rgukt' %}
-    <button> <a href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment</a> </button>
-
-{% else %}
-    <button><a href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment </a></button>
-
-
-{% endif %}
-
-
-</div>
 
 
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="{{url_for('static', filename='./js/script.js')}}"></script>
-<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script src="{{url_for( 'static', filename='./js/script.js' )}} "></script>
+<script src="{{url_for( 'static', filename='./js/main.js' )}} "></script>
 
 
 
 <script>
     function displayMenu() {
-        document.querySelector('.special').style.display = "block";
+        document.querySelector('.special').style.display = "block ";
     }
 
     function closeMenu() {
-        document.querySelector('.special').style.display = "none";
+        document.querySelector('.special').style.display = "none ";
     }
 </script>
 {% endblock %}
