@@ -216,7 +216,7 @@ def register():
 				return redirect(url_for('index'))
 		
 		else:
-			if not request.form['state'] or not request.form['city'] or not request.form['district'] or not request.form['pin']:
+			if not request.form['state'] or not request.form['city'] or not request.form['district'] or not request.form['pin'] or not request.files['idcard']:
 				flash("Missing Required Fields")
 				return render_template('register_user.html')
 			address_data = {}
