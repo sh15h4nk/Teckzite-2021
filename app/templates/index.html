@@ -113,21 +113,21 @@
 </header>
 
 <div class="items-container">
-        <div class="menu-items-container">
-            <div class="inner-item">
-                <a href="#events-high">EVENTS</a>
-            </div>
-            <div class="inner-item">
-                <a href="#workshops-high">WORKSHOPS</a>
-            </div>
-<!--             <div class="inner-item">
+    <div class="menu-items-container">
+        <div class="inner-item">
+            <a href="#events-high">EVENTS</a>
+        </div>
+        <div class="inner-item">
+            <a href="#workshops-high">WORKSHOPS</a>
+        </div>
+        <!--             <div class="inner-item">
                 <a href="#talks-high">TALKS</a>
             </div> -->
-            <div class="inner-item">
-                <a href="#footer">CONTACT</a>
-            </div>
+        <div class="inner-item">
+            <a href="#footer">CONTACT</a>
         </div>
     </div>
+</div>
 
 
 <!-- home -->
@@ -178,7 +178,8 @@
     <!-- comp highlights -->
     <div class="container" id="events-high">
         <h1>competitions</h1>
-        <p>TECKZITE presents you most vibrant competitions ranging from technical to Non-technical events including management evnts which explores potential of future technocrats and entrepreneurs. The events are structured to polish student skills which will make your adrenaline rush and bring out the leaders in you.</p>
+        <p>TECKZITE presents you most vibrant competitions ranging from technical to Non-technical events including management events which explores potential of future technocrats and entrepreneurs. The events are structured to polish student skills which
+            will make your adrenaline rush and bring out the leaders in you.</p>
         <div class="eves">
             <div class="eve">
                 <a href="{{url_for('competitionsView')}}"><img src="https://tzimageupload.s3.amazonaws.com/38eb0295-340c-4962-98f7-e0055ce5b30f.jpeg" alt="">
@@ -241,19 +242,7 @@
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
 <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 <script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
-<script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-    (function() {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/60a9f47ba4114e480ad061f4/1f6bu612v';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
-    })();
-</script>
+
 
 <script>
     var swiper = new Swiper('.swiper-container', {
