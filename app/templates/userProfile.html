@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %} Teckzite 2021 | User-profile {% endblock %} {% block html_head %} {{super()}}
+{% extends 'base.html' %} {% block title %} {{user.name}}{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
@@ -38,6 +38,21 @@
     
     h1 {
         font-size: 1.5rem;
+    }
+    
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        height: 300px;
+        /* Should be removed. Only for demonstration */
+    }
+    /* Clear floats after the columns */
+    
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
     }
 </style>
 {% endblock %} {% block content %} {{super()}}
@@ -133,9 +148,37 @@
         <div class="image">
             <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
-        <p class="tzID">TZ210001</p>
+        <p class="tzID">{{user.id}}</p>
         <br>
-        <p>user@gmail.com</p>
+        <div class="row">
+            <div class="column">
+                <p class="tzID">Name</p>
+                <h6>{{user.name}}</h6>
+
+                <p class="tzID">Email</p>
+                <h6>{{user.email}}</h6>
+
+                <p class="tzID">gender</p>
+                <h6>{{user.gender}}</h6>
+
+                <p class="tzID">College</p>
+                <h6>{{user.college}}</h6>
+            </div>
+            <div class="column">
+
+                <p class="tzID">CollegeID</p>
+                <h6>{{user.collegeId}}</h6>
+
+                <p class="tzID">Year</p>
+                <h6>{{user.year}}</h6>
+
+                <p class="tzID">Branch</p>
+                <h6>{{user.branch}}</h6>
+
+                <p class="tzID">Phone</p>
+                <h6>{{user.phone}}</h6>
+            </div>
+        </div>
     </div>
     <br>
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
@@ -143,52 +186,44 @@
     <hr>
     <h5 style="margin-top: 1rem;">Competitions</h5>
     <div class="lnk">
-        <div class="lnkCard">
+        <!-- <div class="lnkCard">
             <div class="details">
                 <h5>Heading Heading Heading Heading Heading Heading Heading</h5>
                 <h5>team</h5>
-                <div class="ids">
-                    <p>n4355jd</p>
-                    <p>435jvjv4j</p>
-                    <p>djvj43jv</p>
-                    <p>n4355jd</p>
-                    <p>435jvjv4j</p>
-                    <p>djvj43jv</p>
-
+                <div class="ids" </div>
+                </div>
+            </div> -->
+        <!-- <div class="lnkCard">
+                <div class="details">
+                    <h5>Heading</h5>
                 </div>
             </div>
-        </div>
-        <div class="lnkCard">
-            <div class="details">
-                <h5>Heading</h5>
+            <div class="lnkCard">
+                <div class="details">
+                    <h5>Heading</h5>
+                </div>
             </div>
-        </div>
-        <div class="lnkCard">
-            <div class="details">
-                <h5>Heading</h5>
-            </div>
-        </div>
-        <div class="lnkCard">
-            <div class="details">
-                <h5>Heading</h5>
-            </div>
-        </div>
+            <div class="lnkCard">
+                <div class="details">
+                    <h5>Heading</h5>
+                </div>
+            </div> -->
     </div>
 
     <h5 style="margin-top: 1rem;">Workshops</h5>
 
-    <div class="lnk">
-        <div class="lnkCard">
-            <div class="details">
-                <div class="names">
-                    <p>n4355jd jd dklj dfj dfkj dkljl kjdj ld jk </p>
-                    <p>435jvjv4jjmnjcvkk knkfn knkfgj</p>
-                    <p>djvj43jv</p>
-                    <p>n4355jddfkj k lfd</p>
+    <!-- <div class="lnk">
+            <div class="lnkCard">
+                <div class="details">
+                    <div class="names">
+                        <p>n4355jd jd dklj dfj dfkj dkljl kjdj ld jk </p>
+                        <p>435jvjv4jjmnjcvkk knkfn knkfgj</p>
+                        <p>djvj43jv</p>
+                        <p>n4355jddfkj k lfd</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div> -->
 
     <p class="fee">
         <marquee behavior="" direction="X">You haven't paid your registration fee yet</marquee>
@@ -203,7 +238,7 @@
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="{{url_for('static',filename ='./js/script.js')}}"></script>
-<script src="{{url_for('static',filename ='./js/main.js')}}"></script>
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
 
 {% endblock %}
