@@ -267,6 +267,7 @@ def register():
 				idcard_url = upload_file_to_s3(idcard, filename, file_ext)
 
 			try:
+				print("fucking  ", user_data)
 				user = addUser(current_user.userId, user_data, idcard_url)
 				if type(user) == str:
 					flash(user)
