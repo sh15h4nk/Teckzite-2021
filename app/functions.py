@@ -2,11 +2,14 @@ from app.models import *
 import requests
 from creds import GOOGLE_DISCOVERY_URL
 from flask_login import current_user
-from flask import redirect, url_for
+from flask import redirect, url_for, render_template
 from functools import wraps
 from flask import flash
+from app import mail
 import re, boto3, botocore, uuid
 from config import *
+from flask_mail import Message 
+
 
 s3 = boto3.resource("s3")
 
@@ -130,3 +133,8 @@ def registration_required(func):
 			return func(*args, **kwargs)
 	return decorated_function
 
+
+def sendMail(user, message_title):
+	msg = Message(message_title, sender='no-reply@teckzite.org', recipients=[user.email])
+	msg.html = render_template('registrationMail.html')
+	mail.send(msg)
