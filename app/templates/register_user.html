@@ -123,7 +123,7 @@
 <section class="registration-container">
 
 
-    <form class="form" id="form" method="POST">
+    <form class="form" id="form" method="POST" enctype="multipart/form-data">
 
         <div class="heading">
             <h1>Registration</h1>
@@ -138,7 +138,7 @@
         <div class="wrap">
             <div class="f1">
                 <label for="">Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
                 <span class="focus-input"></span>
             </div>
             <div class="option f2">
@@ -154,23 +154,47 @@
         <div class="wrap">
             <div class="f1">
                 <label for="">phone</label>
-                <input type="text" name="Phone Number" pattern="[0-9]{10}" title="Phone number should be only of 10 digits and numerical only">
+                <input type="text" name="phone" pattern="[0-9]{10}" title="Phone number should be only of 10 digits and numerical only" required>
                 <span class="focus-input"></span>
             </div>
+
+            {% if collegeId %}
             <div class="f2">
                 <label for="">college id</label>
-                <input type="text" name="collegeId">
+                <input type="text" name="collegeId" value="{{collegeId}}" disabled required>
                 <span class="focus-input"></span>
             </div>
+            {% else %}
+            <div class="f2">
+                <label for="">college id</label>
+                <input type="text" name="collegeId" required>
+                <span class="focus-input"></span>
+            </div>
+            {% endif %}
+
         </div>
         <br>
 
         <div class="wrap">
+
+            {% if college %}
+
             <div class="f1">
                 <label for="">college</label>
-                <input type="text" name="college">
+                <input type="text" name="college" value="{{college}}" disabled required>
                 <span class="focus-input"></span>
             </div>
+
+            {% else %}
+
+            <div class="f1">
+                <label for="">college</label>
+                <input type="text" name="college" required>
+                <span class="focus-input"></span>
+            </div>
+
+            {% endif %} 
+
 
             <div class="option f2">
                 <label for="bra" class="select">Branch</label>
@@ -183,61 +207,14 @@
                     <option value="MME">Metallurgical and Materials Engineering</option>
                     <option value="ECE">Electronics & Communication Engineering</option>
                     <option value="EEE">Electrical Engineering</option>
+                    <option value="PUC">Pre University Course (PUC)</option>
+
 
                 </select>
 
             </div>
         </div>
-        <div class="wrap">
-            <div class="option f1">
-                <label for="" class="options">which college?</label>
-
-                <label class="options">
-                            <input type="radio" name="" class="radio" onclick="displayMenu()">
-                            <div class="radio-radio"></div>
-                            rgukt
-                        </label>
-
-                <label class="options">
-                            <input type="radio" checked="checked" name="" class="radio" onclick="closeMenu()">
-                            <div class="radio-radio"></div>
-                            other
-                        </label>
-            </div>
-
-
-        </div>
-
-
-        <div class="wrap special" style="display: none;">
-            <label for="" class="options">which rgukt?</label>
-            <div class="wrap" id="wrap">
-
-                <label class="options">
-                        <input type="radio" name="rgukt_location" value= "RGUKT-RKVALLEY"class="radio">
-                        <div class="radio-radio"></div>
-                        rk valley
-                    </label>
-
-                <label class="options">
-                        <input type="radio" name="rgukt_location" value="RGUKT-SRIKAKULAM" class="radio">
-                        <div class="radio-radio"></div>
-                        srikakulam
-                    </label>
-
-                <label class="options">
-                        <input type="radio" name="rgukt_location" value="RGUKT-ONGOLE" class="radio">
-                        <div class="radio-radio"></div>
-                        ongole
-                    </label>
-
-                <label class="options">
-                        <input type="radio" name="rgukt_location" value="RGUKT-BASAR" class="radio">
-                        <div class="radio-radio"></div>
-                        basar
-                    </label>
-            </div>
-        </div>
+        
 
         <div class="wrap">
             <div class="f1 state">
@@ -285,7 +262,7 @@
             </div>
             <div class="f2">
                 <label for="">district</label>
-                <input type="text" name="district">
+                <input type="text" name="district" required>
                 <span class="focus-input"></span>
             </div>
 
@@ -302,7 +279,7 @@
 
             <div class="f2">
                 <label for="">ZIP code</label>
-                <input type="text" name="pin">
+                <input type="text" name="pin"  pattern="[0-9]{6}" required>
                 <span class="focus-input"></span>
             </div>
 
@@ -310,10 +287,17 @@
         </div>
 
         <div class="wrap">
-            <div class="f1">
-                <label for="">year</label>
-                <input type="text" name="year">
-                <span class="focus-input"></span>
+            <div class="option f1">
+                <label for="poo" class="select">Year</label>
+                <select class="" id="poo" name="year">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+
+
+                </select>
+
             </div>
 
             <div class="f2">
@@ -332,8 +316,8 @@
                 <span class="focus-input"></span>
             </div> -->
             <div class="f2">
-                <label for="">Profile image</label>
-                <input type="file" id="file" name="filename" onchange="Filevalidation()">
+                <label for=""> Upload your ID card</label>
+                <input type="file" id="file" name="idcard" onchange="Filevalidation()" required>
             </div>
 
 
