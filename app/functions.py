@@ -72,7 +72,18 @@ def is_rguktn(email):
 	return re.match(pattern, email)
 
 def is_rgukt(email):
-	return email.endswith('@rguktn.ac.in') or email.endswith('@rguktrkv.ac.in') or email.endswith('@rguktong.ac.in') or email.endswith('@rguktsklm.ac.in')
+	return email.endswith('@rguktn.ac.in') or email.endswith('@rguktrkv.ac.in') or email.endswith('@rguktong.ac.in') or email.endswith('@rguktsklm.ac.in') or email.endswith('@rgukt.ac.in')
+
+def get_college(email):
+	pattern = r'rgukt([a-z]*).ac.in$'
+	clg_suffix = re.findall(pattern, email)[0]
+	return "RGUKT-"+clg_suffix.upper()
+
+def get_college_id(email):
+	pattern = r'(^[a-zA-Z0-9]{7})@rgukt[a-z]*.ac.in$'
+	Id = re.findall(pattern, email)[0]
+	return Id.upper()
+
 
 
 def upload_file_to_s3(file, filename, file_ext, acl="public-read"):

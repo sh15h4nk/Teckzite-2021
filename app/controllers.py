@@ -243,22 +243,32 @@ def register():
 
 			try:
 				user = addUser(current_user.userId, user_data, idcard_url)
+				if type(user) == str:
+					return user
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
 			except Exception as e:
-				app.logger.warning(e)
-				flash("Something went wrong")
-				return redirect(url_for('index'))
+				# app.logger.warning(e)
+				# flash("Something went wrong")
+				# return redirect(url_for('index'))
+				raise e
 
 
 	#for get requests
 	elif is_rguktn(current_user.email):
-		return render_template('register_rgukt.html')
+		collegeId = get_college_id(current_user.email)
+		return render_template('register_rgukt.html', collegeId = collegeId)
 	else:
-		return render_template('register_user.html')
+
+		college = ""
+		collegeId = ""
+		if is_rgukt(current_user.email):
+			college = get_college(current_user.email)
+			collegeId = get_college_id(current_user.email)
+		return render_template('register_user.html', college=college, collegeId=collegeId)
 
 @app.route('/payment')
 @login_required

@@ -139,12 +139,12 @@
         <div class="wrap">
             <div class="f1">
                 <label for="">Name</label>
-                <input type="text" name="name">
+                <input type="text" name="name" required>
                 <span class="focus-input"></span>
             </div>
             <div class="f2">
                 <label for="">phone</label>
-                <input type="text" name="phone">
+                <input type="text" name="phone" required pattern="[0-9]{10}">
                 <span class="focus-input"></span>
             </div>
         </div>
@@ -152,28 +152,57 @@
 
         <div class="wrap">
             <div class="option f1">
-                <label for="" class="options">Gender</label>
-                <div class="wrap" id="wrap">
-                    <label class="options">
-                            <input type="radio" name="gender" class="radio">
-                            <div class="radio-radio"></div>
-                            male
-                        </label>
+                <label for="jok" class="select">Gender</label>
+                <select class="" id="jok" name="gender">
+                    <option value="M"> Male </option>
+                    <option value="F"> Female </option>
+    
+                </select>
 
-                    <label class="options">
-                            <input type="radio" name="gender" class="radio">
-                            <div class="radio-radio"></div>
-                            female
-                        </label>
-                </div>
             </div>
             <div class="f2">
                 <label for="">college id</label>
-                <input type="text" name="collegeId">
+                <input type="text" name="collegeId" value="{{collegeId}}" disabled>
                 <span class="focus-input"></span>
             </div>
         </div>
         <br>
+
+         <div class="wrap">
+           
+           <div class="option f1">
+                <label for="bra" class="select">Branch</label>
+                <select class="" id="bra" name="branch">
+                    <option value="" disabled="disabled">------------Choose Branch------------</option>
+                    <option value="CSE">Computer Science Engineering</option>
+                    <option value="MEC">Mechaincal Engineering</option>
+                    <option value="CHE">Chemical Engineering</option>
+                    <option value="CIV">Civil Engineering</option>
+                    <option value="MME">Metallurgical and Materials Engineering</option>
+                    <option value="ECE">Electronics & Communication Engineering</option>
+                    <option value="EEE">Electrical Engineering</option>
+                    <option value="PUC">Pre University Course (PUC)</option>
+                    <option value="INT">Intermediate</option>
+                    <option value="POL">Polytechnic</option>
+
+                </select>
+
+            </div>
+            
+            <div class="option f2">
+                <label for="poo" class="select">Year</label>
+                <select class="" id="poo" name="year">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+
+
+                </select>
+
+            </div>
+        </div>
+
 
         <button class="btn" type="submit" style="margin: 2.5em 0;">submit</button>
 
