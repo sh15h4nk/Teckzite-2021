@@ -124,6 +124,7 @@ def login():
 	return redirect(request_uri)
 
 
+
 @app.route("/login/callback")
 def callback():
 
@@ -200,11 +201,12 @@ def register():
 		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden"]) & set(request.form.keys())) != 0:
 			return "Invalid Data"
 
-		elif current_user.email.endswith("rguktn.ac.in"):
+		elif is_rguktn(current_user.email):
 			try:
 				user = addRguktUser(current_user.userId, request.form)
 				flash("Your details have been added successfully")
-				return redirect(url_for('index'))
+				flash("Proceed to pay")
+				return redirect(url_for('payment'))
 
 			except Exception as e:
 				raise e
@@ -225,17 +227,34 @@ def register():
 				user = addUser(current_user.userId, user_data)
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
-				return redirect(url_for('index'))
+				flash("Proceed to pay")
+				return redirect(url_for('payment'))
 
 			except Exception as e:
 				raise e
 
 
 	#for get requests
-	elif current_user.email.endswith("rguktn.ac.in"):
+	elif is_rguktn(current_user.email):
 		return render_template('register_rgukt.html')
 	else:
 		return render_template('register_user.html')
+
+@app.route('/payment')
+@login_required
+@registration_required
+def payment():
+
+	user = TechUser.query.filter_by(userId=current_user.userId).first()
+	if not user:
+		return "Invalid request"
+
+	if is_rguktn(current_user.email):
+		return render_template('payment.html', user=user, role="rguktn")
+	else:
+		return render_template('payment.html', user=user, role="non-rguktn")
+
+
 
 @app.route('/profile')
 @login_required
