@@ -201,15 +201,21 @@ def register():
 			return "Invalid Data"
 
 		elif is_rguktn(current_user.email):
+			user_data = {}
 			try:
-				user_data = {}
 				user_data['name'] = request.form['name']
 				user_data['gender'] = request.form['gender']
 				user_data['phone'] = request.form['phone']
 				user_data['collegeId'] = request.form['collegeId']
 				user_data['branch'] = request.form['branch']
 				user_data['year'] = request.form['year']
-				user = addRguktUser(current_user.userId, request.form)
+			except:
+				flask("Missing Required Fields!")
+				collegeId = get_college_id(current_user.email)
+				return render_template('register_rgukt.html', collegeId = collegeId, display="")
+
+			try:	
+				user = addRguktUser(current_user.userId, user_data)
 				if type(user) == str:
 					flash(user)
 					return redirect(url_for('register'))
@@ -241,6 +247,12 @@ Contact: info@teckzite.org'''
 		else:
 			address_data = {}
 			user_data = {}
+			college = ""
+			collegeId = ""
+			if is_rgukt(current_user.email):
+				college = get_college(current_user.email)
+				collegeId = get_college_id(current_user.email)
+
 			try:
 				address_data['state'] = request.form['state']
 				address_data['district'] = request.form['district']
@@ -257,7 +269,7 @@ Contact: info@teckzite.org'''
 
 			except:
 				flash("Missing Required Fields")
-				return render_template('register_user.html')
+				return render_template('register_user.html', college=college, collegeId=collegeId)
 
 
 			try:
@@ -265,7 +277,7 @@ Contact: info@teckzite.org'''
 
 			except:
 				flash("Upload your college ID card")
-				return render_template('register_user.html')
+				return render_template('register_user.html', college=college, collegeId=collegeId)
 
 
 			idcard_url = ""
@@ -284,7 +296,7 @@ Contact: info@teckzite.org'''
 				user = addUser(current_user.userId, user_data, idcard_url)
 				if type(user) == str:
 					flash(user)
-					return render_template(url_for('register'))
+					return redirect(url_for('register'))
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
 
