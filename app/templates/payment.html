@@ -77,6 +77,44 @@
         background-color: #4CAF50;
         color: white;
     }
+    
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+    
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
 </style>
 
 {% endblock %} {% block content %} {{super()}}
@@ -180,20 +218,25 @@
 
             <h2>User Details</h2>
             <p class="tzID">Name</p>
-            <h3>{{user.name}}</h3>
+            <h3>user.name</h3>
 
             <p class="tzID">Email</p>
-            <h3>{{user.email}}</h3>
-
+            <h3 style="text-transform: none;">user.email</h3>
             <p class="tzID">Teckzite-Id</p>
-            <h3>{{user.userId}}</h3>
+            <div class="tooltip">
+                <input type="text" value="user-id" id="myInput " style="background:transparent;color:white;font-size:25px;">
+                <button class="button" onclick=" myFunction() " onmouseout="outFunc() ">
+                  <span class="tooltiptext " id="myTooltip ">Copy to clipboard</span>
+                  Copy Teckzite id
+                  </button>
+            </div>
         </div>
 
         <div class="op ">
 
             {% if role == 'non-rgukt' %}
-            <a class="button button1 " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment</a>            {% else %}
-            <a class="button button1 " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment </a>            {% endif %}
+            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment</a>            {% else %}
+            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment </a>            {% endif %}
 
 
         </div>
@@ -211,15 +254,25 @@
 <script src="{{url_for( 'static', filename='./js/script.js' )}} "></script>
 <script src="{{url_for( 'static', filename='./js/main.js' )}} "></script>
 
+<script src="{{url_for( 'static', filename='./js/jquery-3.6.0.min.js' )}} "></script>
+
 
 
 <script>
-    function displayMenu() {
-        document.querySelector('.special').style.display = "block ";
+    function myFunction() {
+        var copyText = document.getElementById("myInput ");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy ");
+
+        var tooltip = document.getElementById("myTooltip ");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+        console.log(copyText.value);
     }
 
-    function closeMenu() {
-        document.querySelector('.special').style.display = "none ";
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip ");
+        tooltip.innerHTML = "Copy to clipboard ";
     }
 </script>
 {% endblock %}

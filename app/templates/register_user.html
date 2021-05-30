@@ -102,15 +102,15 @@
 <header class="cd-header">
     <div class="header-wrapper">
         <div class="logo-wrap">
-            <a href="url_for('index')}}">
+            <a href="{{url_for('index')}}">
                 <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
         <div class="nav-but-wrap">
             <div class="menu-icon hover-target">
-                <span class="menu-icon_line menu-icon_line-left"></span>
+                <span class="menu-icon__line menu-icon__line-left"></span>
                 <span class="menu-icon__line"></span>
-                <span class="menu-icon_line menu-icon_line-right"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
             </div>
         </div>
     </div>
@@ -131,7 +131,9 @@
 
         <br>
 
-        <p style="font-size: 14px; font-weight: 500;" class="center">The registration fee for RGUKT students is 100/- ( NOTE: Registration should be done with RGUKT mail ) and for others students the registration fee is 150/-</p>
+        <p style="font-size: 14px; font-weight: 500;" class="center">If you are RGUKT student, please login with your university email id. If not please continue your registration process.
+            <br> Registration fee: 150/-
+            <br> For RGUKT student(rgukt email): 100/-</p>
 
         <br>
 
@@ -193,12 +195,12 @@
                 <span class="focus-input"></span>
             </div>
 
-            {% endif %} 
+            {% endif %}
 
 
             <div class="option f2">
-                <label for="bra" class="select">Branch</label>
-                <select class="" id="bra" name="branch">
+                <label for="bra" class="">Branch</label>
+                <select class="sp" id="bra" name="branch" onclick="select()">
                     <option value="" disabled="disabled">------------Choose Branch------------</option>
                     <option value="CSE">Computer Science Engineering</option>
                     <option value="MECH">Mechaincal Engineering</option>
@@ -208,13 +210,25 @@
                     <option value="ECE">Electronics & Communication Engineering</option>
                     <option value="EEE">Electrical Engineering</option>
                     <option value="PUC">Pre University Course (PUC)</option>
-
-
+                    <option value="OTHER">Other</option>
+                    <span class="focus-input"></span>
                 </select>
 
             </div>
         </div>
-        
+
+        <div class="wrap">
+            <div class="f1 sp1" style="display: none;">
+                <label for="">OTHER</label>
+                <input type="text" name="branch" required>
+                <span class="focus-input"></span>
+            </div>
+        </div>
+
+        <center>
+            <button class="btn cancel" style="display: none; margin: 1em 0;" onclick="cancel()">cancel</button>
+        </center>
+
 
         <div class="wrap">
             <div class="f1 state">
@@ -279,7 +293,7 @@
 
             <div class="f2">
                 <label for="">ZIP code</label>
-                <input type="text" name="pin"  pattern="[0-9]{6}" required>
+                <input type="text" name="pin" pattern="[0-9]{6}" required>
                 <span class="focus-input"></span>
             </div>
 
@@ -315,19 +329,18 @@
                 <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                 <span class="focus-input"></span>
             </div> -->
-            <div class="f2">
-                <label for=""> Upload your ID card</label>
-                <input type="file" id="file" name="idcard" onchange="Filevalidation()" required>
-            </div>
 
-
-        </div>
-        <div class="wrap">
             <div class="f1">
                 <label for="">How did you find us?</label>
                 <input type="text" name="survey">
                 <span class="focus-input"></span>
             </div>
+
+            <div class="option f2">
+                <label for=""> Upload your ID card</label>
+                <input type="file" id="file" name="idcard" onchange="Filevalidation()" required>
+            </div>
+
 
         </div>
 
@@ -388,6 +401,23 @@
                 }
             }
         }
+    }
+
+
+
+    function select() {
+        if (document.querySelector('.sp').value == 'OTHER') {
+            document.querySelector('.sp1').style.display = "block";
+            document.querySelector('.cancel').style.display = "block";
+            document.getElementById('bra').setAttribute("disabled", "");
+        }
+    }
+
+    function cancel() {
+        document.querySelector('.sp1').style.display = "none";
+        document.getElementById('bra').removeAttribute("disabled", "");
+        document.querySelector('.cancel').style.display = "none";
+        document.querySelector('.sp').value = "";
     }
 </script>
 {% endblock %}
