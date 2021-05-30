@@ -1,6 +1,6 @@
 from flask import url_for, redirect, request, render_template, flash, Response, escape, Markup
 from app import app, db
-from app.models import TechUser, CA
+from app.models import TechUser
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
@@ -41,7 +41,7 @@ def noindex():
 
 @app.route('/')
 def index():
-	return render_template('registration.html')
+	return render_template('index.html')
 
 @app.route('/workshops')
 @registration_required
@@ -327,7 +327,7 @@ def ca_portal():
 
 
 @app.route('/ca-register')
-def ca_regiset():
+def ca_register():
 	if request.method == 'POST':
 		ca_data = {}
 		try:
