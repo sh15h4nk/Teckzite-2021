@@ -327,7 +327,7 @@ def ca_portal():
 
 
 @app.route('/ca-register')
-def ca_regiset():
+def ca_register():
 	if request.method == 'POST':
 		ca_data = {}
 		try:
