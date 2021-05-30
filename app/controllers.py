@@ -1,6 +1,6 @@
 from flask import url_for, redirect, request, render_template, flash, Response, escape, Markup
 from app import app, db
-from app.models import TechUser, CA
+from app.models import TechUser
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
@@ -181,7 +181,6 @@ def callback():
 	return redirect(url_for("index"))
 
 @app.route('/logout')
-@login_required
 def logout():
 	logout_user()
 	flash("You have been logged out")
@@ -213,7 +212,7 @@ def register():
 				user = addRguktUser(current_user.userId, request.form)
 				if type(user) == str:
 					flash(user)
-					return render_template(url_for('register'))
+					return redirect(url_for('register'))
 				flash("Your details have been added successfully")
 
 				mesg = '''Dear Participant,
@@ -318,7 +317,7 @@ Contact: info@teckzite.org'''
 	#for get requests
 	elif is_rguktn(current_user.email):
 		collegeId = get_college_id(current_user.email)
-		return render_template('register_rgukt.html', collegeId = collegeId)
+		return render_template('register_rgukt.html', collegeId = collegeId, display="")
 	else:
 
 		college = ""
@@ -348,15 +347,15 @@ def payment():
 @login_required
 @registration_required
 def profile():
-	
-	return render_template('userProfile.html')
+
+	return render_template('userProfile.html', user=current_user)
 
 @app.route('/ca-portal')
 def ca_portal():
 	return render_template('ca-portal.html')
 
 
-@app.route('/ca-register')
+@app.route('/ca-register', methods=['GET', 'POST'])
 def ca_register():	
 	if request.method == 'POST':
 		ca_data = {}
@@ -364,11 +363,13 @@ def ca_register():
 			ca_data['name'] = request.form['name']
 			ca_data['phone'] = request.form['phone']
 			ca_data['email'] = request.form['email']
+			ca_data['gender'] = request.form['gender']
 			ca_data['college'] = request.form['college']
 			ca_data['collegeId'] = request.form['collegeId']
 			ca_data['year'] = request.form['year']
 			ca_data['branch'] = request.form['branch']
-		except:
+		except Exception as e:
+			raise e
 			flash("missing Required Fields")
 			return render_template('ca_register.html')
 
@@ -379,16 +380,18 @@ def ca_register():
 			flash("Email or phone Already Exists!")
 			return render_template('ca_register.html')
 
+
 		try:
 			ca = addCA(ca_data['name'], ca_data['email'], ca_data['phone'], ca_data['gender'], ca_data['college'], ca_data['collegeId'], ca_data['year'], ca_data['branch'])
 		except Exception as e:
 			raise e
 			flash("Something went wrong!")
-		finally:
+			return redirect(url_for('ca_register'))
+		
 
-			mesg = '''Dear '''+ ca.name +''',
+		mesg = '''Dear {},
 
-Your CA Id(referral code): <id>
+Your CA Id(referral code): {}
 
 Thanks for joining our Teckzite family. We hope with your leadership and communication skills you can encourage your fellow students to participate in this nation level techno-management fest. Ask your friends to enter your campus ambassador Id as referral code while they register. 
 For more info visit https://teckzite.org/ca-portal
@@ -400,10 +403,13 @@ Follow us on Instagram:
 Subscribe to our YouTube channel:
 
 Best wishes,
-Team Teckzite'21'''
+Team Teckzite'21'''.format(ca.name, ca.caId)
+		
+		sendMail(ca, "Successfully registered as CA", 'registrationMail.html', mesg=mesg)
+		flash("CA added successfully")
+		return redirect(url_for('index'))
 
-			sendMail(ca, "Successfully registered as CA", 'registrationMail.html', mesg=mesg)
-
+	
 	return render_template('ca_register.html')
 
 	

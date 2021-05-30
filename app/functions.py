@@ -69,7 +69,7 @@ def addCA(name, email, phone, gender, college, collegeId, year, branch):
 
 	new_ca = CA(ca_id, name, email, phone, gender, college, collegeId, year, branch)
 
-	return ca
+	return new_ca
 
 
 def get_google_provider_cfg():
@@ -148,7 +148,7 @@ def generate_ca_id():
     currentId.current_ca_id += 1
     db.session.commit()
     
-    return current_ca_id
+    return "CA" + str(current_ca_id)
 
 
 def registration_required(func):

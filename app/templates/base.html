@@ -33,7 +33,6 @@
                 {% if current_user.is_authenticated %} {% if current_user.registration_status %}
                 <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
                 {% endif %}
-                <li class="nav__list-item"><a href="{{url_for('logout')}}" class="hover-target">Logout</a></li>
 
                 {% else %}
 
