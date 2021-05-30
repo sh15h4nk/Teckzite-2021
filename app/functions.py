@@ -14,17 +14,6 @@ from flask_mail import Message
 s3 = boto3.resource("s3")
 
 
-def generate_ca_id():
-
-    currentId = CurrentId.query.first()
-    current_ca_id = currentId.current_ca_id
-    
-    currentId.current_ca_id += 1
-    db.session.commit()
-    
-    return current_ca_id
-
-
 def getEvents(eventId='all'):
 	if eventId == 'all':
 		events = Event.query.filter_by(hidden=0).all()
@@ -149,6 +138,17 @@ def generate_workshop_id():
     db.session.commit()
 
     return "WS"+str(current_workshop_id)
+
+
+def generate_ca_id():
+
+    currentId = CurrentId.query.first()
+    current_ca_id = currentId.current_ca_id
+    
+    currentId.current_ca_id += 1
+    db.session.commit()
+    
+    return current_ca_id
 
 
 def registration_required(func):
