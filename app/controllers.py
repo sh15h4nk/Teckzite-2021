@@ -215,7 +215,22 @@ def register():
 					flash(user)
 					return render_template(url_for('register'))
 				flash("Your details have been added successfully")
-				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html')
+
+				mesg = '''Dear Participant,
+You are successfully completed first step of registration for Teckzite'21. Thanks for being part of this national level techno-management fest. 
+Your next step is to complete payment. Incase you already completed payment, it will take some time to update, and you will recieve a email on successful payment.
+ 
+The registration of competitions will be opened shortly. It may take some time. So, Don’t miss any updates.
+
+Follow us on Instagram and Subscribe to our YouTube channel.
+Instagram : https://www.instagram.com/teckzite_rguktn/
+Youtube : https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g
+
+Best wishes,
+Team Teckzite'21
+Contact: info@teckzite.org'''
+
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', msg=mesg)
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
@@ -274,7 +289,23 @@ def register():
 					return render_template(url_for('register'))
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
-				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html')
+
+				mesg = '''Dear Participant,
+You are successfully completed first step of registration for Teckzite'21. Thanks for being part of this national level techno-management fest. 
+Your next step is to complete payment. Incase you already completed payment, it will take some time to update, and you will recieve a email on successful payment.
+ 
+The registration of competitions will be opened shortly. It may take some time. So, Don’t miss any updates.
+
+Follow us on Instagram and Subscribe to our YouTube channel.
+Instagram : https://www.instagram.com/teckzite_rguktn/
+Youtube : https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g
+
+Best wishes,
+Team Teckzite'21
+Contact: info@teckzite.org'''
+
+
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', msg=mesg)
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
@@ -354,8 +385,24 @@ def ca_register():
 		except:
 			flash("Something went wrong!")
 		finally:
-			sendMail(ca, "Successfully registered as CA", 'registrationMail.html')
 
+			mesg = '''Dear '''+ ca.name +''',
+
+Your CA Id(referral code): <id>
+
+Thanks for joining our Teckzite family. We hope with your leadership and communication skills you can encourage your fellow students to participate in this nation level techno-management fest. Ask your friends to enter your campus ambassador Id as referral code while they register. 
+For more info visit https://teckzite.org/ca-portal
+
+
+Don't miss our to miss share our updates with your network. 
+Follow us on Instagram:
+....
+Subscribe to our YouTube channel:
+
+Best wishes,
+Team Teckzite'21'''
+
+			sendMail(ca, "Successfully registered as CA", 'registrationMail.html', msg=mesg)
 
 	return render_template('ca_register.html')
 
