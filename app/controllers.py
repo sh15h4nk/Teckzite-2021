@@ -41,7 +41,7 @@ def noindex():
 
 @app.route('/')
 def index():
-	return render_template('registration.html')
+	return render_template('index.html')
 
 @app.route('/workshops')
 @registration_required
@@ -230,12 +230,12 @@ Best wishes,
 Team Teckzite'21
 Contact: info@teckzite.org'''
 
-				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', msg=mesg)
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', mesg=mesg)
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
 			except Exception as e:
-				app.logger.warning(e)
+				raise e
 				flash("Something went wrong")
 				return redirect(url_for('register'))
 		
@@ -282,7 +282,6 @@ Contact: info@teckzite.org'''
 				idcard_url = upload_file_to_s3(idcard, filename, file_ext)
 
 			try:
-				print("fucking  ", user_data)
 				user = addUser(current_user.userId, user_data, idcard_url)
 				if type(user) == str:
 					flash(user)
@@ -305,12 +304,12 @@ Team Teckzite'21
 Contact: info@teckzite.org'''
 
 
-				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', msg=mesg)
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html', mesg=mesg)
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
 			except Exception as e:
-				app.logger.warning(e)
+				raise e
 				flash("Something went wrong")
 				return redirect(url_for('register'))
 				# raise e
@@ -358,7 +357,7 @@ def ca_portal():
 
 
 @app.route('/ca-register')
-def ca_register():
+def ca_register():	
 	if request.method == 'POST':
 		ca_data = {}
 		try:
@@ -382,7 +381,8 @@ def ca_register():
 
 		try:
 			ca = addCA(ca_data['name'], ca_data['email'], ca_data['phone'], ca_data['gender'], ca_data['college'], ca_data['collegeId'], ca_data['year'], ca_data['branch'])
-		except:
+		except Exception as e:
+			raise e
 			flash("Something went wrong!")
 		finally:
 
@@ -402,7 +402,7 @@ Subscribe to our YouTube channel:
 Best wishes,
 Team Teckzite'21'''
 
-			sendMail(ca, "Successfully registered as CA", 'registrationMail.html', msg=mesg)
+			sendMail(ca, "Successfully registered as CA", 'registrationMail.html', mesg=mesg)
 
 	return render_template('ca_register.html')
 
