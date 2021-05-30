@@ -107,9 +107,9 @@
         </div>
         <div class="nav-but-wrap">
             <div class="menu-icon hover-target">
-                <span class="menu-icon_line menu-icon_line-left"></span>
+                <span class="menu-icon__line menu-icon__line-left"></span>
                 <span class="menu-icon__line"></span>
-                <span class="menu-icon_line menu-icon_line-right"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
             </div>
         </div>
     </div>
@@ -157,7 +157,7 @@
             {% if collegeId %}
             <div class="f2">
                 <label for=" ">college id</label>
-                <input type="text " name="collegeId" value="{{collegeId}} " readonly required>
+                <input type="text " name="collegeId" value="{{collegeId}}" readonly required>
                 <span class="focus-input "></span>
             </div>
             {% else %}
@@ -274,11 +274,18 @@
 
 
 <script>
+    function displayMenu() {
+        document.querySelector('.special').style.display = "block ";
+    }
+
+    function closeMenu() {
+        document.querySelector('.special').style.display = "none ";
+    }
     Filevalidation = () => {
-        const fi = document.getElementById('file ');
+        const fi = document.getElementById('file');
         // Check if any file is selected.
         var fileInput =
-            document.getElementById('file ');
+            document.getElementById('file');
 
         var filePath = fileInput.value;
 
