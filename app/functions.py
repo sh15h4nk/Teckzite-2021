@@ -162,7 +162,7 @@ def registration_required(func):
 	return decorated_function
 
 
-def sendMail(user, message_title, template):
+def sendMail(user, message_title, template, mesg):
 	msg = Message(message_title, sender='no-reply@teckzite.org', recipients=[user.email])
-	msg.html = render_template(template)
+	msg.html = render_template(template, msg=mesg)
 	mail.send(msg)
