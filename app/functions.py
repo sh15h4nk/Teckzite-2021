@@ -14,6 +14,17 @@ from flask_mail import Message
 s3 = boto3.resource("s3")
 
 
+def generate_ca_id():
+
+    currentId = CurrentId.query.first()
+    current_ca_id = currentId.current_ca_id
+    
+    currentId.current_ca_id += 1
+    db.session.commit()
+    
+    return current_ca_id
+
+
 def getEvents(eventId='all'):
 	if eventId == 'all':
 		events = Event.query.filter_by(hidden=0).all()
@@ -63,6 +74,13 @@ def addRguktUser(userId, data):
 	db.session.commit()
 
 	return user.first()
+
+def addCA(name, email, phone, gender, college, year, branch):
+	ca_id = generate_ca_id()
+
+	new_ca = CA(ca_id, name, email, phone, gender, college, year, branch)
+
+	return ca
 
 
 def get_google_provider_cfg():
@@ -144,7 +162,7 @@ def registration_required(func):
 	return decorated_function
 
 
-def sendMail(user, message_title):
+def sendMail(user, message_title, template):
 	msg = Message(message_title, sender='no-reply@teckzite.org', recipients=[user.email])
-	msg.html = render_template('registrationMail.html')
+	msg.html = render_template(template)
 	mail.send(msg)
