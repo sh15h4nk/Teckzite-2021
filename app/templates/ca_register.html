@@ -33,7 +33,6 @@
 
 {% endblock %} {% block content %} {{super()}}
 
-
 <div id="loader">
     <div class="content_box">
         <div class="circle">
@@ -118,39 +117,19 @@
 
 
 
+<!-- Name, Email, Phone, College, College Id, Year, Branch, -->
 
 <!-- main -->
 <section class="registration-container">
 
 
-    <form class="form" id="form" method="POST" enctype="multipart/form-data">
+    <form class="form" id="form" method="POST">
 
         <div class="heading">
             <h1>Registration</h1>
         </div>
 
         <br>
-
-        {% if not collegeId %}
-
-        <p style="font-size: 14px; font-weight: 500;" class="center">If you are RGUKT student, please login with your university email id. If not please continue your registration process.</p>
-
-         <a type="button" class="btn btn-primary" href="{{url_for('logout')}}"> Logout </a>
-            
-        {% endif %}
-
-
-            <p>
-
-            {% if not collegeId %}
-
-            <br> Registration fee: 150/-
-
-            {% endif %}
-
-            <br> For RGUKT student(rgukt email): 100/-
-
-        </p>
 
         <br>
 
@@ -160,56 +139,54 @@
                 <input type="text" name="name" required>
                 <span class="focus-input"></span>
             </div>
-            <div class="option f2">
-                <label for="">gender</label>
-                <select name="gender">
-                        <option value="M" selected=""> Male </option>
-                        <option value="F"> Female </option>
-                    </select>
+            <div class="f2">
+                <label for=" ">Email</label>
+                <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required>
+                <span class="focus-input "></span>
             </div>
         </div>
         <br>
 
-        <div class="wrap">
-            <div class="f1">
-                <label for="">phone</label>
-                <input type="text" name="phone" pattern="[0-9]{10}" title="Phone number should be only of 10 digits and numerical only" required>
+        <div class="wrap ">
+            <div class="f1 ">
+                <label for=" ">phone</label>
+                <input type="text " name="phone" pattern="[0-9]{10}" title="Phone number should be only of 10 digits and numerical only " required>
                 <span class="focus-input"></span>
             </div>
 
             {% if collegeId %}
             <div class="f2">
-                <label for="">college id</label>
-                <input type="text" name="collegeId" value="{{collegeId}}" readonly required>
-                <span class="focus-input"></span>
+                <label for=" ">college id</label>
+                <input type="text " name="collegeId" value="{{collegeId}} " readonly required>
+                <span class="focus-input "></span>
             </div>
             {% else %}
             <div class="f2">
-                <label for="">college id</label>
-                <input type="text" name="collegeId" required>
-                <span class="focus-input"></span>
+                <label for=" ">college id</label>
+                <input type="text " name="collegeId" required>
+                <span class="focus-input "></span>
             </div>
             {% endif %}
 
         </div>
         <br>
 
-        <div class="wrap">
+        <div class="wrap ">
 
             {% if college %}
 
-            <div class="f1">
-                <label for="">college</label>
-                <input type="text" name="college" value="{{college}}" readonly required>
-                <span class="focus-input"></span>
+            <div class="f1 ">
+                <label for=" ">college</label>
+                <input type="text " name="college" value="{{college}} " readonly required>
+                <span class="focus-input "></span>
             </div>
 
             {% else %}
 
-            <div class="f1">
-                <label for="">college</label>
-                <input type="text" name="college" required>
-                <span class="focus-input"></span>
+            <div class="f1 ">
+                <label for=" ">college</label>
+                <input type="text " name="college" required>
+                <span class="focus-input "></span>
             </div>
 
             {% endif %}
@@ -218,7 +195,7 @@
             <div class="option f2">
                 <label for="bra" class="">Branch</label>
                 <select class="sp" id="bra" name="branch" onclick="select()">
-                    <option value="" disabled="disabled">------------Choose Branch------------</option>
+                    <option value="">------------Choose Branch------------</option>
                     <option value="CSE">Computer Science Engineering</option>
                     <option value="MECH">Mechaincal Engineering</option>
                     <option value="CHE">Chemical Engineering</option>
@@ -246,157 +223,62 @@
             <button class="btn cancel" style="display: none; margin: 1em 0;" onclick="cancel()">cancel</button>
         </center>
 
-
-        <div class="wrap">
-            <div class="f1 state">
-                <label for="stt">State</label>
-                <select class="" id="stt" name="state">
-                    <option value="" disabled="disabled">------------Select State------------</option>
-                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                    <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
-                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                    <option value="Assam">Assam</option>
-                    <option value="Bihar">Bihar</option>
-                    <option value="Chandigarh">Chandigarh</option>
-                    <option value="Chhattisgarh">Chhattisgarh</option>
-                    <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
-                    <option value="Daman and Diu">Daman and Diu</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Goa">Goa</option>
-                    <option value="Gujarat">Gujarat</option>
-                    <option value="Haryana">Haryana</option>
-                    <option value="Himachal Pradesh">Himachal Pradesh</option>
-                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                    <option value="Jharkhand">Jharkhand</option>
-                    <option value="Karnataka">Karnataka</option>
-                    <option value="Kerala">Kerala</option>
-                    <option value="Lakshadweep">Lakshadweep</option>
-                    <option value="Madhya Pradesh">Madhya Pradesh</option>
-                    <option value="Maharashtra">Maharashtra</option>
-                    <option value="Manipur">Manipur</option>
-                    <option value="Meghalaya">Meghalaya</option>
-                    <option value="Mizoram">Mizoram</option>
-                    <option value="Nagaland">Nagaland</option>
-                    <option value="Orissa">Orissa</option>
-                    <option value="Pondicherry">Pondicherry</option>
-                    <option value="Punjab">Punjab</option>
-                    <option value="Rajasthan">Rajasthan</option>
-                    <option value="Sikkim">Sikkim</option>
-                    <option value="Tamil Nadu">Tamil Nadu</option>
-                    <option value="Telangana">Telangana</option>
-                    <option value="Tripura">Tripura</option>
-                    <option value="Uttaranchal">Uttaranchal</option>
-                    <option value="Uttar Pradesh">Uttar Pradesh</option>
-                    <option value="West Bengal">West Bengal</option>
-                  </select>
-                <span class="focus-input"></span>
-            </div>
-            <div class="f2">
-                <label for="">district</label>
-                <input type="text" name="district" required>
-                <span class="focus-input"></span>
-            </div>
-
-
-        </div>
         <br>
 
-        <div class="wrap">
-            <div class="f1">
-                <label for="">city</label>
-                <input type="text" name="city">
-                <span class="focus-input"></span>
-            </div>
 
-            <div class="f2">
-                <label for="">ZIP code</label>
-                <input type="text" name="pin" pattern="[0-9]{6}" required>
-                <span class="focus-input"></span>
-            </div>
+        <div class="wrap ">
 
-
-        </div>
-
-        <div class="wrap">
-            <div class="option f1">
-                <label for="poo" class="select">Year</label>
-                <select class="" id="poo" name="year">
-                    <option value="1"> 1 </option>
-                    <option value="2"> 2 </option>
-                    <option value="3"> 3 </option>
-                    <option value="4"> 4 </option>
+            <div class="option f1 ">
+                <label for="fog " class="select ">Gender</label>
+                <select class=" " id="fog " name="gender">
+                    <option value="M"> Male </option>
+                    <option value="F"> Female </option>
+                 
 
 
                 </select>
 
             </div>
 
-            <div class="f2">
-                <label for="">referral code</label>
-                <input type="text" name="referral">
-                <span class="focus-input"></span>
-            </div>
-        </div>
+            <div class="option f2 ">
+                <label for="poo " class="select ">Year</label>
+                <select class=" " id="poo " name="year">
+                    <option value="1 "> 1 </option>
+                    <option value="2 "> 2 </option>
+                    <option value="3 "> 3 </option>
+                    <option value="4 "> 4 </option>
 
 
-        <div class="wrap">
+                </select>
 
-            <!-- <div class="f1">
-                <label for="">Email ID</label>
-                <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                <span class="focus-input"></span>
-            </div> -->
-
-            <div class="f1">
-                <label for="">How did you find us?</label>
-                <input type="text" name="survey">
-                <span class="focus-input"></span>
-            </div>
-
-            <div class="option f2">
-                <label for=""> Upload your ID card</label>
-                <input type="file" id="file" name="idcard" onchange="Filevalidation()" required>
             </div>
 
 
         </div>
+
+
+
 
 
         <button class=" btn " type="submit " style="margin: 2.5em 0; ">submit</button>
 
     </form>
 
-
-    
-     {% if not collegeId %}
-
-        <p style="color:green; font-size: 14px; font-weight: 500; " class="center ">All B.tech/Degree/Any UG/Polytechnic/Intermediate students across india can participate</p>
-
-
-     {% endif %}
-
 </section>
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="{{url_for( 'static', filename='./js/script.js' )}} "></script>
-<script src="{{url_for( 'static', filename='./js/main.js' )}} "></script>
+<script src="{{url_for( 'static', filename='./js/script.js')}} "></script>
+<script src="{{url_for( 'static', filename='./js/main.js')}} "></script>
 
 
 
 <script>
-    function displayMenu() {
-        document.querySelector('.special').style.display = "block ";
-    }
-
-    function closeMenu() {
-        document.querySelector('.special').style.display = "none ";
-    }
     Filevalidation = () => {
-        const fi = document.getElementById('file');
+        const fi = document.getElementById('file ');
         // Check if any file is selected.
         var fileInput =
-            document.getElementById('file');
+            document.getElementById('file ');
 
         var filePath = fileInput.value;
 
@@ -405,8 +287,8 @@
             /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
         if (!allowedExtensions.exec(filePath)) {
-            alert('Invalid file type');
-            fileInput.value = '';
+            alert('Invalid file type ');
+            fileInput.value = ' ';
             return false;
         } else {
             if (fi.files.length > 0) {
@@ -419,14 +301,12 @@
                         alert(
                             "File too Big, please select a file less than 50kb ");
                     } else {
-                        document.getElementById('size').innerHTML = '<b>' +
-                            file + '</b> KB';
+                        document.getElementById('size ').innerHTML = '<b>' + file + '</b> KB';
                     }
                 }
             }
         }
     }
-
 
     function select() {
         console.log(document.querySelector('.sp').value);

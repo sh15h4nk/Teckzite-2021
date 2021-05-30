@@ -218,13 +218,13 @@
 
             <h2>User Details</h2>
             <p class="tzID">Name</p>
-            <h3>user.name</h3>
+            <h3>{{user.name}}</h3>
 
             <p class="tzID">Email</p>
-            <h3 style="text-transform: none;">user.email</h3>
+            <h3 style="text-transform: none;">{{user.email}}</h3>
             <p class="tzID">Teckzite-Id</p>
             <div class="tooltip">
-                <input type="text" value="user-id" id="myInput " style="background:transparent;color:white;font-size:25px;">
+                <input type="text" value="{{user.userId}}" id="myInput" style="background:transparent;color:white;font-size:25px;">
                 <button class="button" onclick=" myFunction() " onmouseout="outFunc() ">
                   <span class="tooltiptext " id="myTooltip ">Copy to clipboard</span>
                   Copy Teckzite id
@@ -260,10 +260,10 @@
 
 <script>
     function myFunction() {
-        var copyText = document.getElementById("myInput ");
+        var copyText = document.getElementById("myInput");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
-        document.execCommand("copy ");
+        document.execCommand("copy");
 
         var tooltip = document.getElementById("myTooltip ");
         tooltip.innerHTML = "Copied: " + copyText.value;
