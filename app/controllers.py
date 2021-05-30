@@ -1,6 +1,6 @@
 from flask import url_for, redirect, request, render_template, flash, Response, escape, Markup
 from app import app, db
-from app.models import TechUser
+from app.models import TechUser, CA
 from app.functions import *
 from creds import GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 
@@ -215,7 +215,7 @@ def register():
 					flash(user)
 					return render_template(url_for('register'))
 				flash("Your details have been added successfully")
-				sendMail(user, "Congratulations, Your registration is successfully completed!")
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html')
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
@@ -274,7 +274,7 @@ def register():
 					return render_template(url_for('register'))
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
-				sendMail(user, "Congratulations, Your registration is successfully completed!")
+				sendMail(user, "Congratulations, Your registration is successfully completed!", 'registrationMail.html')
 				flash("Proceed to pay")
 				return redirect(url_for('payment'))
 
@@ -324,6 +324,41 @@ def profile():
 @app.route('/ca-portal')
 def ca_portal():
 	return render_template('ca-portal.html')
+
+
+@app.route('/ca-register')
+def ca_regiset():
+	if request.method == 'POST':
+		ca_data = {}
+		try:
+			ca_data['name'] = request.form['name']
+			ca_data['phone'] = request.form['phone']
+			ca_data['email'] = request.form['email']
+			ca_data['college'] = request.form['college']
+			ca_data['collegeId'] = request.form['collegeId']
+			ca_data['year'] = request.form['year']
+			ca_data['branch'] = request.form['branch']
+		except:
+			flash("missing Required Fields")
+			return render_template('ca_register.html')
+
+		phone = CA.query.filter_by(phone = ca_data['phone']).first()
+		email = CA.query.filter_by(email = ca_data['email']).first()
+
+		if phone or email:
+			flash("Email or phone Already Exists!")
+			return render_template('ca_register.html')
+
+		try:
+			ca = addCA(ca_data['name'], ca_data['email'], ca_data['phone'], ca_data['gender'], ca_data['college'], ca_data['year'], ca_data['branch'])
+		except:
+			flash("Something went wrong!")
+		finally:
+			sendMail(ca, "Successfully registered as CA", 'registrationMail.html')
+
+
+	return render_template('ca_register.html')
+
 	
 @app.errorhandler(404)
 def page_not_found(e):
