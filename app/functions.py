@@ -64,10 +64,10 @@ def addRguktUser(userId, data):
 
 	return user.first()
 
-def addCA(name, email, phone, gender, college, year, branch):
+def addCA(name, email, phone, gender, college, collegeId, year, branch):
 	ca_id = generate_ca_id()
 
-	new_ca = CA(ca_id, name, email, phone, gender, college, year, branch)
+	new_ca = CA(ca_id, name, email, phone, gender, college, collegeId, year, branch)
 
 	return ca
 
