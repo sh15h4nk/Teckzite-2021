@@ -350,7 +350,7 @@ def ca_register():
 			return render_template('ca_register.html')
 
 		try:
-			ca = addCA(ca_data['name'], ca_data['email'], ca_data['phone'], ca_data['gender'], ca_data['college'], ca_data['year'], ca_data['branch'])
+			ca = addCA(ca_data['name'], ca_data['email'], ca_data['phone'], ca_data['gender'], ca_data['college'], ca_data['collegeId'], ca_data['year'], ca_data['branch'])
 		except:
 			flash("Something went wrong!")
 		finally:
