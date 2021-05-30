@@ -184,8 +184,12 @@
     <br>
     <center>
         <h1>payment Status</h1>
-        <p style="text-align:center;">COMPLETED</p>
-        <button class="btn" style="margin: 2em 0;">complete</button>
+        {% if user.payment_status %}
+            <p style="text-align:center;">COMPLETED</p>
+        {% else %}
+            <p style="text-align:center;">PENDING</p>
+            <a class="btn btn-dark" style="margin: 2em 0;" href="{{url_for('payment')}}">complete</a>
+        {% endif %}
     </center>
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
     <br>
