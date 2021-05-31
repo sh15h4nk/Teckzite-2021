@@ -221,7 +221,8 @@ def register():
 					return redirect(url_for('register'))
 				flash("Your details have been added successfully")
 
-				mesg = '''Dear Participant,
+				mesg = '''
+Dear Participant,
 You are successfully completed first step of registration for Teckzite'21. Thanks for being part of this national level techno-management fest. 
 Your next step is to complete payment. Incase you already completed payment, it will take some time to update, and you will recieve a email on successful payment.
  
@@ -300,7 +301,8 @@ Contact: info@teckzite.org'''
 				address = addAddress(user.userId, address_data)
 				flash("Your details have been added successfully")
 
-				mesg = '''Dear Participant,
+				mesg = '''
+Dear Participant,
 You are successfully completed first step of registration for Teckzite'21. Thanks for being part of this national level techno-management fest. 
 Your next step is to complete payment. Incase you already completed payment, it will take some time to update, and you will recieve a email on successful payment.
  
@@ -401,7 +403,8 @@ def ca_register():
 			return redirect(url_for('ca_register'))
 		
 
-		mesg = '''Dear {},
+		mesg = '''
+Dear {},
 
 Your CA Id(referral code): {}
 
@@ -410,9 +413,9 @@ For more info visit https://teckzite.org/ca-portal
 
 
 Don't miss our to miss share our updates with your network. 
-Follow us on Instagram:
-....
-Subscribe to our YouTube channel:
+Follow us on Instagram and Subscribe to our YouTube channel.
+Instagram : https://www.instagram.com/teckzite_rguktn/
+Youtube : https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g
 
 Best wishes,
 Team Teckzite'21'''.format(ca.name, ca.caId)
