@@ -241,14 +241,23 @@
 
         <div class="op ">
 
-            {% if role == 'non-rgukt' %}
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment for Teckzite Registration</a>            {% else %}
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment for Teckzite Registration</a>            {% endif %}
+            {% if not user.payment_status %}
 
 
-            <br>
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Payment for Workshop Registration</a>     
+                {% if role == 'non-rgukt' %}
+                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment for Teckzite Registration</a>            {% else %}
+                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment for Teckzite Registration</a>            {% endif %}
 
+            {% elif not user.workshop_payment_status %}
+
+                <br>
+                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Payment for Workshop Registration</a>     
+
+            {% else %}
+
+                <p> You have completed all payments! Cheers. </p>
+
+            {% endif %}
 
         </div>
     </div>
