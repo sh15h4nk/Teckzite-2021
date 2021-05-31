@@ -32,27 +32,34 @@ def unauthorized():
     flash("You are not authorised")
     return redirect(url_for('index'))
 
-@app.route('/robots.txt')
-def noindex():
-	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
-	r.headers["Content-Type"] = "text/plain; charset=utf-8"
-	return r
+# @app.route('/robots.txt')
+# def noindex():
+# 	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+# 	r.headers["Content-Type"] = "text/plain; charset=utf-8"
+# 	return r
 
 
 @app.route('/')
 def index():
 	return render_template('index.html')
 
-@app.route('/workshops')
-@registration_required
-def workshopsView():
-	return render_template('workshops.html')
+# @app.route('/workshops')
+# @registration_required
+# def workshopsView():
+# 	return render_template('workshops.html')
 
 @app.route('/competitions')
 def competitionsView():
 
 	events = getEvents()
 	return render_template('competitions.html', events = events)
+
+@app.route('/workshops')
+def workshopsView():
+
+	workshops = getWorkshops()
+	return render_template('workshops.html', workshops = workshops)
+
 
 @app.route('/event-details/<eventId>')
 def eventDetailsView(eventId):
@@ -69,6 +76,23 @@ def eventDetailsView(eventId):
 	# print(markup['structure'])
 
 	return render_template('event-details.html', event=event, markup=markup)
+
+
+@app.route('/workshop-details/<workshopId>')
+def workshopDetailsView(workshopId):
+
+	
+	workshop = getWorkshops(workshopId)
+
+	markup = {}
+	markup['description'] = Markup(workshop.description).unescape()
+	markup['about'] = Markup(workshop.about).unescape()
+	markup['timeline'] = Markup(workshop.timeline).unescape()
+	markup['resources'] = Markup(workshop.resources).unescape()
+
+	# print(markup['structure'])
+
+	return render_template('workshop-details.html', workshop=workshop, markup=markup)
 
 @app.route('/talks')
 def talksView():
@@ -362,7 +386,9 @@ def payment():
 @registration_required
 def profile():
 
-	return render_template('userProfile.html', user=current_user)
+	workshop = Workshop.query.filter_by(workshopId=current_user.workshop_id).first()
+
+	return render_template('userProfile.html', user=current_user, workshop=workshop)
 
 @app.route('/ca-portal')
 def ca_portal():
@@ -452,7 +478,13 @@ def add_workshop():
 		flash("Your workshop has been added successfully!")
 		return redirect(url_for('profile'))
 
-	return render_template('add_workshop.html')
+	workshops = Workshop.query.filter_by(hidden=0).all()
+
+	if not workshops:
+		flash("No workshops")
+		return redirect(url_for('profile'))
+
+	return render_template('add_workshop.html', workshops=workshops)
 
 	
 @app.errorhandler(404)

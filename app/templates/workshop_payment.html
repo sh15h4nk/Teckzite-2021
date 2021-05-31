@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}Teckzite 2021 | Registrations-User
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | Workshop Registration
 </Registrations-RGUKT>{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
@@ -234,13 +234,8 @@
 
         <div class="op ">
 
-            {% if role == 'non-rgukt' %}
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment for Teckzite Registration</a>            {% else %}
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment for Teckzite Registration</a>            {% endif %}
-
-
-            <br>
-            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Payment for Workshop Registration</a>     
+           
+            <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Payment for Workshop</a>      
 
 
         </div>

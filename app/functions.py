@@ -22,6 +22,15 @@ def getEvents(eventId='all'):
 	event = Event.query.filter_by(hidden=0, eventId=eventId).first()
 	return event
 
+def getWorkshops(workshopId='all'):
+	if workshopId == 'all':
+		workshops = Workshop.query.filter_by(hidden=0).all()
+		return workshops
+
+	workshop = Workshop.query.filter_by(hidden=0, workshopId=workshopId).first()
+	return workshop
+
+
 def addAddress(t_userId, address_data):
 	address = Address(address_data['state'], address_data['district'], address_data['city'], address_data['pin'])
 	address.t_userId = t_userId
