@@ -91,7 +91,7 @@ def get_college(email):
 	return "RGUKT-"+clg_suffix.upper()
 
 def get_college_id(email):
-	pattern = r'(^[a-zA-Z0-9]{7})@rgukt[a-z]*.ac.in$'
+	pattern = r'(^[a-zA-Z0-9])@rgukt[a-z]*.ac.in$'
 	Id = re.findall(pattern, email)[0]
 	return Id.upper()
 
