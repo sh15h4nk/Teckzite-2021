@@ -213,6 +213,13 @@
 
     <p style="text-align:center; font-family: Helvetica; font-size:45px;">Transaction
     </p>
+
+    <br>
+
+    <p>  After payment, it takes 5-10 mins to update your payments status </p>
+
+    <br>
+
     <div class=" row ">
         <div class="column ">
 
@@ -224,8 +231,8 @@
             <h3 style="text-transform: none;">{{user.email}}</h3>
             <p class="tzID">Teckzite-Id</p>
             <div class="tooltip">
-                <input type="text" value="{{user.userId}}" id="myInput" style="background:transparent;color:white;font-size:25px;">
-                <button class="button" onclick=" myFunction() " onmouseout="outFunc() ">
+                <input type="text" value="{{user.userId}}" readonly id="myInput" style="background:transparent;color:white;font-size:25px;">
+                <button class="button" onclick="myFunction()" onmouseout="outFunc()">
                   <span class="tooltiptext " id="myTooltip ">Copy to clipboard</span>
                   Copy Teckzite id
                   </button>

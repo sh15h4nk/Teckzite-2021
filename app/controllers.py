@@ -32,11 +32,11 @@ def unauthorized():
     flash("You are not authorised")
     return redirect(url_for('index'))
 
-# @app.route('/robots.txt')
-# def noindex():
-# 	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
-# 	r.headers["Content-Type"] = "text/plain; charset=utf-8"
-# 	return r
+@app.route('/robots.txt')
+def noindex():
+	r = Response(response="User-Agent: Googlebot\nAllow: /\n\nUser-Agent: *\nDisallow: /\n", status=200, mimetype="text/plain")
+	r.headers["Content-Type"] = "text/plain; charset=utf-8"
+	return r
 
 
 @app.route('/')
