@@ -220,20 +220,42 @@
             </div> -->
     </div>
 
-    <h5 style="margin-top: 1rem;">Workshops</h5>
+    <h5 style="margin-top: 1rem;">Workshop</h5>
 
-    <!-- <div class="lnk">
-            <div class="lnkCard">
-                <div class="details">
-                    <div class="names">
-                        <p>n4355jd jd dklj dfj dfkj dkljl kjdj ld jk </p>
-                        <p>435jvjv4jjmnjcvkk knkfn knkfgj</p>
-                        <p>djvj43jv</p>
-                        <p>n4355jddfkj k lfd</p>
+    {% if user.workshop_payment_status %}
+
+        {% if workshop %}
+
+            <div class="lnk">
+                    <div class="lnkCard">
+                        <div class="details">
+                            <div class="names">
+                                <p>{{workshop.title}}</p>                        
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div> -->
+             </div>
+
+
+             <button><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+
+
+        {%else%}
+
+             <p> Please add a workshop </p>
+             <button><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button>
+
+
+        {% endif %}
+
+    {% else %}
+
+        <p> You have not registered for any workshop yet </p>
+        <button><a href="{{url_for('payment')}}"> Register a Workshop </a></button>
+
+    {% endif %}
+
+
 
     <p class="fee">
         <marquee behavior="" direction="X">You haven't paid your registration fee yet</marquee>

@@ -108,150 +108,31 @@
 <!-- main -->
 <section class="workshops-main">
     <div class="contain">
-        <h1 class="pos center">workshops</h1>
+        <h1 class="pos center">Workshops</h1>
         <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
     </div>
     <div class="workshops-container">
 
+
+        {% for workshop in workshops %}
+
         <div class="workshop">
             <div class="inner">
                 <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/aws.jpeg')}}" alt="">
+                    <img src="{{workshop.image_url}}" alt="">
                 </div>
                 <div class="contentBx">
-                    <h2>AWS</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
+                    <h2>{{workshop.title}}</h2>
+                    <p>{{workshop.description}}</p>
                     <!-- <p class="link"><a href="#">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
+                    <p class="link"><a href="{{url_for('workshopDetailsView', workshopId=workshop.workshopId)}}">View</a></p>
                 </div>
             </div>
         </div>
 
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/blockchain.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Block chain and cryptocurrency</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/iot.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>internet of things</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/vlsi.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Embedded systems for VLSI</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/web.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Web development</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/aspan.png')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Aspan+</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/share.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Share marketing and investment</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/3dPrinting.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>3D Printing</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/conPlaMan.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Construction Planning Management</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{url_for('static', filename='./img/workshops/metalsindustrialwaste.jpeg')}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>Recovery of metals from industrial waste management</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti beatae molestiae nihil. Unde harum ipsum similique reprehend</p>
-                    <!-- <p class="link"><a href="updating.html">view</a></p> -->
-                    <p class="link">Will be updated shortly</p>
-                </div>
-            </div>
-        </div>
+        
+        {% endfor %}
+       
 
     </div>
 </section>
