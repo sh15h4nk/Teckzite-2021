@@ -16,9 +16,12 @@
         <div class="nav__content">
             <ul class="nav__list">
                 <li class="nav__list-item active-nav"><a href="{{url_for('index')}}" class="hover-target">home</a></li>
-                {% if current_user.is_authenticated %} {% if current_user.registration_status %}
-                <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
-                {% endif %}
+                {% if current_user.is_authenticated %}
+                    {% if current_user.registration_status %}
+                    <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
+                    {% else %}
+                        <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">Register</a></li>
+                    {% endif %}
 
                 {% else %}
 
