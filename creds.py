@@ -25,8 +25,8 @@ dbname="tz2021"
 
 
 # for teckzite.org
-GOOGLE_CLIENT_ID = "1013131542861-avltjardjeeok008eolactmtrhh60vad.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "ywZNoWF98ucJqejiOWZzwTa_"
+GOOGLE_CLIENT_ID = "1067849060171-806too6vbqn0gouq3r8bgbt5to93n5nn.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "0xHFt290r2YLMUf7qQX5VT7G"
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
