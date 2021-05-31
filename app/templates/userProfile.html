@@ -149,7 +149,7 @@
         <div class="image">
             <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
-        <p class="tzID">{{user.id}}</p>
+        <p class="tzID">{{user.userId}}</p>
         <br>
         <div class="row">
             <div class="column">
@@ -222,44 +222,46 @@
 
     <h5 style="margin-top: 1rem;">Workshop</h5>
 
-    {% if user.workshop_payment_status %}
 
-        {% if workshop %}
+    {% if workshop %}
 
-            <div class="lnk">
-                    <div class="lnkCard">
-                        <div class="details">
-                            <div class="names">
-                                <p>{{workshop.title}}</p>                        
-                            </div>
-                        </div>
-                    </div>
-             </div>
+        {% if not user.workshop_payment_status %}
 
+            <p>  After payment, it takes 5-10 mins to update your payments status </p>
+            <p>  Please wait untill the payment status is updated </p>
 
-             <button><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+            <br>
 
+            <p> If not yet paid <button> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
 
-        {%else%}
+        {% else %}
 
-             <p> Please add a workshop </p>
-             <button><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button>
-
+            <p> Your payment was successfull </p>
 
         {% endif %}
 
-    {% else %}
+        <br>
 
-        <p> You have not registered for any workshop yet </p>
-        <button><a href="{{url_for('payment')}}"> Register a Workshop </a></button>
+        <div class="lnk">
+                <div class="lnkCard">
+                    <div class="details">
+                        <div class="names">
+                            <p>{{workshop.title}}</p>                        
+                        </div>
+                    </div>
+                </div>
+         </div>
+
+
+         <button><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+
+
+    {%else%}
+
+             <button><a href="{{url_for('payment')}}"> Register Workshop </a></button>
+
 
     {% endif %}
-
-
-
-    <p class="fee">
-        <marquee behavior="" direction="X">You haven't paid your registration fee yet</marquee>
-    </p>
 
 
     <br>
