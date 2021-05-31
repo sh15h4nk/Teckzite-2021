@@ -424,6 +424,33 @@ Team Teckzite'21'''.format(ca.name, ca.caId)
 	
 	return render_template('ca_register.html')
 
+
+@app.route('/addWorkshop', methods=['GET', 'POST'])
+@login_required
+@registration_required
+def add_workshop():
+	if request.method=='POST':
+		workshopId = request.form['workshopId']
+
+		if not workshopId:
+			flash("Please select a workshop")
+			return render_template('add_workshop.html')
+
+		tech_user = TechUser.query.filter_by(userId=current_user.userId)
+		if not tech_user:
+			flash("Something went wrong!")
+			return redirect(url_for('index'))
+
+
+
+		tech_user.update({'workshop_id': workshopId})
+		db.session.commit()
+
+		flash("Your workshop has been added successfully!")
+		return redirect(url_for('profile'))
+
+	return render_template('add_workshop.html')
+
 	
 @app.errorhandler(404)
 def page_not_found(e):

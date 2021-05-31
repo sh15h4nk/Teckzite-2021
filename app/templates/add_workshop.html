@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | ADD OR UPDATE WORKSHOP {% endblock %} 
+
+{% block html_head %} {{super()}} {% endblock %}
+
+{% block content %} {{super()}}
+
+	<form method="POST">
+		<select name="workshopId">
+			<option value="WS99999">Fuck workshop</option>
+			<option value="WS88888">Fuck workshop</option>
+
+		</select>
+
+		<button type="submit">Submit</button>
+
+	</form>
+
+	
+{% endblock %}
