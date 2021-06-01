@@ -4,16 +4,11 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-<script>
-    onload = function resetHeight() {
-        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-    }
-    console.log(window.innerHeight);
-</script>
+
 <style>
     .op {
         position: relative;
-        left: 50%;
+        left: 70%;
         width: 30%;
     }
     
@@ -53,6 +48,7 @@
     .row {}
     
     .button {
+        border-radius: 40px;
         background-color: #4CAF50;
         /* Green */
         border: none;
@@ -74,7 +70,7 @@
     }
     
     .button1:hover {
-        background-color: #4CAF50;
+        background-color: rgb(88, 163, 113);
         color: white;
     }
     
@@ -216,7 +212,7 @@
 
     <br>
 
-    <p>  After payment, it takes 5-10 mins to update your payments status </p>
+    <p style="text-align: center">  After payment, it takes 5-10 mins to update your payments status </p>
 
     <br>
 
@@ -231,27 +227,28 @@
             <h3 style="text-transform: none;">{{user.email}}</h3>
             <p class="tzID">Teckzite-Id</p>
             <div class="tooltip">
-                <input type="text" value="{{user.userId}}" readonly id="myInput" style="background:transparent;color:white;font-size:25px;">
-                <button class="button" onclick="myFunction()" onmouseout="outFunc()">
-                  <span class="tooltiptext " id="myTooltip ">Copy to clipboard</span>
-                  Copy Teckzite id
+                <input type="text" value="{{user.userId}}" readonly id="myInput" style="background:transparent;color:white;font-size:25px; padding: 10px;">
+                <button class="button" onclick="myFunction()" onmouseout="outFunc()" style="border-radius: 40px; background-color: rgb(100, 104, 110);">
+                  <span class="tooltiptext" id="myTooltip ">Copy to clipboard</span>
+                  Copy
                   </button>
             </div>
         </div>
-
-        <div class="op ">
+        <div class="op">
 
             {% if not user.payment_status %}
 
-
+                <p style="font-weight: bold; position: relative; left: -20%;">Payment for Teckzite</p>
                 {% if role == 'non-rgukt' %}
-                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Payment for Teckzite Registration</a>            {% else %}
-                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Payment for Teckzite Registration</a>            {% endif %}
+                    <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344003'> Pay</a>
+                {% else %}
+                    <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org&theme=1&t=2&tid=344002'> Pay</a>
+                {% endif %}
 
             {% elif not user.workshop_payment_status %}
-
+                <p style="font-weight: bold; position: relative; left: -20%;">Payment for Workshop</p>
                 <br>
-                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Payment for Workshop Registration</a>     
+                <a class="button button1 " target="_blank " rel="noopener noreferrer " href='https://www.meraevents.com/ticketWidget?eventId=242618&ucode=organizer&wcode=1789A3-1789A3-333333-81C868-&dateTime=1&location=1&directDetails=0&redirectUrl=https://teckzite.org/addWorkshop&theme=1&t=2&tid=344005'> Pay</a>     
 
             {% else %}
 

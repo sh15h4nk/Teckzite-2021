@@ -71,7 +71,7 @@
                 </defs>
                 <path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
                       M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z
-                      " />
+                     " />
 
         </svg>
 
@@ -104,22 +104,22 @@
 <section class="view">
     <h1 class="pos center">TECKZITE CAMPUS AMBASSADOR</h1>
     <center>
-        <button class=" btn " type="submit " style="margin: 2.5em 0;"><a href="{{url_for('ca_register')}}">Register</a></button>
+        <button class=" btn" type="submit" style="margin: 2.5em 0;"><a href="{{url_for('ca_register')}}">Register</a></button>
     </center>
     <p>Teckzite Campus Ambassador is an initiative of Teckzite, RGUKTN that allows selected represents from various colleges to become part of the organization and support with internal publicity. It provides a great opportunity to get involved with a national
         level student collaboration that extends all over the country. You will be the face and voice of Teckzite at your campus. This program consists of series of challenges and you will be rewarded with points for each challenge.</p>
 
-    <div class=" wrapper ">
+    <div class=" wrapper">
         <center>
-            <ul class="list-sec ">
-                <li data-target="details " class="active ">details</li>
-                <li data-target="responsibilities ">responsibilities</li>
-                <li data-target="rewards ">rewards</li>
-                <li data-target="incentives ">incentives</li>
+            <ul class="list-sec">
+                <li data-target="details" class="active">details</li>
+                <li data-target="responsibilities">responsibilities</li>
+                <li data-target="rewards">rewards</li>
+                <li data-target="incentives">incentives</li>
             </ul>
         </center>
-        <div class="wrapper-right ">
-            <div class="content details ">
+        <div class="wrapper-right">
+            <div class="content details">
                 <p>• You can enhance your skills in the fields of leadership, communication and marketing.</p>
                 <br>
                 <p>• You may gain chances for networking and maintaining public relations at the national level</p>
@@ -127,7 +127,7 @@
                 <p>• Make the most of a first-class opportunity to be a part of the network of thousands of students across the country, and to collaborate with them</p>
             </div>
 
-            <div class="content responsibilities " style="display:none; ">
+            <div class="content responsibilities" style="display:none;">
                 <p>• Identifying potential participants for Teckzite on your campus.</p>
                 <br>
                 <p>• Spreading the word in your campus about events and workshops conducted by Teckzite.</p>
@@ -138,7 +138,7 @@
 
             </div>
 
-            <div class="content rewards " style="display:none; ">
+            <div class="content rewards" style="display:none;">
                 <p>• Registering a student for Teckzite - 10pts</p>
                 <br>
                 <p>• Registering a student for a Workshop - 5pts</p>
@@ -147,9 +147,9 @@
 
             </div>
 
-            <div class="content incentives " style="display:none; ">
+            <div class="content incentives" style="display:none;">
                 <center>
-                    <table border="1 ">
+                    <table border="1">
                         <tr>
                             <th>
                                 <p>S.No</p>
@@ -260,13 +260,13 @@
     <!-- main -->
     {% endblock %} {% block javascript %} {{super()}}
 
-    <script src="{{url_for( 'static', filename='./js/script.js' )}} "></script>
-    <script src="{{url_for( 'static', filename='./js/main.js' )}} "></script>
+    <script src="{{url_for( 'static', filename='./js/script.js' )}}"></script>
+    <script src="{{url_for( 'static', filename='./js/main.js' )}}"></script>
     <script>
         const btn = document.querySelectorAll('.list-sec li');
         const ele = document.querySelectorAll('.wrapper-right .content');
         for (var i = 0; i < btn.length; i++) {
-            btn[i].addEventListener("click ", function() {
+            btn[i].addEventListener("click", function() {
 
                 btn.forEach(function(li) {
                     li.classList.remove('active');
@@ -274,26 +274,26 @@
 
                 this.classList.add('active');
 
-                var eleValue = this.getAttribute("data-target ");
+                var eleValue = this.getAttribute("data-target");
 
                 ele.forEach(function(item) {
-                    item.style.display = "none ";
+                    item.style.display ="none";
                 })
 
-                if (eleValue == "details ") {
-                    document.querySelector(". " + eleValue).style.display = "block ";
-                } else if (eleValue == "responsibilities ") {
-                    document.querySelector(". " + eleValue).style.display = "block ";
-                } else if (eleValue == "rewards ") {
-                    document.querySelector(". " + eleValue).style.display = "block ";
-                } else if (eleValue == "incentives ") {
-                    document.querySelector(". " + eleValue).style.display = "block ";
+                if (eleValue =="details") {
+                    document.querySelector("." + eleValue).style.display ="block";
+                } else if (eleValue =="responsibilities") {
+                    document.querySelector("." + eleValue).style.display ="block";
+                } else if (eleValue =="rewards") {
+                    document.querySelector("." + eleValue).style.display ="block";
+                } else if (eleValue =="incentives") {
+                    document.querySelector("." + eleValue).style.display ="block";
                 }
-                /*else if(eleValue == "register "){
-                  document.querySelector(". " + eleValue).style.display = "block ";
+                /*else if(eleValue =="register"){
+                  document.querySelector("." + eleValue).style.display ="block";
                 }*/
                 else {
-                    console.log("failed ");
+                    console.log("failed");
                 }
             })
         }

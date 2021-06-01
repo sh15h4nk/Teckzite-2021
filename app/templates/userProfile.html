@@ -2,12 +2,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-<script>
-    onload = function resetHeight() {
-        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
-    }
-    console.log(window.innerHeight);
-</script>
 <style>
     .container {
         background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
@@ -53,6 +47,27 @@
         content: "";
         display: table;
         clear: both;
+    }
+    .button {
+        border-radius: 40px;
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
     }
 </style>
 {% endblock %} {% block content %} {{super()}}
@@ -144,7 +159,9 @@
 
 <div class="container">
     <h2 style="text-align: center; padding-top: 15vh;">profile</h2>
-    <button class="btn btn-primary"> <a href="{{url_for('logout')}}"> Logout </a> </button>
+        <p style="text-align:center; font-style:italic;">  All payments are updated within 5-10 mins </p>
+
+    <button class="button button1"> <a href="{{url_for('logout')}}"> Logout </a> </button>
     <div class="ro">
         <div class="image">
             <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
@@ -187,8 +204,9 @@
         {% if user.payment_status %}
             <p style="text-align:center;">COMPLETED</p>
         {% else %}
-            <p style="text-align:center;">PENDING</p>
-            <a class="btn btn-dark" style="margin: 2em 0;" href="{{url_for('payment')}}">complete</a>
+            <p style="text-align:center; font-weight:bold;">PENDING</p>
+            <button class="button button1"> <a href="{{url_for('payment')}}"> Pay</a> </button>
+            <!-- <a class="btn btn-dark" style="margin: 2em 0;" href="{{url_for('payment')}}">complete</a> -->
         {% endif %}
     </center>
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
@@ -227,12 +245,10 @@
 
         {% if not user.workshop_payment_status %}
 
-            <p>  After payment, it takes 5-10 mins to update your payments status </p>
-            <p>  Please wait untill the payment status is updated </p>
 
             <br>
 
-            <p> If not yet paid <button> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
+            <p> If not yet paid <button class="button button1"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
 
         {% else %}
 
@@ -253,12 +269,12 @@
          </div>
 
 
-         <button><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+         <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
 
 
     {%else%}
 
-             <button><a href="{{url_for('payment')}}"> Register Workshop </a></button>
+             <button class="button button1"><a href="{{url_for('payment')}}"> Register Workshop </a></button>
 
 
     {% endif %}
