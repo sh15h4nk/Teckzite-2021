@@ -41,7 +41,7 @@ def noindex():
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('userProfile.html')
 
 # @app.route('/workshops')
 # @registration_required

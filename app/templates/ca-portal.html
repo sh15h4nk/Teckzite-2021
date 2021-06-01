@@ -155,13 +155,14 @@
                                 <p>S.No</p>
                             </th>
                             <th>
-                                <p>1000pts</p>
-                            </th>
-                            <th>
-                                <p>800pts</p>
-                            </th>
-                            <th>
                                 <p>600pts</p>
+                            </th>
+                            <th>
+                                <p>400pts</p>
+                            </th>
+                            <th>
+                                <p>
+                                    less than 400pts</p>
                             </th>
                         </tr>
                         <tr>
@@ -277,17 +278,17 @@
                 var eleValue = this.getAttribute("data-target");
 
                 ele.forEach(function(item) {
-                    item.style.display ="none";
+                    item.style.display = "none";
                 })
 
-                if (eleValue =="details") {
-                    document.querySelector("." + eleValue).style.display ="block";
-                } else if (eleValue =="responsibilities") {
-                    document.querySelector("." + eleValue).style.display ="block";
-                } else if (eleValue =="rewards") {
-                    document.querySelector("." + eleValue).style.display ="block";
-                } else if (eleValue =="incentives") {
-                    document.querySelector("." + eleValue).style.display ="block";
+                if (eleValue == "details") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "responsibilities") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "rewards") {
+                    document.querySelector("." + eleValue).style.display = "block";
+                } else if (eleValue == "incentives") {
+                    document.querySelector("." + eleValue).style.display = "block";
                 }
                 /*else if(eleValue =="register"){
                   document.querySelector("." + eleValue).style.display ="block";

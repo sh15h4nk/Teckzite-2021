@@ -3,14 +3,6 @@
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
 <style>
-    .container {
-        background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
-        animation: move-twink-back 200s linear infinite;
-        width: 95%;
-        height: auto;
-        margin: 0 auto;
-    }
-    
     p {
         color: #e6e6e6bf;
         font-size: 1.2em;
@@ -34,6 +26,52 @@
         font-size: 1.5rem;
     }
     
+    .container {
+        background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+        animation: move-twink-back 200s linear infinite;
+        width: 95%;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .profile-row {
+        padding: 2em 1em;
+        margin: 1em 0;
+        width: 90%;
+        margin: 0 auto;
+        height: auto;
+        display: flex;
+        background-color: rgb(56 46 48 / 60%);
+    }
+    
+    .profile-row .profile-col {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .display-row {
+        display: flex;
+    }
+    
+    h4 {
+        font-weight: 400;
+        font-size: 1.1em;
+        color: #ddd;
+    }
+    
+    h3 {
+        font-weight: 600;
+        font-size: 1.1em;
+        color: cyan;
+        padding-left: 10px;
+    }
+    
     .column {
         float: left;
         width: 50%;
@@ -48,6 +86,7 @@
         display: table;
         clear: both;
     }
+    
     .button {
         border-radius: 40px;
         background-color: #4CAF50;
@@ -68,6 +107,45 @@
         background-color: white;
         color: black;
         border: 2px solid #4CAF50;
+    }
+    
+    .btn {
+        width: 140px;
+        height: 40px;
+        outline: none;
+        border: 3px solid rgb(56, 48, 48);
+        cursor: pointer;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        border-radius: 10px;
+        transition: 0.5s ease;
+        font-weight: 700;
+        background: rgba(107, 104, 104, 0.288);
+        text-transform: uppercase;
+        color: #eee;
+        font-size: .8em;
+        padding: 10px;
+    }
+    
+    .btn:hover {
+        background: whitesmoke;
+        color: #111;
+        border: none;
+    }
+    
+    @media (max-width:800px) {
+        .profile-row {
+            flex-direction: column;
+        }
+        .profile-row .profile-col {
+            width: 100%;
+        }
+        h4 {
+            font-size: .8em;
+        }
+        h3 {
+            font-size: .8em;
+        }
     }
 </style>
 {% endblock %} {% block content %} {{super()}}
@@ -157,58 +235,151 @@
 
 <!-- main -->
 
-<div class="container">
-    <h2 style="text-align: center; padding-top: 15vh;">profile</h2>
-        <p style="text-align:center; font-style:italic;">  All payments are updated within 5-10 mins </p>
 
-    <button class="button button1"> <a href="{{url_for('logout')}}"> Logout </a> </button>
+
+
+<div class="container">
+    <p style="text-align:center; font-style:italic;"> All payments are updated within 5-10 mins </p>
+    <h2 style="text-align: center; padding-top: 15vh;">profile</h2>
+
     <div class="ro">
         <div class="image">
             <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
-        <p class="tzID">{{user.userId}}</p>
+        <p class="tzID">TZ210001</p>
+        <br><br>
+        <center>
+            <a href="#" class="btn">logout</a>
+        </center>
         <br>
-        <div class="row">
-            <div class="column">
-                <p class="tzID">Name</p>
-                <h6>{{user.name}}</h6>
-
-                <p class="tzID">Email</p>
-                <h6>{{user.email}}</h6>
-
-                <p class="tzID">gender</p>
-                <h6>{{user.gender}}</h6>
-
-                <p class="tzID">College</p>
-                <h6>{{user.college}}</h6>
-            </div>
-            <div class="column">
-
-                <p class="tzID">CollegeID</p>
-                <h6>{{user.collegeId}}</h6>
-
-                <p class="tzID">Year</p>
-                <h6>{{user.year}}</h6>
-
-                <p class="tzID">Branch</p>
-                <h6>{{user.branch}}</h6>
-
-                <p class="tzID">Phone</p>
-                <h6>{{user.phone}}</h6>
-            </div>
-        </div>
     </div>
+
+    <br><br>
+    <hr>
+
+    <br><br>
+
+    <div class="profile-row">
+
+        <div class="profile-col">
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Name : </h4>
+                </div>
+                <div class="profile-col">
+                    <h3 style="text-transform: capitalize;"> {{user.name}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Email : </h4>
+                </div>
+                <div class="profile-col">
+                    <h3 style="text-transform: unset;"> {{user.email}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Gender : </p>
+                </div>
+                <div class="profile-col">
+                    <h3> {{user.gender}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>College : </p>
+                </div>
+                <div class="profile-col">
+                    <h3> {{user.college}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+        </div>
+
+        <div class="profile-col">
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>College ID : </p>
+                </div>
+                <div class="profile-col">
+                    <h3>{{user.collegeId}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Year : </p>
+                </div>
+                <div class="profile-col">
+                    <h3> {{user.year}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Branch : </p>
+                </div>
+                <div class="profile-col">
+                    <h3> {{user.branch}} </h3>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="display-row">
+                <div class="profile-col">
+                    <h4>Phone : </p>
+                </div>
+                <div class="profile-col">
+                    <h3> {{user.phone}} </h3>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <hr>
+    <br>
     <br>
     <center>
         <h1>payment Status</h1>
         {% if user.payment_status %}
-            <p style="text-align:center;">COMPLETED</p>
+        <p style="text-align:center;">COMPLETED</p>
         {% else %}
-            <p style="text-align:center; font-weight:bold;">PENDING</p>
-            <button class="button button1"> <a href="{{url_for('payment')}}"> Pay</a> </button>
-            <!-- <a class="btn btn-dark" style="margin: 2em 0;" href="{{url_for('payment')}}">complete</a> -->
+        <p style="text-align:center; font-weight:bold;">PENDING</p>
+        <button class="button button1"> <a href="{{url_for('payment')}}"> Pay</a> </button>
+        <!-- <a class="btn btn-dark" style="margin: 2em 0;" href="{{url_for('payment')}}">complete</a> -->
         {% endif %}
     </center>
+    <br><br>
+
+    <br>
+    <hr>
+
+    <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
+    <br>
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
     <br>
     <hr>
@@ -241,47 +412,37 @@
     <h5 style="margin-top: 1rem;">Workshop</h5>
 
 
-    {% if workshop %}
-
-        {% if not user.workshop_payment_status %}
+    {% if workshop %} {% if not user.workshop_payment_status %}
 
 
-            <br>
+    <br>
 
-            <p> If not yet paid <button class="button button1"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
+    <p> If not yet paid <button class="button button1"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button> {% else %}
 
-        {% else %}
-
-            <p> Your payment was successfull </p>
+        <p> Your payment was successfull </p>
 
         {% endif %}
 
         <br>
 
         <div class="lnk">
-                <div class="lnkCard">
-                    <div class="details">
-                        <div class="names">
-                            <p>{{workshop.title}}</p>                        
-                        </div>
+            <div class="lnkCard">
+                <div class="details">
+                    <div class="names">
+                        <p>{{workshop.title}}</p>
                     </div>
                 </div>
-         </div>
+            </div>
+        </div>
 
 
-         <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+        <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button> {%else%}
+
+        <button class="button button1"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% endif %}
 
 
-    {%else%}
-
-             <button class="button button1"><a href="{{url_for('payment')}}"> Register Workshop </a></button>
-
-
-    {% endif %}
-
-
-    <br>
-    <hr>
+        <br>
+        <hr>
 </div>
 
 

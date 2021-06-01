@@ -95,169 +95,182 @@
         </div> -->
 </header>
 
-    <!-- main -->
-    <section class="filter">
-        <div class="filter-container">
-            <h1 class="center">competitions</h1>
-            <p>TECKZITE presents you most vibrant competitions ranging from technical to Non-technical events including management events which explores potential of future technocrats and entrepreneurs. The events are structured to polish student skills which will make your adrenaline rush and bring out the leaders in you..</p>
-            <div class="filter-row">
-                <div class="filter-list">
-                    <ul id="filter-btns">
+<!-- main -->
+<section class="filter">
+    <div class="filter-container">
+        <h1 class="center">competitions</h1>
+        <p>TECKZITE presents you most vibrant competitions ranging from technical to Non-technical events including management events which explores potential of future technocrats and entrepreneurs. The events are structured to polish student skills which
+            will make your adrenaline rush and bring out the leaders in you..</p>
+        <div class="filter-row">
+            <div class="filter-list">
+                <ul id="filter-btns">
 
-                        <li data-target="all" class="current">All</li>
-                        <li data-target="PUC">Puc</li>
-                        <li data-target="CSE">cse</li>
-                        <li data-target="ECE">ece</li>
-                        <li data-target="MEC">mechanical</li>
-                        <li data-target="CIV">civil</li>
-                        <li data-target="MME">mme</li>
-                        <li data-target="CHE">chemical</li>
-                        <li data-target="OPE">Open to all</li>
+                    <li data-target="all" class="current">All</li>
+                    <li data-target="PUC">Puc</li>
+                    <li data-target="CSE">cse</li>
+                    <li data-target="ECE">ece</li>
+                    <li data-target="MEC">mechanical</li>
+                    <li data-target="CIV">civil</li>
+                    <li data-target="MME">mme</li>
+                    <li data-target="CHE">chemical</li>
+                    <li data-target="MAN">management</li>
+                    <li data-target="OPE">Open to all</li>
 
-                    </ul>
-                    <div class="filter-row">
-                        <div class="filter-items">
-                              <div class="item" id="coordinator" data-li="PUC" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>Ajay Kumar</h5>
-                                <p>72889 96365</p>
-                                <p>puc@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">PUC COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="OPE" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>A.tharun kumar</h5>
-                                <p>8919769951</p>
-                                <h5>Sk.jaffar</h5>
-                                <p>8309524610</p>
-                                <p>opentoall@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">OPEN TO ALL COORDINATORS</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="CSE" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>Shashil Sravan</h5>
-                                <p>9182409060</p>
-                                <p>cse@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">CSE COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="ECE" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>S.P.N.Achyuth</h5>
-                                <p>7013973650</p>
-                                <p>ece@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">ECE COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="CIV" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>DEEPAK PALLAM</h5>
-                                <p>9603925899</p>
-                                <p>civil@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">CIVIL COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="MEC" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>D JASHUVA</h5>
-                                <p>8639878029</p>
-                                <p>mech@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">MECHANICAL COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="MME" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>B.V.VN.D.Bhavani</h5>
-                                <p>7013973650</p>
-                                <p>mme@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">MME COORDINATOR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item" id="coordinator" data-li="CHE" style="display: none;">
-                        <div class="inner">
-                            <div class="content">
-                                <h5>Prabhu Kumar Uppala </h5>
-                                <p>7702420583</p>
-                                <h5>Gandi Eswari</h5>
-                                <p>9494391038</p>
-                                <p>chemical@teckzite.org</p>
-                                <p style="color: #b9d4d4; font-weight: 500;">CHEMICAL COORDINATORS</p>
-                            </div>
-                        </div>
-                    </div>
-                        </div>
-                        <div class="filter-items filter-items-cards">
-                           
-
-                            {% for event in events %}
-
-                            <div class="item" data-li="{{event.dept}}">
-                                <div class="inner">
-                                    <div class="img"><img src="{{event.image_url}}" alt=""></div>
-                                    <div class="info">
-                                        <h6>{{event.title | safe}}</h6>
-                                        <!-- <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p> -->
-                                        <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
-                                    </div>
+                </ul>
+                <div class="filter-row">
+                    <div class="filter-items">
+                        <div class="item" id="coordinator" data-li="PUC" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>Ajay Kumar</h5>
+                                    <p>72889 96365</p>
+                                    <p>puc@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">PUC COORDINATOR</p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="OPE" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>A.tharun kumar</h5>
+                                    <p>8919769951</p>
+                                    <h5>Sk.jaffar</h5>
+                                    <p>8309524610</p>
+                                    <p>opentoall@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">OPEN TO ALL COORDINATORS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="CSE" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>Shashil Sravan</h5>
+                                    <p>9182409060</p>
+                                    <p>cse@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">CSE COORDINATOR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="ECE" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>S.P.N.Achyuth</h5>
+                                    <p>7013973650</p>
+                                    <p>ece@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">ECE COORDINATOR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="CIV" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>DEEPAK PALLAM</h5>
+                                    <p>9603925899</p>
+                                    <p>civil@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">CIVIL COORDINATOR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="MEC" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>D JASHUVA</h5>
+                                    <p>8639878029</p>
+                                    <p>mech@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">MECHANICAL COORDINATOR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="MME" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>B.V.VN.D.Bhavani</h5>
+                                    <p>7013973650</p>
+                                    <p>mme@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">MME COORDINATOR</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="CHE" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>Prabhu Kumar Uppala </h5>
+                                    <p>7702420583</p>
+                                    <h5>Gandi Eswari</h5>
+                                    <p>9494391038</p>
+                                    <p>chemical@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">CHEMICAL COORDINATORS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item" id="coordinator" data-li="MAN" style="display: none;">
+                            <div class="inner">
+                                <div class="content">
+                                    <h5>Joel Prabhakar saripalli</h5>
+                                    <p>8309028378</p>
 
-                            {% endfor %}
+                                    <p>management@teckzite.org</p>
+                                    <p style="color: #b9d4d4; font-weight: 500;">MANAGEMEN COORDINATORS</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-    </section>
-    {% endblock %} {% block javascript %} {{super()}}
+                    <div class="filter-items filter-items-cards">
 
-    <script src="{{url_for('static', filename='./js/script.js')}}"></script>
-    <script src="{{url_for('static', filename='./js/main.js')}}"></script>
-    <script>
-        const filterButtons = document.querySelector("#filter-btns").children;
-        const items = document.querySelector(".filter-items-cards").children;
-        const ele = document.querySelectorAll(".item#coordinator");
-        for (let i = 0; i < filterButtons.length; i++) {
-            filterButtons[i].addEventListener("click", function() {
-                for (let j = 0; j < filterButtons.length; j++) {
-                    filterButtons[j].classList.remove("current")
-                }
-                this.classList.add("current");
-                const target = this.getAttribute("data-target")
-                for (let k = 0; k < items.length; k++) {
-                    items[k].style.display = "none";
-                    if (target == items[k].getAttribute("data-li")) {
-                        items[k].style.display = "block";
-                        for(let c=0;c<ele.length;c++){
-                            let second = ele[c].getAttribute("data-li");
-                            ele[c].style.display = "none";
-                            if(second == target){
-                                ele[c].style.display = "block";
-                            }
+
+                        {% for event in events %}
+
+                        <div class="item" data-li="{{event.dept}}">
+                            <div class="inner">
+                                <div class="img"><img src="{{event.image_url}}" alt=""></div>
+                                <div class="info">
+                                    <h6>{{event.title | safe}}</h6>
+                                    <!-- <p class="prize-money blink">Prize money <br>{{event.prize}}/-</p> -->
+                                    <p class="know-more"><a href="{{url_for('eventDetailsView', eventId=event.eventId)}}">view</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+</section>
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script>
+    const filterButtons = document.querySelector("#filter-btns").children;
+    const items = document.querySelector(".filter-items-cards").children;
+    const ele = document.querySelectorAll(".item#coordinator");
+    for (let i = 0; i < filterButtons.length; i++) {
+        filterButtons[i].addEventListener("click", function() {
+            for (let j = 0; j < filterButtons.length; j++) {
+                filterButtons[j].classList.remove("current")
+            }
+            this.classList.add("current");
+            const target = this.getAttribute("data-target")
+            for (let k = 0; k < items.length; k++) {
+                items[k].style.display = "none";
+                if (target == items[k].getAttribute("data-li")) {
+                    items[k].style.display = "block";
+                    for (let c = 0; c < ele.length; c++) {
+                        let second = ele[c].getAttribute("data-li");
+                        ele[c].style.display = "none";
+                        if (second == target) {
+                            ele[c].style.display = "block";
                         }
                     }
-                    if (target == "all") {
-                        items[k].style.display = "block";
-                        for(let c=0;c<ele.length;c++){
-                            ele[c].style.display = "none";
-                        }
+                }
+                if (target == "all") {
+                    items[k].style.display = "block";
+                    for (let c = 0; c < ele.length; c++) {
+                        ele[c].style.display = "none";
                     }
                 }
-            })
-        }
-    </script>
-    {% endblock %}
+            }
+        })
+    }
+</script>
+{% endblock %}
