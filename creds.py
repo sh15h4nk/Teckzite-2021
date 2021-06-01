@@ -9,11 +9,11 @@ dbhost="teckzite-db.c9nqgqyhxotq.us-east-2.rds.amazonaws.com"
 dbname="tz2021"
 
 # localhost
-GOOGLE_CLIENT_ID = "1013131542861-96uvt299u5845e9phhqlbos84ngqrlf1.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "lB8o9b1i_n0Oo3HuLTI_Q2MX"
-GOOGLE_DISCOVERY_URL = (
-    "https://accounts.google.com/.well-known/openid-configuration"
-)
+# GOOGLE_CLIENT_ID = "1013131542861-96uvt299u5845e9phhqlbos84ngqrlf1.apps.googleusercontent.com"
+# GOOGLE_CLIENT_SECRET = "lB8o9b1i_n0Oo3HuLTI_Q2MX"
+# GOOGLE_DISCOVERY_URL = (
+#     "https://accounts.google.com/.well-known/openid-configuration"
+# )
 
 
 # for beta.teckzite.org
@@ -25,11 +25,11 @@ GOOGLE_DISCOVERY_URL = (
 
 
 # for teckzite.org
-# GOOGLE_CLIENT_ID = "1067849060171-806too6vbqn0gouq3r8bgbt5to93n5nn.apps.googleusercontent.com"
-# GOOGLE_CLIENT_SECRET = "0xHFt290r2YLMUf7qQX5VT7G"
-# GOOGLE_DISCOVERY_URL = (
-#     "https://accounts.google.com/.well-known/openid-configuration"
-# )
+GOOGLE_CLIENT_ID = "1067849060171-806too6vbqn0gouq3r8bgbt5to93n5nn.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "0xHFt290r2YLMUf7qQX5VT7G"
+GOOGLE_DISCOVERY_URL = (
+    "https://accounts.google.com/.well-known/openid-configuration"
+)
 
 
 #Email server
