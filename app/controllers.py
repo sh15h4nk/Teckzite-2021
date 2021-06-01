@@ -221,7 +221,7 @@ def register():
 		return redirect(url_for('index'))
 
 	if request.method == "POST":
-		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden"]) & set(request.form.keys())) != 0:
+		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden", "workshop_payment_status"]) & set(request.form.keys())) != 0:
 			return "Invalid Data"
 
 		elif is_rguktn(current_user.email):
@@ -237,6 +237,12 @@ def register():
 				flask("Missing Required Fields!")
 				collegeId = get_college_id(current_user.email)
 				return render_template('register_rgukt.html', collegeId = collegeId, display="")
+
+			user = TechUser.query.filter_by(phone=data['phone']).first()
+			if user:
+				flash("Phone number already exists!")
+				return render_template('register_user.html', college=college, collegeId=collegeId)
+
 
 			try:	
 				user = addRguktUser(current_user.userId, user_data)
@@ -296,6 +302,10 @@ Contact: info@teckzite.org'''
 				flash("Missing Required Fields")
 				return render_template('register_user.html', college=college, collegeId=collegeId)
 
+			user = TechUser.query.filter_by(phone=data['phone']).first()
+			if user:
+				flash("Phone number already exists!")
+				return render_template('register_user.html', college=college, collegeId=collegeId)
 
 			try:
 				idcard = request.files['idcard']
@@ -495,6 +505,42 @@ def add_workshop():
 		return redirect(url_for('profile'))
 
 	return render_template('add_workshop.html', workshops=workshops)
+
+@app.route('/updateProfile', methods=["GET", "POST"])
+@login_required
+@registration_required
+def update_profile():
+	if request.method == 'POST':
+		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden", "workshop_payment_status"]) & set(request.form.keys())) != 0:
+			return "Invalid Data"
+
+		user_data = {}
+		try:
+			user_data['name'] = request.form['name']
+			user_data['gender'] = request.form['gender']
+			user_data['phone'] = request.form['phone']
+			# user_data['branch'] = request.form['branch']
+			# user_data['year'] = request.form['year']
+		except Exception as e:
+			flash("Missing Required Fields!")
+			raise e
+			return render_template('update_profile.html', user = current_user)
+
+
+		try:
+			user = addUser(current_user.userId, user_data)
+			if type(user) == str:
+				flash(user)
+				return redirect(url_for('update_profile'))
+			flash("Your details have been Updated successfully")
+			return redirect(url_for('profile'))
+		except Exception as e:
+			flash("Something went wrong!")
+			raise e
+			return redirect(url_for('update_profile'))
+		return request.form
+
+	return render_template('update_profile.html', user = current_user)
 
 	
 @app.errorhandler(404)

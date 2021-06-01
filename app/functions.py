@@ -40,10 +40,6 @@ def addAddress(t_userId, address_data):
 
 def addUser(userId, data, idcard_url=""):
 
-	user = TechUser.query.filter_by(phone=data['phone']).first()
-	if user:
-		return "Phone number already exists!"
-
 	user = TechUser.query.filter_by(userId=userId)
 	if not user:
 		return
