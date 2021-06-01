@@ -461,6 +461,12 @@ def add_workshop():
 	if request.method=='POST':
 		workshopId = request.form['workshopId']
 
+		workshop_referral = ""
+		try:
+			workshop_referral = request.form['workshop_referral']
+		except:
+			pass
+
 		if not workshopId:
 			flash("Please select a workshop")
 			return render_template('add_workshop.html')
@@ -473,6 +479,10 @@ def add_workshop():
 
 
 		tech_user.update({'workshop_id': workshopId})
+
+		if workshop_referral:
+			tech_user.update({'workshop_referral': workshop_referral})
+
 		db.session.commit()
 
 		flash("Your workshop has been added successfully!")
