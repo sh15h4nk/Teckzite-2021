@@ -47,9 +47,9 @@
     </div>
 
     <div class="container" style="display:inline-block;position: absolute; z-index: 1; text-align: center; width: 50%; margin: 50px auto;">
-        <br><br> {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-        <div class="alert alert-info" role="alert">{{ message }}</div>
-        {% endfor %} {% endif %} {% endwith %}
+        <br><br> {% with messages = get_flashed_messages() %} {% if messages %}
+        <div class="alert alert-info" role="alert">{{ messages[-1] }}</div>
+        {% endif %} {% endwith %}
     </div>
     <div id="content">
         {% block content %}
