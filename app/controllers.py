@@ -30,7 +30,7 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     flash("You are not authorised")
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 @app.route('/robots.txt')
 def noindex():

@@ -9,19 +9,19 @@ dbhost="teckzite-db.c9nqgqyhxotq.us-east-2.rds.amazonaws.com"
 dbname="tz2021"
 
 # localhost
-# GOOGLE_CLIENT_ID = "1013131542861-96uvt299u5845e9phhqlbos84ngqrlf1.apps.googleusercontent.com"
-# GOOGLE_CLIENT_SECRET = "lB8o9b1i_n0Oo3HuLTI_Q2MX"
-# GOOGLE_DISCOVERY_URL = (
-#     "https://accounts.google.com/.well-known/openid-configuration"
-# )
-
-
-# for beta.teckzite.org
-GOOGLE_CLIENT_ID = "1013131542861-ood3b607a52duf819o8i11ruapjlntbr.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "JPORWgAexAgNufJv-CH_K9hV"
+GOOGLE_CLIENT_ID = "1013131542861-96uvt299u5845e9phhqlbos84ngqrlf1.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "lB8o9b1i_n0Oo3HuLTI_Q2MX"
 GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
+
+
+# for beta.teckzite.org
+# GOOGLE_CLIENT_ID = "1013131542861-ood3b607a52duf819o8i11ruapjlntbr.apps.googleusercontent.com"
+# GOOGLE_CLIENT_SECRET = "JPORWgAexAgNufJv-CH_K9hV"
+# GOOGLE_DISCOVERY_URL = (
+#     "https://accounts.google.com/.well-known/openid-configuration"
+# )
 
 
 # for teckzite.org
@@ -33,8 +33,9 @@ GOOGLE_DISCOVERY_URL = (
 
 
 #Email server
-email_username = "no-reply@teckzite.org"
-email_passwd = "p41n1nth3a$$"
+email_username = "info@teckzite.org"
+# email_passwd = "p41n1nth3a$$"
+email_passwd = "H45H#meth;"
 
 mail_server = "smtp.googlemail.com"
 mail_port = 587
