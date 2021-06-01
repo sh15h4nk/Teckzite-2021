@@ -108,9 +108,10 @@
         </div>
         <div class="nav-but-wrap">
             <div class="menu-icon hover-target">
-                <span class="menu-icon_line menu-icon_line-left"></span>
+                <span class="menu-icon__line menu-icon__line-left"></span>
                 <span class="menu-icon__line"></span>
-                <span class="menu-icon_line menu-icon_line-right"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+
             </div>
         </div>
     </div>
@@ -129,27 +130,21 @@
             <h1>Registration</h1>
         </div>
         <p>For techinical issues Contact (JESWANTH: 8501027956, HEMANTH: 9505848891, SHIVA: 8331987780)</p>
-        
-        <p>  After payment, it takes 5-10 mins to update your payments status </p>
 
-        <br>
+        <p> After payment, it takes 5-10 mins to update your payments status </p>
 
-        {% if not collegeId %}
+        <br> {% if not collegeId %}
 
         <p style="font-size: 14px; font-weight: 500;" class="center">If you are RGUKT student, please login with your university email id. If not please continue your registration process.</p>
 
-         <a type="button" class="btn btn-primary" href="{{url_for('logout')}}"> Logout </a>
-            
-        {% endif %}
+        <a type="button" class="btn btn-primary" style="padding:12px 10px;" href="{{url_for('logout')}}"> Logout </a> {% endif %}
 
 
-            <p>
+        <p>
 
             {% if not collegeId %}
 
-            <br> Registration fee: 150/-
-
-            {% endif %}
+            <br> Registration fee: 150/- {% endif %}
 
             <br> For RGUKT student(rgukt email): 100/-
 
@@ -220,8 +215,8 @@
 
             <div class="option f2">
                 <label for="bra" class="">Branch</label>
-                <select class="sp" id="bra" name="branch" onclick="select()">
-                    <option value="" disabled="disabled">------------Choose Branch------------</option>
+                <select class="sp" id="bra" name="branch" onclick="select()" required>
+                    <!-- <option value="" disabled="disabled">------------Choose Branch------------</option> -->
                     <option value="CSE">Computer Science Engineering</option>
                     <option value="MECH">Mechaincal Engineering</option>
                     <option value="CHE">Chemical Engineering</option>
@@ -370,13 +365,13 @@
     </form>
 
 
-    
-     {% if not collegeId %}
 
-        <p style="color:green; font-size: 14px; font-weight: 500; " class="center ">All B.tech/Degree/Any UG/Polytechnic/Intermediate students across india can participate</p>
+    {% if not collegeId %}
+
+    <p style="color:green; font-size: 14px; font-weight: 500; " class="center ">All B.tech/Degree/Any UG/Polytechnic/Intermediate students across india can participate</p>
 
 
-     {% endif %}
+    {% endif %}
 
 </section>
 
@@ -439,6 +434,8 @@
             document.querySelector('.cancel').style.display = "block";
             document.getElementById('bra').setAttribute("name", "");
             document.getElementById('bra2').setAttribute("name", "branch");
+            document.getElementById('bra').removeAttribute("required");
+            document.getElementById('bra2').setAttribute("required", "");
         }
     }
 
@@ -448,6 +445,8 @@
         document.querySelector('.cancel').style.display = "none";
         document.querySelector('.sp').value = "";
         document.getElementById('bra2').setAttribute("name", "");
+        document.getElementById('bra').setAttribute("required", "");
+        document.getElementById('bra2').removeAttribute("required");
     }
 </script>
 {% endblock %}
