@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %}Teckzite 2021 | Profile update
+{% extends 'base.html' %} {% block title %}Teckzite 2021 | Registrations-User
 </Registrations-RGUKT>{% endblock %} {% block html_head %} {{super()}}
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='./img/favicon.png')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -32,6 +32,7 @@
 </style>
 
 {% endblock %} {% block content %} {{super()}}
+
 
 <div id="loader">
     <div class="content_box">
@@ -117,78 +118,142 @@
 
 
 
-<!-- Name, Email, Phone, College, College Id, Year, Branch, -->
 
 <!-- main -->
-<section class="registration-container" style="position: relative; margin-top: 10%;">
+<section class="registration-container">
 
 
     <form class="form" id="form" method="POST">
 
-      
+        <div class="heading">
+            <h1>Update your Profile </h1>
+        </div>
+        <p>For techinical issues Contact (JESWANTH: 8501027956, HEMANTH: 9505848891, SHIVA: 8331987780)</p>
+
+        {% if user.referral == 'None' %}
+
+        <p> Fill the referral with same referral code used during your registration </p>
+        <p> If you have not used a referral during registration, fill it with 'NO'</p>
+
+        {% endif %}
+
+        <br>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">Name</label>
+                <input type="text" value="{{user.name}}" name="name" required>
+                <span class="focus-input"></span>
+            </div>
+            <div class="option f2">
+                <label for="">gender</label>
+                <select name="gender">
+                        <option value="M" selected=""> Male </option>
+                        <option value="F"> Female </option>
+                    </select>
+            </div>
+        </div>
+        <br>
+
+        <div class="wrap">
+            <div class="f1">
+                <label for="">phone</label>
+                <input type="text" value="{{user.phone}}" name="phone" pattern="[0-9]{10}" title="Phone number should be only of 10 digits and numerical only" required>
+                <span class="focus-input"></span>
+            </div>
+
+            {% if collegeId %}
+            <div class="f2">
+                <label for="">college id</label>
+                <input type="text" name="collegeId" value="{{collegeId}}" readonly required>
+                <span class="focus-input"></span>
+            </div>
+            {% else %}
+            <div class="f2">
+                <label for="">college id</label>
+                <input type="text" value="{{user.collegeId}}" name="collegeId" required>
+                <span class="focus-input"></span>
+            </div>
+            {% endif %}
+
+        </div>
+        <br>
+
+        <div class="wrap">
+
+            {% if college %}
+
+            <div class="f1">
+                <label for="">college</label>
+                <input type="text" name="college" value="{{college}}" readonly required>
+                <span class="focus-input"></span>
+            </div>
+
+            {% else %}
+
+            <div class="f1">
+                <label for="">college</label>
+                <input type="text" value="{{user.college}}" name="college" required>
+                <span class="focus-input"></span>
+            </div>
+
+            {% endif %}
 
 
-       <!--  <div class="wrap ">
-
-
-
-            <div class="option f1">
-                <label for="bra" class="">Workshop</label>
-                <select class="sp" id="bra" name="workshopId">
-
-                    {% for workshop in workshops %}
-
-                    <option value="{{workshop.workshopId}}">{{workshop.title}}</option>
-
-                    {% endfor %}
-                    
+            <div class="option f2">
+                <label for="bra" class="">Branch</label>
+                <select class="sp" id="bra" name="branch" required>
+                    <option value="CSE">Computer Science Engineering</option>
+                    <option value="MEC">Mechaincal Engineering</option>
+                    <option value="CHE">Chemical Engineering</option>
+                    <option value="CIV">Civil Engineering</option>
+                    <option value="MME">Metallurgical and Materials Engineering</option>
+                    <option value="ECE">Electronics & Communication Engineering</option>
+                    <option value="EEE">Electrical Engineering</option>
+                    <option value="PUC">Pre University Course (PUC)</option>
+                    <option value="OTH">Other</option>
+                    <span class="focus-input"></span>
                 </select>
 
             </div>
         </div>
 
+        <br>
+
+     
+
         <div class="wrap">
-             <div class="f1">
-                <label for="">Referral</label>
-                <input type="text" name="workshop_referral">
+            <div class="option f1">
+                <label for="poo" class="select">Year</label>
+                <select class="" id="poo" name="year">
+                    <option value="1"> 1 </option>
+                    <option value="2"> 2 </option>
+                    <option value="3"> 3 </option>
+                    <option value="4"> 4 </option>
+
+
+                </select>
+
+            </div>
+
+            {% if user.referral == None or user.referral == ""%}
+
+            <div class="f2">
+                <label for="">referral code</label>
+                <input type="text" value="" name="referral" required>
                 <span class="focus-input"></span>
             </div>
-        </div> -->
-        <div class="container">
-		<h1 style="text-align: center;">Profile update</h1>
 
-		<form class="form" method="POST">
-	        <label for="">Tz ID</label>
-			<input type="text" name="userId" value="{{user.userId}}" disabled readonly required>
+            {% endif %}
 
-
-			<label for="">name</label>
-			<input type="text" name="name" value="{{user.name}}"  required>
-
-			<label for="">phone</label>
-			<input type="text" name="phone" value="{{user.phone}}" required>
-
-			<div class="option f2">
-                <label for="">gender</label>
-                <select name="gender">
-                		{% if user.gender == "M" %}
-	                        <option value="M" selected> Male </option>
-	                        <option value="F"> Female </option>
-	                    {% else %}
-	                    	<option value="M"> Male </option>
-	                        <option value="F" selected> Female </option>
-	                    {% endif %}
-                    </select>
-            </div>
-			
-        	<button class=" btn " type="submit " style="margin: 2.5em 0; ">submit</button>
-		</form>
-	</div>
-    
-       
+        </div>
 
 
 
+
+        <button class=" btn " type="submit " style="margin: 2.5em 0; ">submit</button>
+
+    </form>
 
 
 
@@ -196,8 +261,86 @@
 
 {% endblock %} {% block javascript %} {{super()}}
 
-<script src="{{url_for( 'static', filename='./js/script.js')}} "></script>
-<script src="{{url_for( 'static', filename='./js/main.js')}} "></script>
+<script src="{{url_for( 'static', filename='./js/script.js' )}} "></script>
+<script src="{{url_for( 'static', filename='./js/main.js' )}} "></script>
 
 
+
+<script>
+    function displayMenu() {
+        document.querySelector('.special').style.display = "block ";
+    }
+
+    function closeMenu() {
+        document.querySelector('.special').style.display = "none ";
+    }
+    Filevalidation = () => {
+        const fi = document.getElementById('file');
+        // Check if any file is selected.
+        var fileInput =
+            document.getElementById('file');
+
+        var filePath = fileInput.value;
+
+        // Allowing file type
+        var allowedExtensions =
+            /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            fileInput.value = '';
+            return false;
+        } else {
+            if (fi.files.length > 0) {
+                for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                    const fsize = fi.files.item(i).size;
+                    const file = Math.round((fsize / 1024));
+                    // The size of the file.
+                    if (file >= 50) {
+                        alert(
+                            "File too Big, please select a file less than 50kb ");
+                    } else {
+                        document.getElementById('size').innerHTML = '<b>' +
+                            file + '</b> KB';
+                    }
+                }
+            }
+        }
+    }
+
+
+    function select() {
+        console.log(document.querySelector('.sp').value);
+        if (document.querySelector('.sp').value == 'OTHER') {
+            console.log('hello')
+            document.querySelector('.sp1').style.display = "block";
+            document.querySelector('.cancel').style.display = "block";
+            document.getElementById('bra').setAttribute("name", "");
+            document.getElementById('bra2').setAttribute("name", "branch");
+            document.getElementById('bra').removeAttribute("required");
+            document.getElementById('bra').setAttribute("disabled", "");
+            document.getElementById('bra2').setAttribute("required", "");
+        }
+    }
+
+    function cancel() {
+        document.querySelector('.sp1').style.display = "none";
+        document.getElementById('bra').removeAttribute("name", "branch");
+        document.querySelector('.cancel').style.display = "none";
+        document.querySelector('.sp').value = "";
+        document.getElementById('bra2').setAttribute("name", "");
+        document.getElementById('bra').setAttribute("required", "");
+        document.getElementById('bra').removeAttribute("disabled");
+        document.getElementById('bra2').removeAttribute("required");
+    }
+
+
+    document.getElementsByName('gender')[0].value = '{{user.gender}}';
+    document.getElementsByName('branch')[0].value = '{{user.branch}}';
+    document.getElementsByName('year')[0].value = '{{user.year}}';
+
+
+
+</script>
 {% endblock %}

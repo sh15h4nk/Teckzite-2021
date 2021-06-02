@@ -72,43 +72,6 @@
         padding-left: 10px;
     }
     
-    .column {
-        float: left;
-        width: 50%;
-        padding: 10px;
-        height: 300px;
-        /* Should be removed. Only for demonstration */
-    }
-    /* Clear floats after the columns */
-    
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-    
-    .button {
-        border-radius: 40px;
-        background-color: #4CAF50;
-        /* Green */
-        border: none;
-        color: white;
-        padding: 16px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-    }
-    
-    .button1 {
-        background-color: white;
-        color: black;
-        border: 2px solid #4CAF50;
-    }
-    
     .btn {
         width: 140px;
         height: 40px;
@@ -146,6 +109,28 @@
         h3 {
             font-size: .8em;
         }
+    }
+    
+    .button {
+        border-radius: 40px;
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
     }
 </style>
 {% endblock %} {% block content %} {{super()}}
@@ -224,9 +209,9 @@
         </div>
         <div class="nav-but-wrap">
             <div class="menu-icon hover-target">
-                <span class="menu-icon__line menu-icon__line-left"></span>
+                <span class="menu-icon_line menu-icon_line-left"></span>
                 <span class="menu-icon__line"></span>
-                <span class="menu-icon__line menu-icon__line-right"></span>
+                <span class="menu-icon_line menu-icon_line-right"></span>
             </div>
         </div>
     </div>
@@ -246,13 +231,15 @@
         <div class="image">
             <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
-        <p class="tzID">TZ210001</p>
+        <p class="tzID">{{user.userId}}</p>
         <br><br>
+        <div style="margin-top: 3%">
         <center>
             <a href="{{url_for('update_profile')}}" class="btn">update</a>
             <a href="{{url_for('logout')}}" class="btn">logout</a>
         </center>
         <br>
+        </div>
     </div>
 
     <br><br>
@@ -328,7 +315,7 @@
                     <h4>Year : </p>
                 </div>
                 <div class="profile-col">
-                    <h3> {{user.year}} </h3>
+                    <h3>{{ user.year }}</h3>
                 </div>
             </div>
 
@@ -381,10 +368,9 @@
 
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
     <br>
-    <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
-    <br>
+
     <hr>
-    <h5 style="margin-top: 1rem;">Competitions</h5>
+    <h2 style="margin-top: 1rem;">Competitions</h2>
     <div class="lnk">
         <!-- <div class="lnkCard">
             <div class="details">
@@ -410,7 +396,7 @@
             </div> -->
     </div>
 
-    <h5 style="margin-top: 1rem;">Workshop</h5>
+    <h2 style="margin-top: 1rem;">Workshop</h2>
 
 
     {% if workshop %} {% if not user.workshop_payment_status %}
@@ -418,7 +404,7 @@
 
     <br>
 
-    <p> If not yet paid <button class="button button1"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button> {% else %}
+    <p> If not yet paid <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button> {% else %}
 
         <p> Your payment was successfull </p>
 
@@ -439,7 +425,7 @@
 
         <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button> {%else%}
 
-        <button class="button button1"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% endif %}
+        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% endif %}
 
 
         <br>
