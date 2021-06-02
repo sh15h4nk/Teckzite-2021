@@ -214,41 +214,27 @@
 
             <div class="option f2">
                 <label for="bra" class="">Branch</label>
-                <select class="sp" id="bra" name="branch" onclick="select()" required>
-                    <!-- <option value="" disabled="disabled">------------Choose Branch------------</option> -->
+                <select class="sp" id="bra" name="branch" required>
                     <option value="CSE">Computer Science Engineering</option>
-                    <option value="MECH">Mechaincal Engineering</option>
+                    <option value="MEC">Mechaincal Engineering</option>
                     <option value="CHE">Chemical Engineering</option>
                     <option value="CIV">Civil Engineering</option>
                     <option value="MME">Metallurgical and Materials Engineering</option>
                     <option value="ECE">Electronics & Communication Engineering</option>
                     <option value="EEE">Electrical Engineering</option>
                     <option value="PUC">Pre University Course (PUC)</option>
-                    <option value="OTHER">Other</option>
+                    <option value="OTH">Other</option>
                     <span class="focus-input"></span>
                 </select>
 
             </div>
         </div>
 
-        <div class="wrap">
-            <div class="f1 sp1" style="display: none;">
-                <label for="">OTHER</label>
-                <input type="text" id="bra2" name="">
-                <span class="focus-input"></span>
-            </div>
-        </div>
-
-        <center>
-            <button class="btn cancel" style="display: none; margin: 1em 0;" onclick="cancel()">cancel</button>
-        </center>
-
 
         <div class="wrap">
             <div class="f1 state">
                 <label for="stt">State</label>
                 <select class="" id="stt" name="state">
-                    <option value="" disabled="disabled">------------Select State------------</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Andhra Pradesh" selected="selected">Andhra Pradesh</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -306,7 +292,7 @@
             </div>
 
             <div class="f2">
-                <label for="">ZIP code</label>
+                <label for="">PIN code</label>
                 <input type="text" name="pin" pattern="[0-9]{6}" required>
                 <span class="focus-input"></span>
             </div>
@@ -434,6 +420,7 @@
             document.getElementById('bra').setAttribute("name", "");
             document.getElementById('bra2').setAttribute("name", "branch");
             document.getElementById('bra').removeAttribute("required");
+            document.getElementById('bra').setAttribute("disabled", "");
             document.getElementById('bra2').setAttribute("required", "");
         }
     }
@@ -445,6 +432,7 @@
         document.querySelector('.sp').value = "";
         document.getElementById('bra2').setAttribute("name", "");
         document.getElementById('bra').setAttribute("required", "");
+        document.getElementById('bra').removeAttribute("disabled");
         document.getElementById('bra2').removeAttribute("required");
     }
 </script>

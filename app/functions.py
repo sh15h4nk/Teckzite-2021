@@ -64,6 +64,7 @@ def addRguktUser(userId, data):
 		return
 
 	user.update(data)
+	user.update({'college': 'RGUKT-N'})
 	user.update({'registration_status': 1})
 	db.session.commit()
 

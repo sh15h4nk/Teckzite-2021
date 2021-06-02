@@ -33,9 +33,9 @@ GOOGLE_DISCOVERY_URL = (
 
 
 #Email server
-email_username = "info@teckzite.org"
+email_username = "uday@teckzite.org"
 # email_passwd = "p41n1nth3a$$"
-email_passwd = "H45H#meth;"
+email_passwd = "$H45H#meth;"
 
 mail_server = "smtp.googlemail.com"
 mail_port = 587

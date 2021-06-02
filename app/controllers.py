@@ -41,7 +41,7 @@ def noindex():
 
 @app.route('/')
 def index():
-	return render_template('userProfile.html')
+	return render_template('index.html')
 
 # @app.route('/workshops')
 # @registration_required
@@ -233,15 +233,16 @@ def register():
 				user_data['collegeId'] = request.form['collegeId']
 				user_data['branch'] = request.form['branch']
 				user_data['year'] = request.form['year']
+
 			except:
 				flask("Missing Required Fields!")
 				collegeId = get_college_id(current_user.email)
 				return render_template('register_rgukt.html', collegeId = collegeId, display="")
 
-			user = TechUser.query.filter_by(phone=data['phone']).first()
+			user = TechUser.query.filter_by(phone=user_data['phone']).first()
 			if user:
 				flash("Phone number already exists!")
-				return render_template('register_user.html', college=college, collegeId=collegeId)
+				return render_template('register_rgukt.html')
 
 
 			try:	
@@ -297,15 +298,19 @@ Contact: info@teckzite.org'''
 				user_data['collegeId'] = request.form['collegeId']
 				user_data['branch'] = request.form['branch']
 				user_data['year'] = request.form['year']
+				user_data['referral'] = request.form['referral']
+				user_data['survey'] = request.form['survey']
 
-			except:
+			except Exception as e:
 				flash("Missing Required Fields")
+				raise e
 				return render_template('register_user.html', college=college, collegeId=collegeId)
+			
 
-			user = TechUser.query.filter_by(phone=data['phone']).first()
+			user = TechUser.query.filter_by(phone=user_data['phone']).first()
 			if user:
 				flash("Phone number already exists!")
-				return render_template('register_user.html', college=college, collegeId=collegeId)
+				return render_template('register_user.html')
 
 			try:
 				idcard = request.files['idcard']
@@ -511,19 +516,30 @@ def add_workshop():
 @registration_required
 def update_profile():
 	if request.method == 'POST':
-		if len(set(["payment_status", "userId", "gid", "email", "registration_status","tzID", "hidden", "workshop_payment_status"]) & set(request.form.keys())) != 0:
-			return "Invalid Data"
+		
 
 		user_data = {}
 		try:
 			user_data['name'] = request.form['name']
 			user_data['gender'] = request.form['gender']
 			user_data['phone'] = request.form['phone']
-			# user_data['branch'] = request.form['branch']
-			# user_data['year'] = request.form['year']
+			user_data['branch'] = request.form['branch']
+			user_data['year'] = request.form['year']
+			user_data['college'] = request.form['college']
+			
 		except Exception as e:
 			flash("Missing Required Fields!")
 			raise e
+			return render_template('update_profile.html', user = current_user)
+
+		try:
+			user_data['referral'] = request.form['referral']
+		except:
+			pass
+
+		phone = TechUser.query.filter_by(phone=user_data['phone']).first()
+		if phone and phone.userId != current_user.userId:
+			flash("Phone number already exists")
 			return render_template('update_profile.html', user = current_user)
 
 
@@ -540,7 +556,15 @@ def update_profile():
 			return redirect(url_for('update_profile'))
 		return request.form
 
-	return render_template('update_profile.html', user = current_user)
+	#for get requests
+	else:
+
+		college = ""
+		collegeId = ""
+		if is_rgukt(current_user.email):
+			college = get_college(current_user.email)
+			collegeId = get_college_id(current_user.email)
+		return render_template('update_profile.html', user=current_user, college=college, collegeId=collegeId)
 
 	
 @app.errorhandler(404)
