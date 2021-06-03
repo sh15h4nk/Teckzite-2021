@@ -34,7 +34,7 @@
         margin: 0 auto;
     }
     
-    .profile-row {
+    .pro-row {
         padding: 2em 1em;
         margin: 1em 0;
         width: 90%;
@@ -44,32 +44,34 @@
         background-color: rgb(56 46 48 / 60%);
     }
     
-    .profile-row .profile-col {
-        width: 50%;
+    .pro-row .pro-col {
         height: 100%;
-        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         align-content: space-around;
         justify-content: space-evenly;
         align-items: center;
+        display: inline-block
     }
     
     .display-row {
         display: flex;
     }
     
-    h4 {
+    .pro-row h4 {
         font-weight: 400;
         font-size: 1.1em;
         color: #ddd;
+        display: inline-block
     }
     
-    h3 {
-        font-weight: 600;
+    .pro-row h3 {
+        float: left;
+        display: inline-block;
         font-size: 1.1em;
         color: cyan;
         padding-left: 10px;
+        display: inline-block
     }
     
     .btn {
@@ -97,16 +99,16 @@
     }
     
     @media (max-width:800px) {
-        .profile-row {
+        .pro-row {
             flex-direction: column;
         }
-        .profile-row .profile-col {
-            width: 100%;
+        .pro-row .pro-col {
+            display: inline-block
         }
-        h4 {
+        .pro-row h4 {
             font-size: .8em;
         }
-        h3 {
+        .pro-row h3 {
             font-size: .8em;
         }
     }
@@ -209,9 +211,10 @@
         </div>
         <div class="nav-but-wrap">
             <div class="menu-icon hover-target">
-                <span class="menu-icon_line menu-icon_line-left"></span>
+                <span class="menu-icon__line menu-icon__line-left"></span>
                 <span class="menu-icon__line"></span>
-                <span class="menu-icon_line menu-icon_line-right"></span>
+                <span class="menu-icon__line menu-icon__line-right"></span>
+
             </div>
         </div>
     </div>
@@ -234,11 +237,11 @@
         <p class="tzID">{{user.userId}}</p>
         <br><br>
         <div style="margin-top: 3%">
-        <center>
-            <a href="{{url_for('update_profile')}}" class="btn">update</a>
-            <a href="{{url_for('logout')}}" class="btn">logout</a>
-        </center>
-        <br>
+            <center>
+                <a href="{{url_for('update_profile')}}" class="btn">update</a>
+                <a href="{{url_for('logout')}}" class="btn">logout</a>
+            </center>
+            <br>
         </div>
     </div>
 
@@ -247,49 +250,49 @@
 
     <br><br>
 
-    <div class="profile-row">
+    <div class="pro-row">
 
-        <div class="profile-col">
+        <div class="pro-col">
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Name : </h4>
                 </div>
-                <div class="profile-col">
-                    <h3 style="text-transform: capitalize;"> {{user.name}} </h3>
+                <div class="pro-col">
+                    <h3 style="text-transform: capitalize;"> {{user.name}}</h3>
                 </div>
             </div>
 
             <br>
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Email : </h4>
                 </div>
-                <div class="profile-col">
-                    <h3 style="text-transform: unset;"> {{user.email}} </h3>
+                <div class="pro-col">
+                    <h3 style="text-transform: unset;"> {{user.email}}</h3>
                 </div>
             </div>
 
             <br>
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Gender : </p>
                 </div>
-                <div class="profile-col">
-                    <h3> {{user.gender}} </h3>
+                <div class="pro-col">
+                    <h3> {{user.gender}}</h3>
                 </div>
             </div>
 
             <br>
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>College : </p>
                 </div>
-                <div class="profile-col">
-                    <h3> {{user.college}} </h3>
+                <div class="pro-col">
+                    <h3> {{user.college}}</h3>
                 </div>
             </div>
 
@@ -297,24 +300,24 @@
 
         </div>
 
-        <div class="profile-col">
+        <div class="pro-col">
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>College ID : </p>
                 </div>
-                <div class="profile-col">
-                    <h3>{{user.collegeId}} </h3>
+                <div class="pro-col">
+                    <h3>{{user.collegeId}}</h3>
                 </div>
             </div>
 
             <br>
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Year : </p>
                 </div>
-                <div class="profile-col">
+                <div class="pro-col">
                     <h3>{{ user.year }}</h3>
                 </div>
             </div>
@@ -323,21 +326,21 @@
 
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Branch : </p>
                 </div>
-                <div class="profile-col">
-                    <h3> {{user.branch}} </h3>
+                <div class="pro-col">
+                    <h3> {{user.branch}}</h3>
                 </div>
             </div>
 
             <br>
 
             <div class="display-row">
-                <div class="profile-col">
+                <div class="pro-col">
                     <h4>Phone : </p>
                 </div>
-                <div class="profile-col">
+                <div class="pro-col">
                     <h3> {{user.phone}} </h3>
                 </div>
             </div>
@@ -369,7 +372,6 @@
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
     <br>
 
-    <hr>
     <h2 style="margin-top: 1rem;">Competitions</h2>
     <div class="lnk">
         <!-- <div class="lnkCard">

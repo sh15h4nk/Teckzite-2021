@@ -16,14 +16,11 @@
         <div class="nav__content">
             <ul class="nav__list">
                 <li class="nav__list-item active-nav"><a href="{{url_for('index')}}" class="hover-target">home</a></li>
-                {% if current_user.is_authenticated %}
-                    {% if current_user.registration_status %}
-                    <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
-                    {% else %}
-                        <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">Register</a></li>
-                    {% endif %}
-
+                {% if current_user.is_authenticated %} {% if current_user.registration_status %}
+                <li class="nav__list-item"><a href="{{url_for('profile')}}" class="hover-target">Profile</a></li>
                 {% else %}
+                <li class="nav__list-item"><a href="{{url_for('register')}}" class="hover-target">Register</a></li>
+                {% endif %} {% else %}
 
                 <li class="nav__list-item"><a href="{{url_for('login')}}" class="hover-target">Login/Register</a></li>
 
@@ -39,12 +36,12 @@
                 <li class="nav__list-item"><a href="{{url_for('sponsorsView')}}" class="hover-target">sponsors</a></li>
                 <li class="nav__list-item"><a href="{{url_for('aboutView')}}" class="hover-target">about us</a></li>
                 <li class="nav__list-item"><a href="{{url_for('teamView')}}" class="hover-target">Our team</a></li>
-        
+
                 <li class="nav__list-item"><a href="{{url_for('ca_portal')}}" class="hover-target">Campus Ambassador</a></li>
 
                 <li class="nav__list-item"><a href="https://teckzite.org/event-details/EV10051" class="hover-target">Confront Covid-19</a></li>
 
-                
+
 
             </ul>
         </div>
@@ -56,8 +53,7 @@
         {% endif %} {% endwith %}
     </div>
     <div id="content">
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
     </div>
 
     {% block javascript %}{% endblock %}

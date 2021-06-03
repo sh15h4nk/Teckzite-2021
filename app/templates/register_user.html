@@ -111,6 +111,7 @@
                 <span class="menu-icon__line menu-icon__line-left"></span>
                 <span class="menu-icon__line"></span>
                 <span class="menu-icon__line menu-icon__line-right"></span>
+
             </div>
         </div>
     </div>
@@ -408,32 +409,6 @@
                 }
             }
         }
-    }
-
-
-    function select() {
-        console.log(document.querySelector('.sp').value);
-        if (document.querySelector('.sp').value == 'OTHER') {
-            console.log('hello')
-            document.querySelector('.sp1').style.display = "block";
-            document.querySelector('.cancel').style.display = "block";
-            document.getElementById('bra').setAttribute("name", "");
-            document.getElementById('bra2').setAttribute("name", "branch");
-            document.getElementById('bra').removeAttribute("required");
-            document.getElementById('bra').setAttribute("disabled", "");
-            document.getElementById('bra2').setAttribute("required", "");
-        }
-    }
-
-    function cancel() {
-        document.querySelector('.sp1').style.display = "none";
-        document.getElementById('bra').removeAttribute("name", "branch");
-        document.querySelector('.cancel').style.display = "none";
-        document.querySelector('.sp').value = "";
-        document.getElementById('bra2').setAttribute("name", "");
-        document.getElementById('bra').setAttribute("required", "");
-        document.getElementById('bra').removeAttribute("disabled");
-        document.getElementById('bra2').removeAttribute("required");
     }
 </script>
 {% endblock %}
