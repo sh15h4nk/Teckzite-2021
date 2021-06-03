@@ -566,7 +566,99 @@ def update_profile():
 			collegeId = get_college_id(current_user.email)
 		return render_template('update_profile.html', user=current_user, college=college, collegeId=collegeId)
 
-	
+
+
+
+# events and teams
+
+@app.route('/registerEvent' methods=['POST'])
+@login_required
+@registration_required
+def register_event():
+
+
+	# event id validation
+	try: 
+		eventId = request.form['eventId']
+	except:
+		flash("Event ID is missing")
+		return redirect(url_for('competitions'))
+
+	event = Event.query.filter_by(eventId=eventId).first()
+	if not event:
+		flash("Not a valid event")
+		return redirect(url_for('competitions'))
+
+
+	# render register event form
+	if request.form['status'] == 'start':		
+
+		return render_template('register_event.html', event=event)
+
+	# request register event
+	else:
+		
+		try:
+			team_members = request.form['team_members']
+		except:
+			flash('Missing team members')
+			return redirect(url_for('competitions'))
+
+	team_members = add_team_admin(current_user.userId, team_members)
+
+	if not is_valid_members(team_members):
+		flash("Invalid team members")
+		return redirect(url_for('competitions'))
+
+	if not is_valid_team_request(team_members, eventId):
+		flash("Team member already exists in the event")
+		return redirect(url_for('competitions'))
+
+	max_m = get_max_members(eventId)
+	min_m = get_min_members(eventId)
+
+	if len(team_members) < min_m or len(team_members) > max_m:
+		flash("Team size is out of bounds")
+		return redirect(url_for('competitions'))
+
+	try:
+		teamId = create_team(team_members, eventId)
+		add_team_members(team_members, teamId)
+	except Exception as e:
+		raise e
+
+
+@app.route('/acceptTeam', methods=['POST'])
+@login_required
+@registration_required
+def accept_team():
+	try:
+		teamId = request.form['teamId']
+		accept = request.form['accept']
+	except:
+		flash("Missing teamId field")
+		return redirect(url_for('profile'))
+
+	if not is_valid_team(teamId):
+		flash("Not a valid team")
+		return redirect(url_for('profile'))
+
+	if accept != '1' or accept != '0':
+		flash("Invalid field")
+		return redirect(url_for('profile'))
+
+	if accept == '1':
+		accept_team_request(teamId, current_user.userId)
+	else:
+		decline_team_request(teamId, current_user.userId)
+
+	update_team_status(teamId)
+
+	flash("You have accepted a team request")
+	return redirect(url_for('profile'))
+
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
