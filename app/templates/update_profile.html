@@ -130,7 +130,7 @@
         </div>
         <p>For techinical issues Contact (JESWANTH: 8501027956, HEMANTH: 9505848891, SHIVA: 8331987780)</p>
 
-        {% if user.referral == 'None' %}
+        {% if user.referral == None or user.referral == ""%}
 
         <p> Fill the referral with same referral code used during your registration </p>
         <p> If you have not used a referral during registration, fill it with 'NO'</p>

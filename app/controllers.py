@@ -235,7 +235,7 @@ def register():
 				user_data['year'] = request.form['year']
 
 			except:
-				flask("Missing Required Fields!")
+				flash("Missing Required Fields!")
 				collegeId = get_college_id(current_user.email)
 				return render_template('register_rgukt.html', collegeId = collegeId, display="")
 
