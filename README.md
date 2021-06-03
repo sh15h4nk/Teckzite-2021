@@ -6,6 +6,7 @@ To run the server locally, follow below steps:
 - export FLASK_APP=run
 - export FLASK_ENV=development
 - export OAUTHLIB_INSECURE_TRANSPORT=1
+- pip install -r req.txt
 
 - flask run
 
