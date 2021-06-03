@@ -138,7 +138,7 @@ def login():
 			return redirect(url_for('register'))
 
 		else:
-			flash("Already logged in")
+			flash("Already logged in please update your profile")
 			return redirect(url_for('index'))
 
 	google_provider_cfg = get_google_provider_cfg()
@@ -194,7 +194,7 @@ def callback():
 		db.session.commit()		
 
 	login_user(user)
-	flash("Logged in successfully")
+	flash("Please update your profile")
 	    
 
 	# check if user registration is complete
