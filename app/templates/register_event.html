@@ -141,19 +141,30 @@
 
         </div>
 
-        <input type="text" pattern="[A-Z0-9]{7}" name="team_members" value="{{userId}}" readonly required>
+        <div class="f1" style="left:-26%;">
+            <label for="">Your Id:</label>
+            <input type="text" pattern="[A-Z0-9]{7}" name="team_members" value="{{userId}}" readonly required>
+            <span class="focus-input"></span>
+        </div>
 
         {% for i in range(event.min_teamsize-1) %}
 
-        <input type="text" pattern="[A-Z0-9]{7}" name="team_members" required>
-        <br>
+        <div class="f1" style="left:-26%;">
+            <label for="">Team member Id:</label>
+            <input placeholder="Id" type="text" pattern="[A-Z0-9]{7}" name="team_members" required>
+            <span class="focus-input"></span>
+        </div>
 
         {% endfor %}
 
         {% for i in range(event.max_teamsize - event.min_teamsize) %}
 
-        <input type="text" pattern="[A-Z0-9]{7}" name="team_members">
-        <br>
+        <div class="f1" style="left:-26%;">
+
+            <label for="">Team member Id:</label>
+            <input placeholder="Id" type="text" pattern="[A-Z0-9]{7}" name="team_members">
+            <span class="focus-input"></span>
+        </div>
 
         {% endfor %}
 
