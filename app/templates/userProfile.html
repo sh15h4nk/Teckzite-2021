@@ -373,19 +373,21 @@
     <h2 style="margin-top: 1rem;">Accepted Competitions </h2>
     <div class="lnk">
 
-        {% for event in my_events %}
+        {% for team in my_teams %}
         <div class="lnkCard">
             <div class="details">
-                <h5>{{event.title}}</h5>
-                <h5>
-                    {% for team in teams %}
-                        {% if team.event_id == event.id %}
-                            {{ team.teamId }}
-                        {% endif %}
-                    {% endfor %}
-                </h5>
-                <div class="ids">
-                </div>
+                
+                   
+                             <h5>{{ team.event_title }} </h5>
+                             <h5>{{ team.teamId }} </h5>
+
+                            <div class="ids">
+                                {% for member in team.members %}
+                                    {{member.name}} <br>
+                                {% endfor %}
+                            </div>
+               
+                
             </div>
        </div>
        {% endfor %}
@@ -394,22 +396,27 @@
     <h2 style="margin-top: 1rem;">Awaiting Competitions </h2>
     <div class="lnk">
 
-        {% for event in awaited_events %}
+        {% for team in awaited_teams %}
         <div class="lnkCard">
             <div class="details">
-                <h5>{{event.title}}</h5>
-                <h5>
-                    {% for team in teams %}
-                        {% if team.event_id == event.id %}
-                            {{ team.teamId }}
-                        {% endif %}
-                    {% endfor %}
-                </h5>
-                <div class="ids">
-                </div>
+                
+                    
+                            <h5>{{ team.event_title }}</h5>
+                            <h5>{{ team.teamId }}</h5>
+
+                            <div class="ids">
+                                {% for member in team.members %}
+                                    {{member.name}} <br>
+                                {% endfor %}
+                            </div>
+
+                    
+                
+                
             </div>
        </div>
        {% endfor %}
+   
     </div>
 
     <h2 style="margin-top: 1rem;">Team Requests </h2>

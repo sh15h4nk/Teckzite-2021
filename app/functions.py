@@ -192,7 +192,8 @@ def sendMail(user, message_title, template, mesg):
 
 def create_team(team_members, eventId):
 	teamId = generate_team_id()
-	new_team = Team(teamId, eventId)
+	event = Event.query.filter_by(id=eventId).first()
+	new_team = Team(teamId, event.eventId, event.title, eventId)
 	db.session.add(new_team)
 	db.session.commit()
 	return new_team.id
@@ -201,21 +202,18 @@ def add_team_members(team_members, teamId):
 
 	# add admin
 	admin = TechUser.query.filter_by(userId=team_members[0]).first()
-	new_admin = Member(teamId, admin.id)
+	new_admin = Member(teamId, admin.userId, admin.name, admin.id)
 	new_admin.stauts = 1
 	db.session.add(new_admin)
 	db.session.commit()
 
 
-	print(team_members)
-
 	del team_members[0]
-	print(team_members)
 
 	team = Team.query.filter_by(teamId=teamId)
 	for userId in team_members:
 		user = TechUser.query.filter_by(userId=userId).first()
-		new_member = Member(teamId, user.id)
+		new_member = Member(teamId, user.userId, user.name, user.id)
 		db.session.add(new_member)
 
 		send_team_request(userId, teamId)
@@ -250,14 +248,29 @@ def accept_team_request(teamId, current_user):
 	member.update({'stauts': 1})
 	db.session.commit()
 
-	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId)
-	db.session.delete(team_request)
+	# delete all team requests
+	team_requests = TeamRequest.query.filter_by(team_id=teamId).all()
+	if not team_requests:
+		return
+	for request in team_requests:
+		db.session.delete(request)
+
 	db.session.commit()
 
 
 def decline_team_request(teamId, current_user):
-	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId)
+	team = Team.query.filter_by(teamId=teamId).first()
+
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	if not team_request:
+		return
 	db.session.delete(team_request)
+
+	# delete team
+	for mem in team.members:
+		db.session.delete(mem)
+	db.session.delete(team)
+
 	db.session.commit()
 
 
@@ -299,11 +312,14 @@ def is_valid_team_request(team_members, eventId):
 
 	event = Event.query.filter_by(eventId=eventId).first()
 
+	# teams = Team.query.filter_by(event_id=event.id, team_status=1)
+
 	for team in event.teams:
-		for member in team.members:
-			user = TechUser.query.filter_by(id=member.user_id).first()
-			if user.userId in team_members and member.stauts == 1:
-				return False
+		if team.team_status == 1:
+			for member in team.members:
+				user = TechUser.query.filter_by(id=member.user_id).first()
+				if user.userId in team_members and member.stauts == 1:
+					return False
 	else:
 		return True 
 
@@ -314,12 +330,8 @@ def is_valid_team(teamId):
 	return True
 
 def has_duplicates(team_members):
-	print("teammm ", team_members)
-
 	for i in range(len(team_members)):
 		team_members[i] = team_members[i].upper()
-
-	print("teammm_new ", team_members)
 
 
 	if len(set(team_members)) == len(team_members):
@@ -352,8 +364,9 @@ def get_my_teams(userId):
 	teams = []
 	members = Member.query.filter_by(user_id = userId).all()
 	for member in members:
-		team = Team.query.filter_by(id = member.team_id).first()
-		teams.append(team)
+		team = Team.query.filter_by(id = member.team_id, team_status=1).first()
+		if team:
+			teams.append(team)
 
 	return teams
 
@@ -362,7 +375,8 @@ def get_awaited_teams(userId):
 	members = Member.query.filter_by(user_id = userId).all()
 	for member in members:
 		team = Team.query.filter_by(id = member.team_id, team_status=0).first()
-		teams.append(team)
+		if team:
+			teams.append(team)
 
 	return teams
 
