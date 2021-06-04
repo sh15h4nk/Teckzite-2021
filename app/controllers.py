@@ -404,11 +404,11 @@ def profile():
 	workshop = Workshop.query.filter_by(workshopId=current_user.workshop_id).first()
 	my_events = get_my_events(current_user.id)
 	awaited_events = get_awaited_events(current_user.id)
-	teams = get_my_teams(current_user.id)
+	my_teams = get_my_teams(current_user.id)
+	awaited_teams = get_awaited_teams(current_user.id)
 	team_requests = get_team_requests(current_user.userId)
-	print(team_requests)
-
-	return render_template('userProfile.html', user=current_user, workshop=workshop, my_events=my_events, awaited_events=awaited_events, teams=teams, team_requests=team_requests)
+	
+	return render_template('userProfile.html', user=current_user, workshop=workshop, my_teams=my_teams, awaited_teams=awaited_teams, team_requests=team_requests)
 
 @app.route('/ca-portal')
 def ca_portal():
@@ -663,20 +663,28 @@ def accept_team():
 		flash("Not a valid team")
 		return redirect(url_for('profile'))
 
-	print(accept, "######", type(accept))
 	if accept not in ['1', '0']:
 		flash("Invalid field")
 		return redirect(url_for('profile'))
 
 
 	if accept == '1':
-		accept_team_request(teamId, current_user)
+		try:
+			accept_team_request(teamId, current_user)
+		except:
+			flash("Sorry, all members of this team didn't accept the request")
 	else:
-		decline_team_request(teamId, current_user)
+		try:
+			decline_team_request(teamId, current_user)
+		except:
+			flash("Sorry, all members of this team didn't accept the request")
 
-	team_id = Team.query.filter_by(teamId=teamId).first().team_id
-		
-	update_team_status(team_id)
+
+	team = Team.query.filter_by(teamId=teamId).first()
+	
+	# no update request for decline
+	if team:
+		update_team_status(team.id)
 
 	flash("You have responded for team request")
 	return redirect(url_for('profile'))
