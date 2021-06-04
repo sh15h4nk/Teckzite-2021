@@ -402,8 +402,13 @@ def payment():
 def profile():
 
 	workshop = Workshop.query.filter_by(workshopId=current_user.workshop_id).first()
+	my_events = get_my_events(current_user.id)
+	awaited_events = get_awaited_events(current_user.id)
+	teams = get_my_teams(current_user.id)
+	team_requests = get_team_requests(current_user.userId)
+	print(team_requests)
 
-	return render_template('userProfile.html', user=current_user, workshop=workshop)
+	return render_template('userProfile.html', user=current_user, workshop=workshop, my_events=my_events, awaited_events=awaited_events, teams=teams, team_requests=team_requests)
 
 @app.route('/ca-portal')
 def ca_portal():
@@ -571,61 +576,76 @@ def update_profile():
 
 # events and teams
 
-@app.route('/registerEvent' methods=['POST'])
+@app.route('/registerEvent/<eventId>', methods=['GET','POST'])
 @login_required
 @registration_required
-def register_event():
+def register_event(eventId):
 
+
+	# render register event form
+	if request.method == 'GET':	
+
+		event = Event.query.filter_by(eventId=eventId).first()
+		if not event:
+			flash("Not a valid event")
+			return redirect(url_for('competitionsView'))
+
+		return render_template('register_event.html', event=event, userId=current_user.userId)
+
+	# request register event
+	
 
 	# event id validation
 	try: 
 		eventId = request.form['eventId']
 	except:
 		flash("Event ID is missing")
-		return redirect(url_for('competitions'))
+		return redirect(url_for('competitionsView'))
 
 	event = Event.query.filter_by(eventId=eventId).first()
 	if not event:
 		flash("Not a valid event")
-		return redirect(url_for('competitions'))
+		return redirect(url_for('competitionsView'))
+	
+	try:
+		team_members = request.form.getlist('team_members')
+	except:
+		flash('Missing team members')
+		return redirect(url_for('competitionsView'))
 
 
-	# render register event form
-	if request.form['status'] == 'start':		
+	while ("" in team_members):
+		team_members.remove("")
 
-		return render_template('register_event.html', event=event)
+	if has_duplicates(team_members):
+		flash("Please don't repeat TZ ids")
+		return redirect(url_for('competitionsView'))
 
-	# request register event
-	else:
-		
-		try:
-			team_members = request.form['team_members']
-		except:
-			flash('Missing team members')
-			return redirect(url_for('competitions'))
-
-	team_members = add_team_admin(current_user.userId, team_members)
-
-	if not is_valid_members(team_members):
+	if not are_valid_members(team_members):
 		flash("Invalid team members")
-		return redirect(url_for('competitions'))
+		return redirect(url_for('competitionsView'))
 
 	if not is_valid_team_request(team_members, eventId):
 		flash("Team member already exists in the event")
-		return redirect(url_for('competitions'))
+		return redirect(url_for('competitionsView'))
 
-	max_m = get_max_members(eventId)
-	min_m = get_min_members(eventId)
+	max_m = int(get_max_members(eventId))
+	min_m = int(get_min_members(eventId))
+
 
 	if len(team_members) < min_m or len(team_members) > max_m:
 		flash("Team size is out of bounds")
-		return redirect(url_for('competitions'))
+		return redirect(url_for('competitionsView'))
+
 
 	try:
-		teamId = create_team(team_members, eventId)
+		teamId = create_team(team_members, event.id)
 		add_team_members(team_members, teamId)
 	except Exception as e:
 		raise e
+
+	flash("Team requests for event sent successfully")
+	return redirect(url_for('profile'))
 
 
 @app.route('/acceptTeam', methods=['POST'])
@@ -643,18 +663,19 @@ def accept_team():
 		flash("Not a valid team")
 		return redirect(url_for('profile'))
 
-	if accept != '1' or accept != '0':
+	print(accept, "######", type(accept))
+	if accept not in ['1', '0']:
 		flash("Invalid field")
 		return redirect(url_for('profile'))
 
 	if accept == '1':
-		accept_team_request(teamId, current_user.userId)
+		accept_team_request(teamId, current_user)
 	else:
-		decline_team_request(teamId, current_user.userId)
+		decline_team_request(teamId, current_user)
 
 	update_team_status(teamId)
 
-	flash("You have accepted a team request")
+	flash("You have responded for team request")
 	return redirect(url_for('profile'))
 
 
