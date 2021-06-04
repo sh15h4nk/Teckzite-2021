@@ -29,6 +29,14 @@
         font-size: 1.2rem;
         font-weight: 300;
     }
+
+    form input {
+
+        border-color: white;
+        border-radius: 10px;
+        border-width: 10px;
+        background-color: white;
+    }
 </style>
 {% endblock %} {% block content %} {{super()}}
 
@@ -127,7 +135,10 @@
     <form class="form" id="form" method="POST">
 
         <div class="heading">
-            <h1>Registration</h1>
+            <h1>{{event.title}}</h1>
+
+            <h2> Register your team </h2>
+
         </div>
 
         <input type="text" pattern="[A-Z0-9]{7}" name="team_members" value="{{userId}}" readonly required>
