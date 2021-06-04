@@ -146,7 +146,7 @@ def login():
 			return redirect(url_for('register'))
 
 		else:
-			flash("Already logged in")
+			flash("Already logged in please update your profile")
 			return redirect(url_for('index'))
 
 	google_provider_cfg = get_google_provider_cfg()
@@ -202,7 +202,7 @@ def callback():
 		db.session.commit()		
 
 	login_user(user)
-	flash("Logged in successfully")
+	flash("Please update your profile")
 	    
 
 	# check if user registration is complete
@@ -410,8 +410,13 @@ def payment():
 def profile():
 
 	workshop = Workshop.query.filter_by(workshopId=current_user.workshop_id).first()
-
-	return render_template('userProfile.html', user=current_user, workshop=workshop)
+	my_events = get_my_events(current_user.id)
+	awaited_events = get_awaited_events(current_user.id)
+	my_teams = get_my_teams(current_user.id)
+	awaited_teams = get_awaited_teams(current_user.id)
+	team_requests = get_team_requests(current_user.userId)
+	
+	return render_template('userProfile.html', user=current_user, workshop=workshop, my_teams=my_teams, awaited_teams=awaited_teams, team_requests=team_requests)
 
 @app.route('/ca-portal')
 def ca_portal():
@@ -574,7 +579,126 @@ def update_profile():
 			collegeId = get_college_id(current_user.email)
 		return render_template('update_profile.html', user=current_user, college=college, collegeId=collegeId)
 
+
+
+
+# events and teams
+
+@app.route('/registerEvent/<eventId>', methods=['GET','POST'])
+@login_required
+@registration_required
+def register_event(eventId):
+
+
+	# render register event form
+	if request.method == 'GET':	
+
+		event = Event.query.filter_by(eventId=eventId).first()
+		if not event:
+			flash("Not a valid event")
+			return redirect(url_for('competitionsView'))
+
+		return render_template('register_event.html', event=event, userId=current_user.userId)
+
+	# request register event
 	
+
+	# event id validation
+	try: 
+		eventId = request.form['eventId']
+	except:
+		flash("Event ID is missing")
+		return redirect(url_for('competitionsView'))
+
+	event = Event.query.filter_by(eventId=eventId).first()
+	if not event:
+		flash("Not a valid event")
+		return redirect(url_for('competitionsView'))
+	
+	try:
+		team_members = request.form.getlist('team_members')
+	except:
+		flash('Missing team members')
+		return redirect(url_for('competitionsView'))
+
+
+	while ("" in team_members):
+		team_members.remove("")
+
+	if has_duplicates(team_members):
+		flash("Please don't repeat TZ ids")
+		return redirect(url_for('competitionsView'))
+
+	if not are_valid_members(team_members):
+		flash("Invalid team members")
+		return redirect(url_for('competitionsView'))
+
+	if not is_valid_team_request(team_members, eventId):
+		flash("Team member already exists in the event")
+		return redirect(url_for('competitionsView'))
+
+	max_m = int(get_max_members(eventId))
+	min_m = int(get_min_members(eventId))
+
+
+	if len(team_members) < min_m or len(team_members) > max_m:
+		flash("Team size is out of bounds")
+		return redirect(url_for('competitionsView'))
+
+
+	try:
+		teamId = create_team(team_members, event.id)
+		add_team_members(team_members, teamId)
+	except Exception as e:
+		raise e
+
+	flash("Team requests for event sent successfully")
+	return redirect(url_for('profile'))
+
+
+@app.route('/acceptTeam', methods=['POST'])
+@login_required
+@registration_required
+def accept_team():
+	try:
+		teamId = request.form['teamId']
+		accept = request.form['accept']
+	except:
+		flash("Missing teamId field")
+		return redirect(url_for('profile'))
+
+	if not is_valid_team(teamId):
+		flash("Not a valid team")
+		return redirect(url_for('profile'))
+
+	if accept not in ['1', '0']:
+		flash("Invalid field")
+		return redirect(url_for('profile'))
+
+
+	if accept == '1':
+		try:
+			accept_team_request(teamId, current_user)
+		except:
+			flash("Sorry, all members of this team didn't accept the request")
+	else:
+		try:
+			decline_team_request(teamId, current_user)
+		except:
+			flash("Sorry, all members of this team didn't accept the request")
+
+
+	team = Team.query.filter_by(teamId=teamId).first()
+	
+	# no update request for decline
+	if team:
+		update_team_status(team.id)
+
+	flash("You have responded for team request")
+	return redirect(url_for('profile'))
+
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

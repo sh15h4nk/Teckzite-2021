@@ -159,6 +159,17 @@ def generate_ca_id():
     return "CA" + str(current_ca_id)
 
 
+def generate_team_id():
+
+    currentId = CurrentId.query.first()
+    current_team_id = currentId.current_team_id
+    
+    currentId.current_team_id += 1
+    db.session.commit()
+    
+    return "TM" + str(current_team_id)
+
+
 def registration_required(func):
 	@wraps(func)
 	def decorated_function(*args, **kwargs):
@@ -174,3 +185,203 @@ def sendMail(user, message_title, template, mesg):
 	msg = Message(message_title, sender='no-reply@teckzite.org', recipients=[user.email])
 	msg.html = render_template(template, msg=mesg)
 	mail.send(msg)
+
+
+# events and teams
+
+
+def create_team(team_members, eventId):
+	teamId = generate_team_id()
+	event = Event.query.filter_by(id=eventId).first()
+	new_team = Team(teamId, event.eventId, event.title, eventId)
+	db.session.add(new_team)
+	db.session.commit()
+	return new_team.id
+
+def add_team_members(team_members, teamId):
+
+	# add admin
+	admin = TechUser.query.filter_by(userId=team_members[0]).first()
+	new_admin = Member(teamId, admin.userId, admin.name, admin.id)
+	new_admin.stauts = 1
+	db.session.add(new_admin)
+	db.session.commit()
+
+
+	del team_members[0]
+
+	team = Team.query.filter_by(teamId=teamId)
+	for userId in team_members:
+		user = TechUser.query.filter_by(userId=userId).first()
+		new_member = Member(teamId, user.userId, user.name, user.id)
+		db.session.add(new_member)
+
+		send_team_request(userId, teamId)
+
+	db.session.commit()
+
+	update_team_status(teamId)
+
+
+def is_complete_team():
+	return
+
+def add_team_admin(team_members, userId):
+	members = team_members.insert(0, userId)
+	return members
+
+def send_team_request(userId, teamId):
+	team = Team.query.filter_by(id = teamId).first()
+	event = Event.query.filter_by(id=team.event_id).first()
+	tech_user = TechUser.query.filter_by(userId=userId).first()
+	new_team_request = TeamRequest(team.teamId, event_title=event.title, user_id=tech_user.userId)
+	db.session.add(new_team_request)
+	db.session.commit()
+
+
+
+def accept_team_request(teamId, current_user):
+
+	team = Team.query.filter_by(teamId=teamId).first()
+
+	member = Member.query.filter_by(team_id=team.id, user_id=current_user.id)
+	member.update({'stauts': 1})
+	db.session.commit()
+
+	# delete all team requests
+	team_requests = TeamRequest.query.filter_by(team_id=teamId).all()
+	if not team_requests:
+		return
+	for request in team_requests:
+		db.session.delete(request)
+
+	db.session.commit()
+
+
+def decline_team_request(teamId, current_user):
+	team = Team.query.filter_by(teamId=teamId).first()
+
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	if not team_request:
+		return
+	db.session.delete(team_request)
+
+	# delete team
+	for mem in team.members:
+		db.session.delete(mem)
+	db.session.delete(team)
+
+	db.session.commit()
+
+
+def modify_member_status(teamId, userId, action):
+	member = Member.query.filter_by(teamId=teamId, userId=userId)
+	member.update({'stauts': action})
+	db.session.commit()
+
+def update_team_status(team_id):
+	team = Team.query.filter_by(id=team_id).first()
+	for member in team.members:
+		if member.stauts == 0:
+			return False
+	else:
+		Team.query.filter_by(id=team_id).update({'team_status': 1})
+		db.session.commit()
+		return True
+
+
+def get_max_members(eventId):
+	event = Event.query.filter_by(eventId=eventId).first()
+	return event.max_teamsize
+
+def get_min_members(eventId):
+	event = Event.query.filter_by(eventId=eventId).first()
+	return event.min_teamsize
+
+
+def are_valid_members(team_members):
+	for member in team_members:
+		if member != "":
+			user = TechUser.query.filter_by(userId=member).first()
+			if not user:
+				return False
+	else:
+		return True
+
+def is_valid_team_request(team_members, eventId):
+
+	event = Event.query.filter_by(eventId=eventId).first()
+
+	# teams = Team.query.filter_by(event_id=event.id, team_status=1)
+
+	for team in event.teams:
+		if team.team_status == 1:
+			for member in team.members:
+				user = TechUser.query.filter_by(id=member.user_id).first()
+				if user.userId in team_members and member.stauts == 1:
+					return False
+	else:
+		return True 
+
+def is_valid_team(teamId):
+	team = Team.query.filter_by(teamId=teamId).first()
+	if not team:
+		return False
+	return True
+
+def has_duplicates(team_members):
+	for i in range(len(team_members)):
+		team_members[i] = team_members[i].upper()
+
+
+	if len(set(team_members)) == len(team_members):
+		return False
+	return True
+
+def get_my_events(userId):
+	events = []
+	members = Member.query.filter_by(user_id = userId).all()
+	for member in members:
+		team = Team.query.filter_by(id = member.team_id, team_status=1).first()
+		if team:
+			event = Event.query.filter_by(id=team.event_id).first()
+			events.append(event)
+
+	return events
+
+def get_awaited_events(userId):
+	events = []
+	members = Member.query.filter_by(user_id = userId).all()
+	for member in members:
+		team = Team.query.filter_by(id = member.team_id, team_status=0).first()
+		if team:
+			event = Event.query.filter_by(id=team.event_id).first()
+			events.append(event)
+
+	return events
+
+def get_my_teams(userId):
+	teams = []
+	members = Member.query.filter_by(user_id = userId).all()
+	for member in members:
+		team = Team.query.filter_by(id = member.team_id, team_status=1).first()
+		if team:
+			teams.append(team)
+
+	return teams
+
+def get_awaited_teams(userId):
+	teams = []
+	members = Member.query.filter_by(user_id = userId).all()
+	for member in members:
+		team = Team.query.filter_by(id = member.team_id, team_status=0).first()
+		if team:
+			teams.append(team)
+
+	return teams
+
+def get_team_requests(userId):
+	user = TechUser.query.filter_by(userId=userId).first()
+	return user.team_requests
+
+

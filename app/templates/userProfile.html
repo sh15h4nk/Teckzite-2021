@@ -372,41 +372,94 @@
     <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
     <br>
 
-    <h2 style="margin-top: 1rem;">Competitions</h2>
+    <hr>
+    <h2 style="margin-top: 1rem;">Accepted Competitions </h2>
     <div class="lnk">
-        <!-- <div class="lnkCard">
+
+        {% for team in my_teams %}
+        <div class="lnkCard">
             <div class="details">
-                <h5>Heading Heading Heading Heading Heading Heading Heading</h5>
-                <h5>team</h5>
-                <div class="ids" </div>
-                </div>
-            </div> -->
-        <!-- <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
+                
+                   
+                             <h5>{{ team.event_title }} </h5>
+                             <h5>{{ team.teamId }} </h5>
+
+                            <div class="ids">
+                                {% for member in team.members %}
+                                    {{member.name}} <br>
+                                {% endfor %}
+                            </div>
+               
+                
+            </div>
+       </div>
+       {% endfor %}
+    </div>
+
+    <h2 style="margin-top: 1rem;">Awaiting Competitions </h2>
+    <div class="lnk">
+
+        {% for team in awaited_teams %}
+        <div class="lnkCard">
+            <div class="details">
+                
+                    
+                            <h5>{{ team.event_title }}</h5>
+                            <h5>{{ team.teamId }}</h5>
+
+                            <div class="ids">
+                                {% for member in team.members %}
+                                    {{member.name}} <br>
+                                {% endfor %}
+                            </div>
+
+                    
+                
+                
+            </div>
+       </div>
+       {% endfor %}
+   
+    </div>
+
+    <h2 style="margin-top: 1rem;">Team Requests </h2>
+    <div class="lnk">
+
+        {% for request in team_requests %}
+        <div class="lnkCard">
+            <div class="details">
+                <h5>{{request.event_title}}</h5>
+                <h5>
+                    {{request.team_id}}
+                </h5>
+                <div class="ids">
                 </div>
             </div>
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
-                </div>
+            <div>
+                <form method="POST" action="{{url_for('accept_team')}}">
+                    <input type="hidden" name="teamId" value="{{request.team_id}}">
+                    <button name='accept' value="1">Accept</button>
+                    <button name='accept' value="0">Decline</button>
+
+                </form>
             </div>
-            <div class="lnkCard">
-                <div class="details">
-                    <h5>Heading</h5>
-                </div>
-            </div> -->
+       </div>
+       {% endfor %}
     </div>
 
     <h2 style="margin-top: 1rem;">Workshop</h2>
 
 
-    {% if workshop %} {% if not user.workshop_payment_status %}
+    {% if workshop %} 
+
+        {% if not user.workshop_payment_status %}
 
 
-    <br>
+            <br>
 
-    <p> If not yet paid <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button> {% else %}
+            <p> If not yet paid <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
+
+         {% else %}
 
         <p> Your payment was successfull </p>
 
