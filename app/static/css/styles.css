@@ -247,7 +247,7 @@ body {
     position: absolute;
     content: '';
     top: 50%;
-    margin-top: -2px;
+    margin-top: -2x;
     left: 50%;
     width: 0;
     height: 0;
@@ -390,6 +390,16 @@ body.nav-active .nav__list-item:nth-child(12) {
 body.nav-active .nav__list-item:nth-child(13) {
     -webkit-transition-delay: 2s;
     transition-delay: 2s;
+}
+
+body.nav-active .nav__list-item:nth-child(14) {
+    -webkit-transition-delay: 2.1s;
+    transition-delay: 2.1s;
+}
+
+body.nav-active .nav__list-item:nth-child(15) {
+    -webkit-transition-delay: 2.1s;
+    transition-delay: 2.1s;
 }
 
 
