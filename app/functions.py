@@ -250,13 +250,13 @@ def accept_team_request(teamId, current_user):
 	member.update({'stauts': 1})
 	db.session.commit()
 
-	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId)
 	db.session.delete(team_request)
 	db.session.commit()
 
 
 def decline_team_request(teamId, current_user):
-	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId)
 	db.session.delete(team_request)
 	db.session.commit()
 
