@@ -1,0 +1,1056 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021| highlights{% endblock %} {% block html_head %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+
+<style>
+    .filter .filter-items .item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        height: auto;
+        margin: 1em 0;
+    }
+    
+    .filter .filter-items .item .inner {
+        height: auto;
+        background-color: rgba(56, 46, 48, 0.603);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+    }
+    
+    .filter .filter-items .item .inner h3 {
+        color: #908282;
+        font-weight: 600;
+        font-size: 1.3em;
+    }
+    
+    .breakdown-container {
+        width: 100%;
+        margin: 0 auto;
+        margin: 1rem 0;
+    }
+    
+    .breakdown-container .breakdown {
+        width: 100%;
+        display: flex;
+        cursor: pointer;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .breakdown-container .breakdown.incentives {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .breakdown-container .breakdown .ico {
+        width: 25px;
+        height: 25px;
+        margin: 5px;
+        border-radius: 50%;
+        float: left;
+        transition: all .5s ease-in-out;
+        font-size: 1.2rem;
+        color: #eee;
+        text-align: center;
+        transition: all .5s ease-in-out;
+    }
+    
+    .breakdown-container .open .ico {
+        transform: rotate(135deg);
+        transition: all .5s ease-in-out;
+    }
+    
+    .breakdown-container .breakdown h5 {
+        color: #eee;
+        font-size: .9rem;
+        font-weight: 500;
+        margin: 0;
+        padding-left: 0;
+    }
+    
+    .breakdown-container .breakdown-panel {
+        background-color: rgba(56, 46, 48, 0.603);
+        margin: 0 1rem;
+        font-size: 14px;
+        align-items: justify;
+        overflow: hidden;
+        max-height: 0;
+        transition: all .3s ease-in-out;
+    }
+    
+    .breakdown-container .breakdown-panel .content {
+        padding: 1em;
+    }
+    
+    .breakdown-container .breakdown-panel .content p {
+        line-height: 2;
+    }
+    
+    .breakdown-container .breakdown-panel .content h4 {
+        font-weight: 500;
+    }
+    
+    .breakdown-container .breakdown-panel .content .li {
+        padding: 15px;
+    }
+    
+    .breakdown-container .breakdown-panel .content a {
+        font-size: 10px;
+        color: cyan;
+        font-weight: 500;
+        letter-spacing: 2px;
+    }
+    
+    .breakdown-container .breakdown-panel .content a:hover {
+        padding: 5px 10px;
+        background-color: #eee;
+        color: #111;
+    }
+    
+    .reward {
+        color: #eee;
+        font-weight: 400;
+    }
+    
+    @media (max-width:768px) {
+        .filter .filter-items .item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+
+{% endblock %} {% block content %} {{super()}}
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
+        </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
+    <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+ </svg>
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
+ </svg></div>
+</div>
+</div>
+
+
+<!-- header -->
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+        </div>
+    </div>
+</header>
+
+
+<!-- main -->
+<br>
+<section class="filter">
+    <div class="filter-container">
+        <h1 class="center">highlights</h1>
+
+        <br>
+
+        <div class="filter-items filter-items-cards">
+
+
+            <!-- cse -->
+            <div class="item">
+                <div class="inner">
+                    <h3>computer science</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Reverse Coding -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Reverse Coding</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10003">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Code war -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Code war</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10018">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- SQL Master -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>SQL Master</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10025">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Template Monster -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Template Monster</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10006">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Debug It -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Debug It</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10024">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Data Analyzer -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Data Analyzer</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/- + Internship</p>
+                                <br>
+                                <p>3<sup>rd</sup> winners</p>
+                                <p class="reward">Paid Course</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10004">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <p>.1, <b>CODE WAR</b> winners will be awarded with internships worth <b>10k</b> by <b>PREPBYTES</b> company on the topic competitive coding.</p>
+                                <br>
+                                <p>.2, <b>TEMPLATE MONSTER</b> first prize winner will be awarded with internship worth <b>10k</b> by <b>PREPBYTES</b> company on the topic Front end development.</p>
+                                <br>
+                                <p>.3, All other event first prize winners will be awarded with Internship worth <b>12k</b> by <b>ELITE TECHNO GROUPS COMPANY</b> on the topics</p>
+                                <div class="li">
+                                    <p> * Autonomous vehicle using advanced ML, AI and IOT</p>
+                                    <p> * Intro of ML & AI on autonomous vehicle</p>
+                                    <p> * Data analytics and visualization using Tableau with SQL</p>
+                                </div>
+                                <p>.4, All the second prize winners will be awarded with internships worth <b>4k</b> in <b>BRAINOVISION</b> company on the topic data science.</p>
+                                <br>
+                                <p>.5, All the Third prize winners will be awarded with paid courses worth <b>2k</b> by <b>GUVI</b> company.</p>
+                                <br>
+                                <p>.6, 2 Internships will be provided by <b>IPRIME SKILLS</b> company to the active participants in the workshop conducted by Team <b>TECKZITE’21</b></p>
+                                <br>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="filter-items filter-items-cards">
+
+            <!-- ece -->
+            <div class="item">
+                <div class="inner">
+                    <h3>ece</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Burstomania -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Burstomania</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10011">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Digi-Analog -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Digi-Analog</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10012">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Design & Win -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Design & Win</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10013">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Matchtronics -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Matchtronics</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10014">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <p>.1, Internships worth <b>12k</b> will be awarded by <b>ELITE TECHNO GROUP</b> company on the topics</p>
+                                <div class="li">
+                                    <p> * Electrical vehicle design & development</p>
+                                    <p> * Fundamentals of Electric vehicle Design</p>
+                                    <p> * Electrical Vehicles Design & Development</p>
+                                </div>
+                                <p>.2, 2 Internships will be provided by <b>IPRIME SKILLS</b> company to the active participants in the workshop conducted by Team <b>TECKZITE’21</b></p>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- mechanical -->
+            <div class="item">
+                <div class="inner">
+                    <h3>mechanical</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Fill it Fast -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Fill it Fast</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10007">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Mechanical Mania -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Mechanical Mania</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10008">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Raise your Problem -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Raise your Problem</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10009">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Dazzling Design -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Dazzling Design</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10010">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <p>.1, Internships worth <b>12k</b> will be awarded by <b>ELITE TECHNO GROUP</b> company on the topics</p>
+                                <div class="li">
+                                    <p> * Basic to expert on commercial Race car dynamics</p>
+                                    <p> * Fundamental of vehicle dynamics</p>
+                                    <p> * Advanced Industrial applications of Aerodynamics & CFD</p>
+                                    <p> * Advanced Aerodynamics Industrial Applications using ANSYS and star CCM+</p>
+                                    <p> * Computational Fluid Dynamics & Turbo machinery</p>
+                                </div>
+                                <p>.2, 2 Internships will be provided by <b>IPRIME SKILLS</b> company to the active participants in the workshop conducted by Team <b>TECKZITE’21</b></p>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- civil -->
+            <div class="item">
+                <div class="inner">
+                    <h3>civil</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Plot your Plan -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Plot your Plan</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10031">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Tricky civil -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Tricky civil</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/-</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10040">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Autocad -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Autocad</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Internship</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10027">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Papyrus 2021 -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Papyrus 2021</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/-</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10028">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <p>.1, Internships worth <b>12k</b> will be provided by <b>CADDESK</b> to the winners on the topic
+                                    <b>3DS Max</b> with Life time login dashboard and Life time Technical assistance</p>
+                                <br>
+                                <p>.2, 2 Internships will be provided by <b>IPRIME SKILLS</b> company to the active participants in the workshop conducted by Team <b>TECKZITE’21</b></p>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- chemical -->
+            <div class="item">
+                <div class="inner">
+                    <h3>chemical</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Chem-Cross -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Chem-Cross</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>Team members</h4>
+                                <p>1</p>
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">2500/- + IIChe intern</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 4500/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10016">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Chem-Icon -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Chem-Icon</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>Team members</h4>
+                                <p>1</p>
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winner</p>
+                                <p class="reward">5000/- + Career Guidance</p>
+                                <br>
+                                <p>Total Cash Prize - 5000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10017">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Case Study -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Case Study</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>Team members</h4>
+                                <p>2</p>
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">2500/- + IIChe intern</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 4500/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10019">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Poster Presentation -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Poster Presentation</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>Team members</h4>
+                                <p>1</p>
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winner</p>
+                                <p class="reward">2500/- + IIChe intern</p>
+                                <br>
+                                <p>2<sup>nd</sup> winner</p>
+                                <p class="reward">2000/-</p>
+                                <br>
+                                <p>Total Cash Prize - 4500/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10035">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <p>.1, Intern’s each worth <b>1.8k</b> will be provided by <b>Indian Institute of Chemical Engineers (IIChe) </b> with certificate on the topic <b>SIX SIGMA (YELLOW BELT)</b>.</p>
+                                <br>
+                                <p>.2, For chem-Icon winner Personalized career guidance and technical support till their first job by 2017 batch student, our alumni <b>Mr. Gopi, Process Engineer (HPCL)</b></p>
+                                <br>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- mme -->
+            <div class="item">
+                <div class="inner">
+                    <h3>mme</h3>
+                    <div class="breakdown-container">
+
+                        <!-- Meta- Icon -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Meta- Icon</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">3000/- + Test Series</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">Test Series</p>
+                                <br>
+                                <p>Total Cash Prize - 3000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10020">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Meta-Quiz -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Meta-Quiz</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">2500 + Test Series</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">1500 + Test Series</p>
+                                <br>
+                                <p>Total Cash Prize - 4000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10021">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Failure Analysis -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Failure Analysis</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">2500 + Test Series</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">1500 + Test Series</p>
+                                <br>
+                                <p>Total Cash Prize - 4000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10022">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Meta - Technician -->
+                        <div class="breakdown">
+                            <div class="ico">+</div>
+                            <h5>Meta-Technician</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <h4>prize money</h4>
+                                <br>
+                                <p>1<sup>st</sup> winners</p>
+                                <p class="reward">2500 + Test Series</p>
+                                <br>
+                                <p>2<sup>nd</sup> winners</p>
+                                <p class="reward">1500 + Test Series</p>
+                                <br>
+                                <p>Total Cash Prize - 4000/-</p>
+                                <br>
+                                <p><a href="https://teckzite.org/event-details/EV10015">view</a></p>
+                                <br>
+                            </div>
+                        </div>
+
+                        <!-- Incentives -->
+                        <div class="breakdown incentives">
+                            <div class="ico">+</div>
+                            <h5>Incentives</h5>
+                        </div>
+
+                        <div class="breakdown-panel">
+                            <div class="content">
+                                <br>
+                                <p>.1, <b>GATE</b> Test series will be provided by <b>METAGATE</b> coaching center to the winners of all <b>MME</b> departmental events</p>
+                                <br>
+                                <p>.2, 2 Internships will be provided by <b>IPRIME SKILLS</b> company to the active participants in the workshop conducted by Team <b>TECKZITE’21</b></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
+
+
+<script>
+    //breakdown
+    var acc = document.getElementsByClassName('breakdown');
+    for (var i = 0; i < acc.length; i++) {
+
+        acc[i].addEventListener('click', function() {
+
+            this.classList.toggle('open');
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+            }
+
+        })
+    }
+</script>
+
+
+{% endblock %}

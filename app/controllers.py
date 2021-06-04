@@ -113,6 +113,14 @@ def virtualView():
 def projectsView():
 	return render_template('project-expo.html')
 
+@app.route('/projectbazar')
+def projectbazarView():
+	return render_template('project-bazar.html')
+
+@app.route('/highlights')
+def highlightView():
+	return render_template('highlights.html')
+
 @app.route('/sponsors')
 def sponsorsView():
 	return render_template('sponsors.html')
