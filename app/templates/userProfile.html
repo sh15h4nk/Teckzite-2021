@@ -392,6 +392,13 @@
                
                 
             </div>
+            <div>
+                <form method="POST" action="{{url_for('delete_team')}}">
+                    <input type="hidden" name="teamId" value="{{team.teamId}}">
+                    <button name='accept' value="0">Delete</button>
+
+                </form>
+            </div>
        </div>
        {% endfor %}
     </div>
@@ -459,28 +466,39 @@
 
             <p> If not yet paid <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
 
-         {% else %}
+        {% else %}
 
-        <p> Your payment was successfull </p>
+            <p> Your payment was successfull </p>
 
         {% endif %}
 
-        <br>
+            <br>
 
-        <div class="lnk">
-            <div class="lnkCard">
-                <div class="details">
-                    <div class="names">
-                        <p>{{workshop.title}}</p>
+            <div class="lnk">
+                <div class="lnkCard">
+                    <div class="details">
+                        <div class="names">
+                            <p>{{workshop.title}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button> {%else%}
+        <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+    {%else%}
 
-        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% endif %}
+        {% if not user.workshop_payment_status %}
+
+            <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> 
+
+        {% else %}
+
+            <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button> 
+
+        {% endif %}
+
+    {% endif %}
 
 
         <br>

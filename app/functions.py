@@ -181,6 +181,19 @@ def registration_required(func):
 	return decorated_function
 
 
+
+def payment_required(func):
+	@wraps(func)
+	def decorated_function(*args, **kwargs):
+		if not current_user.payment_status:
+			flash("Your payment is still pending")
+			return redirect(url_for('payment'))
+		else:
+			return func(*args, **kwargs)
+	return decorated_function
+
+
+
 def sendMail(user, message_title, template, mesg):
 	msg = Message(message_title, sender='no-reply@teckzite.org', recipients=[user.email])
 	msg.html = render_template(template, msg=mesg)
@@ -248,6 +261,16 @@ def accept_team_request(teamId, current_user):
 	member.update({'stauts': 1})
 	db.session.commit()
 
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	if not team_request:
+		return
+	db.session.delete(team_request)
+	db.session.commit()
+
+
+def decline_team_request(teamId, current_user):
+	team = Team.query.filter_by(teamId=teamId).first()
+
 	# delete all team requests
 	team_requests = TeamRequest.query.filter_by(team_id=teamId).all()
 	if not team_requests:
@@ -257,21 +280,22 @@ def accept_team_request(teamId, current_user):
 
 	db.session.commit()
 
-
-def decline_team_request(teamId, current_user):
-	team = Team.query.filter_by(teamId=teamId).first()
-
-	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
-	if not team_request:
-		return
-	db.session.delete(team_request)
-
 	# delete team
 	for mem in team.members:
 		db.session.delete(mem)
 	db.session.delete(team)
 
 	db.session.commit()
+
+def delete_team_request(teamId):
+	team = Team.query.filter_by(teamId=teamId).first()
+	
+	for mem in team.members:
+		db.session.delete(mem)
+	db.session.delete(team)
+
+	db.session.commit()
+
 
 
 def modify_member_status(teamId, userId, action):

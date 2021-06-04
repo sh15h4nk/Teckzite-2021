@@ -587,6 +587,7 @@ def update_profile():
 @app.route('/registerEvent/<eventId>', methods=['GET','POST'])
 @login_required
 @registration_required
+@payment_required
 def register_event(eventId):
 
 
@@ -659,6 +660,7 @@ def register_event(eventId):
 @app.route('/acceptTeam', methods=['POST'])
 @login_required
 @registration_required
+@payment_required
 def accept_team():
 	try:
 		teamId = request.form['teamId']
@@ -678,6 +680,19 @@ def accept_team():
 
 	if accept == '1':
 		try:
+
+			#validation
+			team = Team.query.filter_by(teamId=teamId).first()
+			team_members = []
+			for mem in team.members:
+				team_members.append(mem.userId)
+
+			if not is_valid_team_request(team_members, team.eventId):
+				decline_team_request(teamId, current_user)
+				flash("One of the member is already in other team of this event")
+				return redirect(url_for('competitions'))
+
+
 			accept_team_request(teamId, current_user)
 		except:
 			flash("Sorry, all members of this team didn't accept the request")
@@ -696,6 +711,27 @@ def accept_team():
 
 	flash("You have responded for team request")
 	return redirect(url_for('profile'))
+
+@app.route('/deleteTeam', methods=['POST'])
+@login_required
+@registration_required
+@payment_required
+def delete_team():
+	try:
+		teamId = request.form['teamId']
+	except:
+		flash("Missing teamId field")
+		return redirect(url_for('profile'))
+
+	if not is_valid_team(teamId):
+		flash("Not a valid team")
+		return redirect(url_for('profile'))
+
+	delete_team_request(teamId)
+
+	flash("Team deleted successfully")
+	return redirect(url_for('profile'))
+
 
 
 
