@@ -668,12 +668,15 @@ def accept_team():
 		flash("Invalid field")
 		return redirect(url_for('profile'))
 
+
 	if accept == '1':
 		accept_team_request(teamId, current_user)
 	else:
 		decline_team_request(teamId, current_user)
 
-	update_team_status(teamId)
+	team_id = Team.query.filter_by(teamId=teamId).first().team_id
+		
+	update_team_status(team_id)
 
 	flash("You have responded for team request")
 	return redirect(url_for('profile'))
