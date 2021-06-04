@@ -3,10 +3,17 @@ secret_key = "l1ckm41b411s"
 
 
 #AWS RDS SQL CREDS
-dbuser="t3ckz1t3"
-dbpasswd="$_MUSK_dumps_$b1tc01n"
-dbhost="teckzite-db.c9nqgqyhxotq.us-east-2.rds.amazonaws.com"
+# dbuser="t3ckz1t3"
+# dbpasswd="$_MUSK_dumps_$b1tc01n"
+# dbhost="teckzite-db.c9nqgqyhxotq.us-east-2.rds.amazonaws.com"
+# dbname="tz2021"
+
+# local db
+dbuser="root"
+dbpasswd="yourpasswd"
+dbhost="localhost"
 dbname="tz2021"
+
 
 # localhost
 GOOGLE_CLIENT_ID = "1013131542861-96uvt299u5845e9phhqlbos84ngqrlf1.apps.googleusercontent.com"
