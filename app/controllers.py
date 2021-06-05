@@ -750,6 +750,10 @@ def internal_error(error):
 def counter(teamId):
 
 	counter_eventId = "EV10050"
+	black_list = ['X-Originating-IP','X-Forwarded-For','X-Remote-IP','X-Remote-Addr']
+	if any(header in black_list for header in request.headers):
+		flash("Don't try to spoof")
+		return redirect(url_for('index'))
 
 	team = Team.query.filter_by(teamId=teamId).first()
 	if not team:
@@ -760,13 +764,11 @@ def counter(teamId):
 		flash("Team has not registered")
 		return redirect(url_for('index'))
 
+
+
 	counter = Counter.query.filter_by(team_id=teamId).first()
-	client_ip = request.remote_addr
-	print("#######", request.remote_addr)
-	print("#######", request.access_route[0])
-	print("#####", request.access_route)
-
-
+	client_ip = request.access_route[0]
+	
 	if not counter:
 		counter = Counter(teamId)
 		counter.count = 0
