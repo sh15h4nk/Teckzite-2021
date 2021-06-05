@@ -743,3 +743,42 @@ def page_not_found(e):
 def internal_error(error):
 	return render_template('500.html'), 500
 
+
+# Counter event
+
+@app.route('/social/<teamId>', methods=['GET'])
+def counter(teamId):
+
+	counter_eventId = "EV10050"
+
+	team = Team.query.filter_by(teamId=teamId).first()
+	if not team:
+		flash("Team not found")
+		return redirect(url_for('index'))
+
+	if team.eventId != counter_eventId:
+		flash("Team has not registered")
+		return redirect(url_for('index'))
+
+	counter = Counter.query.filter_by(team_id=teamId).first()
+	client_ip = request.remote_addr
+
+	if not counter:
+		counter = Counter(teamId)
+		db.session.add(counter)
+
+	elif client_ip in counter.addresses:
+		return redirect(url_for('index'))
+
+	else:
+		pass
+
+	counter.count += 1
+	new_ip_address = IPAddress(client_ip, counter.id)
+	db.session.add(new_ip_address)
+	db.session.commit()
+
+	flash("Bingo!")
+	return redirect(url_for('index'))
+
+
