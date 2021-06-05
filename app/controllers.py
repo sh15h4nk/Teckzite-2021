@@ -762,6 +762,10 @@ def counter(teamId):
 
 	counter = Counter.query.filter_by(team_id=teamId).first()
 	client_ip = request.remote_addr
+	print("#######", request.remote_addr)
+	print("#######", request.access_route[0])
+	print("#####", request.access_route)
+
 
 	if not counter:
 		counter = Counter(teamId)
