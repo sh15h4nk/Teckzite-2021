@@ -751,7 +751,8 @@ def counter(teamId):
 
 	counter_eventId = "EV10050"
 	black_list = ['X-Originating-IP','X-Forwarded-For','X-Remote-IP','X-Remote-Addr']
-	if any(header in black_list for header in request.headers):
+	
+	if any(header in black_list for header in list(request.headers.keys())):
 		flash("Don't try to spoof")
 		return redirect(url_for('index'))
 
@@ -774,7 +775,8 @@ def counter(teamId):
 		counter.count = 0
 		db.session.add(counter)
 
-	elif client_ip in counter.addresses:
+
+	elif client_ip in [item.address for item in counter.addresses]:
 		return redirect(url_for('index'))
 
 	else:
