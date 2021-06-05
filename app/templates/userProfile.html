@@ -22,6 +22,122 @@
         font-weight: 300;
     }
     
+    @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap");
+    /** Core Styles **/
+    
+    .lnkCard {
+        display: flex;
+        display: inline-block;
+        padding: 20px;
+        margin: 15px;
+        flex-direction: row;
+        align-items: center;
+        background: transparent;
+        border-radius: 8px;
+        box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.6);
+        /** This shadow is no good... **/
+    }
+    
+    .lnk .lnkCard .details {
+        padding: 0.5rem;
+        background-color: rgb(56 46 48 / 60%);
+        height: 150px;
+        display: flex;
+        border-radius: 15px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    
+    .lnkCard .profile-picture {
+        width: 0px;
+        height: 0px;
+        border-radius: 100%;
+        overflow: hidden;
+    }
+    
+    .lnkCard .profile-picture img {
+        width: 100px;
+        height: 100%;
+    }
+    
+    .lnkCard h1,
+    .lnkCard h2 {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    
+    .lnkCard h1 {
+        color: #001D37;
+        font-size: 19px;
+    }
+    
+    .lnkCard h2 {
+        color: #6B7880;
+        font-size: 14px;
+    }
+    
+    .lnkCard .friend-request-actions {
+        margin-left: auto;
+        width: 180px;
+    }
+    
+    .lnkCard .button {
+        font-family: Lato, sans-serif;
+        border-radius: 100px;
+        width: auto;
+        padding: 8px 6px;
+        border: none;
+        font-size: 18px;
+        font-weight: 700;
+        /** Slightly lighter than design because, browser rendering differences y'all **/
+        transition: background 0.3s;
+        cursor: pointer;
+    }
+    
+    .lnkCard .button:first-child {
+        margin-bottom: 14px;
+    }
+    
+    .lnkCard .button.button-primary {
+        background: #3A9BDE;
+        color: #fff;
+    }
+    
+    .lnkCard .button.button-primary:hover {
+        background: #2181c4;
+    }
+    
+    .lnkCard .button.button-secondary {
+        background: #6F8493;
+        color: #fff;
+    }
+    
+    .lnkCard .button.button-secondary:hover {
+        background: #596a76;
+    }
+    /** The Improved Design Variation **/
+    
+    .lnkCard.lnkCard-better {
+        box-shadow: 0px 3px 3px rgba(0, 54, 85, 0.2), 0px 3px 20px rgba(0, 54, 85, 0.3);
+    }
+    
+    .lnkCard.lnkCard-better .profile-picture {
+        position: relative;
+    }
+    
+    .lnkCard.lnkCard-better .profile-picture:after {
+        /** Add inner-shadows to user-generated images **/
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+    }
+    
     h1 {
         font-size: 1.5rem;
     }
@@ -39,8 +155,10 @@
         margin: 1em 0;
         width: 90%;
         margin: 0 auto;
+        border-radius: 10px;
         height: auto;
         display: flex;
+        justify-content: space-around;
         background-color: rgb(56 46 48 / 60%);
     }
     
@@ -50,8 +168,7 @@
         flex-wrap: wrap;
         align-content: space-around;
         justify-content: space-evenly;
-        align-items: center;
-        display: inline-block
+        text-align: center;
     }
     
     .display-row {
@@ -62,7 +179,7 @@
         font-weight: 400;
         font-size: 1.1em;
         color: #ddd;
-        display: inline-block
+        display: inline-block;
     }
     
     .pro-row h3 {
@@ -71,7 +188,7 @@
         font-size: 1.1em;
         color: cyan;
         padding-left: 10px;
-        display: inline-block
+        display: inline-block;
     }
     
     .btn {
@@ -138,7 +255,7 @@
 {% endblock %} {% block content %} {{super()}}
 
 
-<div id="loader">
+<!-- <div id="loader">
     <div class="content_box">
         <div class="circle">
             <div class="ox"></div>
@@ -155,10 +272,10 @@
         <div class="background_box b4">
             <div class="background c4"></div>
         </div>
-    </div>
+    </div> -->
 
 
-    <div class="tran" id="logosvg">
+<!-- <div class="tran" id="logosvg">
         <svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve">
                 <defs>
                     <linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -197,7 +314,7 @@
 
     </div>
 
-</div>
+</div> -->
 </div>
 
 
@@ -232,7 +349,7 @@
 
     <div class="ro">
         <div class="image">
-            <img src="{{url_for('static', filename='./img/ws/hacking.jpg')}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
+            <img src="{{user.image}}" alt="" style="width:100%; height: 100%; border-radius: 100%; object-fit: cover; padding: 10px;">
         </div>
         <p class="tzID">{{user.userId}}</p>
         <br><br>
@@ -368,137 +485,144 @@
 
     <br>
     <hr>
+    <center>
 
-    <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
-    <br>
+        <h2 class="center" style="margin-top: 3rem;">registered eves</h2>
+        <br>
 
-    <hr>
-    <h2 style="margin-top: 1rem;">Accepted Competitions </h2>
-    <div class="lnk">
+        <hr>
+        <h2 style="margin-top: 1rem;">Accepted Competitions </h2>
+        <div class="lnk">
 
-        {% for team in my_teams %}
-        <div class="lnkCard">
-            <div class="details">
-                
-                   
-                             <h5>{{ team.event_title }} </h5>
-                             <h5>{{ team.teamId }} </h5>
-
-                            <div class="ids">
-                                {% for member in team.members %}
-                                    {{member.name}} <br>
-                                {% endfor %}
-                            </div>
-               
-                
-            </div>
-            <div>
-                <form method="POST" action="{{url_for('delete_team')}}">
-                    <input type="hidden" name="teamId" value="{{team.teamId}}">
-                    <button name='accept' value="0">Delete</button>
-
-                </form>
-            </div>
-       </div>
-       {% endfor %}
-    </div>
-
-    <h2 style="margin-top: 1rem;">Awaiting Competitions </h2>
-    <div class="lnk">
-
-        {% for team in awaited_teams %}
-        <div class="lnkCard">
-            <div class="details">
-                
-                    
-                            <h5>{{ team.event_title }}</h5>
-                            <h5>{{ team.teamId }}</h5>
-
-                            <div class="ids">
-                                {% for member in team.members %}
-                                    {{member.name}} <br>
-                                {% endfor %}
-                            </div>
-
-                    
-                
-                
-            </div>
-       </div>
-       {% endfor %}
-   
-    </div>
-
-    <h2 style="margin-top: 1rem;">Team Requests </h2>
-    <div class="lnk">
-
-        {% for request in team_requests %}
-        <div class="lnkCard">
-            <div class="details">
-                <h5>{{request.event_title}}</h5>
-                <h5>
-                    {{request.team_id}}
-                </h5>
-                <div class="ids">
-                </div>
-            </div>
-            <div>
-                <form method="POST" action="{{url_for('accept_team')}}">
-                    <input type="hidden" name="teamId" value="{{request.team_id}}">
-                    <button name='accept' value="1">Accept</button>
-                    <button name='accept' value="0">Decline</button>
-
-                </form>
-            </div>
-       </div>
-       {% endfor %}
-    </div>
-
-    <h2 style="margin-top: 1rem;">Workshop</h2>
+            {% for team in my_teams %}
+            <div class="lnkCard">
+                <div class="details">
 
 
-    {% if workshop %} 
+                    <h5>{{ team.event_title }} </h5>
+                    <h5>{{ team.teamId }} </h5>
 
-        {% if not user.workshop_payment_status %}
-
-
-            <br>
-
-            <p> If not yet paid <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop </a> </button>
-
-        {% else %}
-
-            <p> Your payment was successfull </p>
-
-        {% endif %}
-
-            <br>
-
-            <div class="lnk">
-                <div class="lnkCard">
-                    <div class="details">
-                        <div class="names">
-                            <p>{{workshop.title}}</p>
-                        </div>
+                    <div class="ids">
+                        {% for member in team.members %} {{member.name}} <br> {% endfor %}
                     </div>
+
+
+                </div>
+                <div>
+                    <form method="POST" action="{{url_for('delete_team')}}">
+                        <input type="hidden" name="teamId" value="{{team.teamId}}">
+                        <button name='accept' value="0">Delete</button>
+
+                    </form>
                 </div>
             </div>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <h2 style="margin-top: 1rem;">Awaiting Competitions </h2>
+        <div class="lnk">
 
 
-        <button class="button button1"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
-    {%else%}
 
-        {% if not user.workshop_payment_status %}
 
-            <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> 
+            {% for team in awaited_teams %}
+            <div class="lnkCard">
+                <div class="details">
 
-        {% else %}
 
-            <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button> 
+                    <h5>{{ team.event_title }}</h5>
+                    <h5>{{ team.teamId }}</h5>
+
+                    <div class="ids">
+                        {% for member in team.members %} {{member.name}} <br> {% endfor %}
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <hr>
+
+        <h2 style="margin-top: 1rem;">Team Requests </h2>
+        <div class="lnk">
+            <!-- <div class="lnkCard"> -->
+            <!-- <div class="profile-picture">
+                <img src="https://thepracticaldev.s3.amazonaws.com/i/sldkglekmnqc4outtfqd.jpg">
+            </div>
+            <div class="user-details">
+                <h1>Love Grayson</h1>
+                <h2>13 Mutual Friends</h2>
+            </div>
+            <div class="friend-request-actions">
+                <button class="button button-primary">Accept</button>
+                <button class="button button-secondary">Decline</button>
+            </div>
+        </div> -->
+
+            {% for request in team_requests %}
+            <div class="lnkCard">
+                <div class="details">
+                    <div class="profile-picture">
+                        <img src="https://thepracticaldev.s3.amazonaws.com/i/sldkglekmnqc4outtfqd.jpg">
+                    </div>
+                    <h5>{{request.event_title}}</h5>
+                    <h5>
+                        {{request.team_id}}
+                    </h5>
+                    <div class="ids">
+                    </div>
+                    <form method="POST" action="{{url_for('accept_team')}}">
+                        <input type="hidden" name="teamId" value="{{request.team_id}}">
+                        <button class="button button-primary" name='accept' value="1">Accept</button>
+                        <button class="button button-secondary" name='accept' value="0">Decline</button>
+                    </form>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <hr>
+
+        <h2 style="margin-top: 1rem;">Workshop</h2>
+
+
+        {% if workshop %} {% if not user.workshop_payment_status %}
+
+
+        <br>
+
+        <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop</a> </button> {% else %}
+
+        <p> Your payment was successfull </p>
 
         {% endif %}
 
-    {% endif %}
+        <br>
+
+        <div class="lnk">
+            <div class="lnkCard">
+                <div class="details">
+                    <div class="names">
+                        <p>{{workshop.title}}</p>
+                    </div>
+                    <button class="button button1" style="padding:5px; display:inblock;"><a href="{{url_for('add_workshop')}}"> Change Workshop </a></button>
+                </div>
+            </div>
+        </div>
+
+
+        {%else%} {% if not user.workshop_payment_status %}
+
+        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% else %}
+
+        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button> {% endif %} {% endif %}
 
 
         <br>
