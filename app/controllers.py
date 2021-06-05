@@ -113,7 +113,7 @@ def virtualView():
 def projectsView():
 	return render_template('project-expo.html')
 
-@app.route('/projectbazar')
+@app.route('/sciencecarnivar')
 def projectbazarView():
 	return render_template('project-bazar.html')
 
