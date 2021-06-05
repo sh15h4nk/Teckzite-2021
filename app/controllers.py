@@ -765,6 +765,7 @@ def counter(teamId):
 
 	if not counter:
 		counter = Counter(teamId)
+		counter.count = 0
 		db.session.add(counter)
 
 	elif client_ip in counter.addresses:
