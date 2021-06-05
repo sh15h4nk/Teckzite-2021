@@ -213,8 +213,8 @@ body {
     text-align: center;
     color: #fff;
     overflow: hidden;
-    font-size: 5vh;
-    line-height: 1.2;
+    font-size: 4.5vh;
+    line-height: 1;
     letter-spacing: 3px;
     -webkit-transform: translate(100px, 0%);
     transform: translate(100px, 0%);
@@ -709,7 +709,10 @@ hr {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1em;
-    border: 1px solid rgba(50, 54, 56, 1);
+    border: 1px solid rgb(19, 221, 248);
+    padding: 8px;
+    border-radius: 12px;
+    margin: .3em;
 }
 
 .list-sec li.active {
@@ -879,7 +882,9 @@ hr {
     display: inline-block;
     margin: 0px 8px;
     cursor: pointer;
-    padding-bottom: 3px;
+    border: 1px solid rgb(19, 221, 248);
+    padding: 8px;
+    border-radius: 12px;
     margin: .3em;
     text-transform: uppercase;
 }
