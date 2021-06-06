@@ -31,7 +31,7 @@
                 <li class="nav__list-item"><a href="{{url_for('talksView')}}" class="hover-target">talks</a></li>
                 <li class="nav__list-item"><a href="{{url_for('projectsView')}}" class="hover-target">project Expo</a></li>
                 <li class="nav__list-item"><a href="{{url_for('projectbazarView')}}" class="hover-target">Science Carnival</a></li>
-                
+
                 <li class="nav__list-item"><a href="{{url_for('summitsView')}}" class="hover-target">Summit</a></li>
                 <li class="nav__list-item">
                     <a href="{{url_for('virtualView')}}" class="hover-target">Virtual Exibitions</a></li>
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="container" style="display:inline-block;position: absolute; z-index: 1; text-align: center; width: 50%; margin: 50px auto;">
+    <div class="container" style="display:inline-block;position: absolute; z-index: 1; text-align: center; width: 50%; margin: 50px auto; transform:translateX(-50%); left:50%;">
         <br><br> {% with messages = get_flashed_messages() %} {% if messages %}
         <div class="alert alert-info" role="alert">{{ messages[-1] }}</div>
         {% endif %} {% endwith %}
