@@ -709,10 +709,8 @@ hr {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1em;
-    border: 1px solid rgb(19, 221, 248);
-    padding: 8px;
-    border-radius: 12px;
-    margin: .3em;
+    border: 1px solid rgba(50, 54, 56, 1);
+    border-radius: 5px;
 }
 
 .list-sec li.active {
@@ -882,16 +880,22 @@ hr {
     display: inline-block;
     margin: 0px 8px;
     cursor: pointer;
-    border: 1px solid rgb(19, 221, 248);
-    padding: 8px;
-    border-radius: 12px;
+    padding-bottom: 3px;
     margin: .3em;
     text-transform: uppercase;
+    border-radius: 3px;
+    background: transparent;
+    padding: 8px;
+    letter-spacing: 2px;
+    color: rgb(232, 230, 227);
+    border: 1px solid rgba(50, 54, 56, 1);
 }
 
 .filter .filter-list ul li.current {
-    color: #eee;
-    border-bottom: 2px solid rgb(55, 91, 109);
+    /* color: #eee; */
+    background: #eee;
+    color: #000;
+    /* border-bottom: 2px solid rgb(55, 91, 109); */
 }
 
 .filter .filter-items {
