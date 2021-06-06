@@ -283,8 +283,16 @@ def decline_team_request(teamId, current_user):
 	# delete team
 	for mem in team.members:
 		db.session.delete(mem)
-	db.session.delete(team)
+	db.session.commit()
 
+	counter = Counter.query.filter_by(team_id=teamId).first()
+	if counter:
+		for address in counter.addresses:
+			db.session.delete(address)
+		db.session.delete(counter)
+		db.session.commit()
+
+	db.session.delete(team)
 	db.session.commit()
 
 def delete_team_request(teamId):
@@ -292,8 +300,16 @@ def delete_team_request(teamId):
 	
 	for mem in team.members:
 		db.session.delete(mem)
-	db.session.delete(team)
+	db.session.commit()
+	
+	counter = Counter.query.filter_by(team_id=teamId).first()
+	if counter:
+		for address in counter.addresses:
+			db.session.delete(address)
+		db.session.delete(counter)
+		db.session.commit()
 
+	db.session.delete(team)
 	db.session.commit()
 
 
