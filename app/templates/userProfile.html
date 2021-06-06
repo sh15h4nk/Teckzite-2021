@@ -483,6 +483,16 @@
     </center>
     <br><br>
 
+    <center>
+        {% if not user.payment_status %}
+       <h1> Issue with your payment status? </h1>
+       <h3 style="text-transform: none; color: darkcyan;"> If you have already paid and if your payment status is not updated even after reasonable time, Please raise a payment issue. Ignore if already raised. </h3>
+        <button class="button button1"> <a href="{{url_for('payment_issue')}}"> Raise</a> </button>
+        {% endif %}
+    </center>
+
+    <br>
+
     <br>
     <hr>
     <center>
@@ -593,12 +603,28 @@
         <h2 style="margin-top: 1rem;">Workshop</h2>
 
 
-        {% if workshop %} {% if not user.workshop_payment_status %}
+        {% if workshop %} 
+
+        {% if not user.workshop_payment_status %}
 
 
         <br>
 
-        <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop</a> </button> {% else %}
+        <button class="button button1" style="padding:7px 5px;"> <a href="{{url_for('payment')}}"> Pay for Workshop</a> </button> 
+
+        <br><br>
+
+        <center>
+         
+           <h1> Issue with your workshop payment status? </h1>
+           <h3 style="text-transform: none; color: darkcyan;"> If you have already paid and if your workshop payment status is not updated even after reasonable time, Please raise a payment issue. Ignore if already raised. </h3>
+            <button class="button button1"> <a href="{{url_for('workshop_payment_issue')}}"> Raise</a> </button>
+
+        </center>
+
+        <br>
+
+        {% else %}
 
         <p> Your payment was successfull </p>
 
@@ -618,9 +644,26 @@
         </div>
 
 
-        {%else%} {% if not user.workshop_payment_status %}
+        {%else%} 
 
-        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> {% else %}
+        {% if not user.workshop_payment_status %}
+
+        <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('payment')}}"> Register Workshop </a></button> 
+
+
+        <br><br>
+
+        <center>
+         
+           <h1> Issue with your workshop payment status? </h1>
+           <h3 style="text-transform: none; color: darkcyan;"> If you have already paid and if your workshop payment status is not updated even after reasonable time, Please raise a payment issue. Ignore if already raised. </h3>
+            <button class="button button1"> <a href="{{url_for('workshop_payment_issue')}}"> Raise</a> </button>
+
+        </center>
+
+        <br>
+
+        {% else %}
 
         <button class="button button1" style="padding:7px 5px;"><a href="{{url_for('add_workshop')}}"> Add Workshop </a></button> {% endif %} {% endif %}
 

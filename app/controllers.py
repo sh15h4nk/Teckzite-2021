@@ -798,3 +798,43 @@ def counter(teamId):
 	return redirect(url_for('index'))
 
 
+# raise payment issue
+
+@app.route('/paymentIssue')
+@login_required
+@registration_required
+def payment_issue():
+	issue = PaymentIssue.query.filter_by(user_id=current_user.userId, payment_type="teckzite").first()
+	if issue:
+		flash("Payment Issue already generated")
+		return redirect(url_for('profile'))
+
+	if current_user.payment_status:
+		flash("Your payment is up to date")
+		return redirect(url_for('profile'))
+
+	issue = PaymentIssue(current_user.userId, "teckzite")
+	db.session.add(issue)
+	db.session.commit()
+	flash("Payment Issue generated Successfully.")
+	return redirect(url_for('profile'))
+
+@app.route('/workshopPaymentIssue')
+@login_required
+@registration_required
+def workshop_payment_issue():
+	issue = PaymentIssue.query.filter_by(user_id=current_user.userId, payment_type="workshop").first()
+	if issue:
+		flash("Payment Issue already generated")
+		return redirect(url_for('profile'))
+
+	if current_user.workshop_payment_status:
+		flash("Your payment is up to date")
+		return redirect(url_for('profile'))
+
+	issue = PaymentIssue(current_user.userId, "workshop")
+	db.session.add(issue)
+	db.session.commit()
+	flash("Workshop payment Issue generated Successfully.")
+	return redirect(url_for('profile'))
+
