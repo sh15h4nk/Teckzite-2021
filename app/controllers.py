@@ -761,7 +761,7 @@ def counter(teamId):
 	# 	flash("Don't try to spoof")
 	# 	return redirect(url_for('index'))
 
-	team = Team.query.filter_by(teamId=teamId).first()
+	team = Team.query.filter_by(teamId=teamId, team_status=1).first()
 	if not team:
 		flash("Team not found")
 		return redirect(url_for('index'))
@@ -777,20 +777,22 @@ def counter(teamId):
 	
 	if not counter:
 		counter = Counter(teamId)
-		counter.count = 0
+		counter.count = 1
 		db.session.add(counter)
+		db.session.commit()
+		new_ip_address = IPAddress(client_ip, counter.id)
+		db.session.add(new_ip_address)
+		db.session.commit()
 
 
 	elif client_ip in [item.address for item in counter.addresses]:
 		return redirect(url_for('index'))
 
 	else:
-		pass
-
-	counter.count += 1
-	new_ip_address = IPAddress(client_ip, counter.id)
-	db.session.add(new_ip_address)
-	db.session.commit()
+		counter.count += 1
+		new_ip_address = IPAddress(client_ip, counter.id)
+		db.session.add(new_ip_address)
+		db.session.commit()
 
 	flash("Bingo!")
 	return redirect(url_for('index'))
