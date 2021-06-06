@@ -179,7 +179,14 @@
             </div>
 
             <div class="content register" style="display:none;">
+                {% if event.stop_reg %}
+
+                <p> Registrations for this event have been completed </p>
+
+                {% else %}
                 <button><a href="{{url_for('register_event', eventId=event.eventId)}}"> Register </a></button>
+                
+                {% endif %}
             </div>
 
         </div>
