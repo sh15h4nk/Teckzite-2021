@@ -120,6 +120,173 @@
             max-width: 100%;
         }
     }
+    
+    .filter2 .filter-items {
+        flex: 0 0 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        transition: 0.2s ease-in-out;
+        justify-content: center;
+    }
+    
+    .filter2 .filter-items .item {
+        flex: 0 0 33.33%;
+        width: 33.33%;
+        position: relative;
+        padding: 1em;
+    }
+    
+    .filter2 .filter-items .item .inner {
+        width: 100%;
+        height: 140px;
+        position: relative;
+        background-color: rgba(56, 46, 48, 0.603);
+        display: flex;
+        transition: 0.2s ease-in-out;
+    }
+    
+    .filter2 .filter-items .item .inner:hover {
+        transition: 0.2s ease-in-out;
+        transform: scale(1.05);
+        box-shadow: 20px 20px 20px rgba(17, 17, 17, 0.747);
+    }
+    
+    .filter2 .filter-items .item .inner .img {
+        /* width: 140px; */
+        width: 45%;
+        height: 140px;
+        display: block;
+    }
+    
+    .filter2 .filter-items .item .inner .content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .filter2 .filter-items .item .inner .content h5 {
+        font-size: .9em;
+        font-weight: 500;
+        margin: 0;
+    }
+    
+    .filter2 .filter-items .item .inner .content p {
+        font-size: 12px;
+    }
+    
+    .filter2 .filter-items .item .inner .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .filter2 .filter-items .item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        height: 250px;
+    }
+    
+    .filter2 .filter-items .item .inner {
+        height: 200px;
+    }
+    
+    .filter2 .filter-items .item .inner .img {
+        height: 100%;
+        display: block;
+    }
+    
+    .filter2 .filter-items .item .inner:hover {
+        transform: scale(1);
+    }
+    
+    .filter2 .filter-items .item .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        opacity: 0;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(25 20 21);
+        transition: .4s ease-in-out;
+        transform: translateX(-50%);
+    }
+    
+    .filter2 .filter-items .item .content p {
+        font-size: 15px;
+    }
+    
+    .filter2 .filter-items .item:hover .content {
+        transition: .4s ease-in-out;
+        opacity: 1;
+        transform: translate(0%, -95%);
+    }
+    
+    .filter2 .filter-items .item .content a {
+        color: cyan;
+        font-size: 10px;
+        letter-spacing: 2px;
+        font-weight: 500;
+    }
+    
+    .filter2 .filter-items .item .content a:hover {
+        background-color: #eee;
+        color: #111;
+        padding: 3px 5px;
+        border-radius: 10px;
+    }
+    
+    .filter2 .filter-items .item .inner .info {
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 2px;
+    }
+    
+    .filter2 .filter-items .item .inner .info h6 {
+        text-align: center;
+        font-size: .9em;
+        padding: 2px;
+        font-weight: 500;
+    }
+    
+    .filter2 .filter-items .item .inner .info .prize-money {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+    
+    .filter2 .filter-items .item .inner .info p {
+        text-align: center;
+        font-size: 15px;
+    }
+    
+    .filter2 .filter-items .item .inner .info p a {
+        text-decoration: none;
+        font-size: .8em;
+        font-weight: 500;
+        color: rgb(34, 158, 127);
+        transition: .5s ease-in-out;
+        text-transform: lowercase;
+    }
+    
+    .filter2 .filter-items .item .inner .info p a:hover {
+        color: rgb(255, 255, 255);
+        padding-right: 10px;
+        letter-spacing: 2px;
+    }
+    
+    @media (max-width:700px) {
+        .filter2 .filter-items .item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
 </style>
 
 {% endblock %} {% block content %} {{super()}}
@@ -205,7 +372,7 @@
                                 <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Internship</p>
+                                <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>3<sup>rd</sup> winners</p>
                                 <p class="reward">Paid Course</p>
@@ -283,10 +450,10 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>3<sup>rd</sup> winners</p>
                                 <p class="reward">Paid Course</p>
@@ -313,7 +480,7 @@
                                 <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>3<sup>rd</sup> winners</p>
                                 <p class="reward">Paid Course</p>
@@ -337,10 +504,10 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>3<sup>rd</sup> winners</p>
                                 <p class="reward">Paid Course</p>
@@ -431,7 +598,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Internship</p>
+                                <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward">PRIZE MONEY </p>
@@ -455,7 +622,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Internship</p>
+                                <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward">PRIZE MONEY </p>
@@ -558,7 +725,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Internship</p>
+                                <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward">PRIZE MONEY </p>
@@ -606,7 +773,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Internship</p>
+                                <p class="reward">PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward">PRIZE MONEY </p>
@@ -661,7 +828,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward"> PRIZE MONEY </p>
@@ -709,7 +876,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Internship</p>
+                                <p class="reward"> PRIZE MONEY + Internship</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward"> PRIZE MONEY </p>
@@ -789,7 +956,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + IIChe intern</p>
+                                <p class="reward"> PRIZE MONEY + IIChe intern</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward"> PRIZE MONEY </p>
@@ -816,7 +983,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winner</p>
-                                <p class="reward"> PRIZE MONEY  + Career Guidance</p>
+                                <p class="reward"> PRIZE MONEY + Career Guidance</p>
                                 <br>
                                 <!-- <p>Total Cash Prize - 5000/-</p> -->
                                 <br>
@@ -840,7 +1007,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + IIChe intern</p>
+                                <p class="reward"> PRIZE MONEY + IIChe intern</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward"> PRIZE MONEY </p>
@@ -917,7 +1084,7 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Test Series</p>
+                                <p class="reward"> PRIZE MONEY + Test Series</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
                                 <p class="reward">Test Series</p>
@@ -941,10 +1108,10 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Test Series</p>
+                                <p class="reward">PRIZE MONEY + Test Series</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Test Series</p>
+                                <p class="reward"> PRIZE MONEY + Test Series</p>
                                 <br>
                                 <!-- <p>Total Cash Prize - 4000/-</p> -->
                                 <br>
@@ -965,10 +1132,10 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Test Series</p>
+                                <p class="reward"> PRIZE MONEY + Test Series</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward"> PRIZE MONEY  + Test Series</p>
+                                <p class="reward"> PRIZE MONEY + Test Series</p>
                                 <br>
                                 <!-- <p>Total Cash Prize - 4000/-</p> -->
                                 <br>
@@ -989,10 +1156,10 @@
                                 <h4>prize money</h4>
                                 <br>
                                 <p>1<sup>st</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Test Series</p>
+                                <p class="reward">PRIZE MONEY + Test Series</p>
                                 <br>
                                 <p>2<sup>nd</sup> winners</p>
-                                <p class="reward">PRIZE MONEY  + Test Series</p>
+                                <p class="reward">PRIZE MONEY + Test Series</p>
                                 <br>
                                 <!-- <p>Total Cash Prize - 4000/-</p> -->
                                 <br>
@@ -1020,6 +1187,81 @@
                 </div>
             </div>
 
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="filter2">
+    <div class="filter-container">
+
+        <div class="filter-items">
+
+            <div class="item">
+                <div class="inner">
+                    <div class="img"><img src="{{url_for('static', filename='./img/highlight/envision.jpeg')}}" alt=""></div>
+                    <div class="info">
+                        <h6>ENVISION- THE IAS TEST</h6>
+                        <p>OPEN TO ALL</p>
+                        <p>The top 3 will be given online IAS coaching worth <b>Rs. 40,000</b></p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>Do you dream of waking up as an IAS officer? Then mark your calendars for Envision. Envision is specially curated for civils aspirants to put their skills to test and improve upon them in various subjects.</p>
+                    <p>The test is guaranteed to make you delve into your depths. It’s a great opportunity to assess where you stand out among the serious contestants.</p>
+                    <p class="know-more"><a href="https://teckzite.org/event-details/EV10044">view</a></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="inner">
+                    <div class="img"><img src="{{url_for('static', filename='./img/highlight/freefire.png')}}" alt=""></div>
+                    <div class="info">
+                        <h6>FREE FIRE</h6>
+                        <p>OPEN TO ALL</p>
+                        <p>Prize pool - 10000/-</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>Points system pick the winner it's not about map first or second it's about the points list .</p>
+                    <p>There are two or more than two rounds according to the teams registrated</p>
+                    <p class="know-more"><a href="https://teckzite.org/event-details/EV10037">view</a></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="inner">
+                    <div class="img"><img src="{{url_for('static', filename='./img/highlight/confront.png')}}" alt=""></div>
+                    <div class="info">
+                        <h6>CONFRONT COVID-19</h6>
+                        <p>OPEN TO ALL</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>The Covid-19 pandemic has led to a dramatic loss of human life worldwide and presents an unprecedented challenge to our livelihood, public health, food systems, the world of work, and various sectors.</p>
+                    <p>So here is your chance to highlight those challenges we are facing today in real-time and present your ideas of how you are going to solve those either logically or technically. We accept and appreciate any kind of effort you make
+                        to this world we care about.</p>
+                    <p class="know-more"><a href="https://teckzite.org/event-details/EV10051">view</a></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="inner">
+                    <div class="img"><img src="{{url_for('static', filename='./img/highlight/science.png')}}" alt=""></div>
+                    <div class="info">
+                        <h6>SCIENCE CARNIVAL</h6>
+                        <p>OPEN TO ALL</p>
+                        <p>Prize money - <b>Rs. 5000/-</b></p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>Participants should apply principles of science and mathematics to develop models to provide solutions to Daily life problems. </p>
+                    <p>They are expected to provide benefit to the society and add value to the filed you are choosing</p>
+                    <p class="know-more"><a href="https://teckzite.org/sciencecarnival">view</a></p>
+                </div>
+            </div>
 
         </div>
 
