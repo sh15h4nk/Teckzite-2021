@@ -751,6 +751,8 @@ def counter(teamId):
 
 	counter_eventId = "EV10050"
 	black_list = ['X-Originating-IP','X-Forwarded-For','X-Remote-IP','X-Remote-Addr']
+	print("XXXX", list(request.headers.keys()))
+	print('headers', request.headers)
 	
 	if any(header in black_list for header in list(request.headers.keys())):
 		flash("Don't try to spoof")
