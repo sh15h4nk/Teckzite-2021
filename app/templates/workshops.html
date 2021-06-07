@@ -17,6 +17,14 @@
             margin: 1em 0;
         }
     }
+    
+    .points {
+        width: 95%;
+        background-color: rgba(32, 39, 41, 0.356);
+        text-align: center;
+        display: table-cell;
+        border-radius: 4px;
+    }
 </style>
 
 {% endblock %} {% block content %} {{super()}}
@@ -110,31 +118,44 @@
     <div class="contain">
         <h1 class="pos center">Workshops</h1>
         <p>TECKZITE brings you the dynamic array of workshops which not only promulgate knowledge on latest trends and technologies but also help you procure essential skills adding value to your walk of life</p>
-    </div>
-    <div class="workshops-container">
 
 
-        {% for workshop in workshops %}
+        <center>
+            <div class="points">
 
-        <div class="workshop">
-            <div class="inner">
-                <div class="imgBx">
-                    <img src="{{workshop.image_url}}" alt="">
-                </div>
-                <div class="contentBx">
-                    <h2>{{workshop.title}}</h2>
-                    <p>{{workshop.description}}</p>
-                    <!-- <p class="link"><a href="#">view</a></p> -->
-                    <p class="link"><a style="margin:10; padding:10px 12px;" href="{{url_for('workshopDetailsView', workshopId=workshop.workshopId)}}">View</a></p>
+                <p>1. Two-Day intensive and clear training on latest technologies.</p>
+                <p>2. Both theoretical and hands-on experience practice.</p>
+                <p>3. Notes will be provided after the workshop about, what you learned in the workshop.</p>
+                <p>4. Two internships opportunities for top students in every workshop before last day of Teckzite.</p>
+                <p>5. An ISO certified Participation certificate.</p>
+                <p>6. Doubts clarification by industry experts.</p>
+                <p>7. Getting new skills and opportunities </p>
+            </div>
+        </center>
+        <div class="workshops-container">
+
+
+            {% for workshop in workshops %}
+
+            <div class="workshop">
+                <div class="inner">
+                    <div class="imgBx">
+                        <img src="{{workshop.image_url}}" alt="">
+                    </div>
+                    <div class="contentBx">
+                        <h2>{{workshop.title}}</h2>
+                        <p>{{workshop.description}}</p>
+                        <!-- <p class="link"><a href="#">view</a></p> -->
+                        <p class="link"><a style="margin:10; padding:10px 12px;" href="{{url_for('workshopDetailsView', workshopId=workshop.workshopId)}}">View</a></p>
+                    </div>
                 </div>
             </div>
+
+
+            {% endfor %}
+
+
         </div>
-
-        
-        {% endfor %}
-       
-
-    </div>
 </section>
 
 
