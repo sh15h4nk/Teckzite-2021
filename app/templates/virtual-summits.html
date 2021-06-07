@@ -1,0 +1,214 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021| Home{% endblock %} {% block html_head %} {{super()}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/favicon.png')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+
+<style>
+    .summits {
+        width: 100%;
+        height: auto;
+        background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+        animation: move-twink-back 200s linear infinite;
+    }
+    
+    .summits h1 {
+        padding-top: 15vh;
+    }
+    
+    .summits-row-container {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .summits-row-container .summits-container {
+        height: auto;
+    }
+    
+    .summits-container {
+        width: 95%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .summits-container .img {
+        width: 90%;
+        height: 300px;
+    }
+    
+    .summits-container .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .viewBtn {
+        text-align: center;
+        padding: 3px 1.2em;
+        background-color: #414a5a;
+        border-radius: 5px;
+        border: 2px solid #927a7a;
+        cursor: pointer;
+    }
+    
+    .viewBtn:hover {
+        background-color: #eee;
+        color: #111;
+        border: 2px solid #ddd;
+    }
+    
+    .points {
+        width: 95%;
+        background-color: rgba(32, 39, 41, 0.356);
+        text-align: center;
+        border-radius: 4px;
+        border-radius: 5px;
+    }
+    
+    @media (max-width:768px) {
+        .summits-row-container {
+            flex-direction: column;
+        }
+        .summits-row-container .summits-container {
+            width: 100%;
+        }
+        .summits-container .img {
+            height: 200px;
+        }
+    }
+</style>
+{% endblock %} {% block content %} {{super()}}
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
+        </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
+    <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+ </svg>
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
+ </svg></div>
+</div>
+</div>
+<!-- header -->
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img style="width:0px;" src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- main -->
+<section class="summits">
+    <h1 class="center">summits</h1>
+    <br>
+    <div class="summits-row-container points">
+        <!-- alumni -->
+        <div class="summits-container">
+            <div class="img">
+                <img src="{{url_for('static', filename='./img/summit.jpeg')}}" alt="" srcset="">
+            </div>
+            <br>
+            <div class="content">
+                <h5 class="center"><b>Alumni summit</b></h5>
+                <br>
+                <p>A premier conference where we bring together leaders from divergent markets that are increasingly interconnected by cutting-edge technologies.</p>
+                <br>
+                <p> What is special about this summit is that alumni from different domains share their industrial quality experience which really helps everyone flourish themselves in every perspective and outstand the challenges in one's life and career.
+                </p>
+                <br>
+                <p> A light is thrown on real advancements and opportunities in the industry (life after graduation). And what makes it exceptional is that one can interact with them, make new connections and really know the scope from persons who have had
+                    real time industrial working experience.</p>
+            </div>
+            <br>
+            <p>Details will be upated soon</p>
+            <!-- <p class="viewBtn alumni">view</p> -->
+        </div>
+        <!-- company -->
+        <!-- <div class="summits-container">
+                <div class="img">
+                    <img src="./img/freefire.jpeg" alt="" srcset="">
+                </div>
+                <br>
+                <div class="content">
+                    <h5 class="center">Alumni summit</h5>
+                    <p>A premier conference where we bring together leaders from divergent markets that are increasingly interconnected by cutting-edge technologies.</p>
+
+                       <p> What is special about this summit is that alumni from different domains share their industrial quality experience which really helps everyone flourish themselves in every perspective and outstand the challenges in one's life and career. </p>
+                        
+                       <p> A light is thrown on real advancements and opportunities in the industry (life after graduation). 
+                        And what makes it exceptional is that one can interact with them, make new connections  and really know the scope from persons who have had real time industrial working experience.</p>
+                </div>
+                <br>
+                <p class="viewBtn company">view</p>
+            </div> -->
+    </div>
+
+</section>
+
+
+
+
+
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
+<script>
+    const filterButtons = document.querySelector("#filter-btns").children;
+    const items = document.querySelector(".filter-items").children;
+    for (let i = 0; i < filterButtons.length; i++) {
+        filterButtons[i].addEventListener("click", function() {
+            for (let j = 0; j < filterButtons.length; j++) {
+                filterButtons[j].classList.remove("current")
+            }
+            this.classList.add("current");
+            const target = this.getAttribute("data-target")
+            for (let k = 0; k < items.length; k++) {
+                items[k].style.display = "none";
+                if (target == items[k].getAttribute("data-li")) {
+                    items[k].style.display = "block";
+                }
+                if (target == "all") {
+                    items[k].style.display = "block";
+                }
+            }
+        })
+    }
+</script>
+{% endblock %}

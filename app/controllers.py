@@ -100,7 +100,7 @@ def talksView():
 
 @app.route('/summits')
 def summitsView():
-	return render_template('updating.html')
+	return render_template('virtual-summits.html')
 
 @app.route('/virtual-exibition')
 def virtualView():
