@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teckzite 2021</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
+
+    <style>
+        html,
+        body {
+            background-image: linear-gradient( #1d0d35, #002025);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        @import url(https://fonts.googleapis.com/css?family=Megrim);
+        html {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .loader .line {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transform-origin: left top;
+        }
+        
+        .loader .line.first {
+            background: #FE4365;
+        }
+        
+        .loader .line.second {
+            background: #C7F464;
+        }
+        
+        .loader .line.third {
+            background: #4ECDC4;
+        }
+        
+        .loader .line.fourth {
+            background: #556270;
+        }
+        
+        .loader .mask {
+            position: absolute;
+            z-index: 2;
+        }
+        
+        .loader .mask.horizontal {
+            width: 100%;
+            height: calc(50% - 1px);
+        }
+        
+        .loader .mask.horizontal.top {
+            top: 0;
+        }
+        
+        .loader .mask.horizontal.bottom {
+            bottom: 0;
+        }
+        
+        .loader .mask.vertical {
+            height: 100%;
+            width: calc(50% - 1px);
+        }
+        
+        .loader .mask.vertical.right {
+            right: 0;
+        }
+        
+        .loader .mask.vertical.left {
+            left: 0;
+        }
+        
+        .loader .mask.top-right {
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 271px 200px 0;
+        }
+        
+        .loader .mask.bottom-left {
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 200px 0 0 271px;
+            transform-origin: top right;
+        }
+        
+        .loader .mask.top-left {
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 200px 271px 0 0;
+        }
+        
+        .loader .mask.bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 200px 271px;
+        }
+        
+        .loader.first {
+            background: #F9D423;
+        }
+        
+        .loader.first .mask {
+            background: #F9D423;
+        }
+        
+        .loader.second {
+            background: #FE4365;
+        }
+        
+        .loader.second .mask {
+            background: #FE4365;
+        }
+        
+        .loader.third {
+            background: #C7F464;
+        }
+        
+        .loader.third .mask.top-right {
+            border-color: transparent #C7F464 transparent transparent;
+        }
+        
+        .loader.third .mask.bottom-left {
+            border-color: transparent transparent transparent #C7F464;
+        }
+        
+        .loader.fourth {
+            background: #4ECDC4;
+        }
+        
+        .loader.fourth .mask.top-left {
+            border-color: #4ECDC4 transparent transparent transparent;
+        }
+        
+        .loader.fourth .mask.bottom-right {
+            border-color: transparent transparent #4ECDC4 transparent;
+        }
+        
+        .content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: #556270;
+        }
+        
+        .content h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: 0;
+            padding: 0;
+            transform: translateX(-50%) translateY(-50%);
+            font-family: "Megrim", cursive;
+            font-size: 80px;
+            color: white;
+            text-align: center;
+        }
+        
+        .content h1 .underline {
+            position: relative;
+            display: block;
+            width: 160px;
+            height: 5px;
+            background: white;
+            margin-top: 20px;
+            left: 50%;
+            transform: translateX(-48%);
+        }
+        
+        .underline1 {
+            position: relative;
+            display: block;
+            width: 160px;
+            height: 105px;
+            background: white;
+            margin-top: 20px;
+            left: 50%;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+    <div class="loader first">
+        <div class="line first"></div>
+        <div class="mask horizontal top"></div>
+        <div class="mask horizontal bottom"></div>
+    </div>
+
+    <div class="content">
+        <h1>
+            <span class="">W</span>
+            <span class=" ">e</span>
+            <span class=" ">l</span>
+            <span class=" ">c</span>
+            <span class=" ">o</span>
+            <span class=" ">m</span>
+            <span class=" ">e</span>
+
+            <div class="underline1">hhgcvjh</div>
+        </h1>
+    </div>
+
+    <div class="loader second">
+        <div class="line second"></div>
+        <div class="mask vertical left"></div>
+        <div class="mask vertical right"></div>
+    </div>
+
+
+    <div class="content">
+        <h1>
+            <span class=" ">W</span>
+            <span class=" ">e</span>
+            <span class=" ">l</span>
+            <span class=" ">c</span>
+            <span class=" ">o</span>
+            <span class=" ">m</span>
+            <span class=" ">e</span>
+
+            <div class="underline1">kytfyt</div>
+        </h1>
+    </div>
+
+    <div class="loader third">
+        <div class="line third"></div>
+        <div class="mask top-right"></div>
+        <div class="mask bottom-left"></div>
+    </div>
+
+    <div class="content">
+        <h1>
+            <span class=" ">W</span>
+            <span class=" ">e</span>
+            <span class=" ">l</span>
+            <span class=" ">c</span>
+            <span class=" ">o</span>
+            <span class=" ">m</span>
+            <span class=" ">e</span>
+
+            <div class="underline1">hkytc</div>
+        </h1>
+    </div>
+
+    <div class="loader fourth">
+        <div class="line fourth"></div>
+        <div class="mask top-left"></div>
+        <div class="mask bottom-right"></div>
+    </div>
+
+    <div class="content">
+        <h1>
+            <span class="letter">W</span>
+            <span class="letter">e</span>
+            <span class="letter">l</span>
+            <span class="letter">c</span>
+            <span class="letter">o</span>
+            <span class="letter">m</span>
+            <span class="letter">e</span>
+
+            <div class="underline"></div>
+        </h1>
+    </div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+    <script>
+        var screenWidth,
+            screenHeight;
+
+        function start() {
+
+            resize();
+            window.addEventListener('resize', resize);
+
+            var tlLoader = setTimelineLoader(),
+                tlContent = setTimelineContent(),
+                tlGlobal = new TimelineMax();
+
+            tlGlobal.set(document.querySelector('.content'), {
+                alpha: 0
+            });
+            tlGlobal.add(tlLoader);
+            tlGlobal.set(document.querySelector('.content'), {
+                alpha: 1
+            });
+            tlGlobal.add(tlContent);
+            tlGlobal.play();
+
+        };
+
+        function resize() {
+            screenWidth = document.documentElement.clientWidth,
+                screenHeight = document.documentElement.clientHeight;
+        };
+
+        function setTimelineLoader() {
+            var first = document.querySelector('.line.first'),
+                maskTop = document.querySelector('.mask.top'),
+                maskBottom = document.querySelector('.mask.bottom');
+
+            var second = document.querySelector('.line.second'),
+                maskLeft = document.querySelector('.mask.left'),
+                maskRight = document.querySelector('.mask.right');
+
+            var third = document.querySelector('.line.third'),
+                maskBottomLeft = document.querySelector('.mask.bottom-left'),
+                maskTopRight = document.querySelector('.mask.top-right');
+            maskTopRight.style.borderWidth = '0 ' + (screenWidth - 1) + 'px ' + (screenHeight - 1) + 'px 0';
+            maskBottomLeft.style.borderWidth = '' + (screenHeight - 1) + 'px 0 0 ' + (screenWidth - 1) + 'px';
+
+            var fourth = document.querySelector('.line.fourth'),
+                maskTopLeft = document.querySelector('.mask.top-left'),
+                maskBottomRight = document.querySelector('.mask.bottom-right');
+            maskTopLeft.style.borderWidth = (screenHeight - 1) + 'px ' + (screenWidth - 1) + 'px 0 0';
+            maskBottomRight.style.borderWidth = '0 0 ' + (screenHeight - 1) + 'px ' + (screenWidth - 1) + 'px';
+
+            TweenMax.set(document.querySelector('.loader.second'), {
+                alpha: 0
+            });
+            TweenMax.set(document.querySelector('.loader.third'), {
+                alpha: 0
+            });
+            TweenMax.set(document.querySelector('.loader.fourth'), {
+                alpha: 0
+            });
+
+            var tl = new TimelineMax();
+
+            tl.fromTo(first, 0.4, {
+                x: screenWidth
+            }, {
+                x: 0,
+                ease: Circ.easeIn
+            }, 0);
+            tl.fromTo(maskTop, 0.4, {
+                y: 0
+            }, {
+                y: -screenHeight / 2,
+                ease: Expo.easeOut,
+                delay: 0.1
+            }, 0.4);
+            tl.fromTo(maskBottom, 0.4, {
+                y: 0
+            }, {
+                y: screenHeight / 2,
+                ease: Expo.easeOut,
+                delay: 0.1
+            }, 0.4);
+            tl.set(document.querySelector('.loader.first'), {
+                alpha: 0
+            });
+
+            tl.set(document.querySelector('.loader.second'), {
+                alpha: 1
+            });
+            tl.fromTo(second, 0.4, {
+                y: -screenHeight
+            }, {
+                y: 0,
+                ease: Circ.easeIn
+            });
+            tl.fromTo(maskRight, 0.4, {
+                x: 0
+            }, {
+                x: screenWidth / 2,
+                ease: Expo.easeOut,
+                delay: 0.1
+            }, 1.2); // 2.5
+            tl.fromTo(maskLeft, 0.4, {
+                x: 0
+            }, {
+                x: -screenWidth / 2,
+                ease: Expo.easeOut,
+                delay: 0.1
+            }, 1.2);
+            tl.set(document.querySelector('.loader.second'), {
+                alpha: 0
+            });
+
+            tl.set(document.querySelector('.loader.third'), {
+                alpha: 1
+            });
+            tl.fromTo(third, 0.4, {
+                x: screenWidth
+            }, {
+                x: 0,
+                ease: Circ.easeIn
+            });
+            tl.fromTo(maskTopRight, 0.4, {
+                y: 0
+            }, {
+                y: -screenHeight,
+                ease: Circ.easeOut,
+                delay: 0.1
+            }, 2);
+            tl.fromTo(maskBottomLeft, 0.4, {
+                y: 0
+            }, {
+                y: screenHeight,
+                ease: Circ.easeOut,
+                delay: 0.1
+            }, 2);
+
+            tl.set(document.querySelector('.loader.fourth'), {
+                alpha: 1
+            });
+            tl.fromTo(fourth, 0.4, {
+                y: -screenHeight
+            }, {
+                y: 0,
+                ease: Circ.easeIn
+            });
+            tl.fromTo(maskTopLeft, 0.4, {
+                x: 0
+            }, {
+                x: -screenWidth,
+                ease: Circ.easeOut,
+                delay: 0.1
+            }, 2.8);
+            tl.fromTo(maskBottomRight, 0.4, {
+                x: 0
+            }, {
+                x: screenWidth,
+                ease: Circ.easeOut,
+                delay: 0.1
+            }, 2.8);
+
+            return tl;
+        };
+
+        function setTimelineContent() {
+            var tl = new TimelineMax();
+            tl.set(document.querySelector('.underline'), {
+                width: 0
+            });
+            tl.staggerFromTo(document.querySelectorAll('.letter'), 0.9, {
+                'font-size': 0,
+                alpha: 0
+            }, {
+                'font-size': '80px',
+                alpha: 1,
+                ease: Expo.easeInOut
+            }, 0.08);
+            tl.fromTo(document.querySelector('.underline'), 0.6, {
+                width: 0,
+                alpha: 0
+            }, {
+                width: 160,
+                alpha: 1,
+                ease: Sine.easeOut
+            });
+
+            return tl;
+        }
+
+
+        start();
+    </script>
+
+</body>
+
+</html>

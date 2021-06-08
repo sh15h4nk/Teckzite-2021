@@ -8,7 +8,7 @@
         font-size: 1.5em;
     }
     
-    li {
+    .content li {
         color: #e6e6e6bf;
         padding-left: 1.5em;
     }
@@ -188,9 +188,9 @@
 
             <div class="content register" style="display:none;">
                 {% if not current_user.workshop_payment_status %}
-                    <p><a href="{{url_for('payment')}}">Click to Register</a></p>
+                <p><a href="{{url_for('payment')}}">Click to Register</a></p>
                 {% else %}
-                    <p>Already Registered for a workshop. You can change your workshop in your profile</p>
+                <p>Already Registered for a workshop. You can change your workshop in your profile</p>
                 {% endif %}
             </div>
 

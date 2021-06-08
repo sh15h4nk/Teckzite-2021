@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teckzite 2021</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/png" sizes="96x96" href="./img/favicon.png">
+
+    <style>
+        html,
+        body {
+            background-image: linear-gradient( #1d0d35, #002025);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        kp {
+            font-size: 3.5em;
+        }
+        
+        .cd-header {
+            /* background-color: #12114a; */
+            /* background: transparent; */
+            background-color: transparent;
+            /* background-color: #0d0d3c; */
+            transition: 0.2s ease-in-out;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            height: 10vh;
+            /* opacity: 0; */
+            /* background: #000;
+            transition: 0.5s ease-in-out; */
+        }
+        
+        .sticky {
+            /* background-color: #0d0d3c;
+            transition: 0.2s ease-in-out; */
+            background-color: black;
+            box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        }
+        
+        .header-wrapper {
+            position: relative;
+            width: calc(100% - 100px);
+            margin-left: 50px;
+        }
+        
+        .logo-wrap {
+            position: absolute;
+            display: block;
+            left: 0;
+            top: 2px;
+            cursor: pointer;
+        }
+        
+        .logo-wrap a {
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+        
+        .logo-wrap a .logo {
+            width: 200px;
+            height: 68px;
+        }
+        
+        .logo-wrap a .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @font-face {
+            font-family: decade;
+            font-size: 12px;
+            src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/decade.ttf");
+        }
+        
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            -ms-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .half {
+            position: absolute;
+            overflow: hidden;
+            z-index: 50;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            -webkit-transition: 3s;
+            -moz-transition: 3s;
+            -ms-transition: 3s;
+            -o-transition: 3s;
+            transition: 3s;
+            will-change: transform;
+        }
+        
+        .half img {
+            position: absolute;
+            top: -10%;
+            left: 0;
+        }
+        
+        @media screen and (min-width: 900px) {
+            .half img {
+                position: absolute;
+                top: -10%;
+                left: 0;
+                width: 100%;
+            }
+        }
+        
+        .half.top {
+            top: 0;
+        }
+        
+        .half.bottom {
+            top: 50%;
+        }
+        
+        .half.bottom img {
+            top: -110%;
+        }
+        
+        .half.active.top {
+            -webkit-transform: translateX(0) translateY(-100%);
+            -moz-transform: translateX(0) translateY(-100%);
+            -ms-transform: translateX(0) translateY(-100%);
+            -o-transform: translateX(0) translateY(-100%);
+            transform: translateX(0) translateY(-100%);
+            opacity: 0;
+        }
+        
+        .half.active.bottom {
+            -webkit-transform: translateX(0) translateY(100%);
+            -moz-transform: translateX(0) translateY(100%);
+            -ms-transform: translateX(0) translateY(100%);
+            -o-transform: translateX(0) translateY(100%);
+            transform: translateX(0) translateY(100%);
+            opacity: 0;
+        }
+        
+        .super-button {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 200;
+            width: 300px;
+            height: 80px;
+            opacity: 0.8;
+            font-family: decade;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            color: rgb(252, 65, 96);
+            background-color: transparent;
+            border: 4px solid rgb(252, 65, 96);
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+            will-change: color, opacity, border-color;
+        }
+        
+        .main {
+            font-family: decade;
+            color: white;
+            z-index: 9999;
+        }
+        
+        .super-button:hover {
+            color: #fff;
+            opacity: 1;
+            border-color: #fff;
+        }
+        
+        .super-button:hover~.overlay {
+            background-color: rgba(155, 0, 0, 0.5);
+        }
+        
+        .super-button:hover~.overlay.active {
+            background-color: transparent;
+            z-index: -50;
+        }
+        
+        .super-button:hover~.button-line .inner {
+            max-width: 100%;
+        }
+        
+        .super-button.active {
+            -webkit-transition: 4.5s;
+            -moz-transition: 4.5s;
+            -ms-transition: 4.5s;
+            -o-transition: 4.5s;
+            transition: 4.5s;
+            -webkit-transform: translateX(-50%) translateY(-1000px);
+            -moz-transform: translateX(-50%) translateY(-1000px);
+            -ms-transform: translateX(-50%) translateY(-1000px);
+            -o-transform: translateX(-50%) translateY(-1000px);
+            transform: translateX(-50%) translateY(-1000px);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-color: rgba(155, 0, 0, 0);
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+            will-change: background-color;
+        }
+        
+        .button-line {
+            position: absolute;
+            top: -webkit-calc(50% - 2px);
+            top: -moz-calc(50% - 2px);
+            top: calc(50% - 2px);
+            left: 0;
+            z-index: 200;
+            width: -webkit-calc(50% - 100px);
+            width: -moz-calc(50% - 100px);
+            width: calc(50% - 100px);
+            height: 4px;
+            background-color: rgb(252, 65, 96);
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -ms-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            will-change: width, max-width;
+        }
+        
+        .button-line.left {
+            left: -100;
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+        
+        .button-line.right {
+            left: -webkit-calc(50% + 100px);
+            left: -moz-calc(50% + 100px);
+            left: calc(50% + 100px);
+        }
+        
+        .button-line .inner {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            max-width: 0;
+            -webkit-transition: 1.5s;
+            -moz-transition: 1.5s;
+            -ms-transition: 1.5s;
+            -o-transition: 1.5s;
+            transition: 1.5s;
+        }
+        
+        .button-line.active {
+            opacity: 0;
+        }
+        
+        .counter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            height: 500px;
+            width: 500px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .counter.hide {
+            transform: translate(-50%, -50%) scale(0);
+            animation: hide .2s ease-out;
+        }
+        
+        @keyframes hide {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+        }
+        
+        .final {}
+        
+        .final.active {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+        
+        .final.active.show {
+            transform: translate(-50%, -50%) scale(1);
+            animation: show .3s ease-in;
+        }
+        
+        @keyframes show {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+            }
+            80% {
+                transform: translate(-50%, -50%) scale(1.4);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        
+        .nums {
+            color: #3498db;
+            top: 50%;
+            left: 0%;
+            font-size: 250px;
+            overflow: hidden;
+            height: 70%;
+            width: 70%;
+            opacity: 1;
+        }
+        
+        .nums span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(120deg);
+            transform-origin: bottom center;
+            opacity: 0;
+        }
+        
+        .nums span.in {
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: goIn .5s ease-in-out;
+            opacity: 1;
+        }
+        
+        .nums span.out {
+            animation: goOut .5s ease-in-out;
+        }
+        
+        @keyframes goIn {
+            0% {
+                transform: translate(-50%, -50%) rotate(120deg);
+            }
+            30% {
+                transform: translate(-50%, -50%) rotate(-20deg);
+            }
+            60% {
+                transform: translate(-50%, -50%) rotate(10deg);
+            }
+            90%,
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+        
+        @keyframes goOut {
+            0%,
+            30% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            60% {
+                transform: translate(-50%, -50%) rotate(20deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(-120deg);
+            }
+        }
+        
+        h4 {
+            font-size: 20px;
+            margin: 5px;
+            text-transform: uppercase;
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        footer i {
+            color: red;
+        }
+        
+        footer a {
+            color: #3C97BF;
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+
+    <div>
+        <div class="top half">
+            <img src="./img/launch.png" />
+        </div>
+        <div class="bottom half">
+            <img src="./img/launch.png" />
+        </div>
+        <button class="super-button" id="replay">Launch Teckzite 2021</button>
+        <div class="overlay"></div>
+        <div class="button-line left">
+            <div class="inner"></div>
+        </div>
+        <div class="button-line right">
+            <div class="inner"></div>
+        </div>
+    </div>
+
+
+
+
+    </div>
+
+
+    </div>
+    </div>
+    <div class="counter">
+        <div class="nums">
+            <span class="in"></span>
+            <!-- <span>11</span>
+            <span>10</span>
+            <span>9</span>
+            <span>8</span>
+            <span>7</span>
+            <span>6</span> -->
+            <span>5</span>
+            <span>4</span>
+            <span>3</span>
+            <span>2</span>
+            <span>1</span>
+            <span>0</span>
+        </div>
+        <h4>Get Ready</h4>
+    </div>
+    <div class="final main">
+        <kp>The site Is Live Now</kp>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function() {
+                $(document).on("click", ".super-button", function() {
+                    $(".main, .half, .overlay, .button-line, .super-button, .content,.menu-items-container,.menu-icon,.final").addClass("active");
+                    setTimeout(function() {
+                        $(".main *").css("z-index", "1");
+                    }, 3000);
+                });
+
+            });
+        </script>
+        <script>
+            const nums = document.querySelectorAll('.nums span');
+            const counter = document.querySelector('.counter');
+            const finalMessage = document.querySelector('.final');
+            const repl = document.getElementById('replay');
+
+            runAnimation();
+
+            function resetDOM() {
+                counter.classList.remove('hide');
+                finalMessage.classList.remove('show');
+
+                nums.forEach(num => {
+                    num.classList.value = '';
+                });
+
+                nums[0].classList.add('in');
+                var meta = document.createElement('meta');
+                meta.httpEquiv = "refresh";
+                meta.content = "9; url = https://teckzite.org/home";
+
+                document.getElementsByTagName('head')[0].appendChild(meta);
+
+            }
+
+            function runAnimation() {
+                nums.forEach((num, idx) => {
+                    const penultimate = nums.length - 1;
+                    num.addEventListener('animationend', (e) => {
+                        if (e.animationName === 'goIn' && idx !== penultimate) {
+                            num.classList.remove('in');
+                            num.classList.add('out');
+                        } else if (e.animationName === 'goOut' && num.nextElementSibling) {
+                            num.nextElementSibling.classList.add('in');
+                        } else {
+                            counter.classList.add('hide');
+                            finalMessage.classList.add('show');
+                        }
+                    });
+                });
+            }
+
+            repl.addEventListener('click', () => {
+                resetDOM();
+                runAnimation();
+            });
+        </script>
+
+</body>
+
+</html>
