@@ -727,7 +727,7 @@ def delete_team():
 		flash("Not a valid team")
 		return redirect(url_for('profile'))
 
-	delete_team_request(teamId)
+	delete_team_request(teamId, current_user)
 
 	flash("Team deleted successfully")
 	return redirect(url_for('profile'))

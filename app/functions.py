@@ -258,6 +258,8 @@ def accept_team_request(teamId, current_user):
 	team = Team.query.filter_by(teamId=teamId).first()
 
 	member = Member.query.filter_by(team_id=team.id, user_id=current_user.id)
+	if not member:
+		return
 	member.update({'stauts': 1})
 	db.session.commit()
 
@@ -269,7 +271,13 @@ def accept_team_request(teamId, current_user):
 
 
 def decline_team_request(teamId, current_user):
+
 	team = Team.query.filter_by(teamId=teamId).first()
+
+	# authorisation
+	team_request = TeamRequest.query.filter_by(team_id=teamId, user_id=current_user.userId).first()
+	if not team_request:
+		return
 
 	# delete all team requests
 	team_requests = TeamRequest.query.filter_by(team_id=teamId).all()
@@ -295,7 +303,11 @@ def decline_team_request(teamId, current_user):
 	db.session.delete(team)
 	db.session.commit()
 
-def delete_team_request(teamId):
+def delete_team_request(teamId, current_user):
+
+	if not is_authorised(teamId, current_user):
+		return
+
 	team = Team.query.filter_by(teamId=teamId).first()
 	
 	for mem in team.members:
@@ -312,6 +324,13 @@ def delete_team_request(teamId):
 	db.session.delete(team)
 	db.session.commit()
 
+def is_authorised(teamId, current_user):
+	team = Team.query.filter_by(teamId=teamId).first()
+	for member in team.members:
+		if member.stauts==1 and member.user_id == current_user.id:
+			return True
+	else:
+		return False
 
 
 def modify_member_status(teamId, userId, action):
