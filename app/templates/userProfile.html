@@ -517,6 +517,11 @@
                     </div>
 
 
+                    <br>
+                    {% if team.eventId == 'EV10041' %}
+                    <button><a href="https://bit.ly/3zhCwMS" target="_blank"> EXAM LINK </a></button>
+                    {% endif %} 
+
                 </div>
                 <div>
                     <form method="POST" action="{{url_for('delete_team')}}">
