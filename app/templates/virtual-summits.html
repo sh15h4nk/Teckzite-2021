@@ -2,8 +2,20 @@
 <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/favicon.png')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
 <link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
-
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+    console.log(window.innerHeight);
+</script>
 <style>
+    .pop {
+        width: 100%;
+        height: auto;
+        background: transparent url('https://image.ibb.co/ir1DE8/twinkling.png') repeat top center;
+        animation: move-twink-back 200s linear infinite;
+    }
+    
     .summits {
         width: 100%;
         height: auto;
@@ -11,7 +23,7 @@
         animation: move-twink-back 200s linear infinite;
     }
     
-    .summits h1 {
+    #summits {
         padding-top: 15vh;
     }
     
@@ -24,11 +36,11 @@
     }
     
     .summits-row-container .summits-container {
+        width: 100%;
         height: auto;
     }
     
     .summits-container {
-        width: 95%;
         padding: 1em;
         display: flex;
         flex-direction: column;
@@ -37,8 +49,9 @@
     }
     
     .summits-container .img {
-        width: 90%;
+        width: 50%;
         height: 300px;
+        margin: 0 auto;
     }
     
     .summits-container .img img {
@@ -48,12 +61,14 @@
     }
     
     .viewBtn {
+        all: unset;
         text-align: center;
-        padding: 3px 1.2em;
+        padding: 10px 1em;
         background-color: #414a5a;
         border-radius: 5px;
         border: 2px solid #927a7a;
         cursor: pointer;
+        color: #ddd;
     }
     
     .viewBtn:hover {
@@ -62,26 +77,147 @@
         border: 2px solid #ddd;
     }
     
-    .points {
-        width: 95%;
-        background-color: rgba(32, 39, 41, 0.356);
+    .popup {
+        padding: 1em;
+        width: 70%;
+        height: 80vh;
+        flex-wrap: wrap;
+        background-color: rgba(56, 46, 48, 0.603);
+        margin: 0 auto;
+        position: relative;
+        transition: 0.5s ease-in-out;
+        overflow-y: scroll;
+        display: none;
+    }
+    
+    .popup .item {
+        padding: 1em;
+        width: 33.33%;
+        height: 300px;
+        transition: .2s ease-in-out;
+    }
+    
+    .popup .item .inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: rgba(56, 46, 48, 0.603);
+    }
+    
+    .popup .item .img {
+        width: 100%;
+        height: 55%;
+    }
+    
+    .popup .item .img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 30%;
+    }
+    
+    .popup .item .img .spec {
+        object-position: center;
+    }
+    
+    .popup .item .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 45%;
+        font-size: 12px;
+        padding: 0 10px;
         text-align: center;
-        border-radius: 4px;
-        border-radius: 5px;
+    }
+    
+    .popup .item .content h3 {
+        font-size: 1em;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+    
+    .popup .item .content p {
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        text-align: center;
+    }
+    
+    .role {
+        color: #ddd;
+        font-weight: 500;
+    }
+    
+    .popup .item .overlay {
+        width: 100%;
+        height: 70%;
+        max-height: max-content;
+        padding: 0;
+        transform: translateY(-100%);
+        display: none;
+        padding: 10px;
+    }
+    
+    .popup .item .overlay .inner {
+        padding: 10px;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(56, 46, 48, 1);
+    }
+    
+    .popup .item .overlay .inner p {
+        all: unset;
+        font-size: 10px;
+        line-height: 1.7;
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    .popup .item:hover .overlay {
+        display: block;
+    }
+    
+    .popup .item:hover {
+        padding: .7em;
     }
     
     @media (max-width:768px) {
-        .summits-row-container {
-            flex-direction: column;
-        }
-        .summits-row-container .summits-container {
-            width: 100%;
-        }
         .summits-container .img {
+            width: 100%;
             height: 200px;
         }
     }
+    
+    @media (max-width:1024px) {
+        .popup {
+            width: 80%;
+        }
+        .popup .item {
+            width: 50%;
+            padding: 1em;
+        }
+    }
+    
+    @media (max-width:600px) {
+        .popup {
+            width: 95%;
+        }
+        .popup .item {
+            width: 100%;
+        }
+    }
 </style>
+
 {% endblock %} {% block content %} {{super()}}
 <div id="loader">
     <div class="content_box">
@@ -121,7 +257,7 @@
     <div class="header-wrapper">
         <div class="logo-wrap">
             <a href="{{url_for('index')}}">
-                <div class="logo"><img style="width:0px;" src="{{url_for('static', filename='./img/logo.png')}}"></div>
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
             </a>
         </div>
         <div class="nav-but-wrap">
@@ -131,14 +267,14 @@
 </header>
 
 
-
 <!-- main -->
+<h1 class="center" id="summits">summits</h1>
 <section class="summits">
-    <h1 class="center">summits</h1>
+
     <br>
-    <div class="summits-row-container points">
+    <div class="summits-row-container">
         <!-- alumni -->
-        <div class="summits-container">
+        <div class="summits-container summits-container-pop1">
             <div class="img">
                 <img src="{{url_for('static', filename='./img/summit.jpeg')}}" alt="" srcset="">
             </div>
@@ -154,62 +290,213 @@
                 <br>
                 <p> A light is thrown on real advancements and opportunities in the industry (life after graduation). And what makes it exceptional is that one can interact with them, make new connections and really know the scope from persons who have had
                     real time industrial working experience.</p>
+                <br>
+                <p>Are you thinking of life after graduation..? Nervous about Campus placements? Confused about what to choose, where to develop? Do not worry..! We are here with Alumni Summit Alumni Summit - You’ll be guided by the most experienced persons
+                    of the industry, who have taken the most challenging, yet wonderful career paths. You’ll be given a tour of different domains which will help you make the right career choice. Most importantly, you’ll have the chance to directly interact
+                    with Alumni and clear any of your doubts with them. Choose the right path for your career.., Make your happy choice.
+                </p>
             </div>
+            <br><br>
+            <a href="#summits" class="viewBtn alumni">View Our Alumnis</a>
             <br>
-            <p>Details will be upated soon</p>
-            <!-- <p class="viewBtn alumni">view</p> -->
         </div>
-        <!-- company -->
-        <!-- <div class="summits-container">
-                <div class="img">
-                    <img src="./img/freefire.jpeg" alt="" srcset="">
-                </div>
-                <br>
-                <div class="content">
-                    <h5 class="center">Alumni summit</h5>
-                    <p>A premier conference where we bring together leaders from divergent markets that are increasingly interconnected by cutting-edge technologies.</p>
 
-                       <p> What is special about this summit is that alumni from different domains share their industrial quality experience which really helps everyone flourish themselves in every perspective and outstand the challenges in one's life and career. </p>
-                        
-                       <p> A light is thrown on real advancements and opportunities in the industry (life after graduation). 
-                        And what makes it exceptional is that one can interact with them, make new connections  and really know the scope from persons who have had real time industrial working experience.</p>
-                </div>
-                <br>
-                <p class="viewBtn company">view</p>
-            </div> -->
     </div>
 
 </section>
 
+<br><br>
+<br><br>
 
+<div class="pop">
 
+    <p style="text-align: center; font-weight: 400; width: 90%; margin: 0 auto;">Summit on 11 June, 2021 5:00PM - 7:00PM LIVE STREAM ON YouTube channel
+        <a href="https://www.youtube.com/channel/UCRfeF0qcPwFCWw6y5GsML7g" style="color: cyan; font-weight: 500; font-size: 1em;"><br><br>Teckzite RGUKT Nuzvid</a><br><br><span style="display: none; cursor: pointer;" id="back">Go back</span></p>
 
+    <br><br>
+    <div class="popup alumni-pop">
 
-{% endblock %} {% block javascript %} {{super()}}
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Chaitanya Prasad2.jpg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>R CHAITANYA PRASAD </h3>
+                    <p class="role">Engineer/Scientist 'SC' at ISRO</p>
+                    <p>B.Tech in Electronics and Communications Engineering (2011-2015)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Ex employee Efftronics System Pvt Ltd.</p>
+                    <p>.2, GATE RANK- AIR 147(in 2017)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Chiru Varun.jpg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>Chiru Varun Mooraboyina</h3>
+                    <p class="role">Software Development Engineer at Amazon</p>
+                    <p>B.Tech in Computer Science and Engineering (2010-2014)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Previous Experiences: Edgeverve, Infosys</p>
+                    <p>.2, Gate Rank - 1933</p>
+                    <p>.3, Interned at IIT Bombay</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Gopi Bisetti.jpg')}}" alt="" class="spec">
+                </div>
+                <div class="content">
+                    <h3>BISETTI GOPI</h3>
+                    <p class="role">Assistant Manager, Visakh Refinery, Hindustan Petroleum Corporation Limited,</p>
+                    <p>B.Tech in chemical engineering (2010-2014)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, PG in General Management from IIM Trichy</p>
+                    <p>.2, Gate rank - AIR 364 (in 2014)</p>
+                    <p>.3, 6+ years experience as process engineer in Diesel Hydrotreating unit, Hydrogen Generation unit, FCC gasoline treatment unit, Naphtha isomerization unit and Power & water Utilities.</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Pradeep2.jpg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>V PRADEEP</h3>
+                    <p class="role">Assistant Executive Engineer, TRIBAL WELFARE ENGINEERING DEPARTMENT</p>
+                    <p>B.Tech in Mechanical Engineering(2011-2015)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>Office of Engineer-in-Chief, TRIBAL WELFARE ENGINEERING DEPARTMENT</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Kranthi Kumar2.jpeg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>KAVITI KRANTHI KUMAR</h3>
+                    <p class="role">Assistant Manager, Operations MSTC Limited</p>
+                    <p>B.Tech in Civil Engineering (2010-2014)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Gold medal for academic excellence and being the topper of university in B.Tech(2014)</p>
+                    <p>.2, Institute medal for academic excellence in M.Tech.(2016)</p>
+                    <p>.3, Selected for Build India Scholarship</p>
+                    <p>.4, Ex employee L&T limited construction</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Najma Sultana2.jpeg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>SHAIK NAJMA SULTANA</h3>
+                    <p class="role">Final year of Master’s in Material Science at Technical University Darmstadt, Germany</p>
+                    <p>B.Tech in Metallurgy and Materials Engineering (2015-2019)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Earned very prestigious European scholarship called 'Erasmus Mundus' for doing double-degree masters in two different European universities in Material science (France and Germany)</p>
+                    <p>.2, Co-Author of journal ‘Materialia’</p>
+                    <p>.3, Overall event coordinator Teckzite’18</p>
+                    <p>.4, B.Tech in Metallurgy and Materials Engineering </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Malireddy Rajasekhar2.jpeg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>MALIREDDY RAJASEKHAR</h3>
+                    <p class="role">Founder and CEO, Mee Buddy</p>
+                    <p>B.Tech in Computer Science and engineering (2013-2017)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Software developer for a government project called Smart Village in collaboration with UC Berkeley</p>
+                    <p>.2, Developed 20+ projects for his college and 5+ projects for the government of AP state</p>
+                    <p>.3, Core team member, Teckzite 14 to 16</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="inner">
+                <div class="img">
+                    <img src="{{url_for('static', filename='./img/Alumni Profiles/Sri Harshith Rajam2.jpeg')}}" alt="">
+                </div>
+                <div class="content">
+                    <h3>SRI HARSHITH RAJAM</h3>
+                    <p class="role">Executive officer, Union Home Ministry</p>
+                    <p>B.Tech in Electronics and Communications Engineering (2010-2014)</p>
+                </div>
+            </div>
+            <div class="overlay">
+                <div class="inner">
+                    <p>.1, Attempted UPSC Mains in 2018</p>
+                    <p>.2, Selected for Infosys</p>
+                    <p>.3, Wrote a Paper on ‘Cognitive Radio communications’</p>
+                    <p>.4, First in State elocution competition conducted by Election commission of India in 2013. </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<br><br> {% endblock %} {% block javascript %} {{super()}}
 
 <script src="{{url_for('static', filename='./js/script.js')}}"></script>
 <script src="{{url_for('static', filename='./js/main.js')}}"></script>
 <script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
 <script>
-    const filterButtons = document.querySelector("#filter-btns").children;
-    const items = document.querySelector(".filter-items").children;
-    for (let i = 0; i < filterButtons.length; i++) {
-        filterButtons[i].addEventListener("click", function() {
-            for (let j = 0; j < filterButtons.length; j++) {
-                filterButtons[j].classList.remove("current")
-            }
-            this.classList.add("current");
-            const target = this.getAttribute("data-target")
-            for (let k = 0; k < items.length; k++) {
-                items[k].style.display = "none";
-                if (target == items[k].getAttribute("data-li")) {
-                    items[k].style.display = "block";
-                }
-                if (target == "all") {
-                    items[k].style.display = "block";
-                }
-            }
-        })
-    }
+    let ele = document.querySelector(".alumni");
+    let back = document.querySelector('#back');
+    ele.addEventListener('click', function() {
+        document.querySelector('.alumni-pop').style.display = "flex";
+        back.style.display = "block";
+        document.querySelector('.summits').style.display = "none";
+    })
+    back.addEventListener('click', function() {
+        document.querySelector('.alumni-pop').style.display = "none";
+        document.querySelector('.summits').style.display = "flex";
+        back.style.display = "none";
+    })
 </script>
 {% endblock %}
