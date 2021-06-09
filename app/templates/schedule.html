@@ -1,0 +1,704 @@
+{% extends 'base.html' %} {% block title %}Teckzite 2021| schedule{% endblock %} {% block html_head %} {{super()}}
+<link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static', filename='img/favicon.png')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/styles.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='./css/loader.css')}}">
+<script>
+    onload = function resetHeight() {
+        document.getElementById("hero").style.height = window.innerHeight + "px"; //window.innerHeight + "px";
+    }
+</script>
+<style>
+    .filter .filter-items .item {
+        flex: 0 0 50%;
+        max-width: 50%;
+        height: auto;
+        margin: 1em 0;
+    }
+    
+    .filter .filter-items .item .inner {
+        height: auto;
+        background-color: rgba(56, 46, 48, 0.603);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        border-radius: 5px;
+    }
+    
+    .filter .filter-items .item .inner h3 {
+        color: #908282;
+        font-weight: 600;
+        font-size: 1.3em;
+        text-align: center;
+    }
+    
+    table {
+        height: auto;
+        border: 1px solid rgb(119 88 94);
+        border-radius: 5px;
+    }
+    
+    table th,
+    td {
+        border: 1px solid rgb(119 88 94);
+        text-align: center;
+        padding: 4px;
+    }
+    
+    .open th,
+    td {
+        padding: 2px;
+    }
+    
+    @media (max-width:1024px) {
+        .filter .filter-items .item {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        table {
+            font-size: 15px;
+        }
+        table th,
+        td {
+            padding: 2px;
+        }
+        .open th,
+        td {
+            font-size: 12px;
+        }
+    }
+    
+    @media (max-width:500px) {
+        table {
+            font-size: 12px;
+        }
+        .open th,
+        td {
+            font-size: 10px;
+        }
+    }
+    
+    @media (max-width:400px) {
+        table {
+            font-size: 10px;
+        }
+        .open th,
+        td {
+            font-size: 8px;
+            padding: 1px;
+        }
+    }
+</style>
+{% endblock %} {% block content %} {{super()}}
+<div id="loader">
+    <div class="content_box">
+        <div class="circle">
+            <div class="ox"></div>
+        </div>
+        <div class="background_box b1">
+            <div class="background c1"></div>
+        </div>
+        <div class="background_box b2">
+            <div class="background c2"></div>
+        </div>
+        <div class="background_box b3">
+            <div class="background c3"></div>
+        </div>
+        <div class="background_box b4">
+            <div class="background c4"></div>
+        </div>
+    </div>
+    <div class="tran" id="logosvg"><svg class="T L" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba"/><stop offset="100%" stop-color="#25b3ba"/></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M300 40 L50 40 L35 140 L110 140 L75 300 L115 300 L157 110 L75 110 L80 80 L300 80 Z"/>
+ </svg>
+        <div class="zoomoutheader G">
+            <h1>
+                <font color="white" face="helvetica">DISTANCE PLEASE</font>
+            </h1>
+        </div>
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask"></div>
+        <div class="loader-line"></div><svg class="Z R" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="350px" height="350px" viewBox="0 0 340 333" enable-background="new 0 0 340 333" xml:space="preserve"><defs><linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#25b3ba" /><stop offset="100%" stop-color="#25b3ba" /></linearGradient></defs><path class="path" fill=white sstroke="url(#linear)" stroke-width="4.5" stroke-miterlimit="10" d="
+ M170 95 L315 95 L310 130 L195 258 L300 258 L295 290 L138 290 L142 260 L259 130 L165 130 Z " />
+ </svg></div>
+</div>
+</div>
+
+
+<!-- header -->
+<header class="cd-header">
+    <div class="header-wrapper">
+        <div class="logo-wrap">
+            <a href="{{url_for('index')}}">
+                <div class="logo"><img src="{{url_for('static', filename='./img/logo.png')}}"></div>
+            </a>
+        </div>
+        <div class="nav-but-wrap">
+            <div class="menu-icon hover-target"><span class="menu-icon__line menu-icon__line-left"></span><span class="menu-icon__line"></span><span class="menu-icon__line menu-icon__line-right"></span></div>
+        </div>
+    </div>
+</header>
+
+
+<!-- main -->
+<br>
+<section class="filter">
+    <div class="filter-container">
+        <h1 class="center">COMPETITIONS SCHEDULE</h1>
+
+        <br>
+
+        <div class="filter-items filter-items-cards">
+
+
+            <!-- cse -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF CSE</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>11/06/2021</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Data Analyzer</td>
+                            <td colspan="2">2 PM – 10 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Template Monster</td>
+                            <td>-</td>
+                            <td>12PM-6 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Code War</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>2 PM to 6 PM</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Reverse Coding (Round-1)
+                            </td>
+                            <td>-</td>
+                            <td>9 AM-10 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Reverse Coding (Round-2)
+                            </td>
+                            <td>-</td>
+                            <td>4PM – 6 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>SQL Master (Round-1)
+                            </td>
+                            <td>-</td>
+                            <td>10 AM – 11 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>SQL Master (Round-2)
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>9 AM-11 AM</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Debug It (Round - 1)</td>
+                            <td>-</td>
+                            <td>11 AM – 12 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Debug It (Round - 2)</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>9 AM – 11 AM</td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="filter-items filter-items-cards">
+
+            <!-- mech -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF MECHANICAL</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Mech Mania</td>
+                            <td>-</td>
+                            <td>9:00 AM -12 AM</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Fill It Fast</td>
+                            <td>2:00 PM – 6:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Raise Your Problem</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Dazzling Design</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p> * Raise your problem and Dazzling design problem statements will be given on 9th June and abstracts and designs should submit before 12th June.</p>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="filter-items filter-items-cards">
+
+
+            <!-- ece -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF ECE</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Matchtronics</td>
+                            <td>9:30 AM- 10:30 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Design and Win (Round-1)</td>
+                            <td>11 AM – 12 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Design and Win (Round-2)</td>
+                            <td>-</td>
+                            <td>2 PM – 3 PM</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Burstomania (Round-1)</td>
+                            <td>2 PM – 3 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Burstomania (Round-2)</td>
+                            <td>-</td>
+                            <td>11 AM – 12 AM</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Digi Analog (Round-1)</td>
+                            <td>3:30 PM – 4:30 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Digi Analog (Round-2)</td>
+                            <td>-</td>
+                            <td>9:30 AM – 10:30 AM</td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- mme -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF MME</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Meta Quiz (Round-1)</td>
+                            <td>9:00 AM- 10:00 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Meta Quiz (Round-2)</td>
+                            <td>-</td>
+                            <td>11:00 AM - 1:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Meta Icon (Round-1)</td>
+                            <td>10:00 - 11:30 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Meta Icon (Round-2)
+                            </td>
+                            <td>2:00 PM – 3:30 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Meta Icon (Round-3)</td>
+                            <td>-</td>
+                            <td>2:30 PM - 4:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Failure Analysis</td>
+                            <td>11:30 AM – 1:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Meta Technician</td>
+                            <td>-</td>
+                            <td>9:00 AM – 10:30 AM</td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- civil -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF CIVIL</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Papyrus’21 (Round 2)</td>
+                            <td>8:00 AM- 11:00 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>AutoCAD (Round 1)</td>
+                            <td>11:00 AM – 12:30 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>AutoCAD (Round 2)</td>
+                            <td>-</td>
+                            <td>12:00PM – 4:00 PM</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Tricky Civil (Round 1)</td>
+                            <td>1:00 PM -2:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Tricky Civil (Round 2)</td>
+                            <td>3:00 PM – 4:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Plot Your Plan (Round 2)</td>
+                            <td>-</td>
+                            <td>8:00 AM – 11:00AM</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p> * Papyrus’21 first round will be abstract submission and it will start on 9/06/2021.</p>
+                    <br>
+                    <p> * Plot your Plan first round will be abstract submission and it will start on 09/06/2021.</p>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- puc -->
+            <div class="item">
+                <div class="inner">
+                    <h3>PUC</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>ICON of PUC</td>
+                            <td>9 AM – 10 AM (Round 1)</td>
+                            <td>9 AM – 10 AM (Round 2) 1:00 PM – 2:30 PM (Final Round)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Quizle</td>
+                            <td>10:30 AM – 11:00 AM (Round 1)</td>
+                            <td>10:00 AM-10:30 AM (Round 2) 3:00 PM – 3:30 PM (Final Round)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Back to Beats</td>
+                            <td>11:30 AM – 12:00 PM (Round 1)</td>
+                            <td>11:00 AM-11:30 AM (Round 2) 4:00 PM – 5:00 PM (Final Round)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Art Attack</td>
+                            <td>11:00 AM-12:00 PM (Final Round)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Spectrometer Of PUC</td>
+                            <td>1:30 PM – 2:30 PM (Round 1) 3:00 PM - 4:00 PM (Final Round)</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Connections</td>
+                            <td>4:00 PM – 5:00 PM (Final Round)</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- chemical -->
+            <div class="item">
+                <div class="inner">
+                    <h3>DEPARTMENT OF CHEMICAL</h3>
+                    <br>
+                    <table>
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>12/06/2021</th>
+                            <th>13/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Chem Icon (Round-1)</td>
+                            <td>9:00 AM - 10:00 AM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Chem Icon (Round-2)
+                            </td>
+                            <td>-</td>
+                            <td>9:00 AM - 11 AM</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Chem Icon (Round-3)</td>
+                            <td>-</td>
+                            <td>4:00 PM - 5:00PM</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Chem Cross (Round-1)
+                            </td>
+                            <td>10 AM – 12 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Chem Cross (Round-2)</td>
+                            <td>-</td>
+                            <td>11 AM - 12 PM</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Poster Presentation</td>
+                            <td>1:00 PM – 3:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Paper Presentation</td>
+                            <td>3:30PM - 5:00Pm</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Case Study</td>
+                            <td>-</td>
+                            <td>1:00 PM – 4:00 PM</td>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="filter-items filter-items-cards">
+
+            <!-- open -->
+            <div class="item" style="max-width: 100%; flex: 0 0 100%;">
+                <div class="inner">
+                    <h3>OPEN TO ALL</h3>
+                    <br>
+                    <table class="open">
+                        <tr>
+                            <th>S.NO</th>
+                            <th>Event Name</th>
+                            <th>09/06/2021</th>
+                            <th>10/06/2021</th>
+                            <th>11/06/2021</th>
+                            <th>12/06/2021</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Mind Boggler</td>
+                            <td>4:00 PM - 5:00 PM</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Envision</td>
+                            <td>-</td>
+                            <td>4:00 PM- 5:00 PM (Round-1)</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Cryptex</td>
+                            <td>-</td>
+                            <td>5:00 PM- 6:00 PM (wild card round)</td>
+                            <td>7:00 PM- 09:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Crime Scene Investigation</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>9:00 AM- 1:00 PM</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>IPL Auction</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>3:00 PM – 4:00 PM (Round 1)</td>
+                            <td>7:00 PM- 9:00 PM (Round 2)</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Wordsmith</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>7:00 PM- 9:00 PM (Round 2)</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Ignite</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>7:00 PM- 9:00 PM (Round 2)</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Free Fire</td>
+                            <td>-</td>
+                            <td>7:00 PM - 9:00 PM</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Ludo King</td>
+                            <td>7:00 PM - 9:00 PM</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <p> * Cryptex Round 1 will take place from 09-06-2021( 6PM) to 10-06-2021(5PM)</p>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+{% endblock %} {% block javascript %} {{super()}}
+
+<script src="{{url_for('static', filename='./js/script.js')}}"></script>
+<script src="{{url_for('static', filename='./js/main.js')}}"></script>
+<script src="{{url_for('static', filename='./js/jquery-3.6.0.min.js')}}"></script>
+
+
+
+
+{% endblock %}

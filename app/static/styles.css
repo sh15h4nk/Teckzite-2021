@@ -390,6 +390,41 @@ body.nav-active .nav__list-item:nth-child(10) {
     transition-delay: 1.7s;
 }
 
+body.nav-active .nav__list-item:nth-child(11) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(12) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(13) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(14) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(15) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(16) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
+body.nav-active .nav__list-item:nth-child(17) {
+    -webkit-transition-delay: 1.7s;
+    transition-delay: 1.7s;
+}
+
 
 /* nav and overlay end */
 

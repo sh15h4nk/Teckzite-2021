@@ -137,6 +137,10 @@ def teamView():
 def devteamView():
 	return render_template('web_team.html')
 
+@app.route('/Competitionschedule')
+def scheduleView():
+	return render_template('schedule.html')
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

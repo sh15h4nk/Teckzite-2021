@@ -402,6 +402,11 @@ body.nav-active .nav__list-item:nth-child(15) {
     transition-delay: 2.1s;
 }
 
+body.nav-active .nav__list-item:nth-child(16) {
+    -webkit-transition-delay: 2.2s;
+    transition-delay: 2.2s;
+}
+
 
 /* nav and overlay end */
 
