@@ -150,7 +150,7 @@ def login():
 			return redirect(url_for('register'))
 
 		else:
-			flash("Already logged in. Please accept team request if any in your profile")
+			flash("Already logged in. Please accept or decline team request if any in your profile")
 			return redirect(url_for('index'))
 
 	google_provider_cfg = get_google_provider_cfg()
@@ -206,7 +206,7 @@ def callback():
 		db.session.commit()		
 
 	login_user(user)
-	flash("Please accept all the team requests if any in your profile page")
+	flash("Please accept or decline all the team requests if any in your profile page")
 	    
 
 	# check if user registration is complete
